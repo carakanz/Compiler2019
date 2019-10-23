@@ -35,17 +35,6 @@ endif()
 
 add_subdirectory(library)
 add_subdirectory(LexicalAnalyz)
+add_subdirectory(tests)
 
 message("Include gtest: " ${gtest_SOURCE_DIR})
-
-enable_testing()
-
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-add_executable(RunUnitTests
-        ${PROJECT_SOURCE_DIR}/tests/LexicalAnalyzUnitTest.cpp)
-
-target_link_libraries(RunUnitTests gtest gtest_main)
-
-target_link_libraries(RunUnitTests LexicalAnalyz)
-
-add_test(UnitTests RunUnitTests)

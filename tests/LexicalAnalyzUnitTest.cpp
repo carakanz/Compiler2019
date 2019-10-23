@@ -1,7 +1,6 @@
 //
 // Created by Zinenko Dmytro on 20.10.2019.
 //
-
 #include "gtest/gtest.h"
 #include "../LexicalAnalyz/include/LexicalAnalyz.h"
 #include <fstream>
@@ -33,7 +32,7 @@ const std::array<std::string, 8> Paths = {
     "TreeVisitor.java"
 };
 
-const std::string PathPrefix = "../tests/Samples/";
+const std::string PathPrefix = "../../tests/Samples/";
 
 TEST(LexicalAnalyz, FindUnknownToken) {
     for (const auto& path : Paths) {
@@ -44,9 +43,4 @@ TEST(LexicalAnalyz, FindUnknownToken) {
         std::cout << "Ok: " << PathPrefix + path << std::endl;
         sample.close();
     }
-}
-
-int main(int argc, char** argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }
