@@ -21,9 +21,11 @@ flex_target(flex_scanner scanner.ll ${CMAKE_CURRENT_BINARY_DIR}/lex.yy.cc)
 message("Cannot find flex")
 
 add_library(${PROJECT_NAME} SHARED
-        src/LexicalAnalyz.cpp
+        src/FlexAnalyzerBuilder.cpp
         ${FLEX_flex_scanner_OUTPUTS}
-        include/Tokens.h)
+        include/Tokens.h
+        src/LexicalAnalyzer.cpp
+        include/LexicalAnalyzer.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
@@ -31,5 +33,5 @@ include_directories(${COMMON_INCLUDES})
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        include/LexicalAnalyz.h
+        include/FlexAnalyzerBuilder.h
         )

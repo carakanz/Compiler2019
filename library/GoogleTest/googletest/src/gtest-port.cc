@@ -1266,7 +1266,7 @@ void ClearInjectableArgvs() {
 namespace posix {
 void Abort() {
   DebugBreak();
-  TerminateProcess(GetCurrentProcess(), 1);
+  TerminateGetCurrentProcess(), 1);
 }
 }  // namespace posix
 #endif  // GTEST_OS_WINDOWS_MOBILE
