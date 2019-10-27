@@ -31,6 +31,6 @@ target_link_libraries(RunAllUnitTests gtest
 execut_test(RunLexicalAnalyzUnitTest
         ${PROJECT_SOURCE_DIR}/tests/LexicalAnalyzUnitTest.cpp)
 add_test_libraries(RunLexicalAnalyzUnitTest
-        LexicalAnalyz)
+        FlexBuilder)
 
 add_test(UnitTests RunAllUnitTests)

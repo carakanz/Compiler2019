@@ -3,11 +3,13 @@
 //
 #pragma once
 
+namespace LexicalAnalyz {
+
 enum Token {
     T_EOF = 0,// По-умолчанию в конце потока scanner
     // возвращает 0.
     // Это можно изменить в #define YY_NULL
-    T_SPACE,
+            T_SPACE,
     T_CLASS,
     T_THIS,
     T_LEFT_BRACKET,
@@ -44,4 +46,6 @@ enum Token {
 
     T_UNKNOWN
 };
+
+}
 

@@ -1,5 +1,7 @@
 %{
     #include <FlexAnalyzerBuilder.h>
+    using namespace LexicalAnalyz;
+    using namespace FlexBuilder;
 %}
 %option noyywrap
 %option c++
@@ -57,5 +59,3 @@ ID           ({ALPHA}|_)({ALPHA}|_|{DIGIT})*
 <<EOF>>    { return Token::T_EOF; }
 .          { return Token::T_UNKNOWN; }
 %%
-
-

@@ -1,0 +1,13 @@
+//
+// Created by Zinenko Dmytro on 27.10.2019.
+//
+#pragma once
+
+#include <INodeBase.h>
+
+namespace SyntaxTree {
+    class IExpressionNode : public virtual INodeBase {
+    public:
+        ~IExpressionNode() override = default;
+    };
+}

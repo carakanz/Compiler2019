@@ -2,6 +2,7 @@
 # и включите сюда подпроекты.
 #
 cmake_minimum_required (VERSION 3.8)
+set(CMAKE_CXX_STANDARD 17)
 project (Compiler2019 VERSION 1.0 LANGUAGES CXX)
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
@@ -34,7 +35,10 @@ if(NOT CMAKE_CXX_EXTENSIONS)
 endif()
 
 add_subdirectory(library)
+add_subdirectory(FlexBuilder)
 add_subdirectory(LexicalAnalyz)
+add_subdirectory(BisonBuilder)
+add_subdirectory(SyntaxTree)
 add_subdirectory(tests)
 
 message("Include gtest: " ${gtest_SOURCE_DIR})
