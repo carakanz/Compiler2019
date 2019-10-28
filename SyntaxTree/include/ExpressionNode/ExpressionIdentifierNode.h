@@ -10,15 +10,15 @@
 namespace SyntaxTree {
     class ExpressionIdentifierNode : public virtual IExpressionNode {
     public:
-        explicit ExpressionIdentifierNode(const IdentifierNode *identifier)
-                : identifier_(std::make_unique<IdentifierNode>(identifier)) {
+        explicit ExpressionIdentifierNode(std::unique_ptr<IdentifierNode> identifier)
+                : identifier_(std::move(identifier)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_IDENTIFIER;
         }
 
-        const IdentifierNode* get_identifier() const {
+        [[nodiscard]] const IdentifierNode *get_identifier() const {
             return identifier_.get();
         }
 
@@ -27,4 +27,4 @@ namespace SyntaxTree {
     private:
         std::unique_ptr<IdentifierNode> identifier_;
     };
-ъ
+}

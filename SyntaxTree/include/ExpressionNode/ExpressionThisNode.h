@@ -9,7 +9,7 @@
 namespace SyntaxTree {
     class ExpressionThisNode : public virtual IExpressionNode {
     public:
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_THIS;
         }
 

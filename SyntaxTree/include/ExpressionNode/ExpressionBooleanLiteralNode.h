@@ -13,11 +13,11 @@ namespace SyntaxTree {
                 : value_(value) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_BOOLEAN_LITERAL;
         }
 
-        bool get_value() const {
+        [[nodiscard]] bool get_value() const {
             return value_;
         }
 

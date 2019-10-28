@@ -9,21 +9,21 @@
 namespace SyntaxTree {
     class ExpressionIndexNode : public virtual IExpressionNode {
     public:
-        ExpressionIndexNode(IExpressionNode array,
-                            IExpressionNode index)
-                : array_(std::make_unique<IExpressionNode>(array)),
-                  index_(std::make_unique<IExpressionNode>(index)) {
+        ExpressionIndexNode(std::unique_ptr<IExpressionNode> array,
+                            std::unique_ptr<IExpressionNode> index)
+                : array_(std::move(array)),
+                  index_(std::move(index)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_INDEX;
         }
 
-        const IExpressionNode* get_left() const {
+        [[nodiscard]] const IExpressionNode* get_left() const {
             return array_.get();
         }
 
-        const IExpressionNode* get_right() const {
+        [[nodiscard]] const IExpressionNode* get_right() const {
             return index_.get();
         }
 

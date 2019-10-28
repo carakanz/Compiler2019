@@ -7,7 +7,7 @@
 
 namespace SyntaxTree {
     class TypeIntNode : public virtual ITypeNode {
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::TYPE_INT;
         }
 

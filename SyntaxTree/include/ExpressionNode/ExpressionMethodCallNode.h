@@ -11,33 +11,33 @@
 namespace SyntaxTree {
     class ExpressionMethodCallNode : public virtual IExpressionNode {
     public:
-        ExpressionMethodCallNode(IExpressionNode* object,
-                                 IdentifierNode* method,
-                                 std::vector<IExpressionNode*> arguments)
-                : object_(object),
-                  method_(method),
-                  arguments_(arguments.begin(), arguments.end()){
+        ExpressionMethodCallNode(std::unique_ptr<IExpressionNode> object,
+                                 std::unique_ptr<IdentifierNode> method,
+                                 std::vector<std::unique_ptr<IExpressionNode>> arguments)
+                : object_(std::move(object)),
+                  method_(std::move(method)),
+                  arguments_(std::move(arguments)){
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_METHOD_CALL;
         }
 
-        const IExpressionNode* get_object() const {
+        [[nodiscard]] const IExpressionNode* get_object() const {
             return object_.get();
         }
 
-        const IdentifierNode* get_method() const {
+        [[nodiscard]] const IdentifierNode* get_method() const {
             return method_.get();
         }
 
         // get begin iterator
-        auto get_first_arguments() const {
+        [[nodiscard]] auto get_first_argument() const {
             return arguments_.cbegin();
         }
 
         // get end iterator
-        auto get_last_arguments() const {
+        [[nodiscard]] auto get_last_argument() const {
             return arguments_.cend();
         }
 

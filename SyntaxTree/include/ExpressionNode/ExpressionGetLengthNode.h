@@ -9,15 +9,15 @@
 namespace SyntaxTree {
     class ExpressionGetLengthNode : public virtual IExpressionNode {
     public:
-        explicit ExpressionGetLengthNode(IExpressionNode* array)
-                : array_(array) {
+        explicit ExpressionGetLengthNode(std::unique_ptr<IExpressionNode> array)
+                : array_(std::move(array)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_GET_LENGHT;
         }
 
-        const IExpressionNode *get_array() const {
+        [[nodiscard]] const IExpressionNode *get_array() const {
             return array_.get();
         }
 

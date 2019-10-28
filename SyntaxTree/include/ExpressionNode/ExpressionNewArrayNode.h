@@ -10,20 +10,20 @@
 namespace SyntaxTree {
     class ExpressionNewArrayNode : public virtual IExpressionNode {
     public:
-        explicit ExpressionNewArrayNode(IdentifierNode *identifier,
-                                        IExpressionNode *size)
-                : identifier_(identifier), size_(size) {
+        explicit ExpressionNewArrayNode(std::unique_ptr<IdentifierNode> identifier,
+                                        std::unique_ptr<IExpressionNode> size)
+                : identifier_(std::move(identifier)), size_(std::move(size)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_NEW_ARRAY;
         }
 
-        const IdentifierNode *get_identifier() const {
+        [[nodiscard]] const IdentifierNode *get_identifier() const {
             return identifier_.get();
         }
 
-        const IExpressionNode *get_size() const {
+        [[nodiscard]] const IExpressionNode *get_size() const {
             return size_.get();
         }
 

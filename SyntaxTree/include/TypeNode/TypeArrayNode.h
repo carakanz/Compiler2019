@@ -9,15 +9,15 @@
 namespace SyntaxTree {
     class TypeArrayNode : public virtual ITypeNode {
     public:
-        explicit TypeArrayNode(ITypeNode *type)
-                : type_(type) {
+        explicit TypeArrayNode(std::unique_ptr<ITypeNode> type)
+                : type_(std::move(type)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::TYPE_ARRAY;
         }
 
-        const ITypeNode *get_array_type() const {
+        [[nodiscard]] const ITypeNode *get_array_type() const {
             return type_.get();
         }
 

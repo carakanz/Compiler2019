@@ -9,15 +9,15 @@
 
 namespace SyntaxTree {
     class TypeUserNode : public virtual ITypeNode {
-        explicit TypeUserNode(IdentifierNode *identifier)
-                : identifier_(identifier) {
+        explicit TypeUserNode(std::unique_ptr<IdentifierNode> identifier)
+                : identifier_(std::move(identifier)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::TYPE_USER;
         }
 
-        const IdentifierNode *get_identifier() const {
+        [[nodiscard]] const IdentifierNode *get_identifier() const {
             return identifier_.get();
         }
 

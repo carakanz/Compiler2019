@@ -6,6 +6,7 @@ cmake_minimum_required (VERSION 3.8)
 project(SyntaxTree VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} STATIC
+        src/TreeNodes.cpp
         include/INodeBase.h
         include/TypeNode/TypeIntNode.h
         include/TypeNode/TypeBooleanNode.h
@@ -16,14 +17,17 @@ add_library(${PROJECT_NAME} STATIC
         include/ExpressionNode/ExpressionBinaryOperationNode.h
         include/ExpressionNode/ExpressionIndexNode.h
         include/ExpressionNode/ExpressionGetLengthNode.h
-        src/ExpressionNode/ExpressionMethodCallNode.cpp
         include/ExpressionNode/ExpressionMethodCallNode.h
         include/IdentifierNode/IdentifierNode.h
         include/ExpressionNode/ExpressionIntegerLiteralNode.h
         include/ExpressionNode/ExpressionThisNode.h
         include/ExpressionNode/ExpressionNewNode.h
         include/ExpressionNode/ExpressionNewArrayNode.h
-        include/ExpressionNode/ExpressionBooleanLiteralNode.h include/ExpressionNode/ExpressionNotOperatorNode.h include/ExpressionNode/ExpressionRoundBracketsNode.h include/TypeNode/ITypeNode.h)
+        include/ExpressionNode/ExpressionBooleanLiteralNode.h
+        include/ExpressionNode/ExpressionNotOperatorNode.h
+        include/ExpressionNode/ExpressionRoundBracketsNode.h
+        include/TypeNode/ITypeNode.h
+        include/StatementNode/IStatementNode.h include/StatementNode/StatementMergeNode.h include/StatementNode/StatementIfNode.h include/StatementNode/StatementWhileNode.h include/StatementNode/StatementPrintlnNode.h include/StatementNode/StatementAssignNode.h include/StatementNode/StatementAssignArrayNode.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})

@@ -7,21 +7,21 @@
 #include <memory>
 
 namespace SyntaxTree {
-    class ExpressionNotOperatorNode : public virtual IExpressionNode {
+    class ExpressionRoundBracketsNode : public virtual IExpressionNode {
     public:
-        explicit ExpressionNotOperatorNode(IExpressionNode *expression)
-                : expression_(expression) {
+        explicit ExpressionRoundBracketsNode(std::unique_ptr<IExpressionNode> expression)
+                : expression_(std::move(expression)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_ROUND_BRACKETS;
         }
 
-        const IExpressionNode *get_expression() const {
+        [[nodiscard]] const IExpressionNode *get_expression() const {
             return expression_.get();
         }
 
-        ~ExpressionNotOperatorNode() override = default;
+        ~ExpressionRoundBracketsNode() override = default;
 
     private:
         std::unique_ptr<IExpressionNode> expression_;

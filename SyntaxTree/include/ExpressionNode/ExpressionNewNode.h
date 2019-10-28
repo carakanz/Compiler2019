@@ -10,15 +10,15 @@
 namespace SyntaxTree {
     class ExpressionNewNode : public virtual IExpressionNode {
     public:
-        explicit ExpressionNewNode(IdentifierNode *identifier)
-                : identifier_(identifier) {
+        explicit ExpressionNewNode(std::unique_ptr<IdentifierNode> identifier)
+                : identifier_(std::move(identifier)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_NEW;
         }
 
-        const IdentifierNode *get_identifier() const {
+        [[nodiscard]] const IdentifierNode *get_identifier() const {
             return identifier_.get();
         }
 

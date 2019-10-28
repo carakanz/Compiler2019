@@ -26,24 +26,26 @@ namespace SyntaxTree {
         };
 
         ExpressionBinaryOperationNode(BinaryOperationType operation_type,
-                                      IExpressionNode* left,
-                                      IExpressionNode* right)
-                : operation_type_(operation_type), left_(left), right_(right) {
+                                      std::unique_ptr<IExpressionNode> left,
+                                      std::unique_ptr<IExpressionNode> right)
+                : operation_type_(operation_type),
+                left_(std::move(left)),
+                right_(std::move(right)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_BINARY_OPERATION;
         }
 
-        const IExpressionNode* get_left() const {
+        [[nodiscard]] const IExpressionNode* get_left() const {
             return left_.get();
         }
 
-        const IExpressionNode* get_right() const {
+        [[nodiscard]] const IExpressionNode* get_right() const {
             return right_.get();
         }
 
-        BinaryOperationType get_operation_type() const {
+        [[nodiscard]] BinaryOperationType get_operation_type() const {
             return operation_type_;
         }
 

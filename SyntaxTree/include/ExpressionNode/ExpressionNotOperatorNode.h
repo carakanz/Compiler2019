@@ -9,21 +9,21 @@
 namespace SyntaxTree {
     class ExpressionNotOperatorNode : public virtual IExpressionNode {
     public:
-        explicit ExpressionNotOperatorNode(IExpressionNode* right)
-                : right_(right) {
+        explicit ExpressionNotOperatorNode(std::unique_ptr<IExpressionNode> expression)
+                : expression_(std::move(expression)) {
         }
 
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_NOT_OPERATION;
         }
 
-        const IExpressionNode *get_right() const {
-            return right_.get();
+        [[nodiscard]] const IExpressionNode *get_expression() const {
+            return expression_.get();
         }
 
         ~ExpressionNotOperatorNode() override = default;
 
     private:
-        std::unique_ptr<IExpressionNode> right_;
+        std::unique_ptr<IExpressionNode> expression_;
     };
 }
