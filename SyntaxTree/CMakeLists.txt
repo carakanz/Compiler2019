@@ -27,7 +27,7 @@ add_library(${PROJECT_NAME} STATIC
         include/ExpressionNode/ExpressionNotOperatorNode.h
         include/ExpressionNode/ExpressionRoundBracketsNode.h
         include/TypeNode/ITypeNode.h
-        include/StatementNode/IStatementNode.h include/StatementNode/StatementMergeNode.h include/StatementNode/StatementIfNode.h include/StatementNode/StatementWhileNode.h include/StatementNode/StatementPrintlnNode.h include/StatementNode/StatementAssignNode.h include/StatementNode/StatementAssignArrayNode.h)
+        include/StatementNode/IStatementNode.h include/StatementNode/StatementMergeNode.h include/StatementNode/StatementIfNode.h include/StatementNode/StatementWhileNode.h include/StatementNode/StatementPrintlnNode.h include/StatementNode/StatementAssignNode.h include/StatementNode/StatementAssignArrayNode.h include/DeclarationNode/DeclarationVarNode.h include/DeclarationNode/DeclarationMethodNode.h include/DeclarationNode/DeclarationClassNode.h include/GoalNode/GoalNode.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})

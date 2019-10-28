@@ -27,3 +27,7 @@
 #include "StatementNode/StatementPrintlnNode.h"
 #include "StatementNode/StatementAssignNode.h"
 #include "StatementNode/StatementAssignArrayNode.h"
+#include "DeclarationNode/DeclarationVarNode.h"
+#include "DeclarationNode/DeclarationMethodNode.h"
+#include "DeclarationNode/DeclarationClassNode.h"
+#include "GoalNode/GoalNode.h"

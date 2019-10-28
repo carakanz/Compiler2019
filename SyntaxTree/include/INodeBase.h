@@ -27,7 +27,11 @@ namespace SyntaxTree {
         STATEMENT_WHILE,
         STATEMENT_PRINTLN,
         STATEMENT_ASSIGN,
-        STATEMENT_ASSIGN_ARRAY
+        STATEMENT_ASSIGN_ARRAY,
+        DECLARATION_VAR,
+        DECLARATION_METHOD,
+        DECLARATION_CLASS,
+        GOAL
     };
 
     class INodeBase {

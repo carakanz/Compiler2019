@@ -8,7 +8,7 @@
 namespace SyntaxTree {
     class IdentifierNode : public virtual INodeBase {
     public:
-        NodeType get_type() const override {
+        [[nodiscard]] NodeType get_type() const override {
             return NodeType::IDENTIFIER_NODE;
         }
         ~IdentifierNode() override = default;
