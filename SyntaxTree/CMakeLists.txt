@@ -38,7 +38,8 @@ add_library(${PROJECT_NAME} STATIC
         include/GoalNode/GoalNode.h
         include/DeclarationNode/PairTypeIdentifierNode.h
         include/TemplateNode/CloneNode.h
-        include/TemplateNode/ListNode.h include/ExpressionNode/ExpressionStaticMethodCallNode.h)
+        include/TemplateNode/ListNode.h
+        include/ExpressionNode/ExpressionStaticMethodCallNode.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
