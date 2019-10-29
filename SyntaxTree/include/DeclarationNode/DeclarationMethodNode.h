@@ -4,9 +4,9 @@
 #pragma once
 
 #include <INodeBase.h>
-#include <IdentifierNode/IdentifierNode.h>
 #include <TypeNode/ITypeNode.h>
-#include <DeclarationNode/DeclarationVarNode.h>
+#include <IdentifierNode/IdentifierNode.h>
+#include <DeclarationNode/PairTypeIdentifierNode.h>
 #include <StatementNode/IStatementNode.h>
 #include <ExpressionNode/IExpressionNode.h>
 #include <memory>
@@ -14,24 +14,28 @@
 #include <vector>
 
 namespace SyntaxTree {
+    class DeclarationMethodNode;
+    using DeclarationMethodListNode = ListNode<DeclarationMethodNode,
+            INodeBase,
+            NodeType::DECLARATION_METHOD_LIST>;
+
     class DeclarationMethodNode : public virtual INodeBase {
     public:
         DeclarationMethodNode(bool is_public,
                               bool is_static,
                               std::unique_ptr<ITypeNode> return_type,
                               std::unique_ptr<IdentifierNode> identifier,
-                              std::vector<std::pair<std::unique_ptr<ITypeNode>,
-                                      std::unique_ptr<IdentifierNode>>> arguments,
-                              std::vector<IStatementNode> statements,
-                              std::vector<DeclarationVarNode> variables,
+                              std::unique_ptr<DeclarationMethodArgListNode> arguments,
+                              std::unique_ptr<DeclarationVarListNode> variables,
+                              std::unique_ptr<StatementListNode> statements,
                               std::unique_ptr<IExpressionNode> return_expression)
                 : is_public_(is_public),
                   is_static_(is_static),
                   return_type_(std::move(return_type)),
                   identifier_(std::move(identifier)),
-                  arguments_(std::move(arguments)),
-                  variables_(std::move(variables)),
-                  statements_(std::move(statements)),
+                  arguments_(std::move(arguments->items_)),
+                  variables_(std::move(variables->items_)),
+                  statements_(std::move(statements->items_)),
                   return_expression_(std::move(return_expression)) {
         }
 
@@ -90,10 +94,9 @@ namespace SyntaxTree {
         bool is_static_;
         std::unique_ptr<ITypeNode> return_type_;
         std::unique_ptr<IdentifierNode> identifier_;
-        std::vector<std::pair<std::unique_ptr<ITypeNode>,
-                std::unique_ptr<IdentifierNode>>> arguments_;
-        std::vector<DeclarationVarNode> variables_;
-        std::vector<IStatementNode> statements_;
+        std::vector<std::unique_ptr<PairTypeIdentifierNode>> arguments_;
+        std::vector<std::unique_ptr<DeclarationVarNode>> variables_;
+        std::vector<std::unique_ptr<IStatementNode>> statements_;
         std::unique_ptr<IExpressionNode> return_expression_;
     };
 }

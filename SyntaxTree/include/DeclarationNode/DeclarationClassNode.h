@@ -5,23 +5,28 @@
 
 #include <INodeBase.h>
 #include <IdentifierNode/IdentifierNode.h>
-#include <DeclarationNode/DeclarationVarNode.h>
+#include <DeclarationNode/PairTypeIdentifierNode.h>
 #include <DeclarationNode/DeclarationMethodNode.h>
 #include <memory>
 #include <utility>
 #include <vector>
 
 namespace SyntaxTree {
+    class DeclarationClassNode;
+    using DeclarationClassListNode = ListNode<DeclarationClassNode,
+            INodeBase,
+            NodeType::DECLARATION_CLASS_LIST>;
+
     class DeclarationClassNode : public virtual INodeBase {
     public:
         DeclarationClassNode(std::unique_ptr<IdentifierNode> identifier,
                              std::unique_ptr<IdentifierNode> base_class_identifier,
-                             std::vector<DeclarationVarNode> variables,
-                             std::vector<DeclarationMethodNode> methods)
+                             std::unique_ptr<DeclarationVarListNode> variables,
+                             std::unique_ptr<DeclarationMethodListNode> methods)
                 : identifier_(std::move(identifier)),
                   base_class_identifier_(std::move(base_class_identifier)),
-                  variables_(std::move(variables)),
-                  methods_(std::move(methods)) {
+                  variables_(std::move(variables->items_)),
+                  methods_(std::move(methods->items_)) {
         }
 
         [[nodiscard]] NodeType get_type() const override {
@@ -57,7 +62,7 @@ namespace SyntaxTree {
     private:
         std::unique_ptr<IdentifierNode> identifier_;
         std::unique_ptr<IdentifierNode> base_class_identifier_;
-        std::vector<DeclarationVarNode> variables_;
-        std::vector<DeclarationMethodNode> methods_;
+        std::vector<std::unique_ptr<DeclarationVarNode>> variables_;
+        std::vector<std::unique_ptr<DeclarationMethodNode>> methods_;
     };
 }

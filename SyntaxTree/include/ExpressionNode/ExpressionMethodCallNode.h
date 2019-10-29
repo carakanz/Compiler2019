@@ -9,14 +9,18 @@
 #include <vector>
 
 namespace SyntaxTree {
+    using ExpressionMethodCallArgsNode = ListNode<IExpressionNode,
+            IExpressionNode,
+            NodeType::EXPRESSION_METHOD_CALL_ARGS>;
+
     class ExpressionMethodCallNode : public virtual IExpressionNode {
     public:
         ExpressionMethodCallNode(std::unique_ptr<IExpressionNode> object,
                                  std::unique_ptr<IdentifierNode> method,
-                                 std::vector<std::unique_ptr<IExpressionNode>> arguments)
+                                 std::unique_ptr<ExpressionMethodCallArgsNode> arguments)
                 : object_(std::move(object)),
                   method_(std::move(method)),
-                  arguments_(std::move(arguments)){
+                  arguments_(std::move(arguments->items_)){
         }
 
         [[nodiscard]] NodeType get_type() const override {

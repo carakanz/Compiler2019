@@ -4,8 +4,12 @@
 #pragma once
 
 #include <INodeBase.h>
+#include <TemplateNode/ListNode.h>
 
 namespace SyntaxTree {
+    class IStatementNode;
+    using StatementListNode = ListNode<IStatementNode, IStatementNode, STATEMENT_LIST>;
+
     class IStatementNode : public virtual INodeBase {
     public:
         ~IStatementNode() override = default;

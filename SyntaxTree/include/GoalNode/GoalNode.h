@@ -12,14 +12,13 @@
 namespace SyntaxTree {
     class GoalNode : public virtual INodeBase {
     public:
-        explicit GoalNode(std::vector<DeclarationClassNode> classes)
-                : classes_(std::move(classes)) {
+        explicit GoalNode(std::unique_ptr<DeclarationClassListNode> classes)
+                : classes_(std::move(classes->items_)) {
         }
 
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::GOAL;
         }
-
 
         [[nodiscard]] auto get_first_class() const {
             return classes_.cbegin();
@@ -32,6 +31,6 @@ namespace SyntaxTree {
         ~GoalNode() override = default;
 
     private:
-        std::vector<DeclarationClassNode> classes_;
+        std::vector<std::unique_ptr<DeclarationClassNode>> classes_;
     };
 }
