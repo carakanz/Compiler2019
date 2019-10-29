@@ -14,7 +14,7 @@ namespace SyntaxTree {
         }
 
         [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_GET_LENGHT;
+            return NodeType::EXPRESSION_GET_LENGTH;
         }
 
         [[nodiscard]] const IExpressionNode *get_array() const {

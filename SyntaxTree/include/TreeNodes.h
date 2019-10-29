@@ -14,6 +14,7 @@
 #include "ExpressionNode/ExpressionIndexNode.h"
 #include "ExpressionNode/ExpressionGetLengthNode.h"
 #include "ExpressionNode/ExpressionMethodCallNode.h"
+#include "ExpressionNode/ExpressionStaticMethodCallNode.h"
 #include "ExpressionNode/ExpressionIntegerLiteralNode.h"
 #include "ExpressionNode/ExpressionBooleanLiteralNode.h"
 #include "ExpressionNode/ExpressionThisNode.h"
