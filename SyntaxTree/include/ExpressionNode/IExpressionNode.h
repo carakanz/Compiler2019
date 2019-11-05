@@ -7,8 +7,5 @@
 #include <TemplateNode/ListNode.h>
 
 namespace SyntaxTree {
-    class IExpressionNode : public virtual INodeBase {
-    public:
-        ~IExpressionNode() override = default;
-    };
+    class IExpressionNode : public INodeBase {};
 }

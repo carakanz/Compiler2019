@@ -7,7 +7,7 @@
 %option c++
 %option yyclass="FlexAnalyzerBuilder"
 
-SPACE        [ \t\r\f\v];
+SPACE        [ \t\r\f\v]
 END_OF_LINE  (\n)
 DIGIT        [0-9]
 ALPHA        [A-Za-z]
@@ -20,8 +20,6 @@ ID           ({ALPHA}|_)({ALPHA}|_|{DIGIT})*
 
 "//"[^\n]* { return (Token::T_COMMENT); }
 {SPACE}    { space(); }
-" "    { space(); }
-"\t"    { space(); }
 {END_OF_LINE} { end_of_line(); }
 
 "class"    { return Token::T_CLASS; }

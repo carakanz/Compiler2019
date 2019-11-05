@@ -3,28 +3,33 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project(SyntaxAnalyz VERSION 1.0 LANGUAGES CXX)
+project(BisonBuilder VERSION 1.0 LANGUAGES CXX)
+
+find_package(FLEX REQUIRED)
+message("Find flex version: " ${FLEX_VERSION})
 
 find_package(BISON REQUIRED)
 message("Find bison version: " ${BISON_VERSION})
 
-# Создаём специальный таргет, который генерирует parser.cc в папке билда
-flex_target(bison_parser parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cc)
-# Сгенерированный файл записывается в переменную FLEX_flex_scanner_OUTPUTS,
-# можем использовать её, как исходный файл
+flex_target(flex_scanner scanner.ll ${CMAKE_CURRENT_BINARY_DIR}/lex.yy.cc)
+bison_target(bison_parser parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cc)
+add_flex_bison_dependency(flex_scanner bison_parser)
 
 add_library(${PROJECT_NAME} SHARED
         ${BISON_bison_parser_OUTPUTS}
         src/BisonBuilder.cpp)
 
+target_link_libraries(${PROJECT_NAME} SyntaxTree)
 target_include_directories(${PROJECT_NAME} PUBLIC
-        ../LexicalAnalyz/include)
+        ../SyntaxTree/include)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
 
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        include/BisonBuilder.h
-        )
+        include/BisonBuilder.h)

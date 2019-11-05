@@ -6,11 +6,10 @@
 #include "ITypeNode.h"
 
 namespace SyntaxTree {
-    class TypeIntNode : public virtual ITypeNode {
+    class TypeIntNode : public ITypeNode {
+    public:
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::TYPE_INT;
         }
-
-        ~TypeIntNode() override = default;
     };
 }

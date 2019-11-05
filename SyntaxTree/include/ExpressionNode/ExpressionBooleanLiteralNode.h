@@ -7,23 +7,12 @@
 #include <memory>
 
 namespace SyntaxTree {
-    class ExpressionBooleanLiteralNode : public virtual IExpressionNode {
+    class ExpressionBooleanLiteralNode : public IExpressionNode {
     public:
-        explicit ExpressionBooleanLiteralNode(bool value)
-                : value_(value) {
-        }
-
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_BOOLEAN_LITERAL;
         }
 
-        [[nodiscard]] bool get_value() const {
-            return value_;
-        }
-
-        ~ExpressionBooleanLiteralNode() override = default;
-
-    private:
-        bool value_;
+        bool value = true;
     };
 }

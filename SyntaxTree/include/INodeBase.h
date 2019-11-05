@@ -3,14 +3,17 @@
 //
 #pragma once
 
+#include "string"
+
 namespace SyntaxTree {
     enum NodeType {
         TYPE_INT,
         TYPE_BOOLEAN,
+        TYPE_VOID,
+        TYPE_STRING,
         TYPE_USER,
         TYPE_ARRAY,
         IDENTIFIER_NODE,
-        EXPRESSION_METHOD_CALL_ARGS,
         EXPRESSION_STATIC_METHOD_CALL,
         EXPRESSION_IDENTIFIER,
         EXPRESSION_BINARY_OPERATION,
@@ -25,26 +28,28 @@ namespace SyntaxTree {
         EXPRESSION_NOT_OPERATION,
         EXPRESSION_ROUND_BRACKETS,
         STATEMENT_LIST,
+        STATEMENT_EMPTY,
         STATEMENT_IF,
         STATEMENT_WHILE,
         STATEMENT_PRINTLN,
         STATEMENT_ASSIGN,
         STATEMENT_ASSIGN_ARRAY,
+        STATEMENT_RETURN,
         PAIR_TYPE_IDENTIFIER,
-        DECLARATION_METHOD_ARG_LIST,
         DECLARATION_VAR,
-        DECLARATION_VAR_LIST,
         DECLARATION_METHOD,
-        DECLARATION_METHOD_LIST,
         DECLARATION_CLASS,
-        DECLARATION_CLASS_LIST,
         GOAL
     };
 
     class INodeBase {
     public:
-        virtual NodeType get_type() const = 0;
+        [[nodiscard]] virtual NodeType get_type() const = 0;
 
         virtual ~INodeBase() = default;
+
+        int line = 0;
+        int column = 0;
+        std::string test;
     };
 }

@@ -7,12 +7,10 @@
 #include <memory>
 
 namespace SyntaxTree {
-    class ExpressionThisNode : public virtual IExpressionNode {
+    class ExpressionThisNode : public IExpressionNode {
     public:
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_THIS;
         }
-
-        ~ExpressionThisNode() override = default;
     };
 }

@@ -6,10 +6,10 @@
 #include "ITypeNode.h"
 
 namespace SyntaxTree {
-    class TypeBooleanNode : public ITypeNode {
+    class TypeVoidNode : public ITypeNode {
     public:
         [[nodiscard]] NodeType get_type() const override {
-            return NodeType::TYPE_BOOLEAN;
+            return NodeType::TYPE_VOID;
         }
     };
 }

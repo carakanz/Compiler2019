@@ -5,13 +5,17 @@
 
 #include <INodeBase.h>
 #include <TemplateNode/ListNode.h>
+#include <TemplateNode/CloneNode.h>
 
 namespace SyntaxTree {
     class IStatementNode;
-    using StatementListNode = ListNode<IStatementNode, IStatementNode, STATEMENT_LIST>;
 
-    class IStatementNode : public virtual INodeBase {
-    public:
-        ~IStatementNode() override = default;
-    };
+    using StatementListNode = ListNode<IStatementNode,
+            IStatementNode,
+            NodeType::STATEMENT_LIST>;
+
+    using StatementEmptyNode = CloneNode<IStatementNode,
+            NodeType::STATEMENT_EMPTY>;
+
+    class IStatementNode : public INodeBase {};
 }

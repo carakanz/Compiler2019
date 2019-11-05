@@ -17,7 +17,5 @@ namespace SyntaxTree {
         [[nodiscard]] NodeType get_type() const override {
             return type;
         }
-
-        ~CloneNode() override = default;
     };
 }

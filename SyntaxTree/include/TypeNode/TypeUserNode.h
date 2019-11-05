@@ -8,22 +8,18 @@
 #include <memory>
 
 namespace SyntaxTree {
-    class TypeUserNode : public virtual ITypeNode {
-        explicit TypeUserNode(std::unique_ptr<IdentifierNode> identifier)
-                : identifier_(std::move(identifier)) {
+    class TypeUserNode : public ITypeNode {
+    public:
+        TypeUserNode() = default;
+
+        explicit TypeUserNode(std::unique_ptr<IdentifierNode> identifier_)
+                : identifier(std::move(identifier_)) {
         }
 
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::TYPE_USER;
         }
 
-        [[nodiscard]] const IdentifierNode *get_identifier() const {
-            return identifier_.get();
-        }
-
-        ~TypeUserNode() override = default;
-
-    private:
-        std::unique_ptr<IdentifierNode> identifier_;
+        std::unique_ptr<IdentifierNode> identifier;
     };
 }

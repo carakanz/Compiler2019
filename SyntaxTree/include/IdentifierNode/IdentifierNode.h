@@ -4,13 +4,14 @@
 #pragma once
 
 #include <INodeBase.h>
+#include <string>
 
 namespace SyntaxTree {
-    class IdentifierNode : public virtual INodeBase {
+    class IdentifierNode : public INodeBase {
     public:
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::IDENTIFIER_NODE;
         }
-        ~IdentifierNode() override = default;
+        std::string name;
     };
 }

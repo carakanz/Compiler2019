@@ -30,6 +30,7 @@ TEST(LexicalAnalyz, FindUnknownToken) {
         auto analyzer = builder.build(sample);
         for (const auto &item : analyzer) {
             ASSERT_NE(item.token, LexicalAnalyz::Token::T_UNKNOWN) <<
+                                                    "Error: " <<
                                                     item.text << " " <<
                                                     item.line << " " <<
                                                     item.column << std::endl;

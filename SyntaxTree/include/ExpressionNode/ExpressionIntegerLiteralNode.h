@@ -7,23 +7,11 @@
 #include <memory>
 
 namespace SyntaxTree {
-    class ExpressionIntegerLiteralNode : public virtual IExpressionNode {
+    class ExpressionIntegerLiteralNode : public IExpressionNode {
     public:
-        explicit ExpressionIntegerLiteralNode(int value)
-                : value_(value) {
-        }
-
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_INTEGER_LITERAL;
         }
-
-        [[nodiscard]] int get_value() const {
-            return value_;
-        }
-
-        ~ExpressionIntegerLiteralNode() override = default;
-
-    private:
-        int value_;
+        int value = 0;
     };
 }

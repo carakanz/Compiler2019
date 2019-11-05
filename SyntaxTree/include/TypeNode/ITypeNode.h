@@ -6,8 +6,5 @@
 #include <INodeBase.h>
 
 namespace SyntaxTree {
-    class ITypeNode : public virtual INodeBase {
-    public:
-        ~ITypeNode() override = default;
-    };
+    class ITypeNode : public INodeBase {};
 }

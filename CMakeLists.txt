@@ -9,6 +9,8 @@ get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 option(MYLIB_TESTING "Включить модульное тестирование" ON)
 option(MYLIB_COVERAGE "Включить измерение покрытия кода тестами" OFF)
 
+add_subdirectory(tests)
+
 add_compile_options(
 #        -Werror
 
@@ -24,7 +26,7 @@ add_compile_options(
         -Wfloat-equal
         -Wnon-virtual-dtor
 #        -Wold-style-cast
-        -Woverloaded-virtual
+#        -Woverloaded-virtual
         -Wredundant-decls
         -Wsign-conversion
         -Wsign-promo
@@ -35,10 +37,9 @@ if(NOT CMAKE_CXX_EXTENSIONS)
 endif()
 
 add_subdirectory(library)
-add_subdirectory(FlexBuilder)
-add_subdirectory(LexicalAnalyz)
+#add_subdirectory(FlexBuilder)
+#add_subdirectory(LexicalAnalyz)
 add_subdirectory(BisonBuilder)
 add_subdirectory(SyntaxTree)
-add_subdirectory(tests)
 
 message("Include gtest: " ${gtest_SOURCE_DIR})

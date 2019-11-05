@@ -7,23 +7,18 @@
 #include <memory>
 
 namespace SyntaxTree {
-    class TypeArrayNode : public virtual ITypeNode {
+    class TypeArrayNode : public ITypeNode {
     public:
-        explicit TypeArrayNode(std::unique_ptr<ITypeNode> type)
-                : type_(std::move(type)) {
+        TypeArrayNode() = default;
+
+        explicit TypeArrayNode(std::unique_ptr<ITypeNode> type_)
+                : type(std::move(type_)) {
         }
 
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::TYPE_ARRAY;
         }
 
-        [[nodiscard]] const ITypeNode *get_array_type() const {
-            return type_.get();
-        }
-
-        ~TypeArrayNode() override = default;
-
-    private:
-        std::unique_ptr<ITypeNode> type_;
+        std::unique_ptr<ITypeNode> type;
     };
 }
