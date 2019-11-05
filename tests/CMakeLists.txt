@@ -28,9 +28,9 @@ add_executable(RunAllUnitTests
 target_link_libraries(RunAllUnitTests gtest
         gtest_main)
 
-execut_test(RunLexicalAnalyzUnitTest
-        ${PROJECT_SOURCE_DIR}/tests/LexicalAnalyzUnitTest.cpp)
-add_test_libraries(RunLexicalAnalyzUnitTest
+execut_test(ParserUnitTest
+        ${PROJECT_SOURCE_DIR}/tests/ParserUnitTest.cpp)
+add_test_libraries(ParserUnitTest
         FlexBuilder)
 
 add_test(UnitTests RunAllUnitTests)

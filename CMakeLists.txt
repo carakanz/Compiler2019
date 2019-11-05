@@ -26,7 +26,7 @@ add_compile_options(
         -Wfloat-equal
         -Wnon-virtual-dtor
 #        -Wold-style-cast
-#        -Woverloaded-virtual
+        -Woverloaded-virtual
         -Wredundant-decls
         -Wsign-conversion
         -Wsign-promo

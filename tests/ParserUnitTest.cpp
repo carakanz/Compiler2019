@@ -2,7 +2,6 @@
 // Created by Zinenko Dmytro on 20.10.2019.
 //
 #include "gtest/gtest.h"
-#include "../FlexBuilder/include/FlexAnalyzerBuilder.h"
 #include <fstream>
 #include <iostream>
 #include <array>
