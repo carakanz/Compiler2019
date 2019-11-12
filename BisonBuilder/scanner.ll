@@ -1,12 +1,14 @@
 %{
-    #include <BisonBuilder.h>
+    #include <Builder.h>
     using namespace BisonBuilder;
     #undef YY_DECL
-    #define YY_DECL int BisonBuilder::BisonBuilder::yylex(yy::parser::semantic_type* const value)
+    #define YY_DECL BisonParser::Parser::symbol_type BisonBuilder::Builder::get_next_token()
 %}
+
+%option nodefault
 %option noyywrap
 %option c++
-%option yyclass="BisonBuilder"
+%option yyclass="Builder"
 
 SPACE        [ \t\r\f\v]
 END_OF_LINE  (\n)
@@ -54,13 +56,12 @@ ID           ({ALPHA}|_)({ALPHA}|_|{DIGIT})*
 "="        { return process(Token::T_ASSIGN_OPERATION); }
 "*"|"/"|"%"  { return process(Token::T_MUL_OPERATION); }
 "+"|"-"  { return process(Token::T_ADD_OPERATION); }
-"<"|">"|"<="|">="  { return process(Token::T_CMP_OPERATION); }
+"<"|">"|"<="|">="  { return process(Token::T_COMPARE_OPERATION); }
 "=="|"!="  { return process(Token::T_EQUIVALENT_OPERATION); }
 "&&"       { return process(Token::T_AND_OPERATION); }
 "||"       { return process(Token::T_OR_OPERATION); }
 "!"        { return process(Token::T_NOT_OPERATION); }
-"=="|"!="  { return process(Token::T_COMPARE_OPERATION); }
 
-<<EOF>>    { return Process(Token::T_EOF); }
-.          { return Process(Token::T_UNKNOWN); }
+<<EOF>>    { return process(Token::T_EOF); }
+.          { return process(Token::T_UNKNOWN); }
 %%

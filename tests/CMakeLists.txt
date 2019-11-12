@@ -1,7 +1,7 @@
-﻿# CMakeList.txt: файл проекта CMake верхнего уровня; проведите глобальную конфигурацию
-# и включите сюда подпроекты.
-#
-message("Include gtest: " ${gtest_SOURCE_DIR})
+﻿message("Include gtest: " ${gtest_SOURCE_DIR})
+
+find_package(FLEX REQUIRED)
+find_package(BISON REQUIRED)
 
 function(execut_test TestName)
     add_executable(${TestName}
@@ -30,7 +30,8 @@ target_link_libraries(RunAllUnitTests gtest
 
 execut_test(ParserUnitTest
         ${PROJECT_SOURCE_DIR}/tests/ParserUnitTest.cpp)
-add_test_libraries(ParserUnitTest
-        FlexBuilder)
+add_test_libraries(ParserUnitTest BisonBuilder)
+
+include_directories(${COMMON_INCLUDES})
 
 add_test(UnitTests RunAllUnitTests)

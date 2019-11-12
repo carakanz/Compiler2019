@@ -12,24 +12,23 @@ find_package(BISON REQUIRED)
 message("Find bison version: " ${BISON_VERSION})
 
 flex_target(flex_scanner scanner.ll ${CMAKE_CURRENT_BINARY_DIR}/lex.yy.cc)
-bison_target(bison_parser parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cc)
+bison_target(bison_parser parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cc COMPILE_FLAGS -v)
 add_flex_bison_dependency(flex_scanner bison_parser)
 
 add_library(${PROJECT_NAME} SHARED
+        ${FLEX_flex_scanner_OUTPUTS}
         ${BISON_bison_parser_OUTPUTS}
-        src/BisonBuilder.cpp)
+        src/Builder.cpp)
 
 target_link_libraries(${PROJECT_NAME} SyntaxTree)
-target_include_directories(${PROJECT_NAME} PUBLIC
-        ../SyntaxTree/include)
+target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        include/BisonBuilder.h)
+        include/Builder.h)

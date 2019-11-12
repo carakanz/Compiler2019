@@ -12,7 +12,7 @@ option(MYLIB_COVERAGE "Включить измерение покрытия ко
 add_subdirectory(tests)
 
 add_compile_options(
-#        -Werror
+        -Werror
 
         -Wall
         -Wextra
@@ -37,8 +37,6 @@ if(NOT CMAKE_CXX_EXTENSIONS)
 endif()
 
 add_subdirectory(library)
-#add_subdirectory(FlexBuilder)
-#add_subdirectory(LexicalAnalyz)
 add_subdirectory(BisonBuilder)
 add_subdirectory(SyntaxTree)
 

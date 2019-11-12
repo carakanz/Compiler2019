@@ -2,21 +2,23 @@
 // Created by Zinenko Dmytro on 24.10.2019.
 //
 
-#include "../include/BisonBuilder.h"
+#include "Builder.h"
 #include "cassert"
 
 namespace BisonBuilder {
-    int BisonBuilder::parse(std::istream &input) {
+
+    int Builder::parse(std::istream &input) {
         switch_streams(input, std::cerr);
-        yy::parser parser(*this);
+        BisonParser::Parser parser(*this);
         return parser.parse();
     }
 
-    Token BisonBuilder::process(Token token) {
+    BisonParser::Parser::symbol_type Builder::process(Token token) {
+        //yy::parser::make_T_BOOL_VALUE(true);
         std::string text(YYText());
+        std::cout << token << " " << text << std::endl;
         auto build = [&](auto operation) {
-            yylval->build(operation);
-            return token;
+            return BisonParser::Parser::symbol_type (token, std::move (operation));
         };
         switch (token) {
             case Token::T_PRIVACY_MODIFIER:
@@ -50,7 +52,7 @@ namespace BisonBuilder {
                 } else {
                     assert(false);
                 }
-            case Token::T_CMP_OPERATION:
+            case Token::T_COMPARE_OPERATION:
                 if (text == "<") {
                     return build(ExpressionBinaryOperationNode::BinaryOperationType::LESS);
                 }
@@ -79,7 +81,7 @@ namespace BisonBuilder {
             case Token::T_OR_OPERATION:
                 return build(ExpressionBinaryOperationNode::BinaryOperationType::OR);
             default:
-                return token;
+                return BisonParser::Parser::symbol_type(token);
         }
     }
 }

@@ -1,6 +1,9 @@
 %require "3.4.2"
 %language "c++"
 
+%define api.parser.class { Parser }
+%define api.namespace { BisonParser }
+%define api.token.constructor
 %define api.value.type variant
 
 %code requires{
@@ -13,17 +16,17 @@
     using namespace SyntaxTree;
 
 namespace BisonBuilder {
-    class BisonBuilder;
+    class Builder;
     }
 }
 
-%parse-param { BisonBuilder::BisonBuilder  &scanner  }
+%parse-param { BisonBuilder::Builder &scanner }
 
 %code {
-    #include "BisonBuilder.h"
+    #include "Builder.h"
 
     #undef yylex
-    #define yylex scanner.yylex
+    #define yylex scanner.get_next_token
 }
 
 
@@ -59,15 +62,15 @@ namespace BisonBuilder {
 %token T_ASSIGN_OPERATION
 %token <ExpressionBinaryOperationNode::BinaryOperationType> T_MUL_OPERATION
 %token <ExpressionBinaryOperationNode::BinaryOperationType> T_ADD_OPERATION
-%token <ExpressionBinaryOperationNode::BinaryOperationType> T_CMP_OPERATION
+%token <ExpressionBinaryOperationNode::BinaryOperationType> T_COMPARE_OPERATION
 %token <ExpressionBinaryOperationNode::BinaryOperationType> T_EQUIVALENT_OPERATION
 %token <ExpressionBinaryOperationNode::BinaryOperationType> T_AND_OPERATION
 %token <ExpressionBinaryOperationNode::BinaryOperationType> T_OR_OPERATION
 %token T_NOT_OPERATION
 %token T_UNKNOWN
 
+%type Goal
 %type <std::unique_ptr<GoalNode>> GoalBegin
-%type <std::unique_ptr<GoalNode>> Goal
 %type <std::unique_ptr<DeclarationClassNode>> DeclarationClassBegin
 %type <std::unique_ptr<DeclarationClassNode>> DeclarationClass
 %type <std::unique_ptr<DeclarationVarNode>> DeclarationVar
@@ -85,30 +88,49 @@ namespace BisonBuilder {
 %type <std::unique_ptr<ExpressionMethodCallNode>> ExpressionMethodCallArgs
 %type <std::unique_ptr<IdentifierNode>> Identifier
 
+%right T_NOT_OPERATION
+
+%nonassoc T_ELSE
+
+%left T_OR_OPERATION
+%left T_AND_OPERATION
+%left T_COMPARE_OPERATION
+%left T_EQUIVALENT_OPERATION
+%left T_ADD_OPERATION
+%left T_MUL_OPERATION
+
+%left T_DOT T_LENGTH T_LEFT_SQUARE_BRACKET
+
 %%
+
+Goal
+    : GoalBegin T_EOF {
+        std::cout << "Goal: T_EOF" << std::endl;
+        scanner.root_ = std::move($1);
+    }
+
 GoalBegin
-    : Goal DeclarationClass {
+    : GoalBegin DeclarationClass {
+        std::cout << "GoalBegin: Goal DeclarationClass" << std::endl;
         $$ = std::move($1);
         $$->items.push_back(std::move($2));
     }
     | DeclarationClass {
+        std::cout << "GoalBegin: DeclarationClass" << std::endl;
         $$ = std::make_unique<GoalNode>(std::move($1));
     }
 
-Goal
-    : GoalBegin T_EOF {
-        $$ = std::move($1);
-    }
-
 DeclarationClassBegin
-    : T_CLASS Identifier T_EXTEND Identifier T_LEFT_BRACKET {
+    : T_CLASS Identifier T_EXTEND Identifier T_LEFT_BRACE {
+        std::cout << "DeclarationClassBegin: T_CLASS Identifier T_EXTEND Identifier T_LEFT_BRACKET" << std::endl;
         $$ = std::make_unique<DeclarationClassNode>();
         $$->identifier = std::move($2);
         $$->base_class_identifier = std::move($4);
     }
-    | T_CLASS Identifier T_LEFT_BRACKET {
-        $$ = std::make_unique<DeclarationClassNode>();
-        $$->identifier = std::move($2);
+    | T_CLASS Identifier T_LEFT_BRACE {
+        std::cout << "DeclarationClassBegin: T_CLASS Identifier T_LEFT_BRACKET" << std::endl;
+        //$$ = std::make_unique<DeclarationClassNode>();
+        //$$->identifier = std::move($2);
     }
     | DeclarationClassBegin DeclarationVar {
         $$ = std::move($1);
@@ -120,7 +142,8 @@ DeclarationClassBegin
     }
 
 DeclarationClass
-    : DeclarationClassBegin T_RIGHT_BRACKET {
+    : DeclarationClassBegin T_RIGHT_BRACE {
+        std::cout << "DeclarationClass: DeclarationClassBegin T_RIGHT_BRACE" << std::endl;
         $$ = std::move($1);
     }
 
@@ -305,7 +328,7 @@ Expression
         expression->left = std::move($3);
         $$ = std::move(expression);
     }
-    | Expression T_CMP_OPERATION Expression {
+    | Expression T_COMPARE_OPERATION Expression {
         auto expression = std::make_unique<ExpressionBinaryOperationNode>();
         expression->left = std::move($1);
         expression->operation_type = $2;
@@ -344,10 +367,10 @@ Expression
         expression->array = std::move($1);
         $$ = std::move(expression);
     }
-    | ExpressionMethodCallBegin T_LEFT_BRACKET {
+    | ExpressionMethodCallBegin T_RIGHT_BRACKET {
         $$ = std::move($1);
     }
-    | ExpressionMethodCallArgs T_LEFT_BRACKET {
+    | ExpressionMethodCallArgs T_RIGHT_BRACKET {
         $$ = std::move($1);
     }
     | T_INT_VALUE {
@@ -416,3 +439,7 @@ Identifier
         $$->name = $1;
     }
 %%
+
+void BisonParser::Parser::error (const std::string& m) {
+    std::cout << "Parser error: " << m << std::endl;
+}
