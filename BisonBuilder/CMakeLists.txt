@@ -13,6 +13,7 @@ message("Find bison version: " ${BISON_VERSION})
 
 flex_target(flex_scanner scanner.ll ${CMAKE_CURRENT_BINARY_DIR}/lex.yy.cc)
 bison_target(bison_parser parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cc COMPILE_FLAGS -v)
+
 add_flex_bison_dependency(flex_scanner bison_parser)
 
 add_library(${PROJECT_NAME} SHARED

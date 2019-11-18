@@ -13,7 +13,7 @@ namespace SyntaxTree {
         [[nodiscard]] NodeType get_type() const override {
             return NodeType::EXPRESSION_NEW_ARRAY;
         }
-        std::unique_ptr<IdentifierNode> identifier;
+        std::unique_ptr<ITypeNode> type;
         std::unique_ptr<IExpressionNode> size;
     };
 }

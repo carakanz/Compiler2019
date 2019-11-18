@@ -9,6 +9,8 @@ namespace BisonBuilder {
 
     int Builder::parse(std::istream &input) {
         switch_streams(input, std::cerr);
+        old_position = {0, 0};
+        new_position = {0, 0};
         BisonParser::Parser parser(*this);
         return parser.parse();
     }
@@ -16,7 +18,8 @@ namespace BisonBuilder {
     BisonParser::Parser::symbol_type Builder::process(Token token) {
         //yy::parser::make_T_BOOL_VALUE(true);
         std::string text(YYText());
-        std::cout << token << " " << text << std::endl;
+        old_position = new_position;
+        new_position.line += text.size();
         auto build = [&](auto operation) {
             return BisonParser::Parser::symbol_type (token, std::move (operation));
         };

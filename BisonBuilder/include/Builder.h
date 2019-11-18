@@ -18,12 +18,14 @@ namespace BisonBuilder {
     public:
         int parse(std::istream &input);
 
-        //int yylex() override;
         BisonParser::Parser::symbol_type get_next_token();
         BisonParser::Parser::symbol_type process(Token token);
 
         ~Builder() override = default;
 
-        std::unique_ptr<GoalNode> root_;
+        std::unique_ptr<GoalNode> root;
+
+        ITypeNode::Position old_position = {};
+        ITypeNode::Position new_position = {};
     };
 }

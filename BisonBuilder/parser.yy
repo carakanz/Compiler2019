@@ -30,7 +30,7 @@ namespace BisonBuilder {
 }
 
 
-%token T_EOF
+%token T_EOF 0
 %token T_CLASS
 %token T_EXTEND
 %token T_THIS
@@ -70,7 +70,6 @@ namespace BisonBuilder {
 %token T_UNKNOWN
 
 %type Goal
-%type <std::unique_ptr<GoalNode>> GoalBegin
 %type <std::unique_ptr<DeclarationClassNode>> DeclarationClassBegin
 %type <std::unique_ptr<DeclarationClassNode>> DeclarationClass
 %type <std::unique_ptr<DeclarationVarNode>> DeclarationVar
@@ -90,6 +89,7 @@ namespace BisonBuilder {
 
 %right T_NOT_OPERATION
 
+%nonassoc T_IF
 %nonassoc T_ELSE
 
 %left T_OR_OPERATION
@@ -104,33 +104,22 @@ namespace BisonBuilder {
 %%
 
 Goal
-    : GoalBegin T_EOF {
-        std::cout << "Goal: T_EOF" << std::endl;
-        scanner.root_ = std::move($1);
-    }
-
-GoalBegin
-    : GoalBegin DeclarationClass {
-        std::cout << "GoalBegin: Goal DeclarationClass" << std::endl;
-        $$ = std::move($1);
-        $$->items.push_back(std::move($2));
+    : Goal DeclarationClass {
+        scanner.root->items.push_back(std::move($2));
     }
     | DeclarationClass {
-        std::cout << "GoalBegin: DeclarationClass" << std::endl;
-        $$ = std::make_unique<GoalNode>(std::move($1));
+        scanner.root = std::make_unique<GoalNode>(std::move($1));
     }
 
 DeclarationClassBegin
     : T_CLASS Identifier T_EXTEND Identifier T_LEFT_BRACE {
-        std::cout << "DeclarationClassBegin: T_CLASS Identifier T_EXTEND Identifier T_LEFT_BRACKET" << std::endl;
         $$ = std::make_unique<DeclarationClassNode>();
         $$->identifier = std::move($2);
         $$->base_class_identifier = std::move($4);
     }
     | T_CLASS Identifier T_LEFT_BRACE {
-        std::cout << "DeclarationClassBegin: T_CLASS Identifier T_LEFT_BRACKET" << std::endl;
-        //$$ = std::make_unique<DeclarationClassNode>();
-        //$$->identifier = std::move($2);
+        $$ = std::make_unique<DeclarationClassNode>();
+        $$->identifier = std::move($2);
     }
     | DeclarationClassBegin DeclarationVar {
         $$ = std::move($1);
@@ -143,7 +132,6 @@ DeclarationClassBegin
 
 DeclarationClass
     : DeclarationClassBegin T_RIGHT_BRACE {
-        std::cout << "DeclarationClass: DeclarationClassBegin T_RIGHT_BRACE" << std::endl;
         $$ = std::move($1);
     }
 
@@ -276,13 +264,6 @@ Statement
         statement->else_statement = std::move($7);
         $$ = std::move(statement);
     }
-    | T_IF T_LEFT_BRACKET Expression T_RIGHT_BRACKET Statement {
-        auto statement = std::make_unique<StatementIfNode>();
-        statement->conditional = std::move($3);
-        statement->then_statement = std::move($5);
-        statement->else_statement = std::make_unique<StatementEmptyNode>();
-        $$ = std::move(statement);
-    }
     | T_WHILE T_LEFT_BRACKET Expression T_RIGHT_BRACKET Statement {
         auto statement = std::make_unique<StatementWhileNode>();
         statement->conditional = std::move($3);
@@ -388,13 +369,28 @@ Expression
     }
     | T_NEW Identifier T_LEFT_SQUARE_BRACKET Expression T_RIGHT_SQUARE_BRACKET {
         auto expression = std::make_unique<ExpressionNewArrayNode>();
-        expression->identifier = std::move($2);
+        auto user_type = std::make_unique<TypeUserNode>();
+        user_type->identifier = std::move($2);
+        expression->type = std::move(user_type);
         expression->size = std::move($4);
         $$ = std::move(expression);
     }
     | T_NEW Identifier T_LEFT_BRACKET T_RIGHT_BRACKET {
         auto expression = std::make_unique<ExpressionNewNode>();
-        expression->identifier = std::move($2);
+        auto user_type = std::make_unique<TypeUserNode>();
+        user_type->identifier = std::move($2);
+        expression->type = std::move(user_type);
+        $$ = std::move(expression);
+    }
+    | T_NEW Type T_LEFT_SQUARE_BRACKET Expression T_RIGHT_SQUARE_BRACKET {
+        auto expression = std::make_unique<ExpressionNewArrayNode>();
+        expression->type = std::move($2);
+        expression->size = std::move($4);
+        $$ = std::move(expression);
+    }
+    | T_NEW Type T_LEFT_BRACKET T_RIGHT_BRACKET {
+        auto expression = std::make_unique<ExpressionNewNode>();
+        expression->type = std::move($2);
         $$ = std::move(expression);
     }
     | T_NOT_OPERATION Expression {

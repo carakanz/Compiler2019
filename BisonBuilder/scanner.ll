@@ -3,6 +3,8 @@
     using namespace BisonBuilder;
     #undef YY_DECL
     #define YY_DECL BisonParser::Parser::symbol_type BisonBuilder::Builder::get_next_token()
+
+    #define yyterminate() BisonParser::Parser::make_T_EOF();
 %}
 
 %option nodefault
@@ -21,9 +23,9 @@ CHAR_VALUE   "'"[^"'"]"'"
 ID           ({ALPHA}|_)({ALPHA}|_|{DIGIT})*
 %%
 
-"//"[^\n]* { /*return (Token::T_COMMENT);*/ }
-{SPACE}    { /*space();*/ }
-{END_OF_LINE} { /*end_of_line();*/ }
+"//"[^\n]* { new_position.column += std::string(YYText()).size(); }
+{SPACE}    { ++new_position.column; }
+{END_OF_LINE} { ++new_position.line; new_position.column = 0; }
 
 "class"    { return process(Token::T_CLASS); }
 "extends"  { return process(Token::T_EXTEND); }
@@ -62,6 +64,6 @@ ID           ({ALPHA}|_)({ALPHA}|_|{DIGIT})*
 "||"       { return process(Token::T_OR_OPERATION); }
 "!"        { return process(Token::T_NOT_OPERATION); }
 
-<<EOF>>    { return process(Token::T_EOF); }
+<<EOF>>    { return yyterminate(); }
 .          { return process(Token::T_UNKNOWN); }
 %%

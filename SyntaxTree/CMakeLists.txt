@@ -41,7 +41,7 @@ add_library(${PROJECT_NAME} STATIC
         include/DeclarationNode/DeclarationMethodNode.h
         include/DeclarationNode/DeclarationClassNode.h
         include/DeclarationNode/PairTypeIdentifierNode.h
-        include/Goal/GoalNode.h include/TypeNode/TypeStringNode.h)
+        include/Goal/GoalNode.h include/TypeNode/TypeStringNode.h include/Token.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})

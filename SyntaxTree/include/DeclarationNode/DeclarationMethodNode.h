@@ -14,7 +14,7 @@
 #include <vector>
 
 namespace SyntaxTree {
-    class DeclarationMethodNode : public virtual INodeBase {
+    class DeclarationMethodNode : public INodeBase {
     public:
         enum PrivacyModifier {
             PUBLIC,

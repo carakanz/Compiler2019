@@ -4,6 +4,7 @@
 #pragma once
 
 #include "string"
+#include <iostream>
 
 namespace SyntaxTree {
     enum NodeType {
@@ -44,12 +45,12 @@ namespace SyntaxTree {
 
     class INodeBase {
     public:
+        struct Position {
+            size_t line;
+            size_t column;
+        };
         [[nodiscard]] virtual NodeType get_type() const = 0;
-
+        Position position{};
         virtual ~INodeBase() = default;
-
-        int line = 0;
-        int column = 0;
-        std::string test;
     };
 }
