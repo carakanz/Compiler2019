@@ -16,6 +16,7 @@ add_library(${PROJECT_NAME} STATIC
         include/TypeNode/TypeBooleanNode.h
         include/TypeNode/TypeArrayNode.h
         include/TypeNode/TypeUserNode.h
+        include/TypeNode/TypeStringNode.h
         include/IdentifierNode/IdentifierNode.h
         include/ExpressionNode/ExpressionIdentifierNode.h
         include/ExpressionNode/IExpressionNode.h
@@ -41,7 +42,9 @@ add_library(${PROJECT_NAME} STATIC
         include/DeclarationNode/DeclarationMethodNode.h
         include/DeclarationNode/DeclarationClassNode.h
         include/DeclarationNode/PairTypeIdentifierNode.h
-        include/Goal/GoalNode.h include/TypeNode/TypeStringNode.h include/Token.h)
+        include/Goal/GoalNode.h
+        include/Token.h
+        include/Position.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})

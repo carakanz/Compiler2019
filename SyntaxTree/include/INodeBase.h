@@ -3,8 +3,9 @@
 //
 #pragma once
 
-#include "string"
+#include <string>
 #include <iostream>
+#include "Position.h"
 
 namespace SyntaxTree {
     enum NodeType {
@@ -45,10 +46,6 @@ namespace SyntaxTree {
 
     class INodeBase {
     public:
-        struct Position {
-            size_t line;
-            size_t column;
-        };
         [[nodiscard]] virtual NodeType get_type() const = 0;
         Position position{};
         virtual ~INodeBase() = default;

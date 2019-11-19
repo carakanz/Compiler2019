@@ -15,26 +15,27 @@ namespace BisonBuilder {
         return parser.parse();
     }
 
-    BisonParser::Parser::symbol_type Builder::process(Token token) {
-        //yy::parser::make_T_BOOL_VALUE(true);
+    BisonParser::Parser::symbol_type Builder::process(FlexToken token) {
+        //BisonParser::Parser::make_T_BOOL_VALUE(true);
         std::string text(YYText());
         old_position = new_position;
-        new_position.line += text.size();
+        //std::cout << "Line: " << old_position.line << " column: " << old_position.column << "  " << text << std::endl;
+        new_position.column += text.size();
         auto build = [&](auto operation) {
-            return BisonParser::Parser::symbol_type (token, std::move (operation));
+            return BisonParser::Parser::symbol_type (token, Token(old_position, operation));
         };
         switch (token) {
-            case Token::T_PRIVACY_MODIFIER:
+            case FlexToken::T_PRIVACY_MODIFIER:
                 return build(text == "private" ?
                              SyntaxTree::DeclarationMethodNode::PUBLIC :
                              SyntaxTree::DeclarationMethodNode::PRIVATE);
-            case Token::T_BOOL_VALUE:
+            case FlexToken::T_BOOL_VALUE:
                 return build(text == "true");
-            case Token::T_INT_VALUE:
+            case FlexToken::T_INT_VALUE:
                 return build(std::stoi(text));
-            case Token::T_IDENTIFIER:
+            case FlexToken::T_IDENTIFIER:
                 return build(text);
-            case Token::T_MUL_OPERATION:
+            case FlexToken::T_MUL_OPERATION:
                 if (text == "*") {
                     return build(ExpressionBinaryOperationNode::BinaryOperationType::MUL);
                 }
@@ -46,7 +47,7 @@ namespace BisonBuilder {
                 } else {
                     assert(false);
                 }
-            case Token::T_ADD_OPERATION:
+            case FlexToken::T_ADD_OPERATION:
                 if (text == "+") {
                     return build(ExpressionBinaryOperationNode::BinaryOperationType::ADD);
                 }
@@ -55,7 +56,7 @@ namespace BisonBuilder {
                 } else {
                     assert(false);
                 }
-            case Token::T_COMPARE_OPERATION:
+            case FlexToken::T_COMPARE_OPERATION:
                 if (text == "<") {
                     return build(ExpressionBinaryOperationNode::BinaryOperationType::LESS);
                 }
@@ -70,7 +71,7 @@ namespace BisonBuilder {
                 } else {
                     assert(false);
                 }
-            case Token::T_EQUIVALENT_OPERATION:
+            case FlexToken::T_EQUIVALENT_OPERATION:
                 if (text == "==") {
                     return build(ExpressionBinaryOperationNode::BinaryOperationType::EQUIVALENT);
                 }
@@ -79,12 +80,12 @@ namespace BisonBuilder {
                 } else {
                     assert(false);
                 }
-            case Token::T_AND_OPERATION:
+            case FlexToken::T_AND_OPERATION:
                 return build(ExpressionBinaryOperationNode::BinaryOperationType::AND);
-            case Token::T_OR_OPERATION:
+            case FlexToken::T_OR_OPERATION:
                 return build(ExpressionBinaryOperationNode::BinaryOperationType::OR);
             default:
-                return BisonParser::Parser::symbol_type(token);
+                return BisonParser::Parser::symbol_type(token, Token<void>(old_position));
         }
     }
 }

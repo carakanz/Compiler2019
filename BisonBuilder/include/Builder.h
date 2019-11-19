@@ -11,7 +11,7 @@
 
 #include <parser.hh>
 
-using Token = BisonParser::Parser::token::yytokentype;
+using FlexToken = BisonParser::Parser::token::yytokentype;
 
 namespace BisonBuilder {
     class Builder : public yyFlexLexer {
@@ -19,13 +19,13 @@ namespace BisonBuilder {
         int parse(std::istream &input);
 
         BisonParser::Parser::symbol_type get_next_token();
-        BisonParser::Parser::symbol_type process(Token token);
+        BisonParser::Parser::symbol_type process(FlexToken token);
 
         ~Builder() override = default;
 
         std::unique_ptr<GoalNode> root;
 
-        ITypeNode::Position old_position = {};
-        ITypeNode::Position new_position = {};
+        Position old_position = {};
+        Position new_position = {};
     };
 }
