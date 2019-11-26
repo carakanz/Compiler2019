@@ -6,20 +6,16 @@
 #include <INodeBase.h>
 #include <IdentifierNode/IdentifierNode.h>
 #include <TypeNode/ITypeNode.h>
-#include <TemplateNode/CloneNode.h>
 #include <TemplateNode/ListNode.h>
 #include <memory>
 
 namespace SyntaxTree {
-    class PairTypeIdentifierNode;
-
-    using DeclarationVarNode = CloneNode<PairTypeIdentifierNode, NodeType::DECLARATION_VAR>;
-
-    class PairTypeIdentifierNode : public INodeBase {
+    class DeclarationVarNode : public INodeBase {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::PAIR_TYPE_IDENTIFIER;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         std::unique_ptr<ITypeNode> var_type;
         std::unique_ptr<IdentifierNode> identifier;
     };

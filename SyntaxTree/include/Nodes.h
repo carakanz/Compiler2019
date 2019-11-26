@@ -1,5 +1,5 @@
 //
-// Created by Zinenko Dmytro on 27.10.2019.
+// Created by Zinenko Dmytro on 25.11.2019.
 //
 
 #pragma once
@@ -32,5 +32,5 @@
 #include "StatementNode/StatementReturnNode.h"
 #include "DeclarationNode/DeclarationMethodNode.h"
 #include "DeclarationNode/DeclarationClassNode.h"
-#include "DeclarationNode/PairTypeIdentifierNode.h"
+#include "DeclarationNode/DeclarationVarNode.h"
 #include "Goal/GoalNode.h"

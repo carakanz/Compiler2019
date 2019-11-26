@@ -9,9 +9,10 @@
 namespace SyntaxTree {
     class ExpressionIntegerLiteralNode : public IExpressionNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_INTEGER_LITERAL;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         int value = 0;
     };
 }

@@ -17,6 +17,10 @@ namespace BisonBuilder {
     class Builder : public yyFlexLexer {
     public:
         int parse(std::istream &input);
+        template <class Tree>
+        Tree get_tree() {
+            return Tree(std::move(root));
+        }
 
         BisonParser::Parser::symbol_type get_next_token();
         BisonParser::Parser::symbol_type process(FlexToken token);

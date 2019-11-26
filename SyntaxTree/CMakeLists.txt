@@ -6,9 +6,8 @@ cmake_minimum_required (VERSION 3.8)
 project(SyntaxTree VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} STATIC
-        src/TreeNodes.cpp
+        src/Tree.cpp
         include/INodeBase.h
-        include/TemplateNode/CloneNode.h
         include/TemplateNode/ListNode.h
         include/TypeNode/ITypeNode.h
         include/TypeNode/TypeVoidNode.h
@@ -41,10 +40,12 @@ add_library(${PROJECT_NAME} STATIC
         include/StatementNode/StatementReturnNode.h
         include/DeclarationNode/DeclarationMethodNode.h
         include/DeclarationNode/DeclarationClassNode.h
-        include/DeclarationNode/PairTypeIdentifierNode.h
+        include/DeclarationNode/DeclarationVarNode.h
         include/Goal/GoalNode.h
         include/Token.h
-        include/Position.h)
+        include/Position.h
+        include/IVisitor.h
+        include/Nodes.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
@@ -52,5 +53,5 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        include/TreeNodes.h
+        include/Tree.h
         )

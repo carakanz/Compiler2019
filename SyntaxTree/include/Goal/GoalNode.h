@@ -11,6 +11,5 @@
 
 namespace SyntaxTree {
     using GoalNode = ListNode<DeclarationClassNode,
-            INodeBase,
-            NodeType::GOAL>;
+            INodeBase>;
 }

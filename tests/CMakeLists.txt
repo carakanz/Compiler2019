@@ -32,6 +32,10 @@ execut_test(ParserUnitTest
         ${PROJECT_SOURCE_DIR}/tests/ParserUnitTest.cpp)
 add_test_libraries(ParserUnitTest BisonBuilder)
 
+execut_test(PrintSyntaxTreeDot
+        ${PROJECT_SOURCE_DIR}/tests/PrintSyntaxTreeDot.cpp)
+add_test_libraries(PrintSyntaxTreeDot BisonBuilder Visitors)
+
 include_directories(${COMMON_INCLUDES})
 
 add_test(UnitTests RunAllUnitTests)

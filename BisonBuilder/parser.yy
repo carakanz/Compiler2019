@@ -11,7 +11,7 @@
 
     #include<memory>
     #include<string>
-    #include<TreeNodes.h>
+    #include<Tree.h>
     #include<Token.h>
 
     using namespace SyntaxTree;
@@ -74,7 +74,7 @@ namespace BisonBuilder {
 %type <std::unique_ptr<DeclarationClassNode>> DeclarationClassBegin
 %type <std::unique_ptr<DeclarationClassNode>> DeclarationClass
 %type <std::unique_ptr<DeclarationVarNode>> DeclarationVar
-%type <std::unique_ptr<PairTypeIdentifierNode>> PairTypeIdentifier
+%type <std::unique_ptr<DeclarationVarNode>> PairTypeIdentifier
 %type <std::unique_ptr<DeclarationMethodNode>> DeclarationMethodBegin
 %type <std::unique_ptr<DeclarationMethodNode>> DeclarationMethodArgs
 %type <std::unique_ptr<DeclarationMethodNode>> DeclarationMethodNameEnd
@@ -148,13 +148,13 @@ DeclarationVar
 
 PairTypeIdentifier
     : Type Identifier {
-        $$ = std::make_unique<PairTypeIdentifierNode>();
+        $$ = std::make_unique<DeclarationVarNode>();
         $$->position = $1->position;
         $$->var_type = std::move($1);
         $$->identifier = std::move($2);
     }
     | Identifier Identifier {
-        $$ = std::make_unique<PairTypeIdentifierNode>();
+        $$ = std::make_unique<DeclarationVarNode>();
         $$->position = $1->position;
         $$->var_type = std::make_unique<TypeUserNode>(std::move($1));
         $$->identifier = std::move($2);

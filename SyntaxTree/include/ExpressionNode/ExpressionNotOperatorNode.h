@@ -9,9 +9,10 @@
 namespace SyntaxTree {
     class ExpressionNotOperatorNode : public IExpressionNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_NOT_OPERATION;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         std::unique_ptr<IExpressionNode> expression;
     };
 }

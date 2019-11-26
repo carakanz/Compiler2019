@@ -7,7 +7,6 @@
 #include <iostream>
 #include <array>
 #include <algorithm>
-#include <unordered_set>
 
 const std::array<std::string, 8> Paths = {
     "BinarySearch.java",

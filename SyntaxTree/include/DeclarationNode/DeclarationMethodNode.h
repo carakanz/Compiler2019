@@ -6,7 +6,7 @@
 #include <INodeBase.h>
 #include <TypeNode/ITypeNode.h>
 #include <IdentifierNode/IdentifierNode.h>
-#include <DeclarationNode/PairTypeIdentifierNode.h>
+#include <DeclarationNode/DeclarationVarNode.h>
 #include <StatementNode/IStatementNode.h>
 #include <ExpressionNode/IExpressionNode.h>
 #include <memory>
@@ -21,14 +21,15 @@ namespace SyntaxTree {
             PRIVATE
         };
 
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::DECLARATION_METHOD;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         PrivacyModifier privacy_modifier;
         bool is_static = true;
         std::unique_ptr<ITypeNode> return_type;
         std::unique_ptr<IdentifierNode> identifier;
-        std::vector<std::unique_ptr<PairTypeIdentifierNode>> arguments;
+        std::vector<std::unique_ptr<DeclarationVarNode>> arguments;
         std::vector<std::unique_ptr<DeclarationVarNode>> variables;
         std::vector<std::unique_ptr<IStatementNode>> statements;
     };

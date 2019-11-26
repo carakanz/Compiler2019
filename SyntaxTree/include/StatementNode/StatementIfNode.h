@@ -11,8 +11,8 @@
 namespace SyntaxTree {
     class StatementIfNode : public IStatementNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::STATEMENT_IF;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
 
         std::unique_ptr<IExpressionNode> conditional;

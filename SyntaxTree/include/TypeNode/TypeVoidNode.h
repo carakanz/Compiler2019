@@ -8,8 +8,8 @@
 namespace SyntaxTree {
     class TypeVoidNode : public ITypeNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::TYPE_VOID;
+        void accept(IVisitor& visitor) const override {
+            return visitor.visit(*this);
         }
     };
 }

@@ -24,8 +24,9 @@ namespace SyntaxTree {
             MORE,
             MORE_OR_EQUIVALENT
         };
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_BINARY_OPERATION;
+
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
 
         BinaryOperationType operation_type;

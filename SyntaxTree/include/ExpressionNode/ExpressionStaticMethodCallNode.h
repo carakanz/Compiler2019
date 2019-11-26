@@ -11,9 +11,10 @@
 namespace SyntaxTree {
     class ExpressionStaticMethodCallNode : public IExpressionNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_STATIC_METHOD_CALL;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         std::unique_ptr<IdentifierNode> class_id;
         std::unique_ptr<IdentifierNode> method;
         std::vector<std::unique_ptr<IExpressionNode>> arguments;

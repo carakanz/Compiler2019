@@ -4,7 +4,6 @@
 #pragma once
 
 #include <INodeBase.h>
-#include <TemplateNode/ListNode.h>
 
 namespace SyntaxTree {
     class IExpressionNode : public INodeBase {};

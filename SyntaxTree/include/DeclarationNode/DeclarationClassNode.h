@@ -5,7 +5,7 @@
 
 #include <INodeBase.h>
 #include <IdentifierNode/IdentifierNode.h>
-#include <DeclarationNode/PairTypeIdentifierNode.h>
+#include <DeclarationNode/DeclarationVarNode.h>
 #include <DeclarationNode/DeclarationMethodNode.h>
 #include <memory>
 #include <utility>
@@ -14,9 +14,10 @@
 namespace SyntaxTree {
     class DeclarationClassNode : public INodeBase {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::DECLARATION_CLASS;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         std::unique_ptr<IdentifierNode> identifier;
         std::unique_ptr<IdentifierNode> base_class_identifier;
         std::vector<std::unique_ptr<DeclarationVarNode>> variables;

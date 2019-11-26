@@ -9,9 +9,10 @@
 namespace SyntaxTree {
     class ExpressionRoundBracketsNode : public IExpressionNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_ROUND_BRACKETS;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         std::unique_ptr<IExpressionNode> expression;
     };
 }

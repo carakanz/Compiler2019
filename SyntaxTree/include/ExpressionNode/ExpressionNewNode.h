@@ -10,9 +10,10 @@
 namespace SyntaxTree {
     class ExpressionNewNode : public IExpressionNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_NEW;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         std::unique_ptr<ITypeNode> type;
     };
 }

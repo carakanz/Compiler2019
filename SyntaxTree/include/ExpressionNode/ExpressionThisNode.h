@@ -9,8 +9,8 @@
 namespace SyntaxTree {
     class ExpressionThisNode : public IExpressionNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_THIS;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
     };
 }

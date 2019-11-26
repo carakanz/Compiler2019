@@ -9,9 +9,10 @@
 namespace SyntaxTree {
     class IdentifierNode : public INodeBase {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::IDENTIFIER_NODE;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
+
         std::string name;
     };
 }

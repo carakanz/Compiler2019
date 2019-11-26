@@ -16,8 +16,8 @@ namespace SyntaxTree {
                 : identifier(std::move(identifier_)) {
         }
 
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::TYPE_USER;
+        void accept(IVisitor& visitor) const override {
+            return visitor.visit(*this);
         }
 
         std::unique_ptr<IdentifierNode> identifier;

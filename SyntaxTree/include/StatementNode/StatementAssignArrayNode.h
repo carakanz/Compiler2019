@@ -12,8 +12,8 @@
 namespace SyntaxTree {
     class StatementAssignArrayNode : public IStatementNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::STATEMENT_ASSIGN_ARRAY;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
 
         std::unique_ptr<IdentifierNode> identifier;

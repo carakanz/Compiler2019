@@ -11,8 +11,8 @@
 namespace SyntaxTree {
     class StatementPrintlnNode : public IStatementNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::STATEMENT_PRINTLN;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
 
         std::unique_ptr<IExpressionNode> expression;

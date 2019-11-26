@@ -9,8 +9,8 @@
 namespace SyntaxTree {
     class ExpressionBooleanLiteralNode : public IExpressionNode {
     public:
-        [[nodiscard]] NodeType get_type() const override {
-            return NodeType::EXPRESSION_BOOLEAN_LITERAL;
+        void accept(IVisitor& visitor) const override {
+            visitor.visit(*this);
         }
 
         bool value = true;
