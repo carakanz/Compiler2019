@@ -2,13 +2,7 @@ language: cpp
 sudo: false
 dist: bionic
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-
 before_install:
-  - pip install --user cpp-coveralls
   - sudo apt-get install clang-tools
   - sudo apt-get install graphviz
   - sudo apt-get install cmake
@@ -25,11 +19,8 @@ before_install:
 script:
   - mkdir build
   - cd build
-  - scan-build cmake -DCOVERAGE=1 ..
+  - scan-build cmake ..
   - scan-build cmake --build .
   - cd tests
   - cp ../../run_tests.sh run_tests.sh
   - sh run_tests.sh
-
-after_success:
-  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
