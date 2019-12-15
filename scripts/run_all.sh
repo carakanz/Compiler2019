@@ -1,4 +1,3 @@
 ./scripts/make_all.sh
-echo $(pwd)
-cd tests
+cd build/tests
 sh ../../scripts/run_tests.sh
