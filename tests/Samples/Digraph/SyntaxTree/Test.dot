@@ -1,0 +1,39 @@
+digraph Test {
+"0x55826a160310" [label="Identifier: Test" shape=box]
+"0x55826a15f7a0" [label="TypeVoid" shape=box]
+"0x55826a155ae0" [label="Identifier: main" shape=box]
+"0x55826a15f7c0" [label="TypeString" shape=box]
+"0x55826a1610d0" [label="TypeArray" shape=box]
+"0x55826a1610d0" -> "0x55826a15f7c0"
+"0x55826a160290" [label="Identifier: a" shape=box]
+"0x55826a161020" [label="DeclarationVar" shape=diamond]
+"0x55826a161020" -> "0x55826a1610d0"
+"0x55826a161020" -> "0x55826a160290"
+"0x55826a163ce0" [label="Identifier: BS" shape=box]
+"0x55826a15f820" [label="TypeUser" shape=box]
+"0x55826a15f820" -> "0x55826a163ce0"
+"0x55826a15ffc0" [label="ExpressionNew" shape=circle]
+"0x55826a15ffc0" -> "0x55826a15f820"
+"0x55826a160250" [label="Identifier: Start" shape=box]
+"0x55826a15f8f0" [label="ExpressionIntegerLiteral: 20" shape=circle]
+"0x55826a15fe10" [label="ExpressionMethodCall" shape=circle]
+"0x55826a15fe10" -> "0x55826a15ffc0"
+"0x55826a15fe10" -> "0x55826a160250"
+"0x55826a15fe10" -> "0x55826a15f8f0"
+"0x55826a155c30" [label="StatementPrintln"]
+"0x55826a155c30" -> "0x55826a15fe10"
+"0x55826a15f7a0" [label="TypeVoid" shape=box]
+"0x55826a155ae0" [label="Identifier: main" shape=box]
+"0x55826a15f6c0" [label="DeclarationMethod
+PrivacyModifier: 1
+is_static: 1" shape=diamond]
+"0x55826a15f6c0" -> "0x55826a15f7a0"
+"0x55826a15f6c0" -> "0x55826a155ae0"
+"0x55826a15f6c0" -> "0x55826a161020"
+"0x55826a15f6c0" -> "0x55826a155c30"
+"0x55826a155b70" [label="DeclarationClass" shape=diamond]
+"0x55826a155b70" -> "0x55826a160310"
+"0x55826a155b70" -> "0x55826a15f6c0"
+"0x55826a1601b0" [label="Goal" shape=diamond]
+"0x55826a1601b0" -> "0x55826a155b70"
+}

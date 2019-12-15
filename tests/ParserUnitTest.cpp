@@ -8,7 +8,7 @@
 #include <array>
 #include <algorithm>
 
-const std::array<std::string, 8> Paths = {
+const std::array<std::string, 9> Paths = {
     "BinarySearch.java",
     "BinaryTree.java",
     "BubbleSort.java",
@@ -16,7 +16,8 @@ const std::array<std::string, 8> Paths = {
     "LinearSearch.java",
     "LinkedList.java",
     "QuickSort.java",
-    "TreeVisitor.java"
+    "TreeVisitor.java",
+    "Test"
 };
 
 const std::string PathPrefix("../../tests/Samples/");

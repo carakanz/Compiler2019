@@ -10,7 +10,7 @@
 #include <array>
 #include <algorithm>
 
-const std::array<std::string, 8> Paths = {
+const std::array<std::string, 9> Paths = {
         "BinarySearch.java",
         "BinaryTree.java",
         "BubbleSort.java",
@@ -18,7 +18,8 @@ const std::array<std::string, 8> Paths = {
         "LinearSearch.java",
         "LinkedList.java",
         "QuickSort.java",
-        "TreeVisitor.java"
+        "TreeVisitor.java",
+        "Test"
 };
 
 const std::string PathPrefix("../../tests/Samples/");
@@ -33,6 +34,7 @@ TEST(SyntaxTree, Digraph) {
         ASSERT_EQ(analyzer, 0);
         SyntaxTree::Tree tree(std::move(builder.root));
         std::ofstream digraph(ResultPrefix + path + ".dot");
+        ASSERT_TRUE(digraph.is_open());
         Visitor::SyntaxTreePrinter printer(digraph);
         Visitor::SyntaxTreeDFSVisitor<Visitor::SyntaxTreePrinter> DFS_visitor(printer);
         printer.print_start(path);

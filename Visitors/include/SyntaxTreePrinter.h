@@ -12,7 +12,12 @@ namespace Visitor {
         explicit SyntaxTreePrinter(std::ofstream &out) : out_(out) {
         }
 
-        void print_start(const std::string& name) {
+        void print_start(std::string name) {
+            size_t dot = name.find('.');
+            while (dot != std::string::npos) {
+                name.erase(name.find('.'));
+                dot = name.find('.');
+            }
             out_ << "digraph " << name << " {" << "\n";
         };
 

@@ -281,7 +281,9 @@ namespace Visitor {
     template<class WorkerVisitor>
     void SyntaxTreeDFSVisitor<WorkerVisitor>::visit(const SyntaxTree::DeclarationClassNode &node) {
         node.identifier->accept(*this);
-        node.base_class_identifier->accept(*this);
+        if (node.base_class_identifier) {
+            node.base_class_identifier->accept(*this);
+        }
         for (auto& argument : node.variables) {
             argument->accept(*this);
         }

@@ -327,7 +327,7 @@ Expression
         expression->position = $1->position;
         expression->left = std::move($1);
         expression->operation_type = $2.info;
-        expression->left = std::move($3);
+        expression->right = std::move($3);
         $$ = std::move(expression);
     }
     | Expression T_ADD_OPERATION Expression {
@@ -335,7 +335,7 @@ Expression
         expression->position = $1->position;
         expression->left = std::move($1);
         expression->operation_type = $2.info;
-        expression->left = std::move($3);
+        expression->right = std::move($3);
         $$ = std::move(expression);
     }
     | Expression T_COMPARE_OPERATION Expression {
@@ -343,7 +343,7 @@ Expression
         expression->position = $1->position;
         expression->left = std::move($1);
         expression->operation_type = $2.info;
-        expression->left = std::move($3);
+        expression->right = std::move($3);
         $$ = std::move(expression);
     }
     | Expression T_EQUIVALENT_OPERATION Expression {
@@ -351,7 +351,7 @@ Expression
         expression->position = $1->position;
         expression->left = std::move($1);
         expression->operation_type = $2.info;
-        expression->left = std::move($3);
+        expression->right = std::move($3);
         $$ = std::move(expression);
     }
     | Expression T_AND_OPERATION Expression {
@@ -359,7 +359,7 @@ Expression
         expression->position = $1->position;
         expression->left = std::move($1);
         expression->operation_type = $2.info;
-        expression->left = std::move($3);
+        expression->right = std::move($3);
         $$ = std::move(expression);
     }
     | Expression T_OR_OPERATION Expression {
@@ -367,7 +367,7 @@ Expression
         expression->position = $1->position;
         expression->left = std::move($1);
         expression->operation_type = $2.info;
-        expression->left = std::move($3);
+        expression->right = std::move($3);
         $$ = std::move(expression);
     }
     | Expression T_LEFT_SQUARE_BRACKET Expression T_RIGHT_SQUARE_BRACKET {

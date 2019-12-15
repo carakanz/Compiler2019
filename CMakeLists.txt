@@ -12,7 +12,7 @@ option(MYLIB_COVERAGE "Включить измерение покрытия ко
 add_subdirectory(tests)
 
 add_compile_options(
-        -Werror
+      # -Werror
 
         -Wall
         -Wextra
@@ -30,6 +30,9 @@ add_compile_options(
         -Wredundant-decls
         -Wsign-conversion
         -Wsign-promo
+        -Wno-error=sign-conversion
+        -Wno-error=ctor-dtor-privacy
+
 )
 
 if(NOT CMAKE_CXX_EXTENSIONS)
