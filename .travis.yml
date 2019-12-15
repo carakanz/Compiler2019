@@ -10,6 +10,7 @@ compiler:
 before_install:
   - sudo apt-get install graphviz
   - sudo apt-get install cmake
+  - sudo apt-get install libfl-dev
   - sudo apt-get install flex
   - wget http://ftp.gnu.org/gnu/bison/bison-3.4.2.tar.gz
   - tar -zxvf bison-3.4.2.tar.gz
