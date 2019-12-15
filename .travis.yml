@@ -1,9 +1,11 @@
 language: cpp
-
 sudo: false
-
 dist: bionic
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
 compiler:
   - g++
 
@@ -24,6 +26,10 @@ before_install:
 script:
   - mkdir build
   - cd build
-  - scan-build cmake ..
+  - scan-build cmake -DCOVERAGE=1 ..
   - scan-build cmake --build .
+  - cd tests
   - sh ../run_tests.sh
+
+after_success:
+  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
