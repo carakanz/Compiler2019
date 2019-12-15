@@ -27,7 +27,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
-include_directories(${COMMON_INCLUDES})
+target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 

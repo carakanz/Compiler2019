@@ -2,7 +2,7 @@
 // Created by Zinenko Dmytro on 20.10.2019.
 //
 #include "gtest/gtest.h"
-#include <include/Builder.h>
+#include <Builder.h>
 #include <fstream>
 #include <iostream>
 #include <array>

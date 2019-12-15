@@ -38,7 +38,7 @@ add_test_libraries(PrintSyntaxTreeDot BisonBuilder Visitors)
 
 execut_test(SymbolTableUnitTest
         ${PROJECT_SOURCE_DIR}/tests/SymbolTableUnitTest.cpp)
-add_test_libraries(SymbolTableUnitTest SymbolTable)
+add_test_libraries(SymbolTableUnitTest SymbolTable BisonBuilder)
 
 include_directories(${COMMON_INCLUDES})
 

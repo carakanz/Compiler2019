@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include <include/Builder.h>
+#include <Builder.h>
 #include <SymbolTableBuilder.h>
 #include <fstream>
 #include <iostream>
