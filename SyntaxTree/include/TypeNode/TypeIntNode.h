@@ -8,8 +8,12 @@
 namespace SyntaxTree {
     class TypeIntNode : public ITypeNode {
     public:
-        void accept(IVisitor& visitor) const override {
+        void accept(IVisitor &visitor) const override {
             return visitor.visit(*this);
         }
+
+        [[nodiscard]] std::string get_name() const override {
+            return "int";
+        };
     };
 }

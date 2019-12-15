@@ -20,6 +20,10 @@ namespace SyntaxTree {
             return visitor.visit(*this);
         }
 
+        [[nodiscard]] std::string get_name() const override {
+            return identifier->name;
+        };
+
         std::unique_ptr<IdentifierNode> identifier;
     };
 }

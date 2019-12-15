@@ -19,6 +19,10 @@ namespace SyntaxTree {
             return visitor.visit(*this);
         }
 
+        [[nodiscard]] std::string get_name() const override {
+            return type->get_name() + "[]";
+        };
+
         std::unique_ptr<ITypeNode> type;
     };
 }

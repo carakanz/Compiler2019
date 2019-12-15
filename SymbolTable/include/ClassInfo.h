@@ -1,5 +1,5 @@
 //
-// Created by carak on 15.12.2019.
+// Created by Zinenko Dmytro on 15.12.2019.
 //
 
 #pragma once
@@ -13,6 +13,7 @@
 namespace SymbolTree {
 
     class ClassInfo {
+    public:
         std::string name;
         std::string base;
         std::unordered_map<std::string, MethodInfo> method_info;

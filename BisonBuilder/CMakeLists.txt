@@ -19,7 +19,7 @@ add_flex_bison_dependency(flex_scanner bison_parser)
 add_library(${PROJECT_NAME} SHARED
         ${FLEX_flex_scanner_OUTPUTS}
         ${BISON_bison_parser_OUTPUTS}
-        src/Builder.cpp ../SymbolTable/include/SymbolTree.h ../SymbolTable/src/SymbolTree.cpp)
+        src/Builder.cpp)
 
 target_link_libraries(${PROJECT_NAME} SyntaxTree)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
