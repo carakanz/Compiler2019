@@ -1,13 +1,9 @@
 language: cpp
-
 sudo: false
-
 dist: bionic
 
-compiler:
-  - g++
-
 before_install:
+  - sudo apt-get install clang-tools
   - sudo apt-get install graphviz
   - sudo apt-get install cmake
   - sudo apt-get install libfl-dev
@@ -23,6 +19,8 @@ before_install:
 script:
   - mkdir build
   - cd build
-  - cmake ..
-  - cmake --build .
-  - sh ../run_tests.sh
+  - scan-build cmake ..
+  - scan-build cmake --build .
+  - cd tests
+  - cp ../../run_tests.sh run_tests.sh
+  - sh run_tests.sh

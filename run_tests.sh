@@ -1,2 +1,1 @@
-cd tests
-./RunAllUnitTests
+scan-build ./RunAllUnitTests
