@@ -34,11 +34,11 @@ namespace SymbolTree::Graphviz {
         }
         for (const auto &method_info : class_info.method_info) {
             print_method(method_info.second);
-            out_ << "\"" << &class_info << "\"" << " -> " "\"" << &method_info << "\"\n";
+            out_ << "\"" << &class_info << "\"" << " -> " "\"" << &method_info.second << "\"\n";
         }
         for (const auto &var_info : class_info.var_info) {
             print_var(var_info.second);
-            out_ << "\"" << &class_info << "\"" << " -> " "\"" << &var_info << "\"\n";
+            out_ << "\"" << &class_info << "\"" << " -> " "\"" << &var_info.second << "\"\n";
         }
     }
 
@@ -46,11 +46,11 @@ namespace SymbolTree::Graphviz {
         out_ << "\"" << &method_info << "\"" << " [label=\"" << method_info.name << "\" shape=box]\n";
         for (const auto &arg_info : method_info.arg_info) {
             print_var(arg_info.second);
-            out_ << "\"" << &method_info << "\"" << " -> " "\"" << &arg_info << "\"\n";
+            out_ << "\"" << &method_info << "\"" << " -> " "\"" << &arg_info.second << "\"\n";
         }
         for (const auto &var_info : method_info.var_info) {
             print_var(var_info.second);
-            out_ << "\"" << &method_info << "\"" << " -> " "\"" << &var_info << "\"\n";
+            out_ << "\"" << &method_info << "\"" << " -> " "\"" << &var_info.second << "\"\n";
         }
 
     }

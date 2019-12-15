@@ -38,7 +38,7 @@ namespace SymbolTree {
         std::string method_signature = method_node.return_type->get_name() + " " +
                                        method_node.identifier->name + "(";
         for (auto const& argument : method_node.arguments) {
-            method_signature += argument->identifier->name + ", ";
+            method_signature += argument->var_type->get_name() + ", ";
         }
         method_signature += ")";
         return method_signature;
