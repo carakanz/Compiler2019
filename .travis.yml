@@ -27,7 +27,7 @@ before_install:
 script:
   - mkdir build
   - cd build
-  - scan-build CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 ..
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 ..
   - scan-build cmake --build .
   - cd tests
   - cp ../../run_tests.sh run_tests.sh
