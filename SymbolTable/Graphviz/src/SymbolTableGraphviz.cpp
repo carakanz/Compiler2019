@@ -56,7 +56,7 @@ namespace SymbolTree::Graphviz {
     }
 
     void Graph::print_var(const VarInfo &var_info) {
-        out_ << "\"" << &var_info << "\"" << " [label=" << var_info.type << " : " << var_info.name << "]\n";
+        out_ << "\"" << &var_info << "\"" << " [label=\"" << var_info.type << " : " << var_info.name << "\"]\n";
     }
 
 }
