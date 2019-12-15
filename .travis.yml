@@ -17,10 +17,4 @@ before_install:
   - cd ..
 
 script:
-  - mkdir build
-  - cd build
-  - scan-build cmake ..
-  - scan-build cmake --build .
-  - cd tests
-  - cp ../../run_tests.sh run_tests.sh
-  - sh run_tests.sh
+  - scripts/run_all.sh
