@@ -12,7 +12,7 @@ namespace SymbolTree {
         const SyntaxTree::GoalNode &goal_node = syntax_tree.get_root();
         while (symbol_tree.classes_info.size() != goal_node.items.size()) {
             for (const auto &class_node : goal_node.items) {
-                if (!class_node->base_class_identifier) {
+                if (class_node->base_class_identifier) {
                     const auto base_node = symbol_tree.classes_info.find(class_node->base_class_identifier->name);
                     if (base_node != symbol_tree.classes_info.end()) {
                         auto result = symbol_tree.classes_info.emplace(class_node->identifier->name,
