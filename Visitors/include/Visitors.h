@@ -8,9 +8,4 @@
 #include <fstream>
 
 namespace Visitor {
-    void foo() {
-        std::ofstream bla;
-        SyntaxTreePrinter blo(bla);
-        SyntaxTreeDFSVisitor<SyntaxTreePrinter> test(blo);
-    }
 }
