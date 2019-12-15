@@ -6,5 +6,8 @@
 #include <INodeBase.h>
 
 namespace SyntaxTree {
-    class ITypeNode : public INodeBase {};
+    class ITypeNode : public INodeBase {
+    public:
+        [[nodiscard]] virtual std::string get_name() const = 0;
+    };
 }
