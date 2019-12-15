@@ -29,7 +29,8 @@ script:
   - scan-build cmake -DCOVERAGE=1 ..
   - scan-build cmake --build .
   - cd tests
-  - sh ../run_tests.sh
+  - cp ../../run_tests.sh run_tests.sh
+  - sh run_tests.sh
 
 after_success:
   - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
