@@ -43,7 +43,7 @@ namespace SymbolTree::Graphviz {
     }
 
     void Graph::print_method(const MethodInfo &method_info) {
-        out_ << "\"" << &method_info << "\"" << " [label=" << method_info.name << " shape=box]\n";
+        out_ << "\"" << &method_info << "\"" << " [label=\"" << method_info.name << "\" shape=box]\n";
         for (const auto &arg_info : method_info.arg_info) {
             print_var(arg_info.second);
             out_ << "\"" << &method_info << "\"" << " -> " "\"" << &arg_info << "\"\n";
