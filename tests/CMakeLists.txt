@@ -40,6 +40,10 @@ execut_test(SymbolTableUnitTest
         ${PROJECT_SOURCE_DIR}/tests/SymbolTableUnitTest.cpp)
 add_test_libraries(SymbolTableUnitTest SymbolTable BisonBuilder)
 
+execut_test(PrintSymbolTableDot
+        ${PROJECT_SOURCE_DIR}/tests/PrintSymbolTableDot.cpp)
+add_test_libraries(PrintSymbolTableDot SymbolTableGraphviz SymbolTable BisonBuilder)
+
 include_directories(${COMMON_INCLUDES})
 
 add_test(UnitTests RunAllUnitTests)

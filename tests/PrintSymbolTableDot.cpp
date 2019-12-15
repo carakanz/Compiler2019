@@ -1,10 +1,11 @@
 //
-// Created by Zinenko Dmytro on 25.11.2019.
+// Created by Zinenko Dmytro on 15.12.2019.
 //
 
 #include "gtest/gtest.h"
-#include <include/Builder.h>
-#include <Visitors.h>
+#include <Builder.h>
+#include <SymbolTableBuilder.h>
+#include <SymbolTableGraphviz.h>
 #include <fstream>
 #include <iostream>
 #include <array>
@@ -23,25 +24,24 @@ const std::array<std::string, 9> Paths = {
 };
 
 const std::string PathPrefix("../../tests/Samples/");
-const std::string ResultPrefix("../../tests/Samples/Digraph/SyntaxTree/");
+const std::string ResultPrefix("../../tests/Samples/Digraph/SymbolTable/");
 
-TEST(SyntaxTree, Digraph) {
+TEST(SymbolTable, PrintTable) {
     BisonBuilder::Builder builder;
     for (const auto &path : Paths) {
         std::ifstream sample(PathPrefix + path);
         ASSERT_TRUE(sample.is_open());
         auto analyzer = builder.parse(sample);
         ASSERT_EQ(analyzer, 0);
-        SyntaxTree::Tree tree(std::move(builder.root));
-        std::ofstream digraph(ResultPrefix + path + ".dot");
-        ASSERT_TRUE(digraph.is_open());
-        Visitor::SyntaxTreePrinter printer(digraph);
-        Visitor::SyntaxTreeDFSVisitor<Visitor::SyntaxTreePrinter> DFS_visitor(printer);
-        ASSERT_NO_THROW(printer.print_start(path));
-        ASSERT_NO_THROW(tree.accept(DFS_visitor));
-        ASSERT_NO_THROW(printer.print_end());
-        digraph.close();
         std::cout << "Ok: " << PathPrefix + path << "   result: " << analyzer << std::endl;
         sample.close();
+        SyntaxTree::Tree tree(std::move(builder.root));
+        SymbolTree::SymbolTree symbol_tree = SymbolTree::SymbolTree();
+        ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
+        std::ofstream digraph(ResultPrefix + path + ".dot");
+        ASSERT_TRUE(digraph.is_open());
+        SymbolTree::Graphviz::Graph printer(symbol_tree, digraph);
+        ASSERT_NO_THROW(printer.print_table(path));
+        digraph.close();
     }
 }
