@@ -1,3 +1,6 @@
+#graph ignore
+tests/*.dot
+
 #From https://github.com/github/gitignore/blob/master/CMake.gitignore
 CMakeLists.txt.user
 CMakeCache.txt
