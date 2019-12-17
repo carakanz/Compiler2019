@@ -14,6 +14,8 @@ namespace SymbolTree {
         static ClassInfo
         build_class(const SyntaxTree::DeclarationClassNode &class_node, const ClassInfo *base_class_node);
 
+        static std::string build_method_signature(const SyntaxTree::DeclarationMethodNode &method_node);
+
         static MethodInfo build_method(const SyntaxTree::DeclarationMethodNode &method_node);
 
         static VarInfo build_var(const SyntaxTree::DeclarationVarNode &var_node);

@@ -9,9 +9,11 @@ add_library(${PROJECT_NAME} STATIC
         include/SyntaxTreeDFSVisitor.h
         include/SyntaxTreePrinter.h
         src/SyntaxTreePrinter.cpp
-        include/Visitors.h)
+        include/Visitors.h
+        src/TypeCheck.cpp
+        include/TypeCheck.h)
 
-target_link_libraries(${PROJECT_NAME} SyntaxTree)
+target_link_libraries(${PROJECT_NAME} SyntaxTree SymbolTable)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
