@@ -1,0 +1,48 @@
+digraph QuickSort {
+"0x564dc32c8618" [label=QS shape=diamond]
+"0x564dc32c8138" [label="int Init(int, )" shape=box]
+"0x564dc32c3f98" [label="int : sz"]
+"0x564dc32c8138" -> "0x564dc32c3f98"
+"0x564dc32c8618" -> "0x564dc32c8138"
+"0x564dc32c8288" [label="int Print()" shape=box]
+"0x564dc32c3f18" [label="int : j"]
+"0x564dc32c8288" -> "0x564dc32c3f18"
+"0x564dc32c8618" -> "0x564dc32c8288"
+"0x564dc32c8378" [label="int Start(int, )" shape=box]
+"0x564dc32c8808" [label="int : sz"]
+"0x564dc32c8378" -> "0x564dc32c8808"
+"0x564dc32ba568" [label="int : aux01"]
+"0x564dc32c8378" -> "0x564dc32ba568"
+"0x564dc32c8618" -> "0x564dc32c8378"
+"0x564dc32c7fb8" [label="int Sort(int, int, )" shape=box]
+"0x564dc32ba728" [label="int : right"]
+"0x564dc32c7fb8" -> "0x564dc32ba728"
+"0x564dc32ba688" [label="int : left"]
+"0x564dc32c7fb8" -> "0x564dc32ba688"
+"0x564dc32c3e18" [label="boolean : cont02"]
+"0x564dc32c7fb8" -> "0x564dc32c3e18"
+"0x564dc32c3d98" [label="boolean : cont01"]
+"0x564dc32c7fb8" -> "0x564dc32c3d98"
+"0x564dc32ba848" [label="int : i"]
+"0x564dc32c7fb8" -> "0x564dc32ba848"
+"0x564dc32ba8c8" [label="int : j"]
+"0x564dc32c7fb8" -> "0x564dc32ba8c8"
+"0x564dc32ba7a8" [label="int : v"]
+"0x564dc32c7fb8" -> "0x564dc32ba7a8"
+"0x564dc32ba978" [label="int : nt"]
+"0x564dc32c7fb8" -> "0x564dc32ba978"
+"0x564dc32c3e98" [label="int : aux03"]
+"0x564dc32c7fb8" -> "0x564dc32c3e98"
+"0x564dc32ba9f8" [label="int : t"]
+"0x564dc32c7fb8" -> "0x564dc32ba9f8"
+"0x564dc32c8618" -> "0x564dc32c7fb8"
+"0x564dc32c40b8" [label="int : size"]
+"0x564dc32c8618" -> "0x564dc32c40b8"
+"0x564dc32c4018" [label="int[] : number"]
+"0x564dc32c8618" -> "0x564dc32c4018"
+"0x564dc32c6ba8" [label=QuickSort shape=diamond]
+"0x564dc32c72a8" [label="void main(String[], )" shape=box]
+"0x564dc32c8708" [label="String[] : a"]
+"0x564dc32c72a8" -> "0x564dc32c8708"
+"0x564dc32c6ba8" -> "0x564dc32c72a8"
+}
