@@ -10,7 +10,7 @@ add_library(${PROJECT_NAME} STATIC
         include/SymbolTree.h
         include/ClassInfo.h
         include/MethodInfo.h
-        include/VarInfo.h)
+        include/VarInfo.h src/SymbolTree.cpp)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})

@@ -9,17 +9,7 @@ namespace Visitor {
 
     class TypeCheck : SyntaxTree::IVisitor  {
     public:
-        bool can_assigned(const std::string& src, const std::string& dst) const {
-            // DOTO
-            return src == dst;
-        }
-
-        std::string is_array(const std::string& type_name) const {
-            return (type_name.size() > 2 &&
-                    type_name[type_name.size() - 1] == ']' &&
-                    type_name[type_name.size() - 2] == '[') ?
-                   type_name.substr(type_name.size() - 2) :
-                   "";
+        explicit TypeCheck(const SymbolTree::SymbolTree& symbol_tree): symbol_tree_(symbol_tree) {
         }
 
         void visit(const SyntaxTree::TypeIntNode &node) override;
@@ -89,7 +79,7 @@ namespace Visitor {
     private:
         const SyntaxTree::DeclarationClassNode* current_class_;
         const SyntaxTree::DeclarationMethodNode* current_method_;
-        const SymbolTree::SymbolTree symbol_tree_;
+        const SymbolTree::SymbolTree& symbol_tree_;
         std::string last_return_type_;
     };
 
