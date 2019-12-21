@@ -24,7 +24,7 @@ endfunction()
 enable_testing()
 
 add_executable(RunAllUnitTests
-        ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp PrintIRTree.cpp SymbolTableTypeCheck.cpp)
+        ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp)
 target_link_libraries(RunAllUnitTests gtest
         gtest_main)
 
