@@ -51,11 +51,8 @@ const std::array<std::string, 25> badPaths = {
 
 };
 
-//const std::string goodPathPrefix("../../tests/Samples/");
-//const std::string badPathPrefix("../../tests/badSamples/");
-
-const std::string goodPathPrefix("Samples/");
-const std::string badPathPrefix("BadSamples/");
+const std::string goodPathPrefix("../../tests/Samples/");
+const std::string badPathPrefix("../../tests/badSamples/");
 
 //void testFiles(std::string Paths, std::string PathPrefix) {
 //    BisonBuilder::Builder builder;
