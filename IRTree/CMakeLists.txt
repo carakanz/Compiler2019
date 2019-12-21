@@ -7,7 +7,7 @@ add_library(${PROJECT_NAME} STATIC
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
-target_link_libraries(${PROJECT_NAME} SymbolTable)
+target_link_libraries(${PROJECT_NAME} SymbolTable SyntaxTree)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
