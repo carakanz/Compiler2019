@@ -2,10 +2,13 @@
 // Created by l1onsun on 15.12.19.
 //
 #include <IVisitor.h>
+#include <SymbolTree.h>
+#include <Tree.h>
 
 namespace IRTree {
     class IRTreeTranslator: public SyntaxTree::IVisitor  {
     public:
+        IRTreeTranslator(SyntaxTree::Tree& tree, SymbolTree::SymbolTree symbol_tree);
         void visit(const SyntaxTree::TypeIntNode& node) override;
         void visit(const SyntaxTree::TypeBooleanNode& node) override;
         void visit(const SyntaxTree::TypeArrayNode& node) override;
@@ -38,5 +41,8 @@ namespace IRTree {
         void visit(const SyntaxTree::DeclarationClassNode& node) override;
         void visit(const SyntaxTree::DeclarationVarNode& node) override;
         void visit(const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase>& node) override;
+
+    protected:
+        SymbolTree::SymbolTree symbol_tree_;
     };
 }

@@ -4,6 +4,12 @@
 
 #include "IRTreeTranslator.h"
 
+
+IRTree::IRTreeTranslator::IRTreeTranslator(SyntaxTree::Tree &tree,
+                                           SymbolTree::SymbolTree symbol_tree) : symbol_tree_(std::move(symbol_tree)) {
+    tree.accept(*this);
+}
+
 void IRTree::IRTreeTranslator::visit(const SyntaxTree::TypeIntNode &node) {
 
 }
