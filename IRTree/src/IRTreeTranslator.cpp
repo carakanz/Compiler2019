@@ -128,7 +128,8 @@ void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &no
 }
 
 void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationClassNode &node) {
-
+    //auto x = symbol_tree_.classes_info.find(node.identifier->name);
+    getClassFromName(node.identifier->name);
 }
 
 void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationVarNode &node) {

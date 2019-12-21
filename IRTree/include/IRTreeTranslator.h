@@ -42,6 +42,16 @@ namespace IRTree {
         void visit(const SyntaxTree::DeclarationVarNode& node) override;
         void visit(const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase>& node) override;
 
+        //supporting methods
+        SymbolTree::ClassInfo* getClassFromName(std::string& name) {
+            auto search = symbol_tree_.classes_info.find(name);
+            if (search != symbol_tree_.classes_info.end()) {
+                return &search->second;
+            } else {
+                return nullptr; //Is it norm behavior?
+            }
+        }
+
     protected:
         SymbolTree::SymbolTree symbol_tree_;
     };
