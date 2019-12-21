@@ -1,0 +1,12 @@
+ARG BUILD_NUMBER
+ARG IMAGE_BASE
+
+
+FROM ${IMAGE_BASE}compilers-base${BUILD_NUMBER}
+
+
+RUN apt-get install vim -y
+
+
+WORKDIR /workspace
+CMD /bin/bash
