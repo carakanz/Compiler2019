@@ -24,7 +24,7 @@ endfunction()
 enable_testing()
 
 add_executable(RunAllUnitTests
-        ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp)
+        ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp PrintIRTree.cpp SymbolTableTypeCheck.cpp)
 target_link_libraries(RunAllUnitTests gtest
         gtest_main)
 
@@ -43,6 +43,14 @@ add_test_libraries(SymbolTableUnitTest SymbolTable BisonBuilder)
 execut_test(PrintSymbolTableDot
         ${PROJECT_SOURCE_DIR}/tests/PrintSymbolTableDot.cpp)
 add_test_libraries(PrintSymbolTableDot SymbolTableGraphviz SymbolTable BisonBuilder)
+
+#execut_test(PrintIRTree
+#        ${PROJECT_SOURCE_DIR}/tests/PrintIRTree.cpp)
+#add_test_libraries(PrintSymbolTableDot SymbolTableGraphviz SymbolTable BisonBuilder)
+
+execut_test(SymbolTableTypeCheck
+        ${PROJECT_SOURCE_DIR}/tests/SymbolTableTypeCheck.cpp)
+add_test_libraries(SymbolTableTypeCheck SymbolTableGraphviz SymbolTable BisonBuilder)
 
 include_directories(${COMMON_INCLUDES})
 
