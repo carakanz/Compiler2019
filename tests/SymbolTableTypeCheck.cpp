@@ -5,6 +5,7 @@
 #include "gtest/gtest.h"
 #include <Builder.h>
 #include <SymbolTableBuilder.h>
+#include <TypeCheck.h>
 #include <fstream>
 #include <iostream>
 #include <array>
@@ -70,10 +71,7 @@ const std::string badPathPrefix("../../tests/badSamples/");
 //    }
 //}
 
-TEST(SymbolTable, TypeCheck) {
-    //testFiles(goodPaths, goodPathPrefix);
-    //testFiles(badPaths, badPathPrefix);
-
+TEST(SymbolTable, TypeCheckGood) {
     BisonBuilder::Builder builder;
 
     for (const auto &path : goodPaths) {
@@ -86,10 +84,15 @@ TEST(SymbolTable, TypeCheck) {
         SyntaxTree::Tree tree(std::move(builder.root));
         SymbolTree::SymbolTree symbol_tree;
         ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
+        Visitor::TypeCheck type_checker(symbol_tree);
+        ASSERT_NO_THROW(tree.accept(type_checker));
     }
+}
+
+TEST(SymbolTable, TypeCheckBad) {
+    BisonBuilder::Builder builder;
 
     for (const auto &path : badPaths) {
-        std::cout << std::endl << "PATH " << badPathPrefix + path << std::endl;
         std::ifstream sample(badPathPrefix + path);
         ASSERT_TRUE(sample.is_open());
         auto analyzer = builder.parse(sample);
@@ -99,6 +102,7 @@ TEST(SymbolTable, TypeCheck) {
         SyntaxTree::Tree tree(std::move(builder.root));
         SymbolTree::SymbolTree symbol_tree;
         ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
+        Visitor::TypeCheck type_checker(symbol_tree);
+        ASSERT_ANY_THROW(tree.accept(type_checker));
     }
-
 }

@@ -50,7 +50,7 @@ add_test_libraries(PrintSymbolTableDot SymbolTableGraphviz SymbolTable BisonBuil
 
 execut_test(SymbolTableTypeCheck
         ${PROJECT_SOURCE_DIR}/tests/SymbolTableTypeCheck.cpp)
-add_test_libraries(SymbolTableTypeCheck SymbolTableGraphviz SymbolTable BisonBuilder)
+add_test_libraries(SymbolTableTypeCheck Visitors SymbolTable BisonBuilder)
 
 include_directories(${COMMON_INCLUDES})
 

@@ -7,7 +7,7 @@
 
 namespace Visitor {
 
-    class TypeCheck : SyntaxTree::IVisitor  {
+    class TypeCheck : public SyntaxTree::IVisitor  {
     public:
         explicit TypeCheck(const SymbolTree::SymbolTree& symbol_tree): symbol_tree_(symbol_tree) {
         }
