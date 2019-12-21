@@ -78,7 +78,7 @@ namespace SymbolTree {
         method_info.is_private = method_node.privacy_modifier == SyntaxTree::DeclarationMethodNode::PRIVATE;
         method_info.is_static = method_node.is_static;
         for (const auto &arg_node : method_node.arguments) {
-            method_info.args.push_back(arg_node->identifier->name);
+            method_info.args.push_back(arg_node->var_type->get_name());
             auto result = method_info.arg_info.emplace(arg_node->identifier->name, build_var(*arg_node));
             if (!result.second) {
                 throw std::runtime_error("Duplicated arg " + method_info.name + "::" + arg_node->identifier->name);

@@ -27,8 +27,8 @@ namespace BisonBuilder {
         switch (token) {
             case FlexToken::T_PRIVACY_MODIFIER:
                 return build(text == "private" ?
-                             SyntaxTree::DeclarationMethodNode::PUBLIC :
-                             SyntaxTree::DeclarationMethodNode::PRIVATE);
+                             SyntaxTree::DeclarationMethodNode::PRIVATE :
+                             SyntaxTree::DeclarationMethodNode::PUBLIC);
             case FlexToken::T_BOOL_VALUE:
                 return build(text == "true");
             case FlexToken::T_INT_VALUE:

@@ -91,7 +91,7 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::ExpressionIndexNode &node) {
         node.index->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, "int")) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, "int")) {
             throw std::runtime_error(
                     "Type check error " + std::to_string(node.position.line) + ":" +
                     std::to_string(node.position.column));
@@ -215,7 +215,7 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::ExpressionNewArrayNode &node) {
         node.size->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, "int")) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, "int")) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to int");
         }
@@ -236,7 +236,7 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::StatementIfNode &node) {
         node.conditional->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, "boolean")) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, "boolean")) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to boolean");
         }
@@ -255,7 +255,7 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::StatementWhileNode &node) {
         node.conditional->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, "boolean")) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, "boolean")) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to boolean");
         }
@@ -264,7 +264,7 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::StatementPrintlnNode &node) {
         node.expression->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, "int")) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, "int")) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to int");
         }
@@ -274,7 +274,7 @@ namespace Visitor {
         node.identifier->accept(*this);
         std::string type = last_return_type_;
         node.expression->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, type)) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, type)) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to " + type);
         }
@@ -282,7 +282,7 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::StatementAssignArrayNode &node) {
         node.index->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, "int")) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, "int")) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to int");
         }
@@ -292,7 +292,7 @@ namespace Visitor {
             throw std::runtime_error(node.identifier->name + " is not array");
         }
         node.expression->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, type)) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, type)) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to " + type);
         }
@@ -300,7 +300,7 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::StatementReturnNode &node) {
         node.expression->accept(*this);
-        if (-1 == symbol_tree_.can_assigned(last_return_type_, current_method_->return_type->get_name())) {
+        if (SymbolTree::SymbolTree::NotAssigned == symbol_tree_.can_assigned(last_return_type_, current_method_->return_type->get_name())) {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to " + current_method_->return_type->get_name());
         }

@@ -6,6 +6,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <limits>
 #include "ClassInfo.h"
 
 namespace SymbolTree {
@@ -19,7 +20,7 @@ namespace SymbolTree {
             Extension = 0x1,
             Contraction = 0x2,
             Inheritance = 0x4,
-            NotAssigned = -1
+            NotAssigned = std::numeric_limits<int>::max()
         };
 
         AssignedType can_assigned(std::string src, std::string dst) const;
