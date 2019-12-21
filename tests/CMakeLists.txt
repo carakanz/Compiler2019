@@ -24,7 +24,7 @@ endfunction()
 enable_testing()
 
 add_executable(RunAllUnitTests
-        ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp)
+        ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp main.cpp)
 target_link_libraries(RunAllUnitTests gtest
         gtest_main)
 
@@ -55,3 +55,7 @@ add_test_libraries(SymbolTableTypeCheck Visitors SymbolTable BisonBuilder)
 include_directories(${COMMON_INCLUDES})
 
 add_test(UnitTests RunAllUnitTests)
+
+
+#add_executable(MainPr main.cpp)
+#add_test_libraries(MainPr Visitors SymbolTable BisonBuilder)

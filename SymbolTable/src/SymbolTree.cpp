@@ -51,7 +51,7 @@ namespace SymbolTree {
         return (type_name.size() > 2 &&
                 type_name[type_name.size() - 1] == ']' &&
                 type_name[type_name.size() - 2] == '[') ?
-               type_name.substr(type_name.size() - 2) :
+               type_name.substr(0,type_name.size() - 2) :
                "";
     }
 }

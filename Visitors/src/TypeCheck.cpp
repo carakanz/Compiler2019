@@ -22,7 +22,9 @@ namespace Visitor {
     }
 
     void TypeCheck::visit(const SyntaxTree::TypeUserNode &node) {
-        node.identifier->accept(*this);
+        if (symbol_tree_.classes_info.find(node.get_name()) == symbol_tree_.classes_info.cend()) {
+            throw std::runtime_error("Can not find type" + node.get_name());
+        }
         last_return_type_ = node.get_name();
     }
 
@@ -36,7 +38,8 @@ namespace Visitor {
 
     void TypeCheck::visit(const SyntaxTree::IdentifierNode &node) {
         const auto &current_class_info = symbol_tree_.classes_info.at(current_class_->identifier->name);
-        const auto &current_method_info = current_class_info.method_info.at(current_method_->identifier->name);
+        const auto &current_method_info = current_class_info.method_info.at(
+                SymbolTree::SymbolTableBuilder::build_method_signature(*current_method_));
 
         const auto &var_info = current_method_info.var_info.find(node.name);
         const auto &arg_info = current_method_info.arg_info.find(node.name);
@@ -48,9 +51,11 @@ namespace Visitor {
         }
         if (var_info != current_method_info.var_info.cend()) {
             last_return_type_ = var_info->second.type;
+            return;
         }
         if (arg_info != current_method_info.arg_info.cend()) {
             last_return_type_ = arg_info->second.type;
+            return;
         }
         const auto &class_var_info = current_class_info.var_info.find(node.name);
         if (class_var_info != current_class_info.var_info.cend()) {
@@ -133,7 +138,7 @@ namespace Visitor {
             auto max_assigned = SymbolTree::SymbolTree::Equal;
             for (size_t i = 0; i < method.second.args.size(); ++i) {
                 node.arguments[i]->accept(*this);
-                auto assigned_arg_type = symbol_tree_.can_assigned(method.second.args[i], last_return_type_);
+                auto assigned_arg_type = symbol_tree_.can_assigned(last_return_type_, method.second.args[i]);
                 if (assigned_arg_type > max_assigned) {
                     max_assigned = assigned_arg_type;
                 }
@@ -144,7 +149,8 @@ namespace Visitor {
             if (assigned_type > max_assigned) {
                 assigned_type = max_assigned;
                 is_private = method.second.is_private;
-                count = 0;
+                count = 1;
+                last_return_type_ = method.second.return_type_name;
             }
         }
         if (assigned_type == SymbolTree::SymbolTree::NotAssigned) {
@@ -179,7 +185,7 @@ namespace Visitor {
             auto max_assigned = SymbolTree::SymbolTree::Equal;
             for (size_t i = 0; i < method.second.args.size(); ++i) {
                 node.arguments[i]->accept(*this);
-                auto assigned_arg_type = symbol_tree_.can_assigned(method.second.args[i], last_return_type_);
+                auto assigned_arg_type = symbol_tree_.can_assigned(last_return_type_, method.second.args[i]);
                 if (assigned_arg_type > max_assigned) {
                     max_assigned = assigned_arg_type;
                 }
@@ -189,7 +195,8 @@ namespace Visitor {
             }
             if (assigned_type > max_assigned) {
                 assigned_type = max_assigned;
-                count = 0;
+                count = 1;
+                last_return_type_ = method.second.return_type_name;
             }
         }
         if (assigned_type == SymbolTree::SymbolTree::NotAssigned) {
@@ -219,7 +226,7 @@ namespace Visitor {
             throw std::runtime_error(
                     "Can not assigned " + last_return_type_ + " to int");
         }
-        last_return_type_ = node.type->get_name();
+        last_return_type_ = node.type->get_name() + "[]";
     }
 
     void TypeCheck::visit(const SyntaxTree::ExpressionNewNode &node) {
