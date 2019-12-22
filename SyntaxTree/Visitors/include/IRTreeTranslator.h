@@ -73,7 +73,7 @@ namespace IRTree {
         void buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode>& statement);
 
         SymbolTree::SymbolTree symbol_tree_;
-        IRTreeGoal* goal{nullptr};
+        //IRTreeGoal* goal{nullptr};
         const SymbolTree::ClassInfo *mainClass{nullptr};
         const SymbolTree::MethodInfo* current_method{nullptr};
         const SymbolTree::ClassInfo* current_class{nullptr};
