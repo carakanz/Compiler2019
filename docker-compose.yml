@@ -25,3 +25,30 @@ services:
       args:
         BUILD_NUMBER: ${BUILD_NUMBER}
         IMAGE_BASE: ${IMAGE_BASE}
+
+  # lightweight dockers
+  base_light:
+    image: "${IMAGE_BASE}compilers-base-alpine${BUILD_NUMBER}"
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.base.alpine
+
+  # docker you can go into
+  dev_light:
+    image: "${IMAGE_BASE}compilers-dev-alpine${BUILD_NUMBER}"
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev.alpine
+      args:
+        BUILD_NUMBER: ${BUILD_NUMBER}
+        IMAGE_BASE: ${IMAGE_BASE}
+
+  # docker for running tests
+  tests_light:
+    image: "${IMAGE_BASE}compilers-tests-alpine${BUILD_NUMBER}"
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.tests.alpine
+      args:
+        BUILD_NUMBER: ${BUILD_NUMBER}
+        IMAGE_BASE: ${IMAGE_BASE}
