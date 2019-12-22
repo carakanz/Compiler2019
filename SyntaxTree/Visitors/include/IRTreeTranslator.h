@@ -45,7 +45,7 @@ namespace IRTree {
 
 
         //supporting methods
-        SymbolTree::ClassInfo* getClassFromName(std::string& name) {
+        SymbolTree::ClassInfo* getClassFromName(const std::string& name) {
             auto search = symbol_tree_.classes_info.find(name);
             if (search != symbol_tree_.classes_info.end()) {
                 return &search->second;
@@ -54,26 +54,29 @@ namespace IRTree {
             }
         }
 
-//        void findMain() {  //need rewrite
-//            bool mainFound = false;
-//            for (const auto& class_info : symbol_tree_.classes_info) {
-//                for (const auto& method : class_info.second.method_info)
-//                    if (method.first == "void main(String[], )") {
-//                        if (mainFound)
-//                            throw std::runtime_error("two main methods found");
-//                        mainFound = true;
-//                        mainClass = &class_info.second;
-//                    }
-//            }
-//            if (!mainFound)
-//                throw std::runtime_error("no main method found");
-//        }
+        void findMain() {  //need rewrite
+            bool mainFound = false;
+            for (const auto& class_info : symbol_tree_.classes_info) {
+                for (const auto& method : class_info.second.method_info)
+                    if (method.first == "void main(String[], )") {
+                        if (mainFound)
+                            throw std::runtime_error("two main methods found");
+                        mainFound = true;
+                        mainClass = &class_info.second;
+                    }
+            }
+            if (!mainFound)
+                throw std::runtime_error("no main method found");
+        }
 
     protected:
+        void buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode>& statement);
+
         SymbolTree::SymbolTree symbol_tree_;
-        IRTreeGoal* goal = nullptr;
-        const SymbolTree::ClassInfo *mainClass;
-        SymbolTree::MethodInfo* current_method;
-        SymbolTree::ClassInfo* current_class;
+        IRTreeGoal* goal{nullptr};
+        const SymbolTree::ClassInfo *mainClass{nullptr};
+        const SymbolTree::MethodInfo* current_method{nullptr};
+        const SymbolTree::ClassInfo* current_class{nullptr};
+        const SymbolTree::ClassInfo* currentObjectClass{nullptr};
     };
 }
