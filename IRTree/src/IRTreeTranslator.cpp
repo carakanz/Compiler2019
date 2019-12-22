@@ -130,11 +130,15 @@ void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &no
 
 void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationClassNode &node) {
     //auto x = symbol_tree_.classes_info.find(node.identifier->name);
-    SymbolTree::ClassInfo* classinfo = getClassFromName(node.identifier->name);
-    for (const auto& method : classinfo->method_info) {
-        method.second.name;
-        //goal->AddMethod(currentWrapper->ToStatement());
+
+
+    //SymbolTree::ClassInfo* classinfo = getClassFromName(node.identifier->name);
+    for (const auto& method : node.methods)  {
+        current_method = &current_class->method_info[method->identifier->name];
+        method->accept(*this);
+        //goal->AddMethod ...
     }
+
 }
 
 void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationVarNode &node) {
@@ -144,18 +148,23 @@ void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationVarNode &node)
 void IRTree::IRTreeTranslator::visit( // GoalNode
         const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase> &node) {
 
+    //yea it's govnokod
     //handle main class first
     for (const auto& item : node.items) {
-        if (item->identifier->name == mainClass->name)
+        if (item->identifier->name == mainClass->name) {
+            current_class = getClassFromName(item->identifier->name);
             item->accept(*this);
+        }
     }
 
     //then handle others
     for (const auto& item : node.items) {
-        if (item->identifier->name == mainClass->name)
+        if (item->identifier->name == mainClass->name) {
+            current_class = getClassFromName(item->identifier->name);
             item->accept(*this);
+        }
     }
-    //yea it's govnokod
+
 }
 
 

@@ -54,7 +54,7 @@ namespace IRTree {
             }
         }
 
-        void findMain() {
+        void findMain() {  //need rewrite
             bool mainFound = false;
             for (const auto& class_info : symbol_tree_.classes_info) {
                 for (const auto& method : class_info.second.method_info)
@@ -73,5 +73,7 @@ namespace IRTree {
         SymbolTree::SymbolTree symbol_tree_;
         IRTreeGoal* goal = nullptr;
         const SymbolTree::ClassInfo *mainClass;
+        SymbolTree::MethodInfo* current_method;
+        SymbolTree::ClassInfo* current_class;
     };
 }
