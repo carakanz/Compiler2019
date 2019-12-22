@@ -3,7 +3,6 @@
 project(IRTree VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} STATIC
-<<<<<<< HEAD
         ../Defines/BinaryOperationType.h
         include/IRTree/Nodes.h
         include/IRTree/INodeBase.h
