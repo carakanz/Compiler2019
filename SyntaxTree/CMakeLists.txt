@@ -55,3 +55,5 @@ set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
         include/Tree.h
         )
+
+add_subdirectory(Visitors)

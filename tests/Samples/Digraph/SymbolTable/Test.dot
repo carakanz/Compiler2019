@@ -1,0 +1,7 @@
+digraph Test {
+"0x564dc32c72a8" [label=Test shape=diamond]
+"0x564dc32d10f8" [label="void main(String[], )" shape=box]
+"0x564dc32d1e88" [label="String[] : a"]
+"0x564dc32d10f8" -> "0x564dc32d1e88"
+"0x564dc32c72a8" -> "0x564dc32d10f8"
+}

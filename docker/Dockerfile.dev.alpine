@@ -1,0 +1,12 @@
+ARG BUILD_NUMBER
+ARG IMAGE_BASE
+
+
+FROM ${IMAGE_BASE}compilers-base-alpine${BUILD_NUMBER}
+
+
+RUN apk add vim
+
+
+WORKDIR /workspace
+CMD /bin/sh

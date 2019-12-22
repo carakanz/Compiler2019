@@ -35,7 +35,7 @@ namespace IRTree {
 
     class IRTreeGoal : public IRTreeStatement {
     public:
-        IRTreeGoal(std::shared_ptr<const IRTreeStatement>  _mainMethod) : mainMethod(std::move(_mainMethod)) {}
+        IRTreeGoal(std::shared_ptr<const IRTreeStatement>  _mainMethod); //: mainMethod(std::move(_mainMethod)) {}
 
         void AcceptVisitor(IRTreeVisitor* visitor) const override { visitor->VisitNode(this); }
 
@@ -48,4 +48,4 @@ namespace IRTree {
         std::vector<std::shared_ptr<const IRTreeStatement>> methods;
     };
 
-};
+}

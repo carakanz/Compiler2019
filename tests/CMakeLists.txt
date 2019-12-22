@@ -48,7 +48,14 @@ execut_test(IRTreeUnitTest
         ${PROJECT_SOURCE_DIR}/tests/IRTreeUnitTest.cpp)
 add_test_libraries(IRTreeUnitTest IRTree SymbolTable BisonBuilder)
 
+execut_test(SymbolTableTypeCheck
+        ${PROJECT_SOURCE_DIR}/tests/SymbolTableTypeCheck.cpp)
+add_test_libraries(SymbolTableTypeCheck Visitors SymbolTable BisonBuilder)
 
 include_directories(${COMMON_INCLUDES})
 
 add_test(UnitTests RunAllUnitTests)
+
+
+#add_executable(MainPr main.cpp)
+#add_test_libraries(MainPr Visitors SymbolTable BisonBuilder)

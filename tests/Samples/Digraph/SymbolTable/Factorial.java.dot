@@ -1,0 +1,14 @@
+digraph Factorial {
+"0x564dc32bf648" [label=Fac shape=diamond]
+"0x564dc32c02f8" [label="int ComputeFac(int, )" shape=box]
+"0x564dc32c4948" [label="int : num"]
+"0x564dc32c02f8" -> "0x564dc32c4948"
+"0x564dc32c49c8" [label="int : num_aux"]
+"0x564dc32c02f8" -> "0x564dc32c49c8"
+"0x564dc32bf648" -> "0x564dc32c02f8"
+"0x564dc32c4388" [label=Factorial shape=diamond]
+"0x564dc32c5158" [label="void main(String[], )" shape=box]
+"0x564dc32bf1c8" [label="String[] : a"]
+"0x564dc32c5158" -> "0x564dc32bf1c8"
+"0x564dc32c4388" -> "0x564dc32c5158"
+}

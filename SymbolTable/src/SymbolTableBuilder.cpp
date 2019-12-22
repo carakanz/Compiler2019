@@ -10,6 +10,7 @@ namespace SymbolTree {
     SymbolTree SymbolTableBuilder::build(const SyntaxTree::Tree& syntax_tree) {
         SymbolTree symbol_tree = SymbolTree();
         const SyntaxTree::GoalNode &goal_node = syntax_tree.get_root();
+        size_t layer = 256*256;
         while (symbol_tree.classes_info.size() != goal_node.items.size()) {
             for (const auto &class_node : goal_node.items) {
                 if (class_node->base_class_identifier) {
@@ -30,11 +31,14 @@ namespace SymbolTree {
                     }
                 }
             }
+            if (layer-- == 0) {
+                throw std::runtime_error("Cyclic dependence");
+            }
         }
         return symbol_tree;
     }
 
-    std::string build_method_signature(const SyntaxTree::DeclarationMethodNode &method_node) {
+    std::string SymbolTableBuilder::build_method_signature(const SyntaxTree::DeclarationMethodNode &method_node) {
         std::string method_signature = method_node.return_type->get_name() + " " +
                                        method_node.identifier->name + "(";
         for (auto const& argument : method_node.arguments) {
@@ -68,9 +72,13 @@ namespace SymbolTree {
 
     MethodInfo SymbolTableBuilder::build_method(const SyntaxTree::DeclarationMethodNode &method_node) {
         MethodInfo method_info;
-        method_info.name = build_method_signature(method_node);
+        method_info.name = method_node.identifier->name;
+        method_info.signature = build_method_signature(method_node);
         method_info.return_type_name = method_node.return_type->get_name();
+        method_info.is_private = method_node.privacy_modifier == SyntaxTree::DeclarationMethodNode::PRIVATE;
+        method_info.is_static = method_node.is_static;
         for (const auto &arg_node : method_node.arguments) {
+            method_info.args.push_back(arg_node->var_type->get_name());
             auto result = method_info.arg_info.emplace(arg_node->identifier->name, build_var(*arg_node));
             if (!result.second) {
                 throw std::runtime_error("Duplicated arg " + method_info.name + "::" + arg_node->identifier->name);

@@ -1,0 +1,15 @@
+FROM alpine:latest
+
+
+RUN apk update && apk add \
+    gcc g++ cmake make flex bison flex-dev
+
+
+CMD mkdir -p /workspace
+COPY tests/ /workspace/tests
+COPY BisonBuilder/ /workspace/BisonBuilder
+COPY library/ /workspace/library
+COPY SymbolTable/ /workspace/SymbolTable
+COPY SyntaxTree/ /workspace/SyntaxTree
+COPY Visitors/ /workspace/Visitors
+COPY CMakeLists.txt /workspace/CMakeLists.txt
