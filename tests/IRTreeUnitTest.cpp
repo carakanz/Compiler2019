@@ -11,6 +11,7 @@
 #include <array>
 #include <algorithm>
 #include <IRTree/IVisitor.h>
+#include "../SyntaxTree/Visitors/include/IRTreeTranslator.h"
 
 const std::array<std::string, 9> Paths = {
 //        "BinarySearch.java",
