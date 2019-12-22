@@ -7,8 +7,8 @@
 namespace IRTree {
     class IRTreeVisitor { //Useless ?????
     public:
-        void VisitNode(const IRTreeGoal* goal) {
-
-        }
+//        void VisitNode(const IRTreeGoal* goal) {
+//
+//        }
     };
 }

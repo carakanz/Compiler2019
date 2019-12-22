@@ -7,6 +7,7 @@
 
 IRTree::IRTreeTranslator::IRTreeTranslator(SyntaxTree::Tree &tree,
                                            SymbolTree::SymbolTree symbol_tree) : symbol_tree_(std::move(symbol_tree)) {
+    findMain();
     tree.accept(*this);
 }
 
@@ -129,14 +130,33 @@ void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &no
 
 void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationClassNode &node) {
     //auto x = symbol_tree_.classes_info.find(node.identifier->name);
-    getClassFromName(node.identifier->name);
+    SymbolTree::ClassInfo* classinfo = getClassFromName(node.identifier->name);
+    for (const auto& method : classinfo->method_info) {
+        method.second.name;
+        //goal->AddMethod(currentWrapper->ToStatement());
+    }
 }
 
 void IRTree::IRTreeTranslator::visit(const SyntaxTree::DeclarationVarNode &node) {
 
 }
 
-void IRTree::IRTreeTranslator::visit(
+void IRTree::IRTreeTranslator::visit( // GoalNode
         const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase> &node) {
 
+    //handle main class first
+    for (const auto& item : node.items) {
+        if (item->identifier->name == mainClass->name)
+            item->accept(*this);
+    }
+
+    //then handle others
+    for (const auto& item : node.items) {
+        if (item->identifier->name == mainClass->name)
+            item->accept(*this);
+    }
+    //yea it's govnokod
 }
+
+
+

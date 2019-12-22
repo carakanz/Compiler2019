@@ -4,6 +4,7 @@
 #include <IVisitor.h>
 #include <SymbolTree.h>
 #include <Tree.h>
+#include "IRTreeNode.h"
 
 namespace IRTree {
     class IRTreeTranslator: public SyntaxTree::IVisitor  {
@@ -30,7 +31,7 @@ namespace IRTree {
         void visit(const SyntaxTree::ExpressionNotOperatorNode& node) override;
         void visit(const SyntaxTree::ExpressionRoundBracketsNode& node) override;
         void visit(const SyntaxTree::StatementIfNode& node) override;
-        void visit(const SyntaxTree::ListNode<SyntaxTree::IStatementNode, SyntaxTree::IStatementNode>& node) override;
+        void visit(const SyntaxTree::ListNode<SyntaxTree::IStatementNode, SyntaxTree::IStatementNode>& node) override; //StatementList
         void visit(const SyntaxTree::StatementEmptyNode& node) override;
         void visit(const SyntaxTree::StatementWhileNode& node) override;
         void visit(const SyntaxTree::StatementPrintlnNode& node) override;
@@ -40,7 +41,8 @@ namespace IRTree {
         void visit(const SyntaxTree::DeclarationMethodNode& node) override;
         void visit(const SyntaxTree::DeclarationClassNode& node) override;
         void visit(const SyntaxTree::DeclarationVarNode& node) override;
-        void visit(const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase>& node) override;
+        void visit(const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase>& node) override; //GoalNode
+
 
         //supporting methods
         SymbolTree::ClassInfo* getClassFromName(std::string& name) {
@@ -48,11 +50,28 @@ namespace IRTree {
             if (search != symbol_tree_.classes_info.end()) {
                 return &search->second;
             } else {
-                return nullptr; //Is it norm behavior?
+                return nullptr; //Is it okay behavior?
             }
+        }
+
+        void findMain() {
+            bool mainFound = false;
+            for (const auto& class_info : symbol_tree_.classes_info) {
+                for (const auto& method : class_info.second.method_info)
+                    if (method.first == "void main(String[], )") {
+                        if (mainFound)
+                            throw std::runtime_error("two main methods found");
+                        mainFound = true;
+                        mainClass = &class_info.second;
+                    }
+            }
+            if (!mainFound)
+                throw std::runtime_error("no main method found");
         }
 
     protected:
         SymbolTree::SymbolTree symbol_tree_;
+        IRTreeGoal* goal = nullptr;
+        const SymbolTree::ClassInfo *mainClass;
     };
 }
