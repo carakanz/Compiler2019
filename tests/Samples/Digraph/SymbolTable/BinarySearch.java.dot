@@ -1,74 +1,74 @@
 digraph BinarySearch {
-"0x7fffbb79bcb8" [label=BS shape=diamond]
-"0x7fffbb7a7278" [label="int Init(int, )" shape=box]
-"0x7fffbb79e618" [label="int : sz"]
-"0x7fffbb7a7278" -> "0x7fffbb79e618"
-"0x7fffbb79e898" [label="int : aux01"]
-"0x7fffbb7a7278" -> "0x7fffbb79e898"
-"0x7fffbb79e7d8" [label="int : aux02"]
-"0x7fffbb7a7278" -> "0x7fffbb79e7d8"
-"0x7fffbb79e6b8" [label="int : j"]
-"0x7fffbb7a7278" -> "0x7fffbb79e6b8"
-"0x7fffbb79e758" [label="int : k"]
-"0x7fffbb7a7278" -> "0x7fffbb79e758"
-"0x7fffbb79bcb8" -> "0x7fffbb7a7278"
-"0x7fffbb7a6e78" [label="int Print()" shape=box]
-"0x7fffbb79e548" [label="int : j"]
-"0x7fffbb7a6e78" -> "0x7fffbb79e548"
-"0x7fffbb79bcb8" -> "0x7fffbb7a6e78"
-"0x7fffbb7a6948" [label="boolean Compare(int, int, )" shape=box]
-"0x7fffbb79e3c8" [label="int : num2"]
-"0x7fffbb7a6948" -> "0x7fffbb79e3c8"
-"0x7fffbb79e2f8" [label="int : num1"]
-"0x7fffbb7a6948" -> "0x7fffbb79e2f8"
-"0x7fffbb79e4c8" [label="int : aux02"]
-"0x7fffbb7a6948" -> "0x7fffbb79e4c8"
-"0x7fffbb79e448" [label="boolean : retval"]
-"0x7fffbb7a6948" -> "0x7fffbb79e448"
-"0x7fffbb79bcb8" -> "0x7fffbb7a6948"
-"0x7fffbb7a63a8" [label="int Div(int, )" shape=box]
-"0x7fffbb79e038" [label="int : num"]
-"0x7fffbb7a63a8" -> "0x7fffbb79e038"
-"0x7fffbb79e1d8" [label="int : aux03"]
-"0x7fffbb7a63a8" -> "0x7fffbb79e1d8"
-"0x7fffbb79e0b8" [label="int : count01"]
-"0x7fffbb7a63a8" -> "0x7fffbb79e0b8"
-"0x7fffbb79e158" [label="int : count02"]
-"0x7fffbb7a63a8" -> "0x7fffbb79e158"
-"0x7fffbb79bcb8" -> "0x7fffbb7a63a8"
-"0x7fffbb7a2478" [label="int Start(int, )" shape=box]
-"0x7fffbb7ad568" [label="int : sz"]
-"0x7fffbb7a2478" -> "0x7fffbb7ad568"
-"0x7fffbb7ad6a8" [label="int : aux02"]
-"0x7fffbb7a2478" -> "0x7fffbb7ad6a8"
-"0x7fffbb7ad608" [label="int : aux01"]
-"0x7fffbb7a2478" -> "0x7fffbb7ad608"
-"0x7fffbb79bcb8" -> "0x7fffbb7a2478"
-"0x7fffbb79bb88" [label="boolean Search(int, )" shape=box]
-"0x7fffbb7ad7d8" [label="int : num"]
-"0x7fffbb79bb88" -> "0x7fffbb7ad7d8"
-"0x7fffbb79df58" [label="int : nt"]
-"0x7fffbb79bb88" -> "0x7fffbb79df58"
-"0x7fffbb79dcd8" [label="int : right"]
-"0x7fffbb79bb88" -> "0x7fffbb79dcd8"
-"0x7fffbb79dc38" [label="boolean : bs01"]
-"0x7fffbb79bb88" -> "0x7fffbb79dc38"
-"0x7fffbb79ddd8" [label="boolean : var_cont"]
-"0x7fffbb79bb88" -> "0x7fffbb79ddd8"
-"0x7fffbb79de58" [label="int : medium"]
-"0x7fffbb79bb88" -> "0x7fffbb79de58"
-"0x7fffbb79dd58" [label="int : left"]
-"0x7fffbb79bb88" -> "0x7fffbb79dd58"
-"0x7fffbb79ded8" [label="int : aux01"]
-"0x7fffbb79bb88" -> "0x7fffbb79ded8"
-"0x7fffbb79bcb8" -> "0x7fffbb79bb88"
-"0x7fffbb79e998" [label="int : size"]
-"0x7fffbb79bcb8" -> "0x7fffbb79e998"
-"0x7fffbb79e918" [label="int[] : number"]
-"0x7fffbb79bcb8" -> "0x7fffbb79e918"
-"0x7fffbb79db48" [label=BinarySearch shape=diamond]
-"0x7fffbb7a2848" [label="void main(String[], )" shape=box]
-"0x7fffbb7ad438" [label="String[] : a"]
-"0x7fffbb7a2848" -> "0x7fffbb7ad438"
-"0x7fffbb79db48" -> "0x7fffbb7a2848"
+"0x7fffcb83e4c8" [label=BS shape=diamond]
+"0x7fffcb831898" [label="int Init(int, )" shape=box]
+"0x7fffcb83ac78" [label="int : sz"]
+"0x7fffcb831898" -> "0x7fffcb83ac78"
+"0x7fffcb83aef8" [label="int : aux01"]
+"0x7fffcb831898" -> "0x7fffcb83aef8"
+"0x7fffcb83ae38" [label="int : aux02"]
+"0x7fffcb831898" -> "0x7fffcb83ae38"
+"0x7fffcb83ad18" [label="int : j"]
+"0x7fffcb831898" -> "0x7fffcb83ad18"
+"0x7fffcb83adb8" [label="int : k"]
+"0x7fffcb831898" -> "0x7fffcb83adb8"
+"0x7fffcb83e4c8" -> "0x7fffcb831898"
+"0x7fffcb831498" [label="int Print()" shape=box]
+"0x7fffcb83aba8" [label="int : j"]
+"0x7fffcb831498" -> "0x7fffcb83aba8"
+"0x7fffcb83e4c8" -> "0x7fffcb831498"
+"0x7fffcb830f68" [label="boolean Compare(int, int, )" shape=box]
+"0x7fffcb83aa28" [label="int : num2"]
+"0x7fffcb830f68" -> "0x7fffcb83aa28"
+"0x7fffcb83a9a8" [label="int : num1"]
+"0x7fffcb830f68" -> "0x7fffcb83a9a8"
+"0x7fffcb83ab28" [label="int : aux02"]
+"0x7fffcb830f68" -> "0x7fffcb83ab28"
+"0x7fffcb83aaa8" [label="boolean : retval"]
+"0x7fffcb830f68" -> "0x7fffcb83aaa8"
+"0x7fffcb83e4c8" -> "0x7fffcb830f68"
+"0x7fffcb8309a8" [label="int Div(int, )" shape=box]
+"0x7fffcb8371d8" [label="int : num"]
+"0x7fffcb8309a8" -> "0x7fffcb8371d8"
+"0x7fffcb83a888" [label="int : aux03"]
+"0x7fffcb8309a8" -> "0x7fffcb83a888"
+"0x7fffcb837258" [label="int : count01"]
+"0x7fffcb8309a8" -> "0x7fffcb837258"
+"0x7fffcb8372f8" [label="int : count02"]
+"0x7fffcb8309a8" -> "0x7fffcb8372f8"
+"0x7fffcb83e4c8" -> "0x7fffcb8309a8"
+"0x7fffcb841e48" [label="int Start(int, )" shape=box]
+"0x7fffcb836a38" [label="int : sz"]
+"0x7fffcb841e48" -> "0x7fffcb836a38"
+"0x7fffcb836c08" [label="int : aux02"]
+"0x7fffcb841e48" -> "0x7fffcb836c08"
+"0x7fffcb836ab8" [label="int : aux01"]
+"0x7fffcb841e48" -> "0x7fffcb836ab8"
+"0x7fffcb83e4c8" -> "0x7fffcb841e48"
+"0x7fffcb8392e8" [label="boolean Search(int, )" shape=box]
+"0x7fffcb836d38" [label="int : num"]
+"0x7fffcb8392e8" -> "0x7fffcb836d38"
+"0x7fffcb8370f8" [label="int : nt"]
+"0x7fffcb8392e8" -> "0x7fffcb8370f8"
+"0x7fffcb836e78" [label="int : right"]
+"0x7fffcb8392e8" -> "0x7fffcb836e78"
+"0x7fffcb836dd8" [label="boolean : bs01"]
+"0x7fffcb8392e8" -> "0x7fffcb836dd8"
+"0x7fffcb836f78" [label="boolean : var_cont"]
+"0x7fffcb8392e8" -> "0x7fffcb836f78"
+"0x7fffcb836ff8" [label="int : medium"]
+"0x7fffcb8392e8" -> "0x7fffcb836ff8"
+"0x7fffcb836ef8" [label="int : left"]
+"0x7fffcb8392e8" -> "0x7fffcb836ef8"
+"0x7fffcb837078" [label="int : aux01"]
+"0x7fffcb8392e8" -> "0x7fffcb837078"
+"0x7fffcb83e4c8" -> "0x7fffcb8392e8"
+"0x7fffcb83aff8" [label="int : size"]
+"0x7fffcb83e4c8" -> "0x7fffcb83aff8"
+"0x7fffcb83af78" [label="int[] : number"]
+"0x7fffcb83e4c8" -> "0x7fffcb83af78"
+"0x7fffcb844628" [label=BinarySearch shape=diamond]
+"0x7fffcb842218" [label="void main(String[], )" shape=box]
+"0x7fffcb836928" [label="String[] : a"]
+"0x7fffcb842218" -> "0x7fffcb836928"
+"0x7fffcb844628" -> "0x7fffcb842218"
 }

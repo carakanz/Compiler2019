@@ -1,16 +1,14 @@
 //
-// Created by Zinenko Dmytro on 27.10.2019.
+// Created by Zinenko Dmytro on 22.12.2019.
 //
-#pragma once
 
 #include "IExpressionNode.h"
 #include <BinaryOperationType.h>
-#include <memory>
 
-namespace SyntaxTree {
+namespace IRTree {
     class ExpressionBinaryOperationNode : public IExpressionNode {
     public:
-        void accept(IVisitor& visitor) const override {
+        void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
 

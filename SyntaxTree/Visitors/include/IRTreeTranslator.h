@@ -4,7 +4,7 @@
 #include <IVisitor.h>
 #include <SymbolTree.h>
 #include <Tree.h>
-#include "IRTreeNode.h"
+#include <IRTree/INodeBase.h>
 
 namespace IRTree {
     class IRTreeTranslator: public SyntaxTree::IVisitor  {

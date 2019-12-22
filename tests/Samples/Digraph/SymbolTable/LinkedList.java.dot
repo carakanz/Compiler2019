@@ -1,146 +1,146 @@
 digraph LinkedList {
-"0x7fffbb7a42c8" [label=LL shape=diamond]
-"0x7fffbb7990b8" [label="int Start()" shape=box]
-"0x7fffbb799038" [label="Element : el03"]
-"0x7fffbb7990b8" -> "0x7fffbb799038"
-"0x7fffbb798f38" [label="Element : el01"]
-"0x7fffbb7990b8" -> "0x7fffbb798f38"
-"0x7fffbb798e78" [label="boolean : aux01"]
-"0x7fffbb7990b8" -> "0x7fffbb798e78"
-"0x7fffbb798fb8" [label="Element : el02"]
-"0x7fffbb7990b8" -> "0x7fffbb798fb8"
-"0x7fffbb798d78" [label="List : head"]
-"0x7fffbb7990b8" -> "0x7fffbb798d78"
-"0x7fffbb798df8" [label="List : last_elem"]
-"0x7fffbb7990b8" -> "0x7fffbb798df8"
-"0x7fffbb7a42c8" -> "0x7fffbb7990b8"
-"0x7fffbb79c1e8" [label=List shape=diamond]
-"0x7fffbb798a88" [label="boolean Print()" shape=box]
-"0x7fffbb798a08" [label="Element : var_elem"]
-"0x7fffbb798a88" -> "0x7fffbb798a08"
-"0x7fffbb798908" [label="List : aux01"]
-"0x7fffbb798a88" -> "0x7fffbb798908"
-"0x7fffbb798988" [label="boolean : var_end"]
-"0x7fffbb798a88" -> "0x7fffbb798988"
-"0x7fffbb79c1e8" -> "0x7fffbb798a88"
-"0x7fffbb7987d8" [label="List GetNext()" shape=box]
-"0x7fffbb79c1e8" -> "0x7fffbb7987d8"
-"0x7fffbb7986a8" [label="Element GetElem()" shape=box]
-"0x7fffbb79c1e8" -> "0x7fffbb7986a8"
-"0x7fffbb7ad198" [label="boolean InitNew(Element, List, boolean, )" shape=box]
-"0x7fffbb7ad0d8" [label="boolean : v_end"]
-"0x7fffbb7ad198" -> "0x7fffbb7ad0d8"
-"0x7fffbb7acf68" [label="Element : v_elem"]
-"0x7fffbb7ad198" -> "0x7fffbb7acf68"
-"0x7fffbb7ad058" [label="List : v_next"]
-"0x7fffbb7ad198" -> "0x7fffbb7ad058"
-"0x7fffbb79c1e8" -> "0x7fffbb7ad198"
-"0x7fffbb7acdb8" [label="boolean Init()" shape=box]
-"0x7fffbb79c1e8" -> "0x7fffbb7acdb8"
-"0x7fffbb7ad588" [label="List Insert(Element, )" shape=box]
-"0x7fffbb7ad2f8" [label="Element : new_elem"]
-"0x7fffbb7ad588" -> "0x7fffbb7ad2f8"
-"0x7fffbb7ad498" [label="List : aux02"]
-"0x7fffbb7ad588" -> "0x7fffbb7ad498"
-"0x7fffbb7ad378" [label="boolean : ret_val"]
-"0x7fffbb7ad588" -> "0x7fffbb7ad378"
-"0x7fffbb7ad418" [label="List : aux03"]
-"0x7fffbb7ad588" -> "0x7fffbb7ad418"
-"0x7fffbb79c1e8" -> "0x7fffbb7ad588"
-"0x7fffbb7ae598" [label="boolean GetEnd()" shape=box]
-"0x7fffbb79c1e8" -> "0x7fffbb7ae598"
-"0x7fffbb7ad808" [label="boolean SetNext(List, )" shape=box]
-"0x7fffbb7ad758" [label="List : v_next"]
-"0x7fffbb7ad808" -> "0x7fffbb7ad758"
-"0x7fffbb79c1e8" -> "0x7fffbb7ad808"
-"0x7fffbb7adf28" [label="List Delete(Element, )" shape=box]
-"0x7fffbb7ad998" [label="Element : e"]
-"0x7fffbb7adf28" -> "0x7fffbb7ad998"
-"0x7fffbb7ade78" [label="int : nt"]
-"0x7fffbb7adf28" -> "0x7fffbb7ade78"
-"0x7fffbb7addf8" [label="int : aux04"]
-"0x7fffbb7adf28" -> "0x7fffbb7addf8"
-"0x7fffbb7adab8" [label="boolean : ret_val"]
-"0x7fffbb7adf28" -> "0x7fffbb7adab8"
-"0x7fffbb7adbf8" [label="List : aux01"]
-"0x7fffbb7adf28" -> "0x7fffbb7adbf8"
-"0x7fffbb7ada18" [label="List : my_head"]
-"0x7fffbb7adf28" -> "0x7fffbb7ada18"
-"0x7fffbb7adb38" [label="boolean : aux05"]
-"0x7fffbb7adf28" -> "0x7fffbb7adb38"
-"0x7fffbb7add78" [label="Element : var_elem"]
-"0x7fffbb7adf28" -> "0x7fffbb7add78"
-"0x7fffbb7adc78" [label="List : prev"]
-"0x7fffbb7adf28" -> "0x7fffbb7adc78"
-"0x7fffbb7adcf8" [label="boolean : var_end"]
-"0x7fffbb7adf28" -> "0x7fffbb7adcf8"
-"0x7fffbb79c1e8" -> "0x7fffbb7adf28"
-"0x7fffbb7ae408" [label="int Search(Element, )" shape=box]
-"0x7fffbb7ae0b8" [label="Element : e"]
-"0x7fffbb7ae408" -> "0x7fffbb7ae0b8"
-"0x7fffbb7ae358" [label="int : nt"]
-"0x7fffbb7ae408" -> "0x7fffbb7ae358"
-"0x7fffbb7ae2d8" [label="boolean : var_end"]
-"0x7fffbb7ae408" -> "0x7fffbb7ae2d8"
-"0x7fffbb7ae138" [label="int : int_ret_val"]
-"0x7fffbb7ae408" -> "0x7fffbb7ae138"
-"0x7fffbb7ae258" [label="Element : var_elem"]
-"0x7fffbb7ae408" -> "0x7fffbb7ae258"
-"0x7fffbb7ae1d8" [label="List : aux01"]
-"0x7fffbb7ae408" -> "0x7fffbb7ae1d8"
-"0x7fffbb79c1e8" -> "0x7fffbb7ae408"
-"0x7fffbb798bb8" [label="Element : elem"]
-"0x7fffbb79c1e8" -> "0x7fffbb798bb8"
-"0x7fffbb798cb8" [label="boolean : end"]
-"0x7fffbb79c1e8" -> "0x7fffbb798cb8"
-"0x7fffbb798c38" [label="List : next"]
-"0x7fffbb79c1e8" -> "0x7fffbb798c38"
-"0x7fffbb79bcb8" [label=LinkedList shape=diamond]
-"0x7fffbb7a6e78" [label="void main(String[], )" shape=box]
-"0x7fffbb79cf48" [label="String[] : a"]
-"0x7fffbb7a6e78" -> "0x7fffbb79cf48"
-"0x7fffbb79bcb8" -> "0x7fffbb7a6e78"
-"0x7fffbb79db48" [label=Element shape=diamond]
-"0x7fffbb7b0698" [label="boolean Compare(int, int, )" shape=box]
-"0x7fffbb79d7b8" [label="int : num2"]
-"0x7fffbb7b0698" -> "0x7fffbb79d7b8"
-"0x7fffbb79d6e8" [label="int : num1"]
-"0x7fffbb7b0698" -> "0x7fffbb79d6e8"
-"0x7fffbb79d8d8" [label="int : aux02"]
-"0x7fffbb7b0698" -> "0x7fffbb79d8d8"
-"0x7fffbb79d838" [label="boolean : retval"]
-"0x7fffbb7b0698" -> "0x7fffbb79d838"
-"0x7fffbb79db48" -> "0x7fffbb7b0698"
-"0x7fffbb79fe28" [label="boolean Init(int, int, boolean, )" shape=box]
-"0x7fffbb79d0b8" [label="int : v_Age"]
-"0x7fffbb79fe28" -> "0x7fffbb79d0b8"
-"0x7fffbb79d228" [label="boolean : v_Married"]
-"0x7fffbb79fe28" -> "0x7fffbb79d228"
-"0x7fffbb79d1a8" [label="int : v_Salary"]
-"0x7fffbb79fe28" -> "0x7fffbb79d1a8"
-"0x7fffbb79db48" -> "0x7fffbb79fe28"
-"0x7fffbb7b0168" [label="boolean Equal(Element, )" shape=box]
-"0x7fffbb79d378" [label="Element : other"]
-"0x7fffbb7b0168" -> "0x7fffbb79d378"
-"0x7fffbb79d5d8" [label="int : nt"]
-"0x7fffbb7b0168" -> "0x7fffbb79d5d8"
-"0x7fffbb79d518" [label="int : aux02"]
-"0x7fffbb7b0168" -> "0x7fffbb79d518"
-"0x7fffbb79d3f8" [label="boolean : ret_val"]
-"0x7fffbb7b0168" -> "0x7fffbb79d3f8"
-"0x7fffbb79d498" [label="int : aux01"]
-"0x7fffbb7b0168" -> "0x7fffbb79d498"
-"0x7fffbb79db48" -> "0x7fffbb7b0168"
-"0x7fffbb7afba8" [label="boolean GetMarried()" shape=box]
-"0x7fffbb79db48" -> "0x7fffbb7afba8"
-"0x7fffbb7a7278" [label="int GetSalary()" shape=box]
-"0x7fffbb79db48" -> "0x7fffbb7a7278"
-"0x7fffbb79fa58" [label="int GetAge()" shape=box]
-"0x7fffbb79db48" -> "0x7fffbb79fa58"
-"0x7fffbb79da78" [label="boolean : Married"]
-"0x7fffbb79db48" -> "0x7fffbb79da78"
-"0x7fffbb79d958" [label="int : Age"]
-"0x7fffbb79db48" -> "0x7fffbb79d958"
-"0x7fffbb79d9f8" [label="int : Salary"]
-"0x7fffbb79db48" -> "0x7fffbb79d9f8"
+"0x7fffcb83b818" [label=LL shape=diamond]
+"0x7fffcb83d128" [label="int Start()" shape=box]
+"0x7fffcb83d0a8" [label="Element : el03"]
+"0x7fffcb83d128" -> "0x7fffcb83d0a8"
+"0x7fffcb83cfa8" [label="Element : el01"]
+"0x7fffcb83d128" -> "0x7fffcb83cfa8"
+"0x7fffcb83cee8" [label="boolean : aux01"]
+"0x7fffcb83d128" -> "0x7fffcb83cee8"
+"0x7fffcb83d028" [label="Element : el02"]
+"0x7fffcb83d128" -> "0x7fffcb83d028"
+"0x7fffcb83cde8" [label="List : head"]
+"0x7fffcb83d128" -> "0x7fffcb83cde8"
+"0x7fffcb83ce68" [label="List : last_elem"]
+"0x7fffcb83d128" -> "0x7fffcb83ce68"
+"0x7fffcb83b818" -> "0x7fffcb83d128"
+"0x7fffcb832788" [label=List shape=diamond]
+"0x7fffcb83cab8" [label="boolean Print()" shape=box]
+"0x7fffcb83ca38" [label="Element : var_elem"]
+"0x7fffcb83cab8" -> "0x7fffcb83ca38"
+"0x7fffcb83c938" [label="List : aux01"]
+"0x7fffcb83cab8" -> "0x7fffcb83c938"
+"0x7fffcb83c9b8" [label="boolean : var_end"]
+"0x7fffcb83cab8" -> "0x7fffcb83c9b8"
+"0x7fffcb832788" -> "0x7fffcb83cab8"
+"0x7fffcb83c808" [label="List GetNext()" shape=box]
+"0x7fffcb832788" -> "0x7fffcb83c808"
+"0x7fffcb83c6d8" [label="Element GetElem()" shape=box]
+"0x7fffcb832788" -> "0x7fffcb83c6d8"
+"0x7fffcb83a188" [label="boolean InitNew(Element, List, boolean, )" shape=box]
+"0x7fffcb83a0c8" [label="boolean : v_end"]
+"0x7fffcb83a188" -> "0x7fffcb83a0c8"
+"0x7fffcb839f78" [label="Element : v_elem"]
+"0x7fffcb83a188" -> "0x7fffcb839f78"
+"0x7fffcb83a048" [label="List : v_next"]
+"0x7fffcb83a188" -> "0x7fffcb83a048"
+"0x7fffcb832788" -> "0x7fffcb83a188"
+"0x7fffcb839dc8" [label="boolean Init()" shape=box]
+"0x7fffcb832788" -> "0x7fffcb839dc8"
+"0x7fffcb83a578" [label="List Insert(Element, )" shape=box]
+"0x7fffcb83a2e8" [label="Element : new_elem"]
+"0x7fffcb83a578" -> "0x7fffcb83a2e8"
+"0x7fffcb83a488" [label="List : aux02"]
+"0x7fffcb83a578" -> "0x7fffcb83a488"
+"0x7fffcb83a368" [label="boolean : ret_val"]
+"0x7fffcb83a578" -> "0x7fffcb83a368"
+"0x7fffcb83a408" [label="List : aux03"]
+"0x7fffcb83a578" -> "0x7fffcb83a408"
+"0x7fffcb832788" -> "0x7fffcb83a578"
+"0x7fffcb83b588" [label="boolean GetEnd()" shape=box]
+"0x7fffcb832788" -> "0x7fffcb83b588"
+"0x7fffcb83a7f8" [label="boolean SetNext(List, )" shape=box]
+"0x7fffcb83a748" [label="List : v_next"]
+"0x7fffcb83a7f8" -> "0x7fffcb83a748"
+"0x7fffcb832788" -> "0x7fffcb83a7f8"
+"0x7fffcb83af18" [label="List Delete(Element, )" shape=box]
+"0x7fffcb83a988" [label="Element : e"]
+"0x7fffcb83af18" -> "0x7fffcb83a988"
+"0x7fffcb83ae68" [label="int : nt"]
+"0x7fffcb83af18" -> "0x7fffcb83ae68"
+"0x7fffcb83ade8" [label="int : aux04"]
+"0x7fffcb83af18" -> "0x7fffcb83ade8"
+"0x7fffcb83aaa8" [label="boolean : ret_val"]
+"0x7fffcb83af18" -> "0x7fffcb83aaa8"
+"0x7fffcb83abe8" [label="List : aux01"]
+"0x7fffcb83af18" -> "0x7fffcb83abe8"
+"0x7fffcb83aa08" [label="List : my_head"]
+"0x7fffcb83af18" -> "0x7fffcb83aa08"
+"0x7fffcb83ab28" [label="boolean : aux05"]
+"0x7fffcb83af18" -> "0x7fffcb83ab28"
+"0x7fffcb83ad68" [label="Element : var_elem"]
+"0x7fffcb83af18" -> "0x7fffcb83ad68"
+"0x7fffcb83ac68" [label="List : prev"]
+"0x7fffcb83af18" -> "0x7fffcb83ac68"
+"0x7fffcb83ace8" [label="boolean : var_end"]
+"0x7fffcb83af18" -> "0x7fffcb83ace8"
+"0x7fffcb832788" -> "0x7fffcb83af18"
+"0x7fffcb83b3f8" [label="int Search(Element, )" shape=box]
+"0x7fffcb83b0a8" [label="Element : e"]
+"0x7fffcb83b3f8" -> "0x7fffcb83b0a8"
+"0x7fffcb83b348" [label="int : nt"]
+"0x7fffcb83b3f8" -> "0x7fffcb83b348"
+"0x7fffcb83b2c8" [label="boolean : var_end"]
+"0x7fffcb83b3f8" -> "0x7fffcb83b2c8"
+"0x7fffcb83b128" [label="int : int_ret_val"]
+"0x7fffcb83b3f8" -> "0x7fffcb83b128"
+"0x7fffcb83b248" [label="Element : var_elem"]
+"0x7fffcb83b3f8" -> "0x7fffcb83b248"
+"0x7fffcb83b1c8" [label="List : aux01"]
+"0x7fffcb83b3f8" -> "0x7fffcb83b1c8"
+"0x7fffcb832788" -> "0x7fffcb83b3f8"
+"0x7fffcb83cbe8" [label="Element : elem"]
+"0x7fffcb832788" -> "0x7fffcb83cbe8"
+"0x7fffcb83cce8" [label="boolean : end"]
+"0x7fffcb832788" -> "0x7fffcb83cce8"
+"0x7fffcb83cc68" [label="List : next"]
+"0x7fffcb832788" -> "0x7fffcb83cc68"
+"0x7fffcb83e4c8" [label=LinkedList shape=diamond]
+"0x7fffcb831498" [label="void main(String[], )" shape=box]
+"0x7fffcb83f4b8" [label="String[] : a"]
+"0x7fffcb831498" -> "0x7fffcb83f4b8"
+"0x7fffcb83e4c8" -> "0x7fffcb831498"
+"0x7fffcb844628" [label=Element shape=diamond]
+"0x7fffcb844ed8" [label="boolean Compare(int, int, )" shape=box]
+"0x7fffcb83fd28" [label="int : num2"]
+"0x7fffcb844ed8" -> "0x7fffcb83fd28"
+"0x7fffcb83fc58" [label="int : num1"]
+"0x7fffcb844ed8" -> "0x7fffcb83fc58"
+"0x7fffcb83fe48" [label="int : aux02"]
+"0x7fffcb844ed8" -> "0x7fffcb83fe48"
+"0x7fffcb83fda8" [label="boolean : retval"]
+"0x7fffcb844ed8" -> "0x7fffcb83fda8"
+"0x7fffcb844628" -> "0x7fffcb844ed8"
+"0x7fffcb840ad8" [label="boolean Init(int, int, boolean, )" shape=box]
+"0x7fffcb83f628" [label="int : v_Age"]
+"0x7fffcb840ad8" -> "0x7fffcb83f628"
+"0x7fffcb83f798" [label="boolean : v_Married"]
+"0x7fffcb840ad8" -> "0x7fffcb83f798"
+"0x7fffcb83f718" [label="int : v_Salary"]
+"0x7fffcb840ad8" -> "0x7fffcb83f718"
+"0x7fffcb844628" -> "0x7fffcb840ad8"
+"0x7fffcb8449a8" [label="boolean Equal(Element, )" shape=box]
+"0x7fffcb83f8e8" [label="Element : other"]
+"0x7fffcb8449a8" -> "0x7fffcb83f8e8"
+"0x7fffcb83fb48" [label="int : nt"]
+"0x7fffcb8449a8" -> "0x7fffcb83fb48"
+"0x7fffcb83fa88" [label="int : aux02"]
+"0x7fffcb8449a8" -> "0x7fffcb83fa88"
+"0x7fffcb83f968" [label="boolean : ret_val"]
+"0x7fffcb8449a8" -> "0x7fffcb83f968"
+"0x7fffcb83fa08" [label="int : aux01"]
+"0x7fffcb8449a8" -> "0x7fffcb83fa08"
+"0x7fffcb844628" -> "0x7fffcb8449a8"
+"0x7fffcb8354c8" [label="boolean GetMarried()" shape=box]
+"0x7fffcb844628" -> "0x7fffcb8354c8"
+"0x7fffcb831898" [label="int GetSalary()" shape=box]
+"0x7fffcb844628" -> "0x7fffcb831898"
+"0x7fffcb840708" [label="int GetAge()" shape=box]
+"0x7fffcb844628" -> "0x7fffcb840708"
+"0x7fffcb839d08" [label="boolean : Married"]
+"0x7fffcb844628" -> "0x7fffcb839d08"
+"0x7fffcb83fec8" [label="int : Age"]
+"0x7fffcb844628" -> "0x7fffcb83fec8"
+"0x7fffcb83ff68" [label="int : Salary"]
+"0x7fffcb844628" -> "0x7fffcb83ff68"
 }
