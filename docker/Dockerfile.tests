@@ -1,0 +1,11 @@
+ARG BUILD_NUMBER
+ARG IMAGE_BASE
+
+
+FROM ${IMAGE_BASE}compilers-base${BUILD_NUMBER}
+
+
+RUN mkdir /workspace/bin && cd /workspace/bin && cmake .. && make
+
+
+CMD cd /workspace/bin/tests && ./RunAllUnitTests
