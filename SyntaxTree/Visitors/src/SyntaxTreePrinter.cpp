@@ -46,7 +46,8 @@ namespace Visitor {
 
 
     void SyntaxTreePrinter::visit(const SyntaxTree::ExpressionBinaryOperationNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"ExpressionBinaryOperation\noperation_type: " << node.operation_type
+        out_ << "\"" << &node << "\"" << " [label=\"ExpressionBinaryOperation\noperation_type: "
+             << static_cast<int>(node.operation_type)
              << "\" shape=circle]\n";
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.left.get() << "\"" << "\n";
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.right.get() << "\"" << "\n";
@@ -154,7 +155,7 @@ namespace Visitor {
 
     void SyntaxTreePrinter::visit(const SyntaxTree::StatementAssignArrayNode &node) {
         out_ << "\"" << &node << "\"" << " [label=\"StatementAssignArray\"]\n";
-        out_ << "\"" << &node << "\"" << " -> " << "\"" << node.identifier.get()  << "\"" << "\n";
+        out_ << "\"" << &node << "\"" << " -> " << "\"" << node.identifier.get() << "\"" << "\n";
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.index.get() << "\"" << "\n";
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.expression.get() << "\"" << "\n";
     }
@@ -167,7 +168,8 @@ namespace Visitor {
     void SyntaxTreePrinter::visit(const SyntaxTree::DeclarationMethodNode &node) {
         node.return_type->accept(*this);
         node.identifier->accept(*this);
-        out_ << "\"" << &node << "\"" << " [label=\"DeclarationMethod\nPrivacyModifier: " << node.privacy_modifier
+        out_ << "\"" << &node << "\"" << " [label=\"DeclarationMethod\nPrivacyModifier: "
+             << static_cast<int>(node.privacy_modifier)
              << "\nis_static: "
              << node.is_static << "\" shape=diamond]\n";
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.return_type.get() << "\"" << "\n";

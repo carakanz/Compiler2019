@@ -9,10 +9,11 @@ get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 option(MYLIB_TESTING "Включить модульное тестирование" ON)
 option(MYLIB_COVERAGE "Включить измерение покрытия кода тестами" OFF)
 
+add_subdirectory(library)
 add_subdirectory(tests)
 
 add_compile_options(
-      # -Werror
+        -Werror
 
         -Wall
         -Wextra
@@ -39,10 +40,8 @@ if(NOT CMAKE_CXX_EXTENSIONS)
     set(CMAKE_CXX_EXTENSIONS OFF)
 endif()
 
-add_subdirectory(library)
 add_subdirectory(BisonBuilder)
 add_subdirectory(SyntaxTree)
-add_subdirectory(Visitors)
 add_subdirectory(SymbolTable)
 
 message("Include gtest: " ${gtest_SOURCE_DIR})

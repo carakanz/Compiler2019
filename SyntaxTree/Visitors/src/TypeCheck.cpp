@@ -208,15 +208,15 @@ namespace Visitor {
         }
     }
 
-    void TypeCheck::visit(const SyntaxTree::ExpressionIntegerLiteralNode &node) {
+    void TypeCheck::visit(const SyntaxTree::ExpressionIntegerLiteralNode &/*node*/) {
         last_return_type_ = "int";
     }
 
-    void TypeCheck::visit(const SyntaxTree::ExpressionBooleanLiteralNode &node) {
+    void TypeCheck::visit(const SyntaxTree::ExpressionBooleanLiteralNode &/*node*/) {
         last_return_type_ = "boolean";
     }
 
-    void TypeCheck::visit(const SyntaxTree::ExpressionThisNode &node) {
+    void TypeCheck::visit(const SyntaxTree::ExpressionThisNode &/*node*/) {
         last_return_type_ = current_class_->identifier->name;
     }
 
