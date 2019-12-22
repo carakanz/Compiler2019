@@ -35,8 +35,8 @@ TEST(SyntaxTree, Digraph) {
         SyntaxTree::Tree tree(std::move(builder.root));
         std::ofstream digraph(ResultPrefix + path + ".dot");
         ASSERT_TRUE(digraph.is_open());
-        Visitor::SyntaxTreePrinter printer(digraph);
-        Visitor::SyntaxTreeDFSVisitor<Visitor::SyntaxTreePrinter> DFS_visitor(printer);
+        SyntaxTreeVisitor::SyntaxTreePrinter printer(digraph);
+        SyntaxTreeVisitor::SyntaxTreeDFSVisitor<SyntaxTreeVisitor::SyntaxTreePrinter> DFS_visitor(printer);
         ASSERT_NO_THROW(printer.print_start(path));
         ASSERT_NO_THROW(tree.accept(DFS_visitor));
         ASSERT_NO_THROW(printer.print_end());

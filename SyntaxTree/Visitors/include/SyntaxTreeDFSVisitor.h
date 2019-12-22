@@ -7,7 +7,7 @@
 #include <IVisitor.h>
 #include "Nodes.h"
 
-namespace Visitor {
+namespace SyntaxTreeVisitor {
     template<class WorkerVisitor>
     class SyntaxTreeDFSVisitor : public SyntaxTree::IVisitor {
     public:

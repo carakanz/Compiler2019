@@ -6,7 +6,7 @@
 #include <SymbolTableBuilder.h>
 
 
-namespace Visitor {
+namespace SyntaxTreeVisitor {
 
     void TypeCheck::visit(const SyntaxTree::TypeIntNode &node) {
         last_return_type_ = node.get_name();
