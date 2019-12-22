@@ -211,7 +211,7 @@ class Tree{
 	return true ;
     }
     
-    public int accept(Visitor v){
+    public int accept(SyntaxTreeVisitor v){
 	int nti ;
 
 	System.out.println(333);
@@ -223,7 +223,7 @@ class Tree{
 
   
 
-class Visitor {
+class SyntaxTreeVisitor {
     Tree l ;
     Tree r ;
 
@@ -246,7 +246,7 @@ class Visitor {
 }
 
 
-class MyVisitor extends Visitor {
+class MyVisitor extends SyntaxTreeVisitor {
 
     public int visit(Tree n){
 	int nti ;

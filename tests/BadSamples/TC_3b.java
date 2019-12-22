@@ -19,7 +19,7 @@ class TV {
 
 
 
-class Visitor {
+class SyntaxTreeVisitor {
 
 	public TV2 visit(){	// HERE
 		return 0;

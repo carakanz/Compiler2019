@@ -707,12 +707,12 @@ class UniversalPrinter<::absl::variant<T...>> {
  public:
   static void Print(const ::absl::variant<T...>& value, ::std::ostream* os) {
     *os << '(';
-    absl::visit(Visitor{os}, value);
+    absl::visit(SyntaxTreeVisitor{os}, value);
     *os << ')';
   }
 
  private:
-  struct Visitor {
+  struct SyntaxTreeVisitor {
     template <typename U>
     void operator()(const U& u) const {
       *os << "'" << GetTypeName<U>() << "' with value ";

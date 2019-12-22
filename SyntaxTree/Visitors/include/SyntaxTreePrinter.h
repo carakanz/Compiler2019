@@ -6,7 +6,7 @@
 #include <IVisitor.h>
 #include <fstream>
 
-namespace Visitor {
+namespace SyntaxTreeVisitor {
     class SyntaxTreePrinter : public SyntaxTree::IVisitor {
     public:
         explicit SyntaxTreePrinter(std::ofstream &out) : out_(out) {

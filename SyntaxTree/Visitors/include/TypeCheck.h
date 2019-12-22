@@ -5,7 +5,7 @@
 #include <SymbolTree.h>
 #include <Nodes.h>
 
-namespace Visitor {
+namespace SyntaxTreeVisitor {
 
     class TypeCheck : public SyntaxTree::IVisitor  {
     public:

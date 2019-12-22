@@ -5,7 +5,7 @@
 #include <Nodes.h>
 #include "SyntaxTreePrinter.h"
 
-namespace Visitor {
+namespace SyntaxTreeVisitor {
     void SyntaxTreePrinter::visit(const SyntaxTree::TypeIntNode &node) {
         out_ << "\"" << &node << "\"" << " [label=\"TypeInt\" shape=box]\n";
     }

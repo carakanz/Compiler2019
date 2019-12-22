@@ -18,9 +18,9 @@ class TV {
 }
 
 
-class Visitor extends MyVisitor {
+class SyntaxTreeVisitor extends MyVisitor {
 }
 
 
-class MyVisitor extends Visitor {
+class MyVisitor extends SyntaxTreeVisitor {
 }

@@ -83,7 +83,7 @@ TEST(SymbolTable, TypeCheckGood) {
         SyntaxTree::Tree tree(std::move(builder.root));
         SymbolTree::SymbolTree symbol_tree;
         ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
-        Visitor::TypeCheck type_checker(symbol_tree);
+        SyntaxTreeVisitor::TypeCheck type_checker(symbol_tree);
         ASSERT_NO_THROW(tree.accept(type_checker));
     }
 }
@@ -104,7 +104,7 @@ TEST(SymbolTable, TypeCheckBad) {
                              SyntaxTree::Tree tree(std::move(builder.root));
                              SymbolTree::SymbolTree symbol_tree;
                              symbol_tree = SymbolTree::SymbolTableBuilder::build(tree);
-                             Visitor::TypeCheck type_checker(symbol_tree);
+                             SyntaxTreeVisitor::TypeCheck type_checker(symbol_tree);
                              tree.accept(type_checker);
                          });
     }

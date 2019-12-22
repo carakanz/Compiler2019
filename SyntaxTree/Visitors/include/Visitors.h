@@ -7,5 +7,5 @@
 #include <SyntaxTreePrinter.h>
 #include <fstream>
 
-namespace Visitor {
+namespace SyntaxTreeVisitor {
 }
