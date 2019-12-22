@@ -24,8 +24,11 @@ const std::array<std::string, 9> Paths = {
 //        "Test"
 };
 
+
 const std::string PathPrefix("../../tests/Samples/");
-const std::string ResultPrefix("../../tests/Samples/Digraph/SyntaxTree/");
+const std::string ResultPrefix("../../tests/Samples/Digraph/SymbolTable/");
+//const std::string PathPrefix("Samples/");
+//const std::string ResultPrefix("Samples/Digraph/SyntaxTree/");
 
 TEST(IRTree, Test) {
     BisonBuilder::Builder builder;
@@ -39,6 +42,7 @@ TEST(IRTree, Test) {
         SyntaxTree::Tree tree(std::move(builder.root));
         SymbolTree::SymbolTree symbol_tree;
         ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
-        //IRTree::IRTreeTranslator();
+
+        IRTree::IRTreeTranslator(tree, symbol_tree);
     }
 }
