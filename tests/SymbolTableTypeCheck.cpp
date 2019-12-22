@@ -22,19 +22,19 @@ const std::array<std::string, 8> goodPaths = {
         "TreeVisitor.java",
 };
 
-const std::array<std::string, 14> badPaths = {
-//        "LC_1.java",
+const std::array<std::string, 19> badPaths = {
+        "LC_1.java",
         "TC_11a.java",
         "TC_13a.java",
         "TC_13c.java",
-//        "TC_1a.java",
+        "TC_1a.java",
         "TC_2a.java",
         "TC_3a(2).java",
         "TC_3b.java",
         "TC_4b.java",
         "TC_6a.java",
 //        "TC_7c.java",
-//        "TC_9a.java",
+        "TC_9a.java",
         "TC_bonus1.java",
 //        "TC_1.java",
 //        "TC_12b.java",
@@ -43,11 +43,11 @@ const std::array<std::string, 14> badPaths = {
         "TC_2.java",
         "TC_3a(1).java",
         "TC_3a.java",
-//        "TC_4a.java",
+        "TC_4a.java",
 //        "TC_5a.java",
 //        "TC_7b.java",
 //        "TC_8a.java",
-//        "TC_9a_2.java"
+        "TC_9a_2.java"
 
 };
 
@@ -95,13 +95,17 @@ TEST(SymbolTable, TypeCheckBad) {
         std::ifstream sample(badPathPrefix + path);
         ASSERT_TRUE(sample.is_open());
         auto analyzer = builder.parse(sample);
-        ASSERT_EQ(analyzer, 0);
-        std::cout << "Ok: " << badPathPrefix + path << "   result: " << analyzer << std::endl;
-        sample.close();
-        SyntaxTree::Tree tree(std::move(builder.root));
-        SymbolTree::SymbolTree symbol_tree;
-        ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
-        Visitor::TypeCheck type_checker(symbol_tree);
-        ASSERT_ANY_THROW(tree.accept(type_checker));
+        ASSERT_ANY_THROW({
+                             if (analyzer != 0) {
+                                 throw std::runtime_error("flex bison error");
+                             }
+                             std::cout << "Ok: " << badPathPrefix + path << "   result: " << analyzer << std::endl;
+                             sample.close();
+                             SyntaxTree::Tree tree(std::move(builder.root));
+                             SymbolTree::SymbolTree symbol_tree;
+                             symbol_tree = SymbolTree::SymbolTableBuilder::build(tree);
+                             Visitor::TypeCheck type_checker(symbol_tree);
+                             tree.accept(type_checker);
+                         });
     }
 }
