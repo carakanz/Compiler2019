@@ -4,11 +4,18 @@
 
 #include "IRTreeNode.h"
 
+
+
 namespace IRTree {
-    class IRTreeVisitor { //Useless ?????
+
+    class IRTreeGoal;
+    class IRTreeStatement;
+
+
+    class IRTreeVisitor {
     public:
-//        void VisitNode(const IRTreeGoal* goal) {
-//
-//        }
+        virtual ~IRTreeVisitor() = default;
+        virtual void VisitNode(const IRTreeGoal* goal) = 0;
+        virtual void VisitNode(const IRTreeStatement* goal) = 0;
     };
 }
