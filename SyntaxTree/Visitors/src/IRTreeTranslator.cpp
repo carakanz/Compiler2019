@@ -113,7 +113,7 @@ void IRTree::IRTreeTranslator::visit(const SyntaxTree::ExpressionNewNode &node) 
     std::vector<std::shared_ptr<const IRTreeExpression>> arguments;
 
 //    arguments.push_back(
-//            makeNode<IrtConstExpression>(classInfo->GetFieldsCount())
+//            makeNode<ExpressionConstNode>(classInfo->GetFieldsCount())
 //    );
 //    currentWrapper = makeWrapper<ExpressionWrapper>(
 //            makeNode<IrtCallExpression>(

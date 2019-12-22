@@ -3,7 +3,6 @@
 //
 #pragma once
 
-
 #include <BinaryOperationType.h>
 #include <CJumpCondition.h>
 
