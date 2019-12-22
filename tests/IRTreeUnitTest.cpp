@@ -10,7 +10,7 @@
 #include <iostream>
 #include <array>
 #include <algorithm>
-#include <IRTreeTranslator.h>
+#include "../SyntaxTree/Visitors/include/IRTreeTranslator.h"
 
 const std::array<std::string, 9> Paths = {
 //        "BinarySearch.java",

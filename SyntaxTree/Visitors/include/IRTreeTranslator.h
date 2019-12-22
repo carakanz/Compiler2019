@@ -54,20 +54,20 @@ namespace IRTree {
             }
         }
 
-        void findMain() {  //need rewrite
-            bool mainFound = false;
-            for (const auto& class_info : symbol_tree_.classes_info) {
-                for (const auto& method : class_info.second.method_info)
-                    if (method.first == "void main(String[], )") {
-                        if (mainFound)
-                            throw std::runtime_error("two main methods found");
-                        mainFound = true;
-                        mainClass = &class_info.second;
-                    }
-            }
-            if (!mainFound)
-                throw std::runtime_error("no main method found");
-        }
+//        void findMain() {  //need rewrite
+//            bool mainFound = false;
+//            for (const auto& class_info : symbol_tree_.classes_info) {
+//                for (const auto& method : class_info.second.method_info)
+//                    if (method.first == "void main(String[], )") {
+//                        if (mainFound)
+//                            throw std::runtime_error("two main methods found");
+//                        mainFound = true;
+//                        mainClass = &class_info.second;
+//                    }
+//            }
+//            if (!mainFound)
+//                throw std::runtime_error("no main method found");
+//        }
 
     protected:
         SymbolTree::SymbolTree symbol_tree_;

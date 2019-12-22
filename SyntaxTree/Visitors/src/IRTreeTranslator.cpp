@@ -2,12 +2,11 @@
 // Created by l1onsun on 15.12.19.
 //
 
-#include "IRTreeTranslator.h"
+#include "../include/IRTreeTranslator.h"
 
 
 IRTree::IRTreeTranslator::IRTreeTranslator(SyntaxTree::Tree &tree,
                                            SymbolTree::SymbolTree symbol_tree) : symbol_tree_(std::move(symbol_tree)) {
-    findMain();
     tree.accept(*this);
 }
 
@@ -151,7 +150,7 @@ void IRTree::IRTreeTranslator::visit( // GoalNode
     //yea it's govnokod
     //handle main class first
     for (const auto& item : node.items) {
-        if (item->identifier->name == mainClass->name) {
+        if (item->identifier->name == "void main(String[], )") {
             current_class = getClassFromName(item->identifier->name);
             item->accept(*this);
         }
@@ -159,7 +158,7 @@ void IRTree::IRTreeTranslator::visit( // GoalNode
 
     //then handle others
     for (const auto& item : node.items) {
-        if (item->identifier->name == mainClass->name) {
+        if (item->identifier->name == "void main(String[], )") {
             current_class = getClassFromName(item->identifier->name);
             item->accept(*this);
         }
