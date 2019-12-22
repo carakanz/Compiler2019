@@ -16,56 +16,56 @@ namespace IRTree {
     public:
         virtual ~ISubtreeWrapper() {};
 
-        virtual const std::unique_ptr<const SyntaxTree::IExpressionNode>& ToExpression() const { assert(false); };
-        virtual const std::unique_ptr<const SyntaxTree::IStatementNode>& ToStatement() const { assert(false); };
-        virtual const std::unique_ptr<const SyntaxTree::IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+        virtual const std::unique_ptr<const IExpressionNode>& ToExpression() const { assert(false); };
+        virtual const std::unique_ptr<const IStatementNode>& ToStatement() const { assert(false); };
+        virtual const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
                                                                    const std::unique_ptr<const LabelNode>& negativeLabel) const { assert(false); };
     };
 
     class ExpressionWrapper : public ISubtreeWrapper {
     public:
-        explicit ExpressionWrapper(const std::unique_ptr<const SyntaxTree::IExpressionNode>& _expression): expression(_expression) {}
+        explicit ExpressionWrapper(const std::unique_ptr<const IExpressionNode>& _expression): expression(_expression) {}
 
-        const std::unique_ptr<const SyntaxTree::IExpressionNode>& ToExpression() const override { return expression; }
-        const std::unique_ptr<const StatementExpressionNode> ToStatement() const override;
-        const std::unique_ptr<const SyntaxTree::IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+        const std::unique_ptr<const IExpressionNode>& ToExpression() const override { return expression; }
+        const std::unique_ptr<const IStatementNode>& ToStatement() const override;
+        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
                                                            const std::unique_ptr<const LabelNode>& negativeLabel) const override;
 
     private:
-        const std::unique_ptr<const SyntaxTree::IExpressionNode>& expression;
+        const std::unique_ptr<const IExpressionNode>& expression;
     };
 
     class StatementWrapper : public ISubtreeWrapper {
     public:
-        explicit StatementWrapper(const std::unique_ptr<const SyntaxTree::IStatementNode>& _statement): statement(_statement) {}
+        explicit StatementWrapper(const std::unique_ptr<const IStatementNode>& _statement): statement(_statement) {}
 
-        const std::unique_ptr<const SyntaxTree::IStatementNode>& ToStatement() const override { return statement; }
+        const std::unique_ptr<const IStatementNode>& ToStatement() const override { return statement; }
 
     private:
-        const std::unique_ptr<const SyntaxTree::IStatementNode>& statement;
+        const std::unique_ptr<const IStatementNode>& statement;
     };
 
     class ConditionalWrapper : public ISubtreeWrapper {
     public:
         virtual ~ConditionalWrapper() {};
 
-        const std::unique_ptr<const SyntaxTree::IExpressionNode>& ToExpression() const override;
-        virtual const std::unique_ptr<const SyntaxTree::IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+        const std::unique_ptr<const IExpressionNode>& ToExpression() const override;
+        virtual const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
                                                                    const std::unique_ptr<const LabelNode>& negativeLabel) const override = 0;
     };
 
     // пока поддерживаем только "меньше <"
     class RelativeConditionalWrapper : public ConditionalWrapper {
     public:
-        RelativeConditionalWrapper(const std::unique_ptr<const SyntaxTree::IExpressionNode>& _leftOperand,
-                                   const std::unique_ptr<const SyntaxTree::IExpressionNode>& _rightOperand);
+        RelativeConditionalWrapper(const std::unique_ptr<const IExpressionNode>& _leftOperand,
+                                   const std::unique_ptr<const IExpressionNode>& _rightOperand);
 
-        const std::unique_ptr<const SyntaxTree::IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
                                                            const std::unique_ptr<const LabelNode>& negativeLabel) const override;
 
     private:
-        const std::unique_ptr<const SyntaxTree::IExpressionNode>& leftOperand;
-        const std::unique_ptr<const SyntaxTree::IExpressionNode>& rightOperand;
+        const std::unique_ptr<const IExpressionNode>& leftOperand;
+        const std::unique_ptr<const IExpressionNode>& rightOperand;
     };
 
     class AndConditionalWrapper : public ConditionalWrapper {
@@ -73,7 +73,7 @@ namespace IRTree {
         AndConditionalWrapper(std::unique_ptr<const ISubtreeWrapper>&& _leftOperand,
                               std::unique_ptr<const ISubtreeWrapper>&& _rightOperand);
 
-        const std::unique_ptr<const SyntaxTree::IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
                                                            const std::unique_ptr<const LabelNode>& negativeLabel) const override;
 
     private:
@@ -86,7 +86,7 @@ namespace IRTree {
         OrConditionalWrapper(std::unique_ptr<const ISubtreeWrapper>&& _leftOperand,
                              std::unique_ptr<const ISubtreeWrapper>&& _rightOperand);
 
-        const std::unique_ptr<const SyntaxTree::IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
                                                            const std::unique_ptr<const LabelNode>& negativeLabel) const override;
 
     private:
@@ -98,7 +98,7 @@ namespace IRTree {
     public:
         explicit OppositeConditionalWrapper(std::unique_ptr<const ISubtreeWrapper>&& _wrapper) : internalWrapper(std::move(_wrapper)) {}
 
-        const std::unique_ptr<const SyntaxTree::IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
                                                            const std::unique_ptr<const LabelNode>& negativeLabel) const override;
 
     private:

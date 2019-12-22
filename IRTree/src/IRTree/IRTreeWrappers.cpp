@@ -3,11 +3,11 @@
 //
 #pragma once
 
-#include "IRTreeWrappers.h"
+#include "IRTree/IRTreeWrappers.h"
 
 IRTree::RelativeConditionalWrapper::RelativeConditionalWrapper(
-        const std::unique_ptr<const SyntaxTree::IExpressionNode> &_leftOperand,
-        const std::unique_ptr<const SyntaxTree::IExpressionNode> &_rightOperand)
+        const std::unique_ptr<const IExpressionNode> &_leftOperand,
+        const std::unique_ptr<const IExpressionNode> &_rightOperand)
         :   leftOperand(_leftOperand),
         rightOperand(_rightOperand)
         {}
@@ -26,6 +26,6 @@ IRTree::OrConditionalWrapper::OrConditionalWrapper(std::unique_ptr<const ISubtre
                                                    {}
 
 
-const std::unique_ptr<const IRTree::StatementExpressionNode> IRTree::ExpressionWrapper::ToStatement() const {
-    return makeNode<StatementExpressionNode>(expression);
-}
+//const std::unique_ptr<const StatementExpressionNode> IRTree::ExpressionWrapper::ToStatement() const {
+//    //return makeNode<StatementExpressionNode>(expression);
+//}
