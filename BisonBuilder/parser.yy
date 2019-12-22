@@ -61,12 +61,12 @@ namespace BisonBuilder {
 %token <Token<void>> T_SEMICOLON
 %token <Token<void>> T_COMMA
 %token <Token<void>> T_ASSIGN_OPERATION
-%token <Token<ExpressionBinaryOperationNode::BinaryOperationType>> T_MUL_OPERATION
-%token <Token<ExpressionBinaryOperationNode::BinaryOperationType>> T_ADD_OPERATION
-%token <Token<ExpressionBinaryOperationNode::BinaryOperationType>> T_COMPARE_OPERATION
-%token <Token<ExpressionBinaryOperationNode::BinaryOperationType>> T_EQUIVALENT_OPERATION
-%token <Token<ExpressionBinaryOperationNode::BinaryOperationType>> T_AND_OPERATION
-%token <Token<ExpressionBinaryOperationNode::BinaryOperationType>> T_OR_OPERATION
+%token <Token<BinaryOperationType>> T_MUL_OPERATION
+%token <Token<BinaryOperationType>> T_ADD_OPERATION
+%token <Token<BinaryOperationType>> T_COMPARE_OPERATION
+%token <Token<BinaryOperationType>> T_EQUIVALENT_OPERATION
+%token <Token<BinaryOperationType>> T_AND_OPERATION
+%token <Token<BinaryOperationType>> T_OR_OPERATION
 %token <Token<void>> T_NOT_OPERATION
 %token <Token<void>> T_UNKNOWN
 

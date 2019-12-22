@@ -4,7 +4,7 @@
 #pragma once
 
 #include "IStatementNode.h"
-#include <ExpressionNode/IExpressionNode.h>
+#include "../ExpressionNode/IExpressionNode.h"
 #include <memory>
 #include <vector>
 

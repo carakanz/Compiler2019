@@ -37,53 +37,53 @@ namespace BisonBuilder {
                 return build(text);
             case FlexToken::T_MUL_OPERATION:
                 if (text == "*") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::MUL);
+                    return build(BinaryOperationType::MUL);
                 }
                 else if (text == "/") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::DIV);
+                    return build(BinaryOperationType::DIV);
                 }
                 else if (text == "%") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::MOD);
+                    return build(BinaryOperationType::MOD);
                 } else {
                     assert(false);
                 }
             case FlexToken::T_ADD_OPERATION:
                 if (text == "+") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::ADD);
+                    return build(BinaryOperationType::ADD);
                 }
                 else if (text == "-") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::SUB);
+                    return build(BinaryOperationType::SUB);
                 } else {
                     assert(false);
                 }
             case FlexToken::T_COMPARE_OPERATION:
                 if (text == "<") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::LESS);
+                    return build(BinaryOperationType::LESS);
                 }
                 else if (text == "<=") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::LESS_OR_EQUIVALENT);
+                    return build(BinaryOperationType::LESS_OR_EQUIVALENT);
                 }
                 else if (text == ">") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::MORE);
+                    return build(BinaryOperationType::MORE);
                 }
                 else if (text == ">=") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::LESS_OR_EQUIVALENT);
+                    return build(BinaryOperationType::LESS_OR_EQUIVALENT);
                 } else {
                     assert(false);
                 }
             case FlexToken::T_EQUIVALENT_OPERATION:
                 if (text == "==") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::EQUIVALENT);
+                    return build(BinaryOperationType::EQUIVALENT);
                 }
                 else if (text == "!=") {
-                    return build(ExpressionBinaryOperationNode::BinaryOperationType::NOT_EQUIVALENT);
+                    return build(BinaryOperationType::NOT_EQUIVALENT);
                 } else {
                     assert(false);
                 }
             case FlexToken::T_AND_OPERATION:
-                return build(ExpressionBinaryOperationNode::BinaryOperationType::AND);
+                return build(BinaryOperationType::AND);
             case FlexToken::T_OR_OPERATION:
-                return build(ExpressionBinaryOperationNode::BinaryOperationType::OR);
+                return build(BinaryOperationType::OR);
             default:
                 return BisonParser::Parser::symbol_type(token, Token<void>(old_position));
         }

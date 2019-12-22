@@ -8,7 +8,7 @@
 #include <IdentifierNode/IdentifierNode.h>
 #include <DeclarationNode/DeclarationVarNode.h>
 #include <StatementNode/IStatementNode.h>
-#include <ExpressionNode/IExpressionNode.h>
+#include "../ExpressionNode/IExpressionNode.h"
 #include <memory>
 #include <utility>
 #include <vector>

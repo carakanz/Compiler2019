@@ -5,7 +5,7 @@
 
 #include "IStatementNode.h"
 #include <IdentifierNode/IdentifierNode.h>
-#include <ExpressionNode/IExpressionNode.h>
+#include "../ExpressionNode/IExpressionNode.h"
 #include <memory>
 #include <vector>
 
