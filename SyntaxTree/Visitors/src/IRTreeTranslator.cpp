@@ -224,10 +224,18 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionNewNode &node) {
-        std::vector<std::shared_ptr<const IRTree::IExpressionNode>> arguments;
-//        arguments.push_back(
-//                makeNode<IRTree::ExpressionConstNode()>(classInfo->GetFieldsCount())
-//        );
+        auto result = std::make_unique<IRTree::ExpressionCallNode>(
+                std::make_unique<IRTree::ExpressionTypeNode>("::"),
+                std::make_unique<IRTree::ExpressionNameNode>(
+                        std::make_unique<IRTree::LabelNode>(std::string("new"))
+                )
+        );
+        result->arguments.push_back(std::make_unique<IRTree::ExpressionConstNode>(0)); //NEED FIX
+
+        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::IExpressionNode> >(
+                std::move(result)
+        );
+        //currentObjectClass = classInfo;
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionNotOperatorNode &node) {
@@ -239,6 +247,37 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementIfNode &node) {
+        node.conditional->accept(*this);
+        const auto conditional_wrapper = std::move(last_wrapper_);
+        node.else_statement->accept(*this); //negative
+        const auto else_statement_wrapper = std::move(last_wrapper_);
+        node.then_statement->accept(*this); //posistive
+        const auto then_statement_wrapper = std::move(last_wrapper_);
+
+        auto labelIfTrue = std::make_unique<IRTree::LabelNode>(std::string("if_true"));
+        auto labelIfFalse = std::make_unique<IRTree::LabelNode>(std::string("if_false"));
+        auto labelEndIf = std::make_unique<IRTree::LabelNode>(std::string("end_if"));
+        auto positiveLabel = std::move(labelEndIf);
+        auto negativeLabel = std::move(labelEndIf);
+
+        auto result = std::make_unique<IRTree::StatementLabelNode>(std::move(labelEndIf));
+//        if (else_statement_wrapper) {
+//            //to be continued..
+//        }
+//        if (then_statement_wrapper) {
+//            //to be continued..
+//        }
+
+//        last_wrapper_ = std::unique_ptr<IRTree::Wrapper<IRTree::IStatementNode> > (
+//                conditional_wrapper->to_conditional(std::move(positiveLabel), std::move(negativeLabel)),
+//
+//                );
+
+        //auto result = std::unique_ptr<IRTree::StatementLabelNode>(labelEndIf);
+
+
+
+
 
     }
 
