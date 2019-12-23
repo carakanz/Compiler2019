@@ -12,46 +12,46 @@
 
 namespace IRTree {
 
-    class ISubtreeWrapper {
+    class IWrapper {
     public:
-        virtual ~ISubtreeWrapper() {};
+        virtual ~IWrapper() {};
 
-        virtual const std::unique_ptr<const IExpressionNode>& ToExpression() const { assert(false); };
-        virtual const std::unique_ptr<const IStatementNode>& ToStatement() const { assert(false); };
-        virtual const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
-                                                                   const std::unique_ptr<const LabelNode>& negativeLabel) const { assert(false); };
+        virtual std::unique_ptr<const IExpressionNode> to_expression() { assert(false); };
+        virtual std::unique_ptr<const IStatementNode> to_statement() { assert(false); };
+        virtual std::unique_ptr<const IStatementNode> to_conditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+                                                                            const std::unique_ptr<const LabelNode>& negativeLabel) { assert(false); };
     };
 
-    class ExpressionWrapper : public ISubtreeWrapper {
+    class ExpressionWrapper : public IWrapper {
     public:
-        explicit ExpressionWrapper(const std::unique_ptr<const IExpressionNode>& _expression): expression(_expression) {}
+        explicit ExpressionWrapper(std::unique_ptr<IExpressionNode>&& expression): expression_(std::move(expression)) {}
 
-        const std::unique_ptr<const IExpressionNode>& ToExpression() const override { return expression; }
-        const std::unique_ptr<const IStatementNode>& ToStatement() const override;
-        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
-                                                           const std::unique_ptr<const LabelNode>& negativeLabel) const override;
+        std::unique_ptr<const IExpressionNode> to_expression() override { return std::move(expression_); }
+        std::unique_ptr<const IStatementNode> to_statement() override;
+        std::unique_ptr<const IStatementNode> to_conditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+                                                                    const std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        const std::unique_ptr<const IExpressionNode>& expression;
+        std::unique_ptr<const IExpressionNode> expression_;
     };
 
-    class StatementWrapper : public ISubtreeWrapper {
+    class StatementWrapper : public IWrapper {
     public:
-        explicit StatementWrapper(const std::unique_ptr<const IStatementNode>& _statement): statement(_statement) {}
+        explicit StatementWrapper(std::unique_ptr<const IStatementNode>&& statement): statement_(std::move(statement)) {}
 
-        const std::unique_ptr<const IStatementNode>& ToStatement() const override { return statement; }
+        std::unique_ptr<const IStatementNode> to_statement() override { return std::move(statement_); }
 
     private:
-        const std::unique_ptr<const IStatementNode>& statement;
+        std::unique_ptr<const IStatementNode> statement_;
     };
 
-    class ConditionalWrapper : public ISubtreeWrapper {
+    class ConditionalWrapper : public IWrapper {
     public:
         virtual ~ConditionalWrapper() {};
 
-        const std::unique_ptr<const IExpressionNode>& ToExpression() const override;
-        virtual const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
-                                                                   const std::unique_ptr<const LabelNode>& negativeLabel) const override = 0;
+        std::unique_ptr<const IExpressionNode> to_expression() override;
+        virtual std::unique_ptr<const IStatementNode> to_conditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+                                                                            const std::unique_ptr<const LabelNode>& negativeLabel) override = 0;
     };
 
     // пока поддерживаем только "меньше <"
@@ -60,8 +60,8 @@ namespace IRTree {
         RelativeConditionalWrapper(const std::unique_ptr<const IExpressionNode>& _leftOperand,
                                    const std::unique_ptr<const IExpressionNode>& _rightOperand);
 
-        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
-                                                           const std::unique_ptr<const LabelNode>& negativeLabel) const override;
+        std::unique_ptr<const IStatementNode> to_conditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+                                                                    const std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
         const std::unique_ptr<const IExpressionNode>& leftOperand;
@@ -70,39 +70,39 @@ namespace IRTree {
 
     class AndConditionalWrapper : public ConditionalWrapper {
     public:
-        AndConditionalWrapper(std::unique_ptr<const ISubtreeWrapper>&& _leftOperand,
-                              std::unique_ptr<const ISubtreeWrapper>&& _rightOperand);
+        AndConditionalWrapper(std::unique_ptr<const IWrapper>&& leftOperand,
+                              std::unique_ptr<const IWrapper>&& rightOperand);
 
-        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
-                                                           const std::unique_ptr<const LabelNode>& negativeLabel) const override;
+        std::unique_ptr<const IStatementNode> to_conditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+                                                                    const std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        std::unique_ptr<const ISubtreeWrapper> leftOperand;
-        std::unique_ptr<const ISubtreeWrapper> rightOperand;
+        std::unique_ptr<const IWrapper> leftOperand_;
+        std::unique_ptr<const IWrapper> rightOperand_;
     };
 
     class OrConditionalWrapper : public ConditionalWrapper {
     public:
-        OrConditionalWrapper(std::unique_ptr<const ISubtreeWrapper>&& _leftOperand,
-                             std::unique_ptr<const ISubtreeWrapper>&& _rightOperand);
+        OrConditionalWrapper(std::unique_ptr<const IWrapper>&& leftOperand,
+                             std::unique_ptr<const IWrapper>&& rightOperand);
 
-        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
-                                                           const std::unique_ptr<const LabelNode>& negativeLabel) const override;
+        std::unique_ptr<const IStatementNode> to_conditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+                                                                    const std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        std::unique_ptr<const ISubtreeWrapper> leftOperand;
-        std::unique_ptr<const ISubtreeWrapper> rightOperand;
+        std::unique_ptr<const IWrapper> leftOperand_;
+        std::unique_ptr<const IWrapper> rightOperand_;
     };
 
     class OppositeConditionalWrapper : public ConditionalWrapper {
     public:
-        explicit OppositeConditionalWrapper(std::unique_ptr<const ISubtreeWrapper>&& _wrapper) : internalWrapper(std::move(_wrapper)) {}
+        explicit OppositeConditionalWrapper(std::unique_ptr<const IWrapper>&& wrapper) : internalWrapper_(std::move(wrapper)) {}
 
-        const std::unique_ptr<const IStatementNode>& ToConditional(const std::unique_ptr<const LabelNode>& positiveLabel,
-                                                           const std::unique_ptr<const LabelNode>& negativeLabel) const override;
+        std::unique_ptr<const IStatementNode> to_conditional(const std::unique_ptr<const LabelNode>& positiveLabel,
+                                                                    const std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        std::unique_ptr<const ISubtreeWrapper> internalWrapper;
+        std::unique_ptr<const IWrapper> internalWrapper_;
     };
 
     //from Make.h

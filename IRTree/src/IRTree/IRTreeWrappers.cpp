@@ -12,20 +12,20 @@ IRTree::RelativeConditionalWrapper::RelativeConditionalWrapper(
         rightOperand(_rightOperand)
         {}
 
-IRTree::AndConditionalWrapper::AndConditionalWrapper(std::unique_ptr<const ISubtreeWrapper> &&_leftOperand,
-                                                     std::unique_ptr<const ISubtreeWrapper> &&_rightOperand)
-                                                     :   leftOperand(std::move(_leftOperand)),
-                                                     rightOperand(std::move(_rightOperand))
+IRTree::AndConditionalWrapper::AndConditionalWrapper(std::unique_ptr<const IWrapper> &&_leftOperand,
+                                                     std::unique_ptr<const IWrapper> &&_rightOperand)
+                                                     :   leftOperand_(std::move(_leftOperand)),
+                                                     rightOperand_(std::move(_rightOperand))
                                                      {}
 
 
-IRTree::OrConditionalWrapper::OrConditionalWrapper(std::unique_ptr<const ISubtreeWrapper> &&_leftOperand,
-                                                   std::unique_ptr<const ISubtreeWrapper> &&_rightOperand)
-                                                   :   leftOperand(std::move(_leftOperand)),
-                                                   rightOperand(std::move(_rightOperand))
+IRTree::OrConditionalWrapper::OrConditionalWrapper(std::unique_ptr<const IWrapper> &&_leftOperand,
+                                                   std::unique_ptr<const IWrapper> &&_rightOperand)
+                                                   :   leftOperand_(std::move(_leftOperand)),
+                                                   rightOperand_(std::move(_rightOperand))
                                                    {}
 
 
-//const std::unique_ptr<const StatementExpressionNode> IRTree::ExpressionWrapper::ToStatement() const {
-//    //return makeNode<StatementExpressionNode>(expression);
+//const std::unique_ptr<const IRTree::IStatementNode> &IRTree::ExpressionWrapper::to_statement() const {
+//    return std::move(expression_);
 //}

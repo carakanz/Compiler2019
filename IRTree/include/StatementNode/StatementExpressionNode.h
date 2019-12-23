@@ -10,7 +10,7 @@
 namespace IRTree {
     class StatementExpressionNode : public IStatementNode {
     public:
-        StatementExpressionNode(std::unique_ptr<IExpressionNode> uniquePtr) {
+        StatementExpressionNode(std::unique_ptr<IExpressionNode> uniquePtr) : expression(uniquePtr) {
             //autocreation
         }
 
@@ -18,6 +18,6 @@ namespace IRTree {
             visitor.visit(*this);
         }
 
-        std::unique_ptr<IExpressionNode> expression;
+        const std::unique_ptr<IExpressionNode>& expression;
     };
 }
