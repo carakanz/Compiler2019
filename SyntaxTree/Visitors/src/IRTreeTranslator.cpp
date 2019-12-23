@@ -275,7 +275,7 @@ namespace SyntaxTreeVisitor {
                                 std::make_unique<IRTree::StatementSeqNode>(
                                         then_statement_wrapper->to_statement(),
                                         std::make_unique<IRTree::StatementSeqNode>(
-                                                std::make_unique<IRTree::StatementJumpNode>(label_end_if),
+                                                std::make_unique<IRTree::StatementJumpNode>(std::move(label_end_if)),
                                                 std::make_unique<IRTree::StatementSeqNode>(
                                                         std::move(true_statement_label),
                                                         std::make_unique<IRTree::StatementSeqNode>(
