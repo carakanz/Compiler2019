@@ -8,7 +8,7 @@
 namespace IRTree {
     class ExpressionConstNode : public IExpressionNode {
     public:
-        ExpressionConstNode(const int& value) : value(value) {}
+        explicit ExpressionConstNode(int value) : value(value) {}
 
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);

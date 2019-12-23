@@ -9,6 +9,10 @@
 namespace IRTree {
     class ExpressionNameNode : public IExpressionNode {
     public:
+        explicit ExpressionNameNode(std::unique_ptr<LabelNode> &&label) :
+                label(std::move(label)) {
+        }
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }

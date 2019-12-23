@@ -9,6 +9,14 @@
 namespace IRTree {
     class ExpressionBinaryOperationNode : public IExpressionNode {
     public:
+        ExpressionBinaryOperationNode(BinaryOperationType operation_type,
+                                      std::unique_ptr<IExpressionNode> &&left,
+                                      std::unique_ptr<IExpressionNode> &&right) :
+                operation_type(operation_type),
+                left(std::move(left)),
+                right(std::move(right)) {
+        }
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }

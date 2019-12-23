@@ -9,7 +9,8 @@
 namespace IRTree {
     class ExpressionTempNode : public IExpressionNode {
     public:
-        ExpressionTempNode(std::unique_ptr<TempNode>&& temp): temp(std::move(temp)){}
+        explicit ExpressionTempNode(std::unique_ptr<TempNode> &&temp) : temp(std::move(temp)) {
+        }
 
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);

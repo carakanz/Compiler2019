@@ -12,24 +12,25 @@ namespace IRTree {
 
     class StatementCJumpNode : public IStatementNode {
     public:
-        StatementCJumpNode(std::unique_ptr<const IExpressionNode>&& left_expression,
-                           std::unique_ptr<const IExpressionNode>&& right_expression,
-                           std::unique_ptr<const LabelNode>&& positive_label,
-                           std::unique_ptr<const LabelNode>&& negative_label)
-                           : left_expression(std::move(left_expression)),
-                             right_expression(std::move(right_expression)),
-                             positive_label(std::move(positive_label)),
-                             negative_label(std::move(negative_label))
-                           {}
+        StatementCJumpNode(CJumpCondition condition,
+                           std::unique_ptr<IExpressionNode> &&left_expression,
+                           std::unique_ptr<IExpressionNode> &&right_expression,
+                           std::unique_ptr<LabelNode> &&positive_label,
+                           std::unique_ptr<LabelNode> &&negative_label)
+                : condition(condition),
+                  left_expression(std::move(left_expression)),
+                  right_expression(std::move(right_expression)),
+                  positive_label(std::move(positive_label)),
+                  negative_label(std::move(negative_label)) {}
 
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
 
         CJumpCondition condition;
-        std::unique_ptr<const IExpressionNode> left_expression;
-        std::unique_ptr<const IExpressionNode> right_expression;
-        std::unique_ptr<const LabelNode> positive_label;
-        std::unique_ptr<const LabelNode> negative_label;
+        std::unique_ptr<IExpressionNode> left_expression;
+        std::unique_ptr<IExpressionNode> right_expression;
+        std::unique_ptr<LabelNode> positive_label;
+        std::unique_ptr<LabelNode> negative_label;
     };
 }

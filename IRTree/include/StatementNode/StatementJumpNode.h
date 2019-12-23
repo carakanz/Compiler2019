@@ -9,6 +9,10 @@
 namespace IRTree {
     class StatementJumpNode : public IStatementNode {
     public:
+        explicit StatementJumpNode(std::unique_ptr<LabelNode> &&label)
+                : label(std::move(label)) {
+        }
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }

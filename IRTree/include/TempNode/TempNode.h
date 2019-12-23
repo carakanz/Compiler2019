@@ -9,11 +9,8 @@
 namespace IRTree {
     class TempNode : public INodeBase {
     public:
-        TempNode(const std::string&& label_) {
-            if (counters.find(label_) == counters.end() ) {
-                counters[label_] = 0;
-            }
-            label = label_ + std::to_string(counters[label_]++);
+        explicit TempNode(const std::string &&label_) {
+            label = label_ + "@" + std::to_string(counters);
         }
 
         void accept(IVisitor &visitor) const override {
@@ -21,6 +18,6 @@ namespace IRTree {
         }
 
         std::string label;
-        static std::unordered_map<std::string, size_t > counters;
+        static uint32_t counters;
     };
 }
