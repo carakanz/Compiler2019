@@ -279,7 +279,7 @@ namespace SyntaxTreeVisitor {
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementReturnNode &node) {
 
-    }V
+    }
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &node) {
         for (const auto &statement : node.statements) {
@@ -291,7 +291,6 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationClassNode &node) {
-        goal->add_class(node.identifier->name);
         for (const auto &method : node.methods) {
             method->accept(*this);
 
@@ -308,27 +307,25 @@ namespace SyntaxTreeVisitor {
     void IRTreeTranslator::visit( // GoalNode
             const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase> &node) {
 
-        //yea it's govnokod
-        //handle main class first
+//        std::unique_ptr<SyntaxTree::DeclarationClassNode> main_class_node;
+//        std::vector<std::unique_ptr<SyntaxTree::DeclarationClassNode> > other_classes_nodes;
+//        for (auto& item: node.items) {
+//            bool main_found = false;
+//            for (const auto& methods: item->methods) {
+//                if (methods->identifier->name == "main")
+//                    main_class_node = std::move(item);
+//            }
+//        }
+
         for (const auto &item : node.items) {
-            if (item->identifier->name == mainClass->name) {
-                current_class = getClassFromName(item->identifier->name);
-                item->accept(*this);
-            }
+            goal->add_class(item->identifier->name);
+            item->accept(*this);
         }
 
-        //then handle others
-        for (const auto &item : node.items) {
-            if (item->identifier->name != mainClass->name) {
-                current_class = getClassFromName(item->identifier->name);
-                item->accept(*this);
-            }
-        }
 
     }
 
     void IRTreeTranslator::buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement) {
-        std::cout << "here now" << std::endl;
         statement->accept(*this);
         //...
     }
