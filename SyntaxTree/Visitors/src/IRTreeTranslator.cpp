@@ -254,40 +254,39 @@ namespace SyntaxTreeVisitor {
         node.then_statement->accept(*this); //posistive
         const auto then_statement_wrapper = std::move(last_wrapper_);
 
-        auto labelIfTrue = std::make_unique<IRTree::LabelNode>(std::string("if_true"));
-        auto labelIfFalse = std::make_unique<IRTree::LabelNode>(std::string("if_false"));
-        auto labelEndIf = std::make_unique<IRTree::LabelNode>(std::string("end_if"));
-        auto positiveLabel = std::move(labelEndIf);
-        auto negativeLabel = std::move(labelEndIf);
+        auto label_if_true = std::make_unique<IRTree::LabelNode>(std::string("if_true"));
+        auto label_if_false = std::make_unique<IRTree::LabelNode>(std::string("if_false"));
+        auto label_end_if = std::make_unique<IRTree::LabelNode>(std::string("end_if"));
+//        auto positiveLabel = std::move(labelEndIf);
+//        auto negativeLabel = std::move(labelEndIf);
 
-//        auto result = std::make_unique<IRTree::StatementLabelNode>(std::move(labelEndIf));
-//        if (else_statement_wrapper) {
-//            negativeLabel = std::move(labelIfFalse)
-//            result = std::unique_ptr<IRTree::StatementSeqNode>(
-//                        std::unique_ptr<IRTree::StatementLabelNode>(labelIfFalse),
-//                        std::unique_ptr<IRTree::StatementSeqNode>(
-//                                else_statement_wrapper->to_statement(),
-//
-//                                )
-//                    )
-//        }
-//        if (then_statement_wrapper) {
-//            //to be continued..
-//        }
-//
-//        last_wrapper_ = std::unique_ptr<IRTree::Wrapper<IRTree::IStatementNode> > (
-//                std::unique_ptr<IRTree::StatementSeqNode>(
-//                        conditional_wrapper->to_conditional(positiveLabel, negativeLabel),
-//                        result
-//                )
-//                );
+        auto true_statement_label = std::make_unique<IRTree::StatementLabelNode>(
+                std::make_unique<IRTree::LabelNode>(*label_if_true));
+        auto false_statement_label = std::make_unique<IRTree::StatementLabelNode>(
+                std::make_unique<IRTree::LabelNode>(*label_if_false));
+        auto end_label = std::make_unique<IRTree::StatementLabelNode>(
+                std::make_unique<IRTree::LabelNode>(*label_end_if));
 
-        //auto result = std::unique_ptr<IRTree::StatementLabelNode>(labelEndIf);
-
-
-
-
-
+        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::StatementSeqNode>>(
+                std::make_unique<IRTree::StatementSeqNode>(
+                        conditional_wrapper->to_conditional(label_if_true, label_if_false),
+                        std::make_unique<IRTree::StatementSeqNode>(
+                                std::move(true_statement_label),
+                                std::make_unique<IRTree::StatementSeqNode>(
+                                        then_statement_wrapper->to_statement(),
+                                        std::make_unique<IRTree::StatementSeqNode>(
+                                                std::make_unique<IRTree::StatementJumpNode>(label_end_if),
+                                                std::make_unique<IRTree::StatementSeqNode>(
+                                                        std::move(true_statement_label),
+                                                        std::make_unique<IRTree::StatementSeqNode>(
+                                                                else_statement_wrapper->to_statement(),
+                                                                std::move(end_label))
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
     }
 
     void IRTreeTranslator::visit(
@@ -328,7 +327,7 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementAssignNode &node) {
-
+        node.expression->accept(*this);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementAssignArrayNode &node) {
