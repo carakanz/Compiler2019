@@ -27,23 +27,40 @@ namespace IRTree {
 
 
     std::unique_ptr<const IStatementNode> ExpressionWrapper::to_statement() {
-        //return makeNode<StatementExpressionNode>(expression_);
-        return std::make_unique<StatementExpressionNode>(expression_);
+        return std::make_unique<StatementExpressionNode>(std::move(expression_));
     }
 
     std::unique_ptr<const IStatementNode>
     ExpressionWrapper::to_conditional(std::unique_ptr<const LabelNode> &positiveLabel,
                                       std::unique_ptr<const LabelNode> &negativeLabel) {
-        auto x = std::make_unique<ExpressionConstNode>(1);
         StatementCJumpNode(std::move(expression_),
                 std::make_unique<ExpressionConstNode>(1),
                            std::move(positiveLabel),
                            std::move(negativeLabel));
-//        return std::make_unique<StatementCJumpNode>(expression_,
-//                std::make_unique<ExpressionConstNode>(1),
-//                        positiveLabel,
-//                        negativeLabel);
     }
 
 
+    std::unique_ptr<const IExpressionNode> ConditionalWrapper::to_expression() {
+        std::unique_ptr<const LabelNode> positiveLabel= std::make_unique<LabelNode>(std::string("Label_true_"));
+        std::unique_ptr<const LabelNode> negativeLabel= std::make_unique<LabelNode>(std::string("Label_false_"));
+        std::unique_ptr<const IExpressionNode> tempExpression = std::make_unique<ExpressionTempNode>(
+                std::make_unique<TempNode>("Label_temp_"));
+
+        return std::make_unique<ExpressionESeqNode>(
+            std::make_unique<StatementSeqNode>(
+                std::make_unique<StatementMoveNode>(std::move(tempExpression), std::make_unique<ExpressionConstNode>(1)),
+                std::make_unique<StatementSeqNode>(
+                        std::move(to_conditional(positiveLabel, negativeLabel)),
+                        std::make_unique<StatementSeqNode>(
+                                std::make_unique<StatementLabelNode>(std::move(negativeLabel)),
+                                        std::make_unique<StatementSeqNode>(
+                                                std::make_unique<StatementMoveNode>(std::move(tempExpression), std::make_unique<ExpressionConstNode>(0)),
+                                                std::make_unique<StatementLabelNode>(std::move(positiveLabel))
+                                        )
+                        )
+                )
+            ),
+            std::move(tempExpression)
+        );
+    }
 }

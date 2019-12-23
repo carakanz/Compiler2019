@@ -9,6 +9,13 @@
 namespace IRTree {
     class TempNode : public INodeBase {
     public:
+        TempNode(const std::string&& label_) {
+            if (counters.find(label_) == counters.end() ) {
+                counters[label_] = 0;
+            }
+            label = label_ + std::to_string(counters[label_]++);
+        }
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }

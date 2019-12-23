@@ -9,10 +9,12 @@
 namespace IRTree {
     class StatementLabelNode : public IStatementNode {
     public:
+        StatementLabelNode(std::unique_ptr<const LabelNode>&& label) : label(std::move(label)){}
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
 
-        std::unique_ptr<LabelNode> label;
+        std::unique_ptr<const LabelNode> label;
     };
 }

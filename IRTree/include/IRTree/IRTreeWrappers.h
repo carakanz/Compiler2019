@@ -7,10 +7,16 @@
 #include <cassert>
 #include <ExpressionNode/IExpressionNode.h>
 #include <ExpressionNode/ExpressionConstNode.h>
+#include <ExpressionNode/ExpressionTempNode.h>
+#include <ExpressionNode/ExpressionESeqNode.h>
 #include <StatementNode/IStatementNode.h>
 #include <StatementNode/StatementCJumpNode.h>
+#include <StatementNode/StatementMoveNode.h>
+#include <StatementNode/StatementLabelNode.h>
+#include <StatementNode/StatementSeqNode.h>
 #include <LabelNode/LabelNode.h>
 #include <StatementNode/StatementExpressionNode.h>
+#include <TempNode/TempNode.h>
 
 
 namespace IRTree {
@@ -109,13 +115,13 @@ namespace IRTree {
     };
 
     //from Make.h
-    template <typename T, class... Args>
-    inline const std::unique_ptr<const T> makeNode(Args&&... args) {
-        return std::make_unique<const T>(std::forward<Args>(args)...);
-    }
-
-    template <typename T, class... Args>
-    inline const std::unique_ptr<const T> makeWrapper(Args&&... args) {
-        return std::make_unique<const T>(std::forward<Args>(args)...);
-    }
+//    template <typename T, class... Args>
+//    inline const std::unique_ptr<const T> makeNode(Args&&... args) {
+//        return std::make_unique<const T>(std::forward<Args>(args)...);
+//    }
+//
+//    template <typename T, class... Args>
+//    inline const std::unique_ptr<const T> makeWrapper(Args&&... args) {
+//        return std::make_unique<const T>(std::forward<Args>(args)...);
+//    }
 }

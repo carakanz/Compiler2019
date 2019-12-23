@@ -9,11 +9,17 @@
 namespace IRTree {
     class StatementSeqNode : public IStatementNode {
     public:
+        StatementSeqNode(std::unique_ptr<const IStatementNode>&& left,
+                std::unique_ptr<const IStatementNode>&& right)
+        : left(std::move(left)),
+          right(std::move(right))
+        {}
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
 
-        std::unique_ptr<IStatementNode> left;
-        std::unique_ptr<IStatementNode> right;
+        std::unique_ptr<const IStatementNode> left;
+        std::unique_ptr<const IStatementNode> right;
     };
 }
