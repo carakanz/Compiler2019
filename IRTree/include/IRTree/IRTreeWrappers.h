@@ -33,7 +33,7 @@ namespace IRTree {
 
     class ExpressionWrapper : public IWrapper {
     public:
-        explicit ExpressionWrapper(std::unique_ptr<IExpressionNode>&& expression): expression_(std::move(expression)) {}
+        explicit ExpressionWrapper(std::unique_ptr<const IExpressionNode>&& expression): expression_(std::move(expression)) {}
 
         std::unique_ptr<const IExpressionNode> to_expression() override { return std::move(expression_); }
         std::unique_ptr<const IStatementNode> to_statement() override;
@@ -66,52 +66,55 @@ namespace IRTree {
     // пока поддерживаем только "меньше <"
     class RelativeConditionalWrapper : public ConditionalWrapper {
     public:
-        RelativeConditionalWrapper(const std::unique_ptr<const IExpressionNode>& _leftOperand,
-                                   const std::unique_ptr<const IExpressionNode>& _rightOperand);
+        RelativeConditionalWrapper(std::unique_ptr<const IExpressionNode>&& leftOperand,
+                                   std::unique_ptr<const IExpressionNode>&& rightOperand)
+                                   : leftOperand_(std::move(leftOperand)),
+                                   rightOperand_(std::move(rightOperand))
+                                   {}
 
         std::unique_ptr<const IStatementNode> to_conditional(std::unique_ptr<const LabelNode>& positiveLabel,
                                                                     std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        const std::unique_ptr<const IExpressionNode>& leftOperand;
-        const std::unique_ptr<const IExpressionNode>& rightOperand;
+        std::unique_ptr<const IExpressionNode> leftOperand_;
+        std::unique_ptr<const IExpressionNode> rightOperand_;
     };
 
     class AndConditionalWrapper : public ConditionalWrapper {
     public:
-        AndConditionalWrapper(std::unique_ptr<const IWrapper>&& leftOperand,
-                              std::unique_ptr<const IWrapper>&& rightOperand);
+        AndConditionalWrapper(std::unique_ptr<IWrapper>&& leftOperand,
+                              std::unique_ptr<IWrapper>&& rightOperand);
 
         std::unique_ptr<const IStatementNode> to_conditional(std::unique_ptr<const LabelNode>& positiveLabel,
                                                                     std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        std::unique_ptr<const IWrapper> leftOperand_;
-        std::unique_ptr<const IWrapper> rightOperand_;
+        std::unique_ptr<IWrapper> leftOperand_;
+        std::unique_ptr<IWrapper> rightOperand_;
     };
 
     class OrConditionalWrapper : public ConditionalWrapper {
     public:
-        OrConditionalWrapper(std::unique_ptr<const IWrapper>&& leftOperand,
-                             std::unique_ptr<const IWrapper>&& rightOperand);
+        OrConditionalWrapper(std::unique_ptr<IWrapper>&& leftOperand,
+                             std::unique_ptr<IWrapper>&& rightOperand);
 
         std::unique_ptr<const IStatementNode> to_conditional(std::unique_ptr<const LabelNode>& positiveLabel,
                                                                     std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        std::unique_ptr<const IWrapper> leftOperand_;
-        std::unique_ptr<const IWrapper> rightOperand_;
+        std::unique_ptr<IWrapper> leftOperand_;
+        std::unique_ptr<IWrapper> rightOperand_;
     };
 
     class OppositeConditionalWrapper : public ConditionalWrapper {
     public:
-        explicit OppositeConditionalWrapper(std::unique_ptr<const IWrapper>&& wrapper) : internalWrapper_(std::move(wrapper)) {}
+        explicit OppositeConditionalWrapper(std::unique_ptr<IWrapper>&& wrapper) : internalWrapper_(std::move(wrapper)) {}
 
         std::unique_ptr<const IStatementNode> to_conditional(std::unique_ptr<const LabelNode>& positiveLabel,
                                                                     std::unique_ptr<const LabelNode>& negativeLabel) override;
 
     private:
-        std::unique_ptr<const IWrapper> internalWrapper_;
+        std::unique_ptr<IWrapper> internalWrapper_;
     };
 
     //from Make.h

@@ -8,20 +8,14 @@
 
 namespace IRTree {
 
-    RelativeConditionalWrapper::RelativeConditionalWrapper(
-            const std::unique_ptr<const IExpressionNode> &_leftOperand,
-            const std::unique_ptr<const IExpressionNode> &_rightOperand)
-            : leftOperand(_leftOperand),
-              rightOperand(_rightOperand) {}
-
-    AndConditionalWrapper::AndConditionalWrapper(std::unique_ptr<const IWrapper> &&_leftOperand,
-                                                         std::unique_ptr<const IWrapper> &&_rightOperand)
+    AndConditionalWrapper::AndConditionalWrapper(std::unique_ptr<IWrapper> &&_leftOperand,
+                                                         std::unique_ptr<IWrapper> &&_rightOperand)
             : leftOperand_(std::move(_leftOperand)),
               rightOperand_(std::move(_rightOperand)) {}
 
 
-    OrConditionalWrapper::OrConditionalWrapper(std::unique_ptr<const IWrapper> &&_leftOperand,
-                                                       std::unique_ptr<const IWrapper> &&_rightOperand)
+    OrConditionalWrapper::OrConditionalWrapper(std::unique_ptr<IWrapper> &&_leftOperand,
+                                                       std::unique_ptr<IWrapper> &&_rightOperand)
             : leftOperand_(std::move(_leftOperand)),
               rightOperand_(std::move(_rightOperand)) {}
 
@@ -62,5 +56,47 @@ namespace IRTree {
             ),
             std::move(tempExpression)
         );
+    }
+
+    std::unique_ptr<const IStatementNode>
+    RelativeConditionalWrapper::to_conditional(std::unique_ptr<const LabelNode> &positiveLabel,
+                                               std::unique_ptr<const LabelNode> &negativeLabel) {
+        return std::make_unique<StatementCJumpNode>(std::move(leftOperand_),
+                std::move(rightOperand_),
+                std::move(positiveLabel),
+                std::move(negativeLabel));
+    }
+
+    std::unique_ptr<const IStatementNode>
+    AndConditionalWrapper::to_conditional(std::unique_ptr<const LabelNode> &positiveLabel,
+                                          std::unique_ptr<const LabelNode> &negativeLabel) {
+        std::unique_ptr<const LabelNode> midLabel = std::make_unique<LabelNode>(std::string("Lable_mid_"));
+        return std::make_unique<StatementSeqNode>(
+                    leftOperand_->to_conditional(midLabel, negativeLabel),
+                    std::make_unique<StatementSeqNode>(
+                            std::make_unique<StatementLabelNode>(std::move(midLabel)),
+                            rightOperand_->to_conditional(midLabel, negativeLabel)
+                    )
+                );
+    }
+
+    std::unique_ptr<const IStatementNode>
+    OrConditionalWrapper::to_conditional(std::unique_ptr<const LabelNode> &positiveLabel,
+                                         std::unique_ptr<const LabelNode> &negativeLabel) {
+        std::unique_ptr<const LabelNode> midLabel = std::make_unique<LabelNode>(std::string("Lable_mid_"));
+        return std::make_unique<StatementSeqNode>(
+                leftOperand_->to_conditional(positiveLabel, midLabel),
+                std::make_unique<StatementSeqNode>(
+                        std::make_unique<StatementLabelNode>(std::move(midLabel)),
+                        rightOperand_->to_conditional(midLabel, negativeLabel)
+                )
+        );
+    }
+
+    std::unique_ptr<const IStatementNode>
+    OppositeConditionalWrapper::to_conditional(std::unique_ptr<const LabelNode> &positiveLabel,
+                                               std::unique_ptr<const LabelNode> &negativeLabel) {
+        //return internalWrapper->ToConditional(negativeLabel, positiveLabel);
+        return internalWrapper_->to_conditional(negativeLabel, positiveLabel);
     }
 }
