@@ -17,17 +17,15 @@ namespace SyntaxTreeVisitor {
             std::unordered_map<std::string,
                 std::unique_ptr<IRTree::IStatementNode> > > wrappers;
 
-        void add_class(std::string class_name) {
+        void add_class(const std::string& class_name) {
             wrappers.emplace(std::make_pair(class_name,
                     std::unordered_map<std::string, std::unique_ptr<IRTree::IStatementNode> >()));
         }
 
-        void add_method(std::string class_name,
-                std::string method_name,
+        void add_method(const std::string& class_name,
+                const std::string& method_name,
                 std::unique_ptr<IRTree::IStatementNode>&& wrapper ) {
            wrappers[class_name].emplace(method_name, std::move(wrapper));
         }
     };
-
-
 }

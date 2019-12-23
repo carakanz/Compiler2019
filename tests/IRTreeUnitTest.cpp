@@ -40,9 +40,9 @@ TEST(IRTree, Test) {
         std::cout << "Ok: " << PathPrefix + path << "   result: " << analyzer << std::endl;
         sample.close();
         SyntaxTree::Tree tree(std::move(builder.root));
-        SymbolTree::SymbolTree symbol_tree;
-        ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
-
-        //ASSERT_NO_THROW(SyntaxTreeVisitor::IRTreeTranslator(std::move(symbol_tree)));
+        ASSERT_NO_THROW(
+        SymbolTree::SymbolTree symbol_tree = SymbolTree::SymbolTableBuilder::build(tree);
+                  SyntaxTreeVisitor::IRTreeTranslator (std::move(symbol_tree));
+        );
     }
 }
