@@ -253,10 +253,20 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementPrintlnNode &node) {
-        std::cout << "SyntaxTree::StatementPrintlnNode" << std::endl;
         node.expression->accept(*this);
 
         const std::unique_ptr<IRTree::IWrapper> print_wrapper = std::move(last_wrapper_);
+        std::vector<std::shared_ptr<const IRTree::IExpressionNode>> arguments;
+        arguments.push_back(print_wrapper->to_expression());
+
+//        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::IStatementNode> >(
+//                std::make_unique<IRTree::StatementExpressionNode>(
+//                        std::make_unique<IRTree::ExpressionCallNode>(
+//                                std::make_unique<IRTree::LabelNode>(std::string("Label_print_")),
+//                                    std::make_unique(IRTree::ExpressionList)(std::move(arguments))
+//                         )
+//                )
+//        );
 
 //    const auto printOperandWrapper = std::move(currentWrapper);
 //    std::vector<std::shared_ptr<const IIrtExpression>> arguments;
