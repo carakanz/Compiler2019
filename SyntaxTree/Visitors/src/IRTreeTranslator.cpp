@@ -279,7 +279,7 @@ namespace SyntaxTreeVisitor {
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementReturnNode &node) {
 
-    }
+    }V
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &node) {
         for (const auto &statement : node.statements) {
@@ -291,13 +291,12 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationClassNode &node) {
-        std::cout << "DeclarationClassNode: " << node.identifier->name << std::endl;
+        goal->add_class(node.identifier->name);
         for (const auto &method : node.methods) {
-            std::string method_signature = SymbolTree::SymbolTableBuilder::build_method_signature(*method);
-            current_method = &current_class->method_info.at(method_signature);
-            std::cout << "method name: " << method->identifier->name << std::endl;
             method->accept(*this);
-            //goal->AddMethod(currentWrapper->ToStatement());
+
+            std::string method_signature = SymbolTree::SymbolTableBuilder::build_method_signature(*method);
+            goal->add_method(node.identifier->name, method_signature, last_wrapper_->to_statement());
         }
 
     }

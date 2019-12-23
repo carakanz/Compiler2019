@@ -6,6 +6,7 @@
 #include <Tree.h>
 #include <IRTree/INodeBase.h>
 #include <Wrapper/IWrapper.h>
+#include "IRTreeGoal.h"
 
 namespace SyntaxTreeVisitor {
     class IRTreeTranslator : public SyntaxTree::IVisitor {
@@ -108,7 +109,7 @@ namespace SyntaxTreeVisitor {
         void buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement);
 
         const SymbolTree::SymbolTree &symbol_tree_;
-        //IRTreeGoal* goal{nullptr};
+        std::unique_ptr<IRTreeGoal> goal{nullptr};
 //        const SymbolTree::ClassInfo& mainClass{nullptr};
         const SymbolTree::MethodInfo *current_method_{};
         const SymbolTree::ClassInfo *current_class_{};

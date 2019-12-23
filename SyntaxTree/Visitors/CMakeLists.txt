@@ -13,7 +13,8 @@ add_library(${PROJECT_NAME} STATIC
         src/TypeCheck.cpp
         include/TypeCheck.h
         include/IRTreeTranslator.h
-        src/IRTreeTranslator.cpp)
+        src/IRTreeTranslator.cpp
+        include/IRTreeGoal.h)
 
 target_link_libraries(${PROJECT_NAME} SyntaxTree SymbolTable IRTree)
 
