@@ -14,7 +14,7 @@ namespace IRTree {
             label = label_ + "@" + std::to_string(++counters);
         }
 
-        LabelNode(LabelNode& copy) {
+        LabelNode(const LabelNode& copy) {
             label = copy.label;
         }
 

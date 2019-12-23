@@ -42,23 +42,23 @@ namespace SyntaxTreeVisitor {
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionIdentifierNode &node) {
         const auto method_var_info = current_method_->var_info.find(node.identifier->name);
         if (method_var_info != current_method_->var_info.cend()) {
-            //auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>();
-            //TODO
-            //last_wrapper_ = std::move(wrapper);
+            last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>(
+                    std::make_unique<IRTree::ExpressionLocalNode>(false, method_var_info->second.name)
+                    );
             return;
         }
         const auto method_arg_info = current_method_->arg_info.find(node.identifier->name);
         if (method_arg_info != current_method_->arg_info.cend()) {
-            //auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionTempNode>>();
-            //TODO
-            //last_wrapper_ = std::move(wrapper);
+            last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>(
+                    std::make_unique<IRTree::ExpressionLocalNode>(false, method_var_info->second.name)
+            );
             return;
         }
         const auto class_var_info = current_class_->var_info.find(node.identifier->name);
         if (class_var_info != current_class_->var_info.cend()) {
-            //auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>();
-            //TODO
-            //last_wrapper_ = std::move(wrapper);
+            last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>(
+                    std::make_unique<IRTree::ExpressionLocalNode>(false, class_var_info->second.name)
+            );
             return;
         }
         assert(false);
@@ -328,14 +328,25 @@ namespace SyntaxTreeVisitor {
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementAssignNode &node) {
         node.expression->accept(*this);
+        auto expression_wrapper = std::move(last_wrapper_);
+        node.identifier->accept(*this);
+        auto identifier_wrapper = std::move(last_wrapper_);
+        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::StatementMoveNode>>(
+                std::make_unique<IRTree::ExpressionMemoryNode>(
+                        identifier_wrapper->to_expression()),
+                expression_wrapper->to_expression());
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::StatementAssignArrayNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::StatementAssignArrayNode &/*node*/) {
+        assert(false);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementReturnNode &node) {
-
+        node.expression->accept(*this);
+        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::StatementMoveNode>>(
+                std::make_unique<IRTree::ExpressionTempNode>(return_expression),
+                last_wrapper_->to_expression()
+        );
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &node) {

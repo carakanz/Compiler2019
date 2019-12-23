@@ -11,6 +11,7 @@
 namespace SyntaxTreeVisitor {
     class IRTreeTranslator : public SyntaxTree::IVisitor {
     public:
+
         explicit IRTreeTranslator(const SymbolTree::SymbolTree &symbol_tree) : symbol_tree_(symbol_tree) {
         };
 
@@ -79,42 +80,16 @@ namespace SyntaxTreeVisitor {
         void
         visit(const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase> &node) override; //GoalNode
 
-
-        //supporting methods
-//        SymbolTree::ClassInfo* getClassFromName(const std::string& name) {
-//            auto search = symbol_tree_.classes_info.find(name);
-//            if (search != symbol_tree_.classes_info.end()) {
-//                return &search->second;
-//            } else {
-//                return nullptr; //Is it okay behavior?
-//            }
-//        }
-
-//        void findMain() {  //need rewrite
-//            bool mainFound = false;
-//            for (const auto& class_info : symbol_tree_.classes_info) {
-//                for (const auto& method : class_info.second.method_info)
-//                    if (method.first == "void main(String[], )") {
-//                        if (mainFound)
-//                            throw std::runtime_error("two main methods found");
-//                        mainFound = true;
-//                        mainClass = &class_info.second;
-//                    }
-//            }
-//            if (!mainFound)
-//                throw std::runtime_error("no main method found");
-//        }
-
     private:
         void buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement,
                             std::unique_ptr<IRTree::IWrapper>& result_wrapper);
 
         const SymbolTree::SymbolTree &symbol_tree_;
         std::unique_ptr<IRTreeGoal> goal{nullptr};
-//        const SymbolTree::ClassInfo& mainClass{nullptr};
         const SymbolTree::MethodInfo *current_method_{};
         const SymbolTree::ClassInfo *current_class_{};
         std::unique_ptr<IRTree::IWrapper> last_wrapper_{};
-//        const Symbol{}Tree::ClassInfo* currentObjectClass{nullptr};
+
+        IRTree::TempNode return_expression = IRTree::TempNode("return@return");
     };
 }
