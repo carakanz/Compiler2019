@@ -43,6 +43,6 @@ TEST(IRTree, Test) {
         SymbolTree::SymbolTree symbol_tree;
         ASSERT_NO_THROW(symbol_tree = SymbolTree::SymbolTableBuilder::build(tree));
 
-        //SyntaxTreeVisitor::IRTreeTranslator(std::move(symbol_tree));
+        //ASSERT_NO_THROW(SyntaxTreeVisitor::IRTreeTranslator(std::move(symbol_tree)));
     }
 }
