@@ -43,23 +43,23 @@ namespace SyntaxTreeVisitor {
     {
         const auto method_var_info = current_method_->var_info.find(node.identifier->name);
         if (method_var_info != current_method_->var_info.cend()) {
-            auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>();
+            //auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>();
             //TODO
-            last_wrapper_ = std::move(wrapper);
+            //last_wrapper_ = std::move(wrapper);
             return;
         }
         const auto method_arg_info = current_method_->arg_info.find(node.identifier->name);
         if (method_arg_info != current_method_->arg_info.cend()) {
-            auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionTempNode>>();
+            //auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionTempNode>>();
             //TODO
-            last_wrapper_ = std::move(wrapper);
+            //last_wrapper_ = std::move(wrapper);
             return;
         }
         const auto class_var_info = current_class_->var_info.find(node.identifier->name);
         if (class_var_info != current_class_->var_info.cend()) {
-            auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>();
+            //auto wrapper = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>();
             //TODO
-            last_wrapper_ = std::move(wrapper);
+            //last_wrapper_ = std::move(wrapper);
             return;
         }
         assert(false);
@@ -70,7 +70,6 @@ namespace SyntaxTreeVisitor {
         auto left_wrapper = std::move(last_wrapper_);
         node.right->accept(*this);
         auto right_wrapper = std::move(last_wrapper_);
-
         switch (node.operation_type) {
             case BinaryOperationType::ADD:
                 last_wrapper_ = std::make_unique<IRTree::WrapperExpressionBinaryOperation<BinaryOperationType::ADD>>(
@@ -158,18 +157,21 @@ namespace SyntaxTreeVisitor {
         auto array_wrapper = std::move(last_wrapper_);
         node.index->accept(*this);
         auto index_wrapper = std::move(last_wrapper_);
+
         last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionMemoryNode>>(
-                std::make_unique<IRTree::ExpressionBinaryOperationNode>(
-                        BinaryOperationType::ADD,
-                        array_wrapper->to_expression(),
+                std::make_unique<IRTree::ExpressionMemoryNode>(
                         std::make_unique<IRTree::ExpressionBinaryOperationNode>(
                                 BinaryOperationType::ADD,
+                                array_wrapper->to_expression(),
                                 std::make_unique<IRTree::ExpressionBinaryOperationNode>(
-                                    BinaryOperationType::MUL,
-                                    index_wrapper->to_expression(),
-                                    std::make_unique<IRTree::ExpressionConstNode>(size_of_ptr)
-                                ),
-                                std::make_unique<IRTree::ExpressionConstNode>(size_of_ptr)
+                                        BinaryOperationType::ADD,
+                                        std::make_unique<IRTree::ExpressionBinaryOperationNode>(
+                                                BinaryOperationType::MUL,
+                                                index_wrapper->to_expression(),
+                                                std::make_unique<IRTree::ExpressionConstNode>(size_of_ptr)
+                                        ),
+                                        std::make_unique<IRTree::ExpressionConstNode>(size_of_ptr)
+                                )
                         )
                 )
         );
@@ -182,25 +184,25 @@ namespace SyntaxTreeVisitor {
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionMethodCallNode &node) {
         node.object->accept(*this);
         auto object_wrapper = std::move(last_wrapper_);
-
         auto result = std::make_unique<IRTree::ExpressionCallNode>(
                 object_wrapper->to_expression(),
-                std::make_unique<IRTree::ExpressionNameNode(std::make_unique<IRTree::LabelNode(node.method->name))>);
+                std::make_unique<IRTree::ExpressionNameNode>(std::make_unique<IRTree::LabelNode>(node.method->name)));
         for(const auto& argument : node.arguments) {
             argument->accept(*this);
             result->arguments.push_back(last_wrapper_->to_expression());
         }
-        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionCallNode>>(result);
+        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionCallNode>>(std::move(result));
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionStaticMethodCallNode &node) {
         auto result = std::make_unique<IRTree::ExpressionCallNode>(
-                std::make_unique<IRTree::ExpressionTypeNode>(node.class_id->name));
+                std::make_unique<IRTree::ExpressionTypeNode>(node.class_id->name),
+                std::make_unique<IRTree::ExpressionNameNode>(std::make_unique<IRTree::LabelNode>(node.method->name)));
         for (const auto &argument : node.arguments) {
             argument->accept(*this);
             result->arguments.push_back(last_wrapper_->to_expression());
         }
-        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionCallNode>>(result);
+        last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionCallNode>>(std::move(result));
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionIntegerLiteralNode &node) {
@@ -292,13 +294,13 @@ namespace SyntaxTreeVisitor {
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationClassNode &node) {
         std::cout << "DeclarationClassNode: " << node.identifier->name << std::endl;
-        for (const auto &method : node.methods) {
-            std::string method_signature = SymbolTree::SymbolTableBuilder::build_method_signature(*method);
-            current_method = &current_class->method_info.at(method_signature);
-            std::cout << "method name: " << method->identifier->name << std::endl;
-            method->accept(*this);
-            //goal->AddMethod(currentWrapper->ToStatement());
-        }
+//        for (const auto &method : node.methods) {
+//            std::string method_signature = SymbolTree::SymbolTableBuilder::build_method_signature(*method);
+//            current_method = &current_class->method_info.at(method_signature);
+//            std::cout << "method name: " << method->identifier->name << std::endl;
+//            method->accept(*this);
+//            //goal->AddMethod(currentWrapper->ToStatement());
+//        }
 
     }
 
@@ -312,18 +314,18 @@ namespace SyntaxTreeVisitor {
         //yea it's govnokod
         //handle main class first
         for (const auto &item : node.items) {
-            if (item->identifier->name == mainClass->name) {
-                current_class = getClassFromName(item->identifier->name);
-                item->accept(*this);
-            }
+//            if (item->identifier->name == mainClass->name) {
+//                current_class = getClassFromName(item->identifier->name);
+//                item->accept(*this);
+//            }
         }
 
         //then handle others
         for (const auto &item : node.items) {
-            if (item->identifier->name != mainClass->name) {
-                current_class = getClassFromName(item->identifier->name);
-                item->accept(*this);
-            }
+//            if (item->identifier->name != mainClass->name) {
+//                current_class = getClassFromName(item->identifier->name);
+//                item->accept(*this);
+//            }
         }
 
     }

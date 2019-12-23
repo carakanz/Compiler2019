@@ -4,13 +4,12 @@
 #pragma once
 
 #include <memory>
-#include "../StatementNode/IStatementNode.h"
-#include "../ExpressionNode/IExpressionNode.h"
+#include "../IRTree/Nodes.h"
 
 namespace IRTree {
     class IWrapper  {
     public:
-        virtual ~IWrapper() = delete;
+        virtual ~IWrapper() = default;
         virtual std::unique_ptr<IExpressionNode> to_expression() = 0;
         virtual std::unique_ptr<IStatementNode> to_statement() = 0;
         virtual std::unique_ptr<IStatementNode> to_conditional() = 0;
