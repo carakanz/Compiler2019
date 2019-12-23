@@ -106,7 +106,8 @@ namespace SyntaxTreeVisitor {
 //        }
 
     private:
-        void buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement);
+        void buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement,
+                            std::unique_ptr<IRTree::IWrapper>& result_wrapper);
 
         const SymbolTree::SymbolTree &symbol_tree_;
         std::unique_ptr<IRTreeGoal> goal{nullptr};

@@ -256,6 +256,8 @@ namespace SyntaxTreeVisitor {
         std::cout << "SyntaxTree::StatementPrintlnNode" << std::endl;
         node.expression->accept(*this);
 
+        const std::unique_ptr<IRTree::IWrapper> print_wrapper = std::move(last_wrapper_);
+
 //    const auto printOperandWrapper = std::move(currentWrapper);
 //    std::vector<std::shared_ptr<const IIrtExpression>> arguments;
 //    arguments.push_back(printOperandWrapper->ToExpression());
@@ -283,11 +285,11 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &node) {
+        std::unique_ptr<IRTree::IWrapper> result_wrapper = nullptr;
         for (const auto &statement : node.statements) {
-            buildStatement(statement);
+            buildStatement(statement, result_wrapper);
         }
-
-        // ... node.variables
+        last_wrapper_ = std::move(result_wrapper);
 
     }
 
@@ -326,9 +328,20 @@ namespace SyntaxTreeVisitor {
 
     }
 
-    void IRTreeTranslator::buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement) {
+    void IRTreeTranslator::buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement,
+                                          std::unique_ptr<IRTree::IWrapper>& result_wrapper) {
         statement->accept(*this);
-        //...
+        if (result_wrapper) {
+            result_wrapper = std::make_unique<IRTree::Wrapper<IRTree::IStatementNode> >( //need StatementWrapper
+                    std::make_unique<IRTree::StatementSeqNode> (
+                                result_wrapper->to_statement(),
+                                last_wrapper_->to_statement()
+                    )
+            );
+        }
+        else {
+            result_wrapper = std::move(last_wrapper_);
+        }
     }
 
 }
