@@ -22,15 +22,27 @@ namespace IRTree {
         template<typename T>
         std::unique_ptr<IExpressionNode> to_expression_check();
 
-        
+        static constexpr bool is_expression = std::is_base_of_v<IExpressionNode,NodeType>;
 
         std::unique_ptr<IExpressionNode> to_expression() override {
             //return to_expression_check<int>();
-            return std::move(dynamic_cast<>);
+            if (is_expression) {
+                return std::unique_ptr<IExpressionNode>(dynamic_cast<IExpressionNode*>(node_.release()));
+            } else {
+                assert(false);
+                return nullptr;
+            }
         }
 
+        static constexpr bool is_statement = std::is_base_of_v<IStatementNode,NodeType>;
+
         std::unique_ptr<IStatementNode> to_statement() override {
-            assert();
+            if (is_statement) {
+                return std::unique_ptr<IStatementNode>(dynamic_cast<IStatementNode*>(node_.release()));
+            } else {
+                assert(false);
+                return nullptr;
+            }
         }
 
         std::unique_ptr<IStatementNode> to_conditional(std::unique_ptr<LabelNode> & /*true_label*/,
