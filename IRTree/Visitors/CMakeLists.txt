@@ -6,7 +6,7 @@ cmake_minimum_required (VERSION 3.8)
 project(IrtVisitors VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} STATIC
-
+    src/IRTreePrinter.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} IRTree)
