@@ -11,6 +11,7 @@ namespace IRTree {
     class LabelNode : public INodeBase {
     public:
         explicit LabelNode(const std::string& label_) {
+            static uint32_t counters;
             label = label_ + "@" + std::to_string(++counters);
         }
 
@@ -23,6 +24,5 @@ namespace IRTree {
         }
 
         std::string label;
-        static uint32_t counters;
     };
 }

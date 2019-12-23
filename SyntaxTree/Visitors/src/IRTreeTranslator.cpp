@@ -35,7 +35,28 @@ namespace SyntaxTreeVisitor {
         assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::IdentifierNode &/*node*/) {
+    void IRTreeTranslator::visit(const SyntaxTree::IdentifierNode &node) {
+        const auto method_var_info = current_method_->var_info.find(node.name);
+        if (method_var_info != current_method_->var_info.cend()) {
+            last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>(
+                    std::make_unique<IRTree::ExpressionLocalNode>(false, method_var_info->second.name)
+            );
+            return;
+        }
+        const auto method_arg_info = current_method_->arg_info.find(node.name);
+        if (method_arg_info != current_method_->arg_info.cend()) {
+            last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>(
+                    std::make_unique<IRTree::ExpressionLocalNode>(false, method_arg_info->second.name)
+            );
+            return;
+        }
+        const auto class_var_info = current_class_->var_info.find(node.name);
+        if (class_var_info != current_class_->var_info.cend()) {
+            last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>(
+                    std::make_unique<IRTree::ExpressionLocalNode>(false, class_var_info->second.name)
+            );
+            return;
+        }
         assert(false);
     }
 
@@ -50,7 +71,7 @@ namespace SyntaxTreeVisitor {
         const auto method_arg_info = current_method_->arg_info.find(node.identifier->name);
         if (method_arg_info != current_method_->arg_info.cend()) {
             last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionLocalNode>>(
-                    std::make_unique<IRTree::ExpressionLocalNode>(false, method_var_info->second.name)
+                    std::make_unique<IRTree::ExpressionLocalNode>(false, method_arg_info->second.name)
             );
             return;
         }
@@ -243,7 +264,7 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionRoundBracketsNode &node) {
-        assert(false);
+        node.expression->accept(*this);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementIfNode &node) {
@@ -390,6 +411,7 @@ namespace SyntaxTreeVisitor {
                     main_class_node = std::move(item);
             }
         } */
+        goal = std::make_unique<IRTreeGoal>();
 
         for (const auto &item : node.items) {
             goal->add_class(item->identifier->name);

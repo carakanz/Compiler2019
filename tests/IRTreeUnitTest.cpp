@@ -42,7 +42,8 @@ TEST(IRTree, Test) {
         SyntaxTree::Tree tree(std::move(builder.root));
         ASSERT_NO_THROW(
         SymbolTree::SymbolTree symbol_tree = SymbolTree::SymbolTableBuilder::build(tree);
-                  SyntaxTreeVisitor::IRTreeTranslator (std::move(symbol_tree));
+                  SyntaxTreeVisitor::IRTreeTranslator translator(symbol_tree);
+                tree.accept(translator);
         );
     }
 }

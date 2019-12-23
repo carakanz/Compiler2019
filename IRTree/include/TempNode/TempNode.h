@@ -10,7 +10,8 @@ namespace IRTree {
     class TempNode : public INodeBase {
     public:
         explicit TempNode(const std::string& label_) {
-            label = label_ + "@" + std::to_string(counters);
+            static uint32_t counters;
+            label = label_ + "@" + std::to_string(++counters);
         }
 
         TempNode(const TempNode& copy) {
@@ -22,6 +23,5 @@ namespace IRTree {
         }
 
         std::string label;
-        static uint32_t counters;
     };
 }

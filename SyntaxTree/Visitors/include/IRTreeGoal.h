@@ -18,8 +18,7 @@ namespace SyntaxTreeVisitor {
                 std::unique_ptr<IRTree::IStatementNode> > > wrappers;
 
         void add_class(const std::string& class_name) {
-            wrappers.emplace(std::make_pair(class_name,
-                    std::unordered_map<std::string, std::unique_ptr<IRTree::IStatementNode> >()));
+            wrappers[class_name] = std::unordered_map<std::string, std::unique_ptr<IRTree::IStatementNode> >();
         }
 
         void add_method(const std::string& class_name,

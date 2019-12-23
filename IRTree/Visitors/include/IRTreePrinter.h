@@ -4,7 +4,8 @@
 #pragma once
 
 #include <fstream>
-#include <IRTree/IVisitor.h>
+#include "../include/IRTree/IVisitor.h"
+#include "../include/IRTree/Nodes.h"
 #include "../../../SyntaxTree/Visitors/include/IRTreeGoal.h"
 
 namespace IRTreeVisitor {
@@ -25,25 +26,42 @@ namespace IRTreeVisitor {
             out_ << "}" << std::endl;
         };
 
-        void visit(const ExpressionBinaryOperationNode& node) override ;
-        void visit(const ExpressionCallNode& node) override;
-        void visit(const ExpressionConstNode& node) override;
-        void visit(const ExpressionESeqNode& node) override;
-        void visit(const ExpressionLocalNode& node)override;
-        void visit(const ExpressionMemoryNode& node)override;
-        void visit(const ExpressionNameNode& node)override;
-        void visit(const ExpressionTempNode& node)override;
-        void visit(const ExpressionTypeNode& node)override;
-        void visit(const LabelNode& node)override;
-        void visit(const StatementCJumpNode& node)override;
-        void visit(const StatementExpressionNode& node)override;
-        void visit(const StatementJumpNode& node)override;
-        void visit(const StatementLabelNode& node)override;
-        void visit(const StatementMoveNode& node)override;
-        void visit(const StatementSeqNode& node)override;
-        void visit(const TempNode& node)override;
+        void visit(const IRTree::ExpressionBinaryOperationNode &node) override;
 
-        virtual void visit(const SyntaxTreeVisitor::IRTreeGoal&) = 0;
+        void visit(const IRTree::ExpressionCallNode &node) override;
+
+        void visit(const IRTree::ExpressionConstNode &node) override;
+
+        void visit(const IRTree::ExpressionESeqNode &node) override;
+
+        void visit(const IRTree::ExpressionLocalNode &node) override;
+
+        void visit(const IRTree::ExpressionMemoryNode &node) override;
+
+        void visit(const IRTree::ExpressionNameNode &node) override;
+
+        void visit(const IRTree::ExpressionTempNode &node) override;
+
+        void visit(const IRTree::ExpressionTypeNode &node) override;
+
+        void visit(const IRTree::LabelNode &node) override;
+
+        void visit(const IRTree::StatementCJumpNode &node) override;
+
+        void visit(const IRTree::StatementExpressionNode &node) override;
+
+        void visit(const IRTree::StatementJumpNode &node) override;
+
+        void visit(const IRTree::StatementLabelNode &node) override;
+
+        void visit(const IRTree::StatementMoveNode &node) override;
+
+        void visit(const IRTree::StatementSeqNode &node) override;
+
+        void visit(const IRTree::TempNode &node) override;
+
+        void visit(const SyntaxTreeVisitor::IRTreeGoal &goal);
+
     private:
         std::ofstream &out_;
     };
