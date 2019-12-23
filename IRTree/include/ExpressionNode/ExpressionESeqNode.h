@@ -9,11 +9,17 @@
 namespace IRTree {
     class ExpressionESeqNode : public IExpressionNode {
     public:
+        ExpressionESeqNode(std::unique_ptr<const IStatementNode> statement,
+                           std::unique_ptr<const IExpressionNode> expression)
+                           : statement(std::move(statement)),
+                             expression(std::move(expression))
+                           {}
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
 
-        std::unique_ptr<IStatementNode> statement;
-        std::unique_ptr<IExpressionNode> expression;
+        std::unique_ptr<const IStatementNode> statement;
+        std::unique_ptr<const IExpressionNode> expression;
     };
 }

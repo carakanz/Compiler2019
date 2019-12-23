@@ -7,7 +7,9 @@ add_library(${PROJECT_NAME} STATIC
         include/IRTree/Nodes.h
         include/IRTree/INodeBase.h
         include/IRTree/IVisitor.h
+        include/IRTree/IRTreeWrappers.h
         include/StatementNode/IStatementNode.h
+        src/IRTree/IRTreeWrappers.cpp
         src/IRTree/Nodes.cpp
         include/StatementNode/StatementExpressionNode.h
         include/ExpressionNode/IExpressionNode.h
@@ -28,7 +30,12 @@ add_library(${PROJECT_NAME} STATIC
         ../Defines/CJumpCondition.h
         include/Wrapper/IWrapper.h
         include/ExpressionNode/ExpressionLocalNode.h
-        include/Wrapper/Wrapper.h include/Wrapper/Expression/WrapperExpressionBinaryOperation.h ../Defines/Consts.h include/ExpressionNode/ExpressionTypeNode.h)
+        include/Wrapper/Wrapper.h
+        include/Wrapper/Expression/WrapperExpressionBinaryOperation.h
+        ../Defines/Consts.h include/ExpressionNode/ExpressionTypeNode.h
+        include/ExpressionNode/ExpressionCallNode.h
+        ../Defines/CJumpCondition.h
+        )
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES} ../Defines)
