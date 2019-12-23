@@ -9,8 +9,12 @@
 namespace IRTree {
     class TempNode : public INodeBase {
     public:
-        explicit TempNode(const std::string &&label_) {
+        explicit TempNode(const std::string& label_) {
             label = label_ + "@" + std::to_string(counters);
+        }
+
+        TempNode(const TempNode& copy) {
+            label = copy.label;
         }
 
         void accept(IVisitor &visitor) const override {
