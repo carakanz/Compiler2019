@@ -12,7 +12,9 @@
 #include <algorithm>
 #include <IRTree/IVisitor.h>
 #include "../SyntaxTree/Visitors/include/IRTreeTranslator.h"
-const std::array<std::string, 9> Paths = {
+#include "../IRTree/Visitors/include/IRTreePrinter.h"
+
+const std::array<std::string, 1> Paths = {
 //        "BinarySearch.java",
 //        "BinaryTree.java",
 //        "BubbleSort.java",
@@ -26,7 +28,7 @@ const std::array<std::string, 9> Paths = {
 
 
 const std::string PathPrefix("../../tests/Samples/");
-const std::string ResultPrefix("../../tests/Samples/Digraph/SymbolTable/");
+const std::string ResultPrefix("../../tests/Samples/Digraph/IRTree/");
 //const std::string PathPrefix("Samples/");
 //const std::string ResultPrefix("Samples/Digraph/SyntaxTree/");
 
@@ -45,5 +47,29 @@ TEST(IRTree, Test) {
                   SyntaxTreeVisitor::IRTreeTranslator translator(symbol_tree);
                 tree.accept(translator);
         );
+    }
+}
+
+TEST(IRTree, Parse) {
+    BisonBuilder::Builder builder;
+    for (const auto &path : Paths) {
+        std::ifstream sample(PathPrefix + path);
+        ASSERT_TRUE(sample.is_open());
+        auto analyzer = builder.parse(sample);
+        ASSERT_EQ(analyzer, 0);
+        std::cout << "Ok: " << PathPrefix + path << "   result: " << analyzer << std::endl;
+        sample.close();
+        SyntaxTree::Tree tree(std::move(builder.root));
+        SymbolTree::SymbolTree symbol_tree = SymbolTree::SymbolTableBuilder::build(tree);
+        SyntaxTreeVisitor::IRTreeTranslator translator(symbol_tree);
+        tree.accept(translator);
+
+        std::ofstream digraph(ResultPrefix + path + ".dot");
+        ASSERT_TRUE(digraph.is_open());
+        IRTreeVisitor::IRTreeVisitor printer(digraph);
+        printer.print_start(path);
+        printer.visit(*translator.goal);
+        digraph.close();
+
     }
 }

@@ -7,7 +7,6 @@ project(IrtVisitors VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} STATIC
         src/IRTreePrinter.cpp
-        ../../../SyntaxTree/Visitors/include/IRTreeGoal.h
 )
 
 target_link_libraries(${PROJECT_NAME} IRTree Visitors)
