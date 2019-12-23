@@ -260,17 +260,26 @@ namespace SyntaxTreeVisitor {
         auto positiveLabel = std::move(labelEndIf);
         auto negativeLabel = std::move(labelEndIf);
 
-        auto result = std::make_unique<IRTree::StatementLabelNode>(std::move(labelEndIf));
+//        auto result = std::make_unique<IRTree::StatementLabelNode>(std::move(labelEndIf));
 //        if (else_statement_wrapper) {
-//            //to be continued..
+//            negativeLabel = std::move(labelIfFalse)
+//            result = std::unique_ptr<IRTree::StatementSeqNode>(
+//                        std::unique_ptr<IRTree::StatementLabelNode>(labelIfFalse),
+//                        std::unique_ptr<IRTree::StatementSeqNode>(
+//                                else_statement_wrapper->to_statement(),
+//
+//                                )
+//                    )
 //        }
 //        if (then_statement_wrapper) {
 //            //to be continued..
 //        }
-
-//        last_wrapper_ = std::unique_ptr<IRTree::Wrapper<IRTree::IStatementNode> > (
-//                conditional_wrapper->to_conditional(std::move(positiveLabel), std::move(negativeLabel)),
 //
+//        last_wrapper_ = std::unique_ptr<IRTree::Wrapper<IRTree::IStatementNode> > (
+//                std::unique_ptr<IRTree::StatementSeqNode>(
+//                        conditional_wrapper->to_conditional(positiveLabel, negativeLabel),
+//                        result
+//                )
 //                );
 
         //auto result = std::unique_ptr<IRTree::StatementLabelNode>(labelEndIf);
