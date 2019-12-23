@@ -220,11 +220,14 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionNewArrayNode &node) {
-
+        //no need for Factorial
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionNewNode &node) {
-
+        std::vector<std::shared_ptr<const IRTree::IExpressionNode>> arguments;
+//        arguments.push_back(
+//                makeNode<IRTree::ExpressionConstNode()>(classInfo->GetFieldsCount())
+//        );
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionNotOperatorNode &node) {
@@ -267,19 +270,6 @@ namespace SyntaxTreeVisitor {
 //                         )
 //                )
 //        );
-
-//    const auto printOperandWrapper = std::move(currentWrapper);
-//    std::vector<std::shared_ptr<const IIrtExpression>> arguments;
-//    arguments.push_back(printOperandWrapper->ToExpression());
-//
-//    currentWrapper = makeWrapper<StatementWrapper>(
-//            makeNode<IrtExpressionStatement>(
-//                    makeNode<IrtCallExpression>(
-//                            makeNode<IrtNameExpression>(makeNode<IrtLabel>(L"print")),
-//                            makeNode<IrtExpressionList>(std::move(arguments))
-//                    )
-//            )
-//    );
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementAssignNode &node) {
