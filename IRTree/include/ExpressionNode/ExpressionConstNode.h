@@ -8,6 +8,8 @@
 namespace IRTree {
     class ExpressionConstNode : public IExpressionNode {
     public:
+        ExpressionConstNode(const int& value) : value(value) {}
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
