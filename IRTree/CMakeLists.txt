@@ -35,7 +35,7 @@ add_library(${PROJECT_NAME} STATIC
         ../Defines/Consts.h include/ExpressionNode/ExpressionTypeNode.h
         include/ExpressionNode/ExpressionCallNode.h
         ../Defines/CJumpCondition.h
-        src/Wrapper/Expression/WrapperExpressionAnd.cpp include/Wrapper/Expression/WrapperExpressionAnd.h)
+        src/Wrapper/Expression/WrapperExpressionAnd.cpp include/Wrapper/Expression/WrapperExpressionAnd.h include/Visitors/IRTreePrinter.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES} ../Defines)
