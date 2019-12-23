@@ -6,7 +6,7 @@
 
 #include <unordered_map>
 #include <string>
-#include <IRTree/IRTreeWrappers.h>
+#include <Wrapper/IWrapper.h>
 
 
 namespace SyntaxTreeVisitor {
@@ -15,16 +15,16 @@ namespace SyntaxTreeVisitor {
     public:
         std::unordered_map<std::string,
             std::unordered_map<std::string,
-                std::unique_ptr<IStatementNode> > > wrappers;
+                std::unique_ptr<IRTree::IStatementNode> > > wrappers;
 
         void add_class(std::string class_name) {
             wrappers.emplace(std::make_pair(class_name,
-                    std::unordered_map<std::string, std::unique_ptr<IStatementNode> >()));
+                    std::unordered_map<std::string, std::unique_ptr<IRTree::IStatementNode> >()));
         }
 
         void add_method(std::string class_name,
                 std::string method_name,
-                std::unique_ptr<IStatementNode>&& wrapper ) {
+                std::unique_ptr<IRTree::IStatementNode>&& wrapper ) {
            wrappers[class_name].emplace(method_name, std::move(wrapper));
         }
     };

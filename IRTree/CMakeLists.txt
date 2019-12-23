@@ -7,9 +7,9 @@ add_library(${PROJECT_NAME} STATIC
         include/IRTree/Nodes.h
         include/IRTree/INodeBase.h
         include/IRTree/IVisitor.h
-        include/IRTree/IRTreeWrappers.h
+        #include/IRTree/IRTreeWrappers.h
         include/StatementNode/IStatementNode.h
-        src/IRTree/IRTreeWrappers.cpp
+        #src/IRTree/IRTreeWrappers.cpp
         src/IRTree/Nodes.cpp
         include/StatementNode/StatementExpressionNode.h
         include/ExpressionNode/IExpressionNode.h
