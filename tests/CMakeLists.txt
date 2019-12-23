@@ -46,7 +46,7 @@ add_test_libraries(PrintSymbolTableDot SymbolTableGraphviz SymbolTable BisonBuil
 
 execut_test(IRTreeUnitTest
         ${PROJECT_SOURCE_DIR}/tests/IRTreeUnitTest.cpp)
-add_test_libraries(IRTreeUnitTest IRTree SymbolTable BisonBuilder)
+add_test_libraries(IRTreeUnitTest SyntaxTree IRTree SymbolTable BisonBuilder) #SyntaxTree
 
 execut_test(SymbolTableTypeCheck
         ${PROJECT_SOURCE_DIR}/tests/SymbolTableTypeCheck.cpp)
