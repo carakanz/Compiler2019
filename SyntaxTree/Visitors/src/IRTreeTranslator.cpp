@@ -11,32 +11,32 @@
 
 namespace SyntaxTreeVisitor {
 
-    void IRTreeTranslator::visit(const SyntaxTree::TypeIntNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::TypeIntNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::TypeArrayNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::TypeArrayNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::TypeBooleanNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::TypeBooleanNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::TypeUserNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::TypeUserNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::TypeVoidNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::TypeVoidNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::TypeStringNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::TypeStringNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::IdentifierNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::IdentifierNode &/*node*/) {
+        assert(false);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionIdentifierNode &node) {
@@ -239,11 +239,11 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionNotOperatorNode &node) {
-
+        assert(false);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionRoundBracketsNode &node) {
-
+        assert(false);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementIfNode &node) {
@@ -290,16 +290,16 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(
-            const SyntaxTree::ListNode<SyntaxTree::IStatementNode, SyntaxTree::IStatementNode> &node) {
-
+            const SyntaxTree::ListNode<SyntaxTree::IStatementNode, SyntaxTree::IStatementNode> &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::StatementEmptyNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::StatementEmptyNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::StatementWhileNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::StatementWhileNode &/*node*/) {
+        assert(false);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementPrintlnNode &node) {
@@ -330,12 +330,12 @@ namespace SyntaxTreeVisitor {
         node.expression->accept(*this);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::StatementAssignArrayNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::StatementAssignArrayNode &/*node*/) {
+        assert(false);
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::StatementReturnNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::StatementReturnNode &/*node*/) {
+        assert(false);
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::DeclarationMethodNode &node) {
@@ -358,8 +358,8 @@ namespace SyntaxTreeVisitor {
 
     }
 
-    void IRTreeTranslator::visit(const SyntaxTree::DeclarationVarNode &node) {
-
+    void IRTreeTranslator::visit(const SyntaxTree::DeclarationVarNode &/*node*/) {
+        assert(false);
     }
 
     void IRTreeTranslator::visit( // GoalNode
