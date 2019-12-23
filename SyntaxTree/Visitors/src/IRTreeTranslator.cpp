@@ -332,9 +332,10 @@ namespace SyntaxTreeVisitor {
         node.identifier->accept(*this);
         auto identifier_wrapper = std::move(last_wrapper_);
         last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::StatementMoveNode>>(
-                std::make_unique<IRTree::ExpressionMemoryNode>(
-                        identifier_wrapper->to_expression()),
-                expression_wrapper->to_expression());
+                std::make_unique<IRTree::StatementMoveNode>(
+                        std::make_unique<IRTree::ExpressionMemoryNode>(
+                                identifier_wrapper->to_expression()),
+                        expression_wrapper->to_expression()));
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementAssignArrayNode &/*node*/) {
@@ -344,8 +345,11 @@ namespace SyntaxTreeVisitor {
     void IRTreeTranslator::visit(const SyntaxTree::StatementReturnNode &node) {
         node.expression->accept(*this);
         last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::StatementMoveNode>>(
-                std::make_unique<IRTree::ExpressionTempNode>(return_expression),
-                last_wrapper_->to_expression()
+                std::make_unique<IRTree::StatementMoveNode>(
+                        std::make_unique<IRTree::ExpressionTempNode>(
+                                std::make_unique<IRTree::TempNode>(return_expression)),
+                        last_wrapper_->to_expression()
+                )
         );
     }
 

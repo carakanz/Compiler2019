@@ -10,7 +10,7 @@ namespace IRTree {
     class StatementMoveNode : public IStatementNode {
     public:
         StatementMoveNode(std::unique_ptr<IExpressionNode> &&source,
-                          std::unique_ptr<ExpressionConstNode> &&destination)
+                          std::unique_ptr<IExpressionNode> &&destination)
                 : source(std::move(source)),
                   destination(std::move(destination)) {
         }
