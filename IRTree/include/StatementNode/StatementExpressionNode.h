@@ -10,10 +10,6 @@
 namespace IRTree {
     class StatementExpressionNode : public IStatementNode {
     public:
-        StatementExpressionNode(const std::unique_ptr<const SyntaxTree::IExpressionNode> uniquePtr) {
-            //autocreation
-        }
-
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }

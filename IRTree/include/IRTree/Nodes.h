@@ -12,6 +12,7 @@
 #include <ExpressionNode/ExpressionMemoryNode.h>
 #include <ExpressionNode/ExpressionNameNode.h>
 #include <ExpressionNode/ExpressionTempNode.h>
+#include <ExpressionNode/ExpressionTypeNode.h>
 #include <LabelNode/LabelNode.h>
 #include <StatementNode/IStatementNode.h>
 #include <StatementNode/StatementCJumpNode.h>

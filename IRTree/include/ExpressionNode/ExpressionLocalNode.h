@@ -3,17 +3,17 @@
 //
 #pragma once
 
-#include "../StatementNode/IStatementNode.h"
+#include <LabelNode/LabelNode.h>
 #include "IExpressionNode.h"
 
 namespace IRTree {
-    class ExpressionESeqNode : public IExpressionNode {
+    class ExpressionLocalNode : public IExpressionNode {
     public:
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
 
-        std::unique_ptr<IStatementNode> statement;
-        std::unique_ptr<IExpressionNode> expression;
+        bool is_class_var;
+        std::string name;
     };
 }

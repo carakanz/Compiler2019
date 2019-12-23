@@ -4,6 +4,7 @@
 #pragma once
 
 #include "IExpressionNode.h"
+#include "ExpressionNameNode.h"
 
 namespace IRTree {
     class ExpressionCallNode : public IExpressionNode {
@@ -13,6 +14,7 @@ namespace IRTree {
         }
 
         std::unique_ptr<IExpressionNode> method;
+        std::unique_ptr<ExpressionNameNode> name;
         std::vector<std::unique_ptr<IExpressionNode>> arguments;
     };
 }

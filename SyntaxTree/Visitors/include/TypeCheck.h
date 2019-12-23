@@ -7,9 +7,9 @@
 
 namespace SyntaxTreeVisitor {
 
-    class TypeCheck : public SyntaxTree::IVisitor  {
+    class TypeCheck : public SyntaxTree::IVisitor {
     public:
-        explicit TypeCheck(const SymbolTree::SymbolTree& symbol_tree): symbol_tree_(symbol_tree) {
+        explicit TypeCheck(const SymbolTree::SymbolTree &symbol_tree) : symbol_tree_(symbol_tree) {
         }
 
         void visit(const SyntaxTree::TypeIntNode &node) override;
@@ -77,9 +77,9 @@ namespace SyntaxTreeVisitor {
         void visit(const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase> &node) override;
 
     private:
-        const SyntaxTree::DeclarationClassNode* current_class_;
-        const SyntaxTree::DeclarationMethodNode* current_method_;
-        const SymbolTree::SymbolTree& symbol_tree_;
+        const SyntaxTree::DeclarationClassNode *current_class_{};
+        const SyntaxTree::DeclarationMethodNode *current_method_{};
+        const SymbolTree::SymbolTree &symbol_tree_;
         std::string last_return_type_;
     };
 

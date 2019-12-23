@@ -24,7 +24,11 @@ add_library(${PROJECT_NAME} STATIC
         include/ExpressionNode/ExpressionTempNode.h
         include/ExpressionNode/ExpressionESeqNode.h
         include/ExpressionNode/ExpressionMemoryNode.h
-        include/ExpressionNode/ExpressionCallNode.h ../Defines/CJumpCondition.h)
+        include/ExpressionNode/ExpressionCallNode.h
+        ../Defines/CJumpCondition.h
+        include/Wrapper/IWrapper.h
+        include/ExpressionNode/ExpressionLocalNode.h
+        include/Wrapper/Wrapper.h include/Wrapper/Expression/WrapperExpressionBinaryOperation.h ../Defines/Consts.h include/ExpressionNode/ExpressionTypeNode.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES} ../Defines)
