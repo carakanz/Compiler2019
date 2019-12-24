@@ -38,7 +38,7 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeVisitor::visit(const IRTree::ExpressionLocalNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"ExpressionESeqNode\" shape=box]\n";
+        out_ << "\"" << &node << "\"" << " [label=\"ExpressionLocalNode\" shape=box]\n";
     }
 
     void IRTreeVisitor::visit(const IRTree::ExpressionMemoryNode &node) {

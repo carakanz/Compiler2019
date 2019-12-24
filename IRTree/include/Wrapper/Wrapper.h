@@ -38,7 +38,8 @@ namespace IRTree {
 
         std::unique_ptr<IStatementNode> to_statement() override {
             if (is_statement) {
-                return std::unique_ptr<IStatementNode>(dynamic_cast<IStatementNode*>(node_.release()));
+                auto bla = std::unique_ptr<IStatementNode>(dynamic_cast<IStatementNode*>(node_.release()));
+                return bla;
             } else {
                 assert(false);
                 return nullptr;
