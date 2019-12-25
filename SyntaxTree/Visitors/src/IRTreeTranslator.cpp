@@ -306,6 +306,7 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::StatementEmptyNode &/*node*/) {
+        // TODO
         assert(false);
     }
 
