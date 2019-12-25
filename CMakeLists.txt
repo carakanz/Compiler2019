@@ -13,7 +13,7 @@ add_subdirectory(library)
 add_subdirectory(tests)
 
 add_compile_options(
-        #-Werror #=unused-parameter
+        -Werror #=unused-parameter
 
         -Wall
         -Wextra
