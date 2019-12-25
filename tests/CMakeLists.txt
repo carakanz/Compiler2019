@@ -3,6 +3,8 @@
 find_package(FLEX REQUIRED)
 find_package(BISON REQUIRED)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fsanitize=leak -g")
+
 function(execut_test TestName)
     add_executable(${TestName}
             ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp
@@ -44,9 +46,9 @@ execut_test(PrintSymbolTableDot
         ${PROJECT_SOURCE_DIR}/tests/PrintSymbolTableDot.cpp)
 add_test_libraries(PrintSymbolTableDot SymbolTableGraphviz SymbolTable BisonBuilder)
 
-#execut_test(PrintIRTree
-#        ${PROJECT_SOURCE_DIR}/tests/PrintIRTree.cpp)
-#add_test_libraries(PrintSymbolTableDot SymbolTableGraphviz SymbolTable BisonBuilder)
+execut_test(IRTreeUnitTest
+        ${PROJECT_SOURCE_DIR}/tests/IRTreeUnitTest.cpp)
+add_test_libraries(IRTreeUnitTest SyntaxTree IRTree SymbolTable BisonBuilder Visitors IrtVisitors) #SyntaxTree
 
 execut_test(SymbolTableTypeCheck
         ${PROJECT_SOURCE_DIR}/tests/SymbolTableTypeCheck.cpp)

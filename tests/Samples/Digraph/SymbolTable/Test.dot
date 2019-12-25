@@ -1,7 +1,7 @@
 digraph Test {
-"0x7fffbb79bcb8" [label=Test shape=diamond]
-"0x7fffbb79a198" [label="void main(String[], )" shape=box]
-"0x7fffbb7a0d08" [label="String[] : a"]
-"0x7fffbb79a198" -> "0x7fffbb7a0d08"
-"0x7fffbb79bcb8" -> "0x7fffbb79a198"
+"0x6110000051a8" [label=Test shape=diamond]
+"0x6120000163e8" [label="void main(String[], )" shape=box]
+"0x60b00001b0d8" [label="String[] : a"]
+"0x6120000163e8" -> "0x60b00001b0d8"
+"0x6110000051a8" -> "0x6120000163e8"
 }

@@ -7,6 +7,7 @@ project(SyntaxTree VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} STATIC
         src/Tree.cpp
+        ../Defines/BinaryOperationType.h
         include/INodeBase.h
         include/TemplateNode/ListNode.h
         include/TypeNode/ITypeNode.h
@@ -48,7 +49,7 @@ add_library(${PROJECT_NAME} STATIC
         include/Nodes.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
-target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
+target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES} ../Defines/)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 

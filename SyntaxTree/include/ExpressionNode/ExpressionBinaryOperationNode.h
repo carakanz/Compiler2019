@@ -4,27 +4,12 @@
 #pragma once
 
 #include "IExpressionNode.h"
+#include <BinaryOperationType.h>
 #include <memory>
 
 namespace SyntaxTree {
     class ExpressionBinaryOperationNode : public IExpressionNode {
     public:
-        enum BinaryOperationType {
-            ADD,
-            SUB,
-            MUL,
-            DIV,
-            MOD,
-            OR,
-            AND,
-            EQUIVALENT,
-            NOT_EQUIVALENT,
-            LESS,
-            LESS_OR_EQUIVALENT,
-            MORE,
-            MORE_OR_EQUIVALENT
-        };
-
         void accept(IVisitor& visitor) const override {
             visitor.visit(*this);
         }

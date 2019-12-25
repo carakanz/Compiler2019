@@ -13,7 +13,7 @@ add_subdirectory(library)
 add_subdirectory(tests)
 
 add_compile_options(
-        -Werror
+        -Werror #=unused-parameter
 
         -Wall
         -Wextra
@@ -43,5 +43,6 @@ endif()
 add_subdirectory(BisonBuilder)
 add_subdirectory(SyntaxTree)
 add_subdirectory(SymbolTable)
+add_subdirectory(IRTree)
 
 message("Include gtest: " ${gtest_SOURCE_DIR})
