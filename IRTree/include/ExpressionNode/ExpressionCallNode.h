@@ -9,10 +9,8 @@
 namespace IRTree {
     class ExpressionCallNode : public IExpressionNode {
     public:
-        ExpressionCallNode(std::unique_ptr<IExpressionNode> &&method,
-                           std::unique_ptr<ExpressionNameNode> &&name) :
-                method(std::move(method)),
-                name(std::move(name)) {
+        ExpressionCallNode(std::unique_ptr<IExpressionNode> &&method) :
+                method(std::move(method)) {
         }
 
         void accept(IVisitor &visitor) const override {
@@ -20,7 +18,6 @@ namespace IRTree {
         }
 
         std::unique_ptr<IExpressionNode> method;
-        std::unique_ptr<ExpressionNameNode> name;
         std::vector<std::unique_ptr<IExpressionNode>> arguments;
     };
 }

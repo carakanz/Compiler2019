@@ -19,35 +19,32 @@ namespace IRTree {
 //        inline std::unique_ptr<IExpressionNode> to_expression_check() {
 //            return std::move(node_);
 //        }
-        template<typename T>
-        std::unique_ptr<IExpressionNode> to_expression_check();
+        static std::unique_ptr<IExpressionNode> to_expression(std::unique_ptr<IExpressionNode>&& node) {
+            return std::move(node);
+        }
 
-        static constexpr bool is_expression = std::is_base_of_v<IExpressionNode,NodeType>;
+        static std::unique_ptr<IExpressionNode> to_expression(std::unique_ptr<IStatementNode>&& /*node*/) {
+            assert(false);
+        }
 
         std::unique_ptr<IExpressionNode> to_expression() override {
-            //return to_expression_check<int>();
-            if (is_expression) {
-                return std::unique_ptr<IExpressionNode>(dynamic_cast<IExpressionNode*>(node_.release()));
-            } else {
-                assert(false);
-                return nullptr;
-            }
+            return to_expression(std::move(node_));
         }
 
-        static constexpr bool is_statement = std::is_base_of_v<IStatementNode,NodeType>;
+        static std::unique_ptr<IStatementNode> to_statement(std::unique_ptr<IExpressionNode>&& /*node*/) {
+            assert(false);
+        }
+
+        static std::unique_ptr<IStatementNode> to_statement(std::unique_ptr<IStatementNode>&& node) {
+            return std::move(node);
+        }
 
         std::unique_ptr<IStatementNode> to_statement() override {
-            if (is_statement) {
-                auto bla = std::unique_ptr<IStatementNode>(dynamic_cast<IStatementNode*>(node_.release()));
-                return bla;
-            } else {
-                assert(false);
-                return nullptr;
-            }
+            return to_statement(std::move(node_));
         }
 
-        std::unique_ptr<IStatementNode> to_conditional(std::unique_ptr<LabelNode> & /*true_label*/,
-                                                       std::unique_ptr<LabelNode> & /*false_label*/) override {
+        std::unique_ptr<IStatementNode> to_conditional(std::unique_ptr<LabelNode> && /*true_label*/,
+                                                       std::unique_ptr<LabelNode> && /*false_label*/) override {
             assert(false);
         }
 

@@ -6,7 +6,7 @@
 #include <fstream>
 #include "../include/IRTree/IVisitor.h"
 #include "../include/IRTree/Nodes.h"
-#include "../../../SyntaxTree/Visitors/include/IRTreeGoal.h"
+#include "IRTree/IRTreeGoal.h"
 
 namespace IRTreeVisitor {
     class IRTreeVisitor : IRTree::IVisitor {
@@ -41,8 +41,6 @@ namespace IRTreeVisitor {
         void visit(const IRTree::ExpressionNameNode &node) override;
 
         void visit(const IRTree::ExpressionTempNode &node) override;
-
-        void visit(const IRTree::ExpressionTypeNode &node) override;
 
         void visit(const IRTree::LabelNode &node) override;
 

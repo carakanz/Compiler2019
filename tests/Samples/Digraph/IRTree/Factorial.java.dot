@@ -1,105 +1,104 @@
 digraph Factorial {
-"0x7fffc4b269c0" [label="StatementSeqNode" shape=box]
-"0x7fffc4b26fb0" [label="StatementSeqNode" shape=box]
-"0x7fffc4b26f70" [label="StatementCJumpNode" shape=box]
-"0x7fffc4b26940" [label="ExpressionLocalNode" shape=box]
-"0x7fffc4b26f70" -> "0x7fffc4b26940"
-"0x7fffc4b200e0" [label="ExpressionConstNode" shape=box]
-"0x7fffc4b26f70" -> "0x7fffc4b200e0"
-"0x7fffc4b26d70" [label="LabelNode" shape=box]
-"0x7fffc4b26f70" -> "0x7fffc4b26d70"
-"0x7fffc4b26d40" [label="LabelNode" shape=box]
-"0x7fffc4b26f70" -> "0x7fffc4b26d40"
-"0x7fffc4b26fb0" -> "0x7fffc4b26f70"
-"0x7fffc4b26f50" [label="StatementSeqNode" shape=box]
-"0x7fffc4b26a20" [label="StatementLabelNode" shape=box]
-"0x7fffc4b26dd0" [label="LabelNode" shape=box]
-"0x7fffc4b26a20" -> "0x7fffc4b26dd0"
-"0x7fffc4b26f50" -> "0x7fffc4b26a20"
-"0x7fffc4b26f30" [label="StatementSeqNode" shape=box]
-"0x7fffc4b26d00" [label="StatementMoveNode" shape=box]
-"0x7fffc4b26ba0" [label="ExpressionMemoryNode" shape=box]
-"0x7fffc4b26cc0" [label="ExpressionLocalNode" shape=box]
-"0x7fffc4b26ba0" -> "0x7fffc4b26cc0"
-"0x7fffc4b26d00" -> "0x7fffc4b26ba0"
-"0x7fffc4b26a80" [label="ExpressionConstNode" shape=box]
-"0x7fffc4b26d00" -> "0x7fffc4b26a80"
-"0x7fffc4b26f30" -> "0x7fffc4b26d00"
-"0x7fffc4b26f10" [label="StatementSeqNode" shape=box]
-"0x7fffc4b26ef0" [label="StatementJumpNode" shape=box]
-"0x7fffc4b26ec0" [label="LabelNode" shape=box]
-"0x7fffc4b26ef0" -> "0x7fffc4b26ec0"
-"0x7fffc4b26f10" -> "0x7fffc4b26ef0"
-"0x7fffc4b26ea0" [label="StatementSeqNode" shape=box]
-"0x7fffc4b26c10" [label="StatementLabelNode" shape=box]
-"0x7fffc4b26e00" [label="LabelNode" shape=box]
-"0x7fffc4b26c10" -> "0x7fffc4b26e00"
-"0x7fffc4b26ea0" -> "0x7fffc4b26c10"
-"0x7fffc4b26e80" [label="StatementSeqNode" shape=box]
-"0x7fffc4b26b80" [label="StatementMoveNode" shape=box]
-"0x7fffc4b26b40" [label="ExpressionMemoryNode" shape=box]
-"0x7fffc4b26c30" [label="ExpressionLocalNode" shape=box]
-"0x7fffc4b26b40" -> "0x7fffc4b26c30"
-"0x7fffc4b26b80" -> "0x7fffc4b26b40"
-"0x7fffc4b26c70" [label="ExpressionBinaryOperationNode" shape=box]
-"0x7fffc4b269e0" [label="ExpressionLocalNode" shape=box]
-"0x7fffc4b26c70" -> "0x7fffc4b269e0"
-"0x7fffc4b26ac0" [label="ExpressionCallNode" shape=box]
-"0x7fffc4b26aa0" [label="ExpressionNameNode" shape=box]
-"0x7fffc4b20100" [label="LabelNode" shape=box]
-"0x7fffc4b26aa0" -> "0x7fffc4b20100"
-"0x7fffc4b26ac0" -> "0x7fffc4b26aa0"
-"0x7fffc4b26a40" [label="ExpressionLocalNode" shape=box]
-"0x7fffc4b26ac0" -> "0x7fffc4b26a40"
-"0x7fffc4b26bc0" [label="ExpressionBinaryOperationNode" shape=box]
-"0x7fffc4b26b00" [label="ExpressionLocalNode" shape=box]
-"0x7fffc4b26bc0" -> "0x7fffc4b26b00"
-"0x7fffc4b26b60" [label="ExpressionConstNode" shape=box]
-"0x7fffc4b26ac0" -> "0x7fffc4b26bc0"
-"0x7fffc4b26b80" -> "0x7fffc4b26c70"
-"0x7fffc4b26e80" -> "0x7fffc4b26b80"
-"0x7fffc4b26e60" [label="StatementLabelNode" shape=box]
-"0x7fffc4b26e30" [label="LabelNode" shape=box]
-"0x7fffc4b26e60" -> "0x7fffc4b26e30"
-"0x7fffc4b26e80" -> "0x7fffc4b26e60"
-"0x7fffc4b26ea0" -> "0x7fffc4b26e80"
-"0x7fffc4b26f10" -> "0x7fffc4b26ea0"
-"0x7fffc4b26f30" -> "0x7fffc4b26f10"
-"0x7fffc4b26f50" -> "0x7fffc4b26f30"
-"0x7fffc4b26fb0" -> "0x7fffc4b26f50"
-"0x7fffc4b269c0" -> "0x7fffc4b26fb0"
-"0x7fffc4b269a0" [label="StatementMoveNode" shape=box]
-"0x7fffc4b26980" [label="ExpressionTempNode" shape=box]
-"0x7fffc4b26da0" [label="TempNode" shape=box]
-"0x7fffc4b26980" -> "0x7fffc4b26da0"
-"0x7fffc4b269a0" -> "0x7fffc4b26980"
-"0x7fffc4b26ff0" [label="ExpressionLocalNode" shape=box]
-"0x7fffc4b269a0" -> "0x7fffc4b26ff0"
-"0x7fffc4b269c0" -> "0x7fffc4b269a0"
-"0x7fffc4b200c0" [label="StatementExpressionNode" shape=box]
-"0x7fffc4b20080" [label="ExpressionCallNode" shape=box]
-"0x7fffc4b1ff90" [label="ExpressionNameNode" shape=box]
-"0x7fffc4b1fff0" [label="LabelNode" shape=box]
-"0x7fffc4b1ff90" -> "0x7fffc4b1fff0"
-"0x7fffc4b20080" -> "0x7fffc4b1ff90"
-"0x7fffc4b20050" [label="ExpressionTypeNode" shape=box]
-"0x7fffc4b20080" -> "0x7fffc4b20050"
-"0x7fffc4b1ff30" [label="ExpressionCallNode" shape=box]
-"0x7fffc4b1ff10" [label="ExpressionNameNode" shape=box]
-"0x7fffc4b1fee0" [label="LabelNode" shape=box]
-"0x7fffc4b1ff10" -> "0x7fffc4b1fee0"
-"0x7fffc4b1ff30" -> "0x7fffc4b1ff10"
-"0x7fffc4b1fe40" [label="ExpressionCallNode" shape=box]
-"0x7fffc4b1fdf0" [label="ExpressionNameNode" shape=box]
-"0x7fffc4b1fdc0" [label="LabelNode" shape=box]
-"0x7fffc4b1fdf0" -> "0x7fffc4b1fdc0"
-"0x7fffc4b1fe40" -> "0x7fffc4b1fdf0"
-"0x7fffc4b1fe10" [label="ExpressionTypeNode" shape=box]
-"0x7fffc4b1fe40" -> "0x7fffc4b1fe10"
-"0x7fffc4b1fe80" [label="ExpressionConstNode" shape=box]
-"0x7fffc4b1fe40" -> "0x7fffc4b1fe80"
-"0x7fffc4b1ff30" -> "0x7fffc4b1fe40"
-"0x7fffc4b1ff70" [label="ExpressionConstNode" shape=box]
-"0x7fffc4b1ff30" -> "0x7fffc4b1ff70"
-"0x7fffc4b20080" -> "0x7fffc4b1ff30"
-"0x7fffc4b200c0" -> "0x7fffc4b20080"
+"0x7fffc78df920" [label="StatementSeqNode" shape=box]
+"0x7fffc78dff00" [label="StatementSeqNode" shape=box]
+"0x7fffc78dfec0" [label="StatementCJumpNode: 2" shape=box]
+"0x7fffc78df8a0" [label="ExpressionLocalNode: num" shape=box]
+"0x7fffc78dfec0" -> "0x7fffc78df8a0"
+"0x7fffc78e1b20" [label="ExpressionConstNode: 1" shape=box]
+"0x7fffc78dfec0" -> "0x7fffc78e1b20"
+"0x7fffc78dfd30" [label="LabelNode: if_false@13" shape=box]
+"0x7fffc78dfec0" -> "0x7fffc78dfd30"
+"0x7fffc78dfd00" [label="LabelNode: if_true@12" shape=box]
+"0x7fffc78dfec0" -> "0x7fffc78dfd00"
+"0x7fffc78dff00" -> "0x7fffc78dfec0"
+"0x7fffc78dfea0" [label="StatementSeqNode" shape=box]
+"0x7fffc78dfbe0" [label="StatementLabelNode" shape=box]
+"0x7fffc78dfd90" [label="LabelNode: if_true@12" shape=box]
+"0x7fffc78dfbe0" -> "0x7fffc78dfd90"
+"0x7fffc78dfea0" -> "0x7fffc78dfbe0"
+"0x7fffc78dfe80" [label="StatementSeqNode" shape=box]
+"0x7fffc78dfa00" [label="StatementMoveNode" shape=box]
+"0x7fffc78df9e0" [label="ExpressionMemoryNode" shape=box]
+"0x7fffc78df980" [label="ExpressionLocalNode: num_aux" shape=box]
+"0x7fffc78df9e0" -> "0x7fffc78df980"
+"0x7fffc78dfa00" -> "0x7fffc78df9e0"
+"0x7fffc78df940" [label="ExpressionConstNode: 1" shape=box]
+"0x7fffc78dfa00" -> "0x7fffc78df940"
+"0x7fffc78dfe80" -> "0x7fffc78dfa00"
+"0x7fffc78dfe60" [label="StatementSeqNode" shape=box]
+"0x7fffc78dfe40" [label="StatementJumpNode" shape=box]
+"0x7fffc78dfd60" [label="LabelNode: end_if@14" shape=box]
+"0x7fffc78dfe40" -> "0x7fffc78dfd60"
+"0x7fffc78dfe60" -> "0x7fffc78dfe40"
+"0x7fffc78dfe20" [label="StatementSeqNode" shape=box]
+"0x7fffc78df960" [label="StatementLabelNode" shape=box]
+"0x7fffc78dfdc0" [label="LabelNode: if_false@13" shape=box]
+"0x7fffc78df960" -> "0x7fffc78dfdc0"
+"0x7fffc78dfe20" -> "0x7fffc78df960"
+"0x7fffc78dfba0" [label="StatementSeqNode" shape=box]
+"0x7fffc78dfcc0" [label="StatementMoveNode" shape=box]
+"0x7fffc78dfbc0" [label="ExpressionMemoryNode" shape=box]
+"0x7fffc78dfc50" [label="ExpressionLocalNode: num_aux" shape=box]
+"0x7fffc78dfbc0" -> "0x7fffc78dfc50"
+"0x7fffc78dfcc0" -> "0x7fffc78dfbc0"
+"0x7fffc78dfc90" [label="ExpressionBinaryOperationNode: 2" shape=box]
+"0x7fffc78dfa40" [label="ExpressionLocalNode: num" shape=box]
+"0x7fffc78dfc90" -> "0x7fffc78dfa40"
+"0x7fffc78dfab0" [label="ExpressionCallNode" shape=box]
+"0x7fffc78df9c0" [label="ExpressionNameNode" shape=box]
+"0x7fffc78dfa80" [label="LabelNode: ComputeFac@11" shape=box]
+"0x7fffc78df9c0" -> "0x7fffc78dfa80"
+"0x7fffc78dfab0" -> "0x7fffc78df9c0"
+"0x7fffc78dfae0" [label="ExpressionLocalNode: this" shape=box]
+"0x7fffc78dfab0" -> "0x7fffc78dfae0"
+"0x7fffc78dfc00" [label="ExpressionBinaryOperationNode: 1" shape=box]
+"0x7fffc78dfb60" [label="ExpressionLocalNode: num" shape=box]
+"0x7fffc78dfc00" -> "0x7fffc78dfb60"
+"0x7fffc78dfb20" [label="ExpressionConstNode: 1" shape=box]
+"0x7fffc78dfc00" -> "0x7fffc78dfb20"
+"0x7fffc78dfab0" -> "0x7fffc78dfc00"
+"0x7fffc78dfc90" -> "0x7fffc78dfab0"
+"0x7fffc78dfcc0" -> "0x7fffc78dfc90"
+"0x7fffc78dfba0" -> "0x7fffc78dfcc0"
+"0x7fffc78dfb40" [label="StatementLabelNode" shape=box]
+"0x7fffc78dfdf0" [label="LabelNode: end_if@14" shape=box]
+"0x7fffc78dfb40" -> "0x7fffc78dfdf0"
+"0x7fffc78dfba0" -> "0x7fffc78dfb40"
+"0x7fffc78dfe20" -> "0x7fffc78dfba0"
+"0x7fffc78dfe60" -> "0x7fffc78dfe20"
+"0x7fffc78dfe80" -> "0x7fffc78dfe60"
+"0x7fffc78dfea0" -> "0x7fffc78dfe80"
+"0x7fffc78dff00" -> "0x7fffc78dfea0"
+"0x7fffc78df920" -> "0x7fffc78dff00"
+"0x7fffc78df900" [label="StatementMoveNode" shape=box]
+"0x7fffc78df8e0" [label="ExpressionTempNode" shape=box]
+"0x7fffc78dff80" [label="TempNode" shape=box]
+"0x7fffc78df8e0" -> "0x7fffc78dff80"
+"0x7fffc78df900" -> "0x7fffc78df8e0"
+"0x7fffc78dff40" [label="ExpressionLocalNode: num_aux" shape=box]
+"0x7fffc78df900" -> "0x7fffc78dff40"
+"0x7fffc78df920" -> "0x7fffc78df900"
+"0x7fffc78e1b00" [label="StatementExpressionNode" shape=box]
+"0x7fffc78e1ad0" [label="ExpressionCallNode" shape=box]
+"0x7fffc78e1a80" [label="ExpressionNameNode" shape=box]
+"0x7fffc78e1a50" [label="LabelNode: System.out.println@10" shape=box]
+"0x7fffc78e1a80" -> "0x7fffc78e1a50"
+"0x7fffc78e1ad0" -> "0x7fffc78e1a80"
+"0x7fffc78e18e0" [label="ExpressionCallNode" shape=box]
+"0x7fffc78e18c0" [label="ExpressionNameNode" shape=box]
+"0x7fffc78e1890" [label="LabelNode: ComputeFac@8" shape=box]
+"0x7fffc78e18c0" -> "0x7fffc78e1890"
+"0x7fffc78e18e0" -> "0x7fffc78e18c0"
+"0x7fffc78e1960" [label="ExpressionCallNode" shape=box]
+"0x7fffc78e1940" [label="ExpressionNameNode" shape=box]
+"0x7fffc78e1910" [label="LabelNode: new@9" shape=box]
+"0x7fffc78e1940" -> "0x7fffc78e1910"
+"0x7fffc78e1960" -> "0x7fffc78e1940"
+"0x7fffc78e1990" [label="ExpressionConstNode: 0" shape=box]
+"0x7fffc78e1960" -> "0x7fffc78e1990"
+"0x7fffc78e18e0" -> "0x7fffc78e1960"
+"0x7fffc78e1a10" [label="ExpressionConstNode: 10" shape=box]
+"0x7fffc78e18e0" -> "0x7fffc78e1a10"
+"0x7fffc78e1ad0" -> "0x7fffc78e18e0"
+"0x7fffc78e1b00" -> "0x7fffc78e1ad0"
+}

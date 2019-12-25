@@ -7,16 +7,15 @@
 namespace IRTreeVisitor {
 
     void IRTreeVisitor::visit(const IRTree::ExpressionBinaryOperationNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"ExpressionBinaryOperationNode\" shape=box]\n";
+        out_ << "\"" << &node << "\"" << " [label=\"ExpressionBinaryOperationNode: " << static_cast<int>(node.operation_type) << "\" shape=box]\n";
         node.left->accept(*this);
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.left.get() << "\"" << "\n";
         node.right->accept(*this);
+        out_ << "\"" << &node << "\"" << " -> " << "\"" << node.right.get() << "\"" << "\n";
     }
 
     void IRTreeVisitor::visit(const IRTree::ExpressionCallNode &node) {
         out_ << "\"" << &node << "\"" << " [label=\"ExpressionCallNode\" shape=box]\n";
-        node.name->accept(*this);
-        out_ << "\"" << &node << "\"" << " -> " << "\"" << node.name.get() << "\"" << "\n";
         node.method->accept(*this);
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.method.get() << "\"" << "\n";
         for (const auto& arg : node.arguments) {
@@ -26,7 +25,7 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeVisitor::visit(const IRTree::ExpressionConstNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"ExpressionConstNode\" shape=box]\n";
+        out_ << "\"" << &node << "\"" << " [label=\"ExpressionConstNode: " << node.value << "\" shape=box]\n";
     }
 
     void IRTreeVisitor::visit(const IRTree::ExpressionESeqNode &node) {
@@ -38,7 +37,7 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeVisitor::visit(const IRTree::ExpressionLocalNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"ExpressionLocalNode\" shape=box]\n";
+        out_ << "\"" << &node << "\"" << " [label=\"ExpressionLocalNode: " << node.name << "\" shape=box]\n";
     }
 
     void IRTreeVisitor::visit(const IRTree::ExpressionMemoryNode &node) {
@@ -59,16 +58,13 @@ namespace IRTreeVisitor {
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.temp.get() << "\"" << "\n";
     }
 
-    void IRTreeVisitor::visit(const IRTree::ExpressionTypeNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"ExpressionTypeNode\" shape=box]\n";
-    }
-
     void IRTreeVisitor::visit(const IRTree::LabelNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"LabelNode\" shape=box]\n";
+        out_ << "\"" << &node << "\"" << " [label=\"LabelNode: " << node.label  << "\" shape=box]\n";
     }
 
     void IRTreeVisitor::visit(const IRTree::StatementCJumpNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"StatementCJumpNode\" shape=box]\n";
+        out_ << "\"" << &node << "\"" << " [label=\"StatementCJumpNode: " << static_cast<int>(node.condition)
+             << "\" shape=box]\n";
         node.left_expression->accept(*this);
         out_ << "\"" << &node << "\"" << " -> " << "\"" << node.left_expression.get() << "\"" << "\n";
         node.right_expression->accept(*this);

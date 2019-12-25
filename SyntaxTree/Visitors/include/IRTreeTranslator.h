@@ -6,7 +6,7 @@
 #include <Tree.h>
 #include <IRTree/INodeBase.h>
 #include <Wrapper/IWrapper.h>
-#include "IRTreeGoal.h"
+#include <IRTree/IRTreeGoal.h>
 
 namespace SyntaxTreeVisitor {
     class IRTreeTranslator : public SyntaxTree::IVisitor {

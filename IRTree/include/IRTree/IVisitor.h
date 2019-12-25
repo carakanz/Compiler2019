@@ -16,7 +16,6 @@ namespace IRTree {
     class ExpressionMemoryNode;
     class ExpressionNameNode;
     class ExpressionTempNode;
-    class ExpressionTypeNode;
     class LabelNode;
     class StatementCJumpNode;
     class StatementExpressionNode;
@@ -36,7 +35,6 @@ namespace IRTree {
         virtual void visit(const ExpressionMemoryNode& node) = 0;
         virtual void visit(const ExpressionNameNode& node) = 0;
         virtual void visit(const ExpressionTempNode& node) = 0;
-        virtual void visit(const ExpressionTypeNode& node) = 0;
         virtual void visit(const LabelNode& node) = 0;
         virtual void visit(const StatementCJumpNode& node) = 0;
         virtual void visit(const StatementExpressionNode& node) = 0;

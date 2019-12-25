@@ -12,7 +12,7 @@ namespace IRTree {
         virtual ~IWrapper() = default;
         virtual std::unique_ptr<IExpressionNode> to_expression() = 0;
         virtual std::unique_ptr<IStatementNode> to_statement() = 0;
-        virtual std::unique_ptr<IStatementNode> to_conditional(std::unique_ptr<LabelNode>& true_label,
-                                                               std::unique_ptr<LabelNode>& false_label) = 0;
+        virtual std::unique_ptr<IStatementNode> to_conditional(std::unique_ptr<LabelNode>&& true_label,
+                                                               std::unique_ptr<LabelNode>&& false_label) = 0;
     };
 }

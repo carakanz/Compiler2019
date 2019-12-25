@@ -202,22 +202,24 @@ namespace SyntaxTreeVisitor {
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionMethodCallNode &node) {
-        node.object->accept(*this);
-        auto object_wrapper = std::move(last_wrapper_);
         auto result = std::make_unique<IRTree::ExpressionCallNode>(
-                object_wrapper->to_expression(),
                 std::make_unique<IRTree::ExpressionNameNode>(std::make_unique<IRTree::LabelNode>(node.method->name)));
+
+        node.object->accept(*this);
+        result->arguments.push_back(last_wrapper_->to_expression());
+
         for (const auto &argument : node.arguments) {
             argument->accept(*this);
             result->arguments.push_back(last_wrapper_->to_expression());
         }
+
         last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::ExpressionCallNode>>(std::move(result));
     }
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionStaticMethodCallNode &node) {
         auto result = std::make_unique<IRTree::ExpressionCallNode>(
-                std::make_unique<IRTree::ExpressionTypeNode>(node.class_id->name),
                 std::make_unique<IRTree::ExpressionNameNode>(std::make_unique<IRTree::LabelNode>(node.method->name)));
+
         for (const auto &argument : node.arguments) {
             argument->accept(*this);
             result->arguments.push_back(last_wrapper_->to_expression());
@@ -246,12 +248,13 @@ namespace SyntaxTreeVisitor {
 
     void IRTreeTranslator::visit(const SyntaxTree::ExpressionNewNode &node) {
         auto result = std::make_unique<IRTree::ExpressionCallNode>(
-                std::make_unique<IRTree::ExpressionTypeNode>("::"),
                 std::make_unique<IRTree::ExpressionNameNode>(
                         std::make_unique<IRTree::LabelNode>(std::string("new"))
                 )
         );
-        result->arguments.push_back(std::make_unique<IRTree::ExpressionConstNode>(0)); //NEED FIX
+
+        //Todo
+        result->arguments.push_back(std::make_unique<IRTree::ExpressionConstNode>(0));
 
         last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::IExpressionNode> >(
                 std::move(result)
@@ -270,16 +273,14 @@ namespace SyntaxTreeVisitor {
     void IRTreeTranslator::visit(const SyntaxTree::StatementIfNode &node) {
         node.conditional->accept(*this);
         const auto conditional_wrapper = std::move(last_wrapper_);
-        node.else_statement->accept(*this); //negative
-        const auto else_statement_wrapper = std::move(last_wrapper_);
-        node.then_statement->accept(*this); //posistive
+        node.then_statement->accept(*this);
         const auto then_statement_wrapper = std::move(last_wrapper_);
+        node.else_statement->accept(*this);
+        const auto else_statement_wrapper = std::move(last_wrapper_);
 
         auto label_if_true = std::make_unique<IRTree::LabelNode>(std::string("if_true"));
         auto label_if_false = std::make_unique<IRTree::LabelNode>(std::string("if_false"));
         auto label_end_if = std::make_unique<IRTree::LabelNode>(std::string("end_if"));
-//        auto positiveLabel = std::move(labelEndIf);
-//        auto negativeLabel = std::move(labelEndIf);
 
         auto true_statement_label = std::make_unique<IRTree::StatementLabelNode>(
                 std::make_unique<IRTree::LabelNode>(*label_if_true));
@@ -290,13 +291,13 @@ namespace SyntaxTreeVisitor {
 
         last_wrapper_ = std::make_unique<IRTree::Wrapper<IRTree::StatementSeqNode>>(
                 std::make_unique<IRTree::StatementSeqNode>(
-                        conditional_wrapper->to_conditional(label_if_true, label_if_false),
+                        conditional_wrapper->to_conditional(std::move(label_if_true), std::move(label_if_false)),
                         std::make_unique<IRTree::StatementSeqNode>(
                                 std::move(true_statement_label),
                                 std::make_unique<IRTree::StatementSeqNode>(
                                         then_statement_wrapper->to_statement(),
                                         std::make_unique<IRTree::StatementSeqNode>(
-                                                std::make_unique<IRTree::StatementJumpNode>(std::make_unique<IRTree::LabelNode>(*label_end_if)),
+                                                std::make_unique<IRTree::StatementJumpNode>(std::move(label_end_if)),
                                                 std::make_unique<IRTree::StatementSeqNode>(
                                                         std::move(false_statement_label),
                                                         std::make_unique<IRTree::StatementSeqNode>(
@@ -331,7 +332,6 @@ namespace SyntaxTreeVisitor {
         node.expression->accept(*this);
 
         auto result = std::make_unique<IRTree::ExpressionCallNode>(
-                std::make_unique<IRTree::ExpressionTypeNode>("::"),
                 std::make_unique<IRTree::ExpressionNameNode>(
                         std::make_unique<IRTree::LabelNode>(std::string("System.out.println"))
                 )

@@ -26,8 +26,8 @@ namespace IRTree {
                                                       right_->to_statement());
         }
 
-        std::unique_ptr<IStatementNode> to_conditional(std::unique_ptr<LabelNode>& true_label,
-                                                       std::unique_ptr<LabelNode>& false_label) override {
+        std::unique_ptr<IStatementNode> to_conditional(std::unique_ptr<LabelNode>&& true_label,
+                                                       std::unique_ptr<LabelNode>&& false_label) override {
             switch (operation_type) {
                 case BinaryOperationType::EQUIVALENT:
                     return std::make_unique<StatementCJumpNode>(CJumpCondition::EQUIVALENT,

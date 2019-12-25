@@ -69,6 +69,7 @@ TEST(IRTree, Parse) {
         IRTreeVisitor::IRTreeVisitor printer(digraph);
         printer.print_start(path);
         printer.visit(*translator.goal);
+        printer.print_end();
         digraph.close();
 
     }
