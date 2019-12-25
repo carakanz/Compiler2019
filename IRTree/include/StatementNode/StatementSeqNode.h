@@ -10,10 +10,31 @@
 namespace IRTree {
     class StatementSeqNode : public IStatementNode {
     public:
-        StatementSeqNode(std::unique_ptr<IStatementNode> &&left_,
-                         std::unique_ptr<IStatementNode> &&right_)
+        StatementSeqNode(std::vector<std::unique_ptr<IStatementNode>> &&nodes) {
+            assert(nodes.size() > 1);
+            right = std::move(nodes.back());
+            if (nodes.size() == 2) {
+                left = std::move(nodes[0]);
+            } else {
+                nodes.pop_back();
+                left = std::make_unique<StatementSeqNode>(std::move(nodes));
+            }
+        }
+
+        template <class Left, class Right>
+        StatementSeqNode(Left &&left_,
+                         Right && right_)
                 : left(std::move(left_)),
                   right(std::move(right_)) {
+            assert(left != nullptr);
+            assert(right != nullptr);
+        }
+
+        template <class Left, class... Right>
+        StatementSeqNode(Left &&left_,
+                         Right &&... right_)
+                : left(std::move(left_)),
+                  right(std::make_unique<StatementSeqNode>(std::forward<Right>(right_)...)) {
             assert(left != nullptr);
             assert(right != nullptr);
         }

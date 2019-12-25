@@ -14,16 +14,16 @@
 #include "../SyntaxTree/Visitors/include/IRTreeTranslator.h"
 #include "../IRTree/Visitors/include/IRTreePrinter.h"
 
-const std::array<std::string, 1> Paths = {
-//        "BinarySearch.java",
-//        "BinaryTree.java",
-//        "BubbleSort.java",
+
+const std::array<std::string, 8> Paths = {
+        "BinarySearch.java",
+        "BinaryTree.java",
+        "BubbleSort.java",
         "Factorial.java",
-//        "LinearSearch.java",
-//        "LinkedList.java",
-//        "QuickSort.java",
-//        "TreeVisitor.java",
-//        "Test"
+        "LinearSearch.java",
+        "LinkedList.java",
+        "QuickSort.java",
+        "TreeVisitor.java",
 };
 
 

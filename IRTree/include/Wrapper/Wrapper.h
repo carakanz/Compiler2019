@@ -6,13 +6,18 @@
 #include <memory>
 #include "IWrapper.h"
 #include "cassert"
+#include <CJumpCondition.h>
 
 namespace IRTree {
 
     template<class NodeType>
     class Wrapper : public IWrapper {
     public:
-        explicit Wrapper(std::unique_ptr<NodeType> node) : node_(std::move(node)) {
+        explicit Wrapper(std::unique_ptr<NodeType>&& node) : node_(std::move(node)) {
+        }
+
+        template <class... Args>
+        explicit Wrapper(Args... args) : node_(std::make_unique<NodeType>(std::forward<Args>(args)...)) {
         }
 
 //        template<typename T = std::enable_if_t<std::is_base_of_v<IExpressionNode,NodeType>>>
@@ -51,4 +56,24 @@ namespace IRTree {
     private:
         std::unique_ptr<NodeType> node_;
     };
+
+    template<>
+    std::unique_ptr<IStatementNode>
+    Wrapper<ExpressionCallNode>::to_conditional(std::unique_ptr<LabelNode> && true_label, std::unique_ptr<LabelNode> && false_label) {
+        return std::make_unique<StatementCJumpNode>(CJumpCondition::NOT_EQUIVALENT,
+                                                    std::make_unique<ExpressionConstNode>(0),
+                                                    std::move(node_),
+                                                    std::move(true_label),
+                                                    std::move(false_label));
+    }
+
+    template<>
+    std::unique_ptr<IStatementNode>
+    Wrapper<ExpressionLocalNode>::to_conditional(std::unique_ptr<LabelNode> && true_label, std::unique_ptr<LabelNode> && false_label) {
+        return std::make_unique<StatementCJumpNode>(CJumpCondition::NOT_EQUIVALENT,
+                                                    std::make_unique<ExpressionConstNode>(0),
+                                                    std::move(node_),
+                                                    std::move(true_label),
+                                                    std::move(false_label));
+    }
 }
