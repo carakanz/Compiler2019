@@ -3,6 +3,8 @@
 find_package(FLEX REQUIRED)
 find_package(BISON REQUIRED)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fsanitize=leak -g")
+
 function(execut_test TestName)
     add_executable(${TestName}
             ${PROJECT_SOURCE_DIR}/tests/RunUnitTest.cpp

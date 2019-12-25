@@ -1,39 +1,39 @@
 digraph Test {
-"0x7fffcb82c0b0" [label="Identifier: Test" shape=box]
-"0x7fffcb82c720" [label="TypeVoid" shape=box]
-"0x7fffcb83ac30" [label="Identifier: main" shape=box]
-"0x7fffcb837320" [label="TypeString" shape=box]
-"0x7fffcb843990" [label="TypeArray" shape=box]
-"0x7fffcb843990" -> "0x7fffcb837320"
-"0x7fffcb837670" [label="Identifier: a" shape=box]
-"0x7fffcb829f40" [label="DeclarationVar" shape=diamond]
-"0x7fffcb829f40" -> "0x7fffcb843990"
-"0x7fffcb829f40" -> "0x7fffcb837670"
-"0x7fffcb837630" [label="Identifier: BS" shape=box]
-"0x7fffcb8375c0" [label="TypeUser" shape=box]
-"0x7fffcb8375c0" -> "0x7fffcb837630"
-"0x7fffcb8399e0" [label="ExpressionNew" shape=circle]
-"0x7fffcb8399e0" -> "0x7fffcb8375c0"
-"0x7fffcb835aa0" [label="Identifier: Start" shape=box]
-"0x7fffcb839bb0" [label="ExpressionIntegerLiteral: 20" shape=circle]
-"0x7fffcb839b60" [label="ExpressionMethodCall" shape=circle]
-"0x7fffcb839b60" -> "0x7fffcb8399e0"
-"0x7fffcb839b60" -> "0x7fffcb835aa0"
-"0x7fffcb839b60" -> "0x7fffcb839bb0"
-"0x7fffcb836180" [label="StatementPrintln"]
-"0x7fffcb836180" -> "0x7fffcb839b60"
-"0x7fffcb82c720" [label="TypeVoid" shape=box]
-"0x7fffcb83ac30" [label="Identifier: main" shape=box]
-"0x7fffcb836100" [label="DeclarationMethod
+"0x606000054440" [label="Identifier: Test" shape=box]
+"0x603000028600" [label="TypeVoid" shape=box]
+"0x6060000544a0" [label="Identifier: main" shape=box]
+"0x603000028630" [label="TypeString" shape=box]
+"0x603000028660" [label="TypeArray" shape=box]
+"0x603000028660" -> "0x603000028630"
+"0x606000054500" [label="Identifier: a" shape=box]
+"0x604000023350" [label="DeclarationVar" shape=diamond]
+"0x604000023350" -> "0x603000028660"
+"0x604000023350" -> "0x606000054500"
+"0x606000054560" [label="Identifier: BS" shape=box]
+"0x6030000286f0" [label="TypeUser" shape=box]
+"0x6030000286f0" -> "0x606000054560"
+"0x6030000286c0" [label="ExpressionNew" shape=circle]
+"0x6030000286c0" -> "0x6030000286f0"
+"0x6060000545c0" [label="Identifier: Start" shape=box]
+"0x603000028720" [label="ExpressionIntegerLiteral: 20" shape=circle]
+"0x606000054620" [label="ExpressionMethodCall" shape=circle]
+"0x606000054620" -> "0x6030000286c0"
+"0x606000054620" -> "0x6060000545c0"
+"0x606000054620" -> "0x603000028720"
+"0x603000028750" [label="StatementPrintln"]
+"0x603000028750" -> "0x606000054620"
+"0x603000028600" [label="TypeVoid" shape=box]
+"0x6060000544a0" [label="Identifier: main" shape=box]
+"0x60c000009a00" [label="DeclarationMethod
 PrivacyModifier: 0
 is_static: 1" shape=diamond]
-"0x7fffcb836100" -> "0x7fffcb82c720"
-"0x7fffcb836100" -> "0x7fffcb83ac30"
-"0x7fffcb836100" -> "0x7fffcb829f40"
-"0x7fffcb836100" -> "0x7fffcb836180"
-"0x7fffcb8335d0" [label="DeclarationClass" shape=diamond]
-"0x7fffcb8335d0" -> "0x7fffcb82c0b0"
-"0x7fffcb8335d0" -> "0x7fffcb836100"
-"0x7fffcb829f70" [label="Goal" shape=diamond]
-"0x7fffcb829f70" -> "0x7fffcb8335d0"
+"0x60c000009a00" -> "0x603000028600"
+"0x60c000009a00" -> "0x6060000544a0"
+"0x60c000009a00" -> "0x604000023350"
+"0x60c000009a00" -> "0x603000028750"
+"0x6080000017a0" [label="DeclarationClass" shape=diamond]
+"0x6080000017a0" -> "0x606000054440"
+"0x6080000017a0" -> "0x60c000009a00"
+"0x604000023390" [label="Goal" shape=diamond]
+"0x604000023390" -> "0x6080000017a0"
 }
