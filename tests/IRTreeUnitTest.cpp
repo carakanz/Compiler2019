@@ -15,7 +15,7 @@
 #include "../IRTree/Visitors/include/IRTreePrinter.h"
 
 
-const std::array<std::string, 8> Paths = {
+const std::array<std::string, 9> Paths = {
         "BinarySearch.java",
         "BinaryTree.java",
         "BubbleSort.java",
@@ -24,6 +24,7 @@ const std::array<std::string, 8> Paths = {
         "LinkedList.java",
         "QuickSort.java",
         "TreeVisitor.java",
+        "Test"
 };
 
 

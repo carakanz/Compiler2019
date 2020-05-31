@@ -7,7 +7,8 @@ project(IrtVisitors VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} STATIC
         src/IRTreePrinter.cpp
-)
+        include/IRTreeLinearisator.h
+        include/IRTreePrinter.h src/IrTreeLinearisator.cpp)
 
 target_link_libraries(${PROJECT_NAME} IRTree Visitors)
 
@@ -17,5 +18,5 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES})
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        include/IRTreePrinter.h
+        include/IRVisitors.h
         )
