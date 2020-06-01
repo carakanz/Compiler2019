@@ -6,17 +6,16 @@
 
 namespace IRTreeVisitor {
     void IRTreeLinearisator::visit(const IRTree::ExpressionBinaryOperationNode &node) {
-        lineTrees.back().push_back(&node);
         node.left->accept(*this);
         node.right->accept(*this);
+        lineTrees.back().push_back(&node);
     }
 
     void IRTreeLinearisator::visit(const IRTree::ExpressionCallNode &node) {
-        lineTrees.back().push_back(&node);
-        node.method->accept(*this);
         for (const auto &arg : node.arguments) {
             arg->accept(*this);
         }
+        lineTrees.back().push_back(&node);
     }
 
     void IRTreeLinearisator::visit(const IRTree::ExpressionConstNode &node) {
@@ -24,6 +23,7 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeLinearisator::visit(const IRTree::ExpressionESeqNode &node) {
+        assert(false);
         lineTrees.back().push_back(&node);
         node.expression->accept(*this);
         node.statement->accept(*this);
@@ -34,18 +34,16 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeLinearisator::visit(const IRTree::ExpressionMemoryNode &node) {
-        lineTrees.back().push_back(&node);
         node.expression->accept(*this);
+        lineTrees.back().push_back(&node);
     }
 
     void IRTreeLinearisator::visit(const IRTree::ExpressionNameNode &node) {
         lineTrees.back().push_back(&node);
-        node.label->accept(*this);
     }
 
     void IRTreeLinearisator::visit(const IRTree::ExpressionTempNode &node) {
         lineTrees.back().push_back(&node);
-        node.temp->accept(*this);
     }
 
     void IRTreeLinearisator::visit(const IRTree::LabelNode &node) {
@@ -53,11 +51,9 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeLinearisator::visit(const IRTree::StatementCJumpNode &node) {
-        lineTrees.back().push_back(&node);
         node.left_expression->accept(*this);
         node.right_expression->accept(*this);
-        node.negative_label->accept(*this);
-        node.positive_label->accept(*this);
+        lineTrees.back().push_back(&node);
     }
 
     void IRTreeLinearisator::visit(const IRTree::StatementExpressionNode &node) {
@@ -67,22 +63,20 @@ namespace IRTreeVisitor {
 
     void IRTreeLinearisator::visit(const IRTree::StatementJumpNode &node) {
         lineTrees.back().push_back(&node);
-        node.label->accept(*this);
     }
 
     void IRTreeLinearisator::visit(const IRTree::StatementLabelNode &node) {
-        lineTrees.back().push_back(&node);
         node.label->accept(*this);
+        lineTrees.back().push_back(&node);
     }
 
     void IRTreeLinearisator::visit(const IRTree::StatementMoveNode &node) {
-        lineTrees.back().push_back(&node);
         node.source->accept(*this);
         node.destination->accept(*this);
+        lineTrees.back().push_back(&node);
     }
 
     void IRTreeLinearisator::visit(const IRTree::StatementSeqNode &node) {
-        lineTrees.back().push_back(&node);
         node.left->accept(*this);
         node.right->accept(*this);
     }
