@@ -1,4 +1,4 @@
-//
+    //
 // Created by Zinenko Dmytro on 22.12.2019.
 //
 #pragma once
@@ -17,6 +17,8 @@ namespace IRTree {
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
+
+        TempNode(const TempNode& other) : label(other.label) {};
 
         std::string label;
     };
