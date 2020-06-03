@@ -44,5 +44,6 @@ add_subdirectory(BisonBuilder)
 add_subdirectory(SyntaxTree)
 add_subdirectory(SymbolTable)
 add_subdirectory(IRTree)
+#add_subdirectory(Assembler)
 
 message("Include gtest: " ${gtest_SOURCE_DIR})
