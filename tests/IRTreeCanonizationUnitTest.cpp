@@ -13,6 +13,7 @@
 #include "../SyntaxTree/Visitors/include/IRTreeTranslator.h"
 #include "../IRTree/Visitors/include/IRTreePrinter.h"
 #include "../IRTree/Visitors/include/IRTreeCallCanonizator.h"
+#include "../IRTree/Visitors/include/IRTreeESeqCanonizator.h"
 
 
 const std::array<std::string, 9> Paths = {

@@ -51,7 +51,7 @@ namespace IRTreeVisitor{
     void IRTreeESeqCanonizator::visit( const IRTree::ExpressionTempNode& n )
     {
         static int numEntries = 0;
-        std::cout << numEntries << std::endl;
+        //std::cout << numEntries << std::endl;
         updateLastExp(n);
         numEntries++;
     }
@@ -175,16 +175,16 @@ namespace IRTreeVisitor{
             } else {
                 moveSrcExp = std::move(canonArg);
             }
-            std::unique_ptr<const IRTree::IStatementNode> moveStm = std::make_unique<IRTree::StatementMoveNode>(
+            std::unique_ptr<IRTree::IStatementNode> moveStm = std::make_unique<IRTree::StatementMoveNode>(
                     std::move( moveSrcExp ),
                     std::make_unique<IRTree::ExpressionTempNode>(
                             std::make_unique<IRTree::TempNode>("auxiliary", false)));
-            newStms.emplace_back(std::move(moveSrcExp));
+            newStms.emplace_back(std::move(moveStm));
         }
 
         std::unique_ptr<IRTree::IExpressionNode> resultExp = nullptr;
         if( !newStms.empty() ) {
-            std::unique_ptr<const IRTree::IStatementNode> suffStm = std::move( newStms.back() );
+            std::unique_ptr<IRTree::IStatementNode> suffStm = std::move( newStms.back() );
             newStms.pop_back();
             for( int i = int(newStms.size()) - 1; i >= 0 ; i-- ) {
                 suffStm = std::make_unique<IRTree::StatementSeqNode>(
@@ -196,11 +196,11 @@ namespace IRTreeVisitor{
                     std::move( suffStm ),
                     std::make_unique<IRTree::ExpressionCallNode>(
                             std::move( canonFunc ),
-                            std::move( newArgs ) ) );
+                            newArgs ) );
         } else {
             resultExp = std::make_unique<IRTree::ExpressionCallNode>(
                     std::move( canonFunc ),
-                    std::move( canonArgList ) );
+                    canonArgList );
         }
 
         updateLastExp( std::move( resultExp ) );
