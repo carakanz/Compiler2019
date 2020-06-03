@@ -1,17 +1,30 @@
 //
-// Created by carak on 21.05.2020.
+// Created by l1onsun on 23.12.19.
 //
-
 #pragma once
 
+#include <fstream>
 #include "../include/IRTree/IVisitor.h"
 #include "../include/IRTree/Nodes.h"
-#include "IRTree/IRTreeGoal.h"
+#include "IRTreeBlockBuilder.h"
 
 namespace IRTreeVisitor {
-    class IRTreeLinearisator : IRTree::IVisitor {
+    class IRTreeBlockPrinter : IRTree::IVisitor {
     public:
-        explicit IRTreeLinearisator() {}
+        explicit IRTreeBlockPrinter(std::ofstream &out) : out_(out) {}
+
+        void print_start(std::string name) {
+            size_t dot = name.find('.');
+            while (dot != std::string::npos) {
+                name.erase(name.find('.'));
+                dot = name.find('.');
+            }
+            out_ << "digraph " << name << " {" << "\n";
+        };
+
+        void print_end() {
+            out_ << "}" << std::endl;
+        };
 
         void visit(const IRTree::ExpressionBinaryOperationNode &node) override;
 
@@ -45,12 +58,9 @@ namespace IRTreeVisitor {
 
         void visit(const IRTree::TempNode &node) override;
 
-        void visit(const IRTree::IRTreeGoal &goal);
+        void visit(const IRTree::ProgramInBlock &goal);
 
-        [[nodiscard]] std::vector<std::vector<const IRTree::INodeBase*>> GetLineTrees() const {
-            return lineTrees;
-        };
     private:
-        std::vector<std::vector<const IRTree::INodeBase*>> lineTrees;
+        std::ofstream &out_;
     };
 }

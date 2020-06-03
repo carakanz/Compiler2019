@@ -436,7 +436,7 @@ namespace SyntaxTreeVisitor {
 
     void IRTreeTranslator::visit( // GoalNode
             const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase> &node) {
-        goal = std::make_unique<IRTreeGoal>();
+        goal = std::make_unique<IRTree::IRTreeGoal>();
 
         for (const auto &item : node.items) {
             goal->add_class(item->identifier->name);

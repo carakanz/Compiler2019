@@ -113,7 +113,7 @@ namespace IRTreeVisitor {
         out_ << "\"" << &node << "\"" << " [label=\"TempNode\" shape=box]\n";
     }
 
-    void IRTreeVisitor::visit(const SyntaxTreeVisitor::IRTreeGoal &goal) {
+    void IRTreeVisitor::visit(const IRTree::IRTreeGoal &goal) {
         for (const auto& class_info : goal.wrappers) {
             for (const auto& method_info : class_info.second) {
                 method_info.second->accept(*this);

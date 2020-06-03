@@ -8,7 +8,12 @@ project(IrtVisitors VERSION 1.0 LANGUAGES CXX)
 add_library(${PROJECT_NAME} STATIC
         src/IRTreePrinter.cpp
         include/IRTreeLinearisator.h
-        include/IRTreePrinter.h src/IrTreeLinearisator.cpp)
+        include/IRTreePrinter.h
+        src/IrTreeLinearisator.cpp
+        src/IRTreeBlockBuilder.cpp
+        include/IRTreeBlockBuilder.h
+        src/IRTreeBlockPrinter.cpp
+        include/IRTreeBlockPrinter.h src/IRTreeTraceBuilder.cpp include/IRTreeTraceBuilder.h)
 
 target_link_libraries(${PROJECT_NAME} IRTree Visitors)
 

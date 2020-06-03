@@ -9,7 +9,7 @@
 #include <Wrapper/IWrapper.h>
 
 
-namespace SyntaxTreeVisitor {
+namespace IRTree {
 
     class IRTreeGoal {
     public:

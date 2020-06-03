@@ -15,6 +15,9 @@ namespace IRTree {
             label = label_ + "@" + std::to_string(++counters);
         }
 
+        LabelNode(const LabelNode& label_) : label(label_.label) {
+        }
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }

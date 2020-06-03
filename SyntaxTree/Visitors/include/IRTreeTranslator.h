@@ -80,7 +80,7 @@ namespace SyntaxTreeVisitor {
         void
         visit(const SyntaxTree::ListNode<SyntaxTree::DeclarationClassNode, SyntaxTree::INodeBase> &node) override; //GoalNode
 
-        std::unique_ptr<IRTreeGoal> goal{nullptr};
+        std::unique_ptr<IRTree::IRTreeGoal> goal{nullptr};
     private:
         void buildStatement(const std::unique_ptr<SyntaxTree::IStatementNode> &statement,
                             std::unique_ptr<IRTree::IWrapper>& result_wrapper);

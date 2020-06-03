@@ -6,3 +6,4 @@
 
 #include "IRTreeLinearisator.h"
 #include "IRTreePrinter.h"
+#include "IRTreeBlockBuilder.h"

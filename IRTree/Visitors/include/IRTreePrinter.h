@@ -58,7 +58,7 @@ namespace IRTreeVisitor {
 
         void visit(const IRTree::TempNode &node) override;
 
-        void visit(const SyntaxTreeVisitor::IRTreeGoal &goal);
+        void visit(const IRTree::IRTreeGoal &goal);
 
     private:
         std::ofstream &out_;
