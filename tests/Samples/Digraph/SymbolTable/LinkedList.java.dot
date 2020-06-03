@@ -1,94 +1,94 @@
 digraph LinkedList {
 "0x6110000047a8" [label=LL shape=diamond]
-"0x6120000139e8" [label="int Start()" shape=box]
+"0x612000013e68" [label="int Start()" shape=box]
 "0x60b0000177c8" [label="Element : el03"]
-"0x6120000139e8" -> "0x60b0000177c8"
+"0x612000013e68" -> "0x60b0000177c8"
 "0x60b000017668" [label="Element : el01"]
-"0x6120000139e8" -> "0x60b000017668"
+"0x612000013e68" -> "0x60b000017668"
 "0x60b0000175b8" [label="boolean : aux01"]
-"0x6120000139e8" -> "0x60b0000175b8"
+"0x612000013e68" -> "0x60b0000175b8"
 "0x60b000017718" [label="Element : el02"]
-"0x6120000139e8" -> "0x60b000017718"
+"0x612000013e68" -> "0x60b000017718"
 "0x60b000017458" [label="List : head"]
-"0x6120000139e8" -> "0x60b000017458"
+"0x612000013e68" -> "0x60b000017458"
 "0x60b000017508" [label="List : last_elem"]
-"0x6120000139e8" -> "0x60b000017508"
-"0x6110000047a8" -> "0x6120000139e8"
+"0x612000013e68" -> "0x60b000017508"
+"0x6110000047a8" -> "0x612000013e68"
 "0x611000004668" [label=List shape=diamond]
-"0x612000013868" [label="boolean Print()" shape=box]
+"0x612000013ce8" [label="boolean Print()" shape=box]
 "0x60b000017198" [label="Element : var_elem"]
-"0x612000013868" -> "0x60b000017198"
+"0x612000013ce8" -> "0x60b000017198"
 "0x60b000017038" [label="List : aux01"]
-"0x612000013868" -> "0x60b000017038"
+"0x612000013ce8" -> "0x60b000017038"
 "0x60b0000170e8" [label="boolean : var_end"]
-"0x612000013868" -> "0x60b0000170e8"
-"0x611000004668" -> "0x612000013868"
-"0x6120000136e8" [label="List GetNext()" shape=box]
-"0x611000004668" -> "0x6120000136e8"
-"0x612000013568" [label="Element GetElem()" shape=box]
-"0x611000004668" -> "0x612000013568"
-"0x612000012c68" [label="boolean InitNew(Element, List, boolean, )" shape=box]
+"0x612000013ce8" -> "0x60b0000170e8"
+"0x611000004668" -> "0x612000013ce8"
+"0x612000013b68" [label="List GetNext()" shape=box]
+"0x611000004668" -> "0x612000013b68"
+"0x6120000139e8" [label="Element GetElem()" shape=box]
+"0x611000004668" -> "0x6120000139e8"
+"0x6120000130e8" [label="boolean InitNew(Element, List, boolean, )" shape=box]
 "0x60b000016118" [label="boolean : v_end"]
-"0x612000012c68" -> "0x60b000016118"
+"0x6120000130e8" -> "0x60b000016118"
 "0x60b000015fb8" [label="Element : v_elem"]
-"0x612000012c68" -> "0x60b000015fb8"
+"0x6120000130e8" -> "0x60b000015fb8"
 "0x60b000016068" [label="List : v_next"]
-"0x612000012c68" -> "0x60b000016068"
-"0x611000004668" -> "0x612000012c68"
-"0x612000012ae8" [label="boolean Init()" shape=box]
-"0x611000004668" -> "0x612000012ae8"
-"0x612000012de8" [label="List Insert(Element, )" shape=box]
-"0x60b0000161c8" [label="Element : new_elem"]
-"0x612000012de8" -> "0x60b0000161c8"
-"0x60b0000163d8" [label="List : aux02"]
-"0x612000012de8" -> "0x60b0000163d8"
-"0x60b000016278" [label="boolean : ret_val"]
-"0x612000012de8" -> "0x60b000016278"
-"0x60b000016328" [label="List : aux03"]
-"0x612000012de8" -> "0x60b000016328"
-"0x611000004668" -> "0x612000012de8"
-"0x6120000133e8" [label="boolean GetEnd()" shape=box]
-"0x611000004668" -> "0x6120000133e8"
-"0x612000012f68" [label="boolean SetNext(List, )" shape=box]
-"0x60b000016488" [label="List : v_next"]
-"0x612000012f68" -> "0x60b000016488"
-"0x611000004668" -> "0x612000012f68"
-"0x6120000130e8" [label="List Delete(Element, )" shape=box]
-"0x60b000016538" [label="Element : e"]
-"0x6120000130e8" -> "0x60b000016538"
-"0x60b000016b68" [label="int : nt"]
-"0x6120000130e8" -> "0x60b000016b68"
-"0x60b000016ab8" [label="int : aux04"]
-"0x6120000130e8" -> "0x60b000016ab8"
-"0x60b000016698" [label="boolean : ret_val"]
-"0x6120000130e8" -> "0x60b000016698"
-"0x60b0000167f8" [label="List : aux01"]
-"0x6120000130e8" -> "0x60b0000167f8"
-"0x60b0000165e8" [label="List : my_head"]
-"0x6120000130e8" -> "0x60b0000165e8"
-"0x60b000016748" [label="boolean : aux05"]
-"0x6120000130e8" -> "0x60b000016748"
-"0x60b000016a08" [label="Element : var_elem"]
-"0x6120000130e8" -> "0x60b000016a08"
-"0x60b0000168a8" [label="List : prev"]
-"0x6120000130e8" -> "0x60b0000168a8"
-"0x60b000016958" [label="boolean : var_end"]
-"0x6120000130e8" -> "0x60b000016958"
+"0x6120000130e8" -> "0x60b000016068"
 "0x611000004668" -> "0x6120000130e8"
-"0x612000013268" [label="int Search(Element, )" shape=box]
-"0x60b000016c18" [label="Element : e"]
-"0x612000013268" -> "0x60b000016c18"
-"0x60b000016f88" [label="int : nt"]
-"0x612000013268" -> "0x60b000016f88"
-"0x60b000016ed8" [label="boolean : var_end"]
-"0x612000013268" -> "0x60b000016ed8"
-"0x60b000016cc8" [label="int : int_ret_val"]
-"0x612000013268" -> "0x60b000016cc8"
-"0x60b000016e28" [label="Element : var_elem"]
-"0x612000013268" -> "0x60b000016e28"
-"0x60b000016d78" [label="List : aux01"]
-"0x612000013268" -> "0x60b000016d78"
+"0x612000012f68" [label="boolean Init()" shape=box]
+"0x611000004668" -> "0x612000012f68"
+"0x612000013268" [label="List Insert(Element, )" shape=box]
+"0x60b0000161c8" [label="Element : new_elem"]
+"0x612000013268" -> "0x60b0000161c8"
+"0x60b0000163d8" [label="List : aux02"]
+"0x612000013268" -> "0x60b0000163d8"
+"0x60b000016278" [label="boolean : ret_val"]
+"0x612000013268" -> "0x60b000016278"
+"0x60b000016328" [label="List : aux03"]
+"0x612000013268" -> "0x60b000016328"
 "0x611000004668" -> "0x612000013268"
+"0x612000013868" [label="boolean GetEnd()" shape=box]
+"0x611000004668" -> "0x612000013868"
+"0x6120000133e8" [label="boolean SetNext(List, )" shape=box]
+"0x60b000016488" [label="List : v_next"]
+"0x6120000133e8" -> "0x60b000016488"
+"0x611000004668" -> "0x6120000133e8"
+"0x612000013568" [label="List Delete(Element, )" shape=box]
+"0x60b000016538" [label="Element : e"]
+"0x612000013568" -> "0x60b000016538"
+"0x60b000016b68" [label="int : nt"]
+"0x612000013568" -> "0x60b000016b68"
+"0x60b000016ab8" [label="int : aux04"]
+"0x612000013568" -> "0x60b000016ab8"
+"0x60b000016698" [label="boolean : ret_val"]
+"0x612000013568" -> "0x60b000016698"
+"0x60b0000167f8" [label="List : aux01"]
+"0x612000013568" -> "0x60b0000167f8"
+"0x60b0000165e8" [label="List : my_head"]
+"0x612000013568" -> "0x60b0000165e8"
+"0x60b000016748" [label="boolean : aux05"]
+"0x612000013568" -> "0x60b000016748"
+"0x60b000016a08" [label="Element : var_elem"]
+"0x612000013568" -> "0x60b000016a08"
+"0x60b0000168a8" [label="List : prev"]
+"0x612000013568" -> "0x60b0000168a8"
+"0x60b000016958" [label="boolean : var_end"]
+"0x612000013568" -> "0x60b000016958"
+"0x611000004668" -> "0x612000013568"
+"0x6120000136e8" [label="int Search(Element, )" shape=box]
+"0x60b000016c18" [label="Element : e"]
+"0x6120000136e8" -> "0x60b000016c18"
+"0x60b000016f88" [label="int : nt"]
+"0x6120000136e8" -> "0x60b000016f88"
+"0x60b000016ed8" [label="boolean : var_end"]
+"0x6120000136e8" -> "0x60b000016ed8"
+"0x60b000016cc8" [label="int : int_ret_val"]
+"0x6120000136e8" -> "0x60b000016cc8"
+"0x60b000016e28" [label="Element : var_elem"]
+"0x6120000136e8" -> "0x60b000016e28"
+"0x60b000016d78" [label="List : aux01"]
+"0x6120000136e8" -> "0x60b000016d78"
+"0x611000004668" -> "0x6120000136e8"
 "0x60b000017248" [label="Element : elem"]
 "0x611000004668" -> "0x60b000017248"
 "0x60b0000173a8" [label="boolean : end"]
@@ -96,47 +96,47 @@ digraph LinkedList {
 "0x60b0000172f8" [label="List : next"]
 "0x611000004668" -> "0x60b0000172f8"
 "0x6110000043e8" [label=LinkedList shape=diamond]
-"0x612000012068" [label="void main(String[], )" shape=box]
+"0x6120000124e8" [label="void main(String[], )" shape=box]
 "0x60b0000154b8" [label="String[] : a"]
-"0x612000012068" -> "0x60b0000154b8"
-"0x6110000043e8" -> "0x612000012068"
+"0x6120000124e8" -> "0x60b0000154b8"
+"0x6110000043e8" -> "0x6120000124e8"
 "0x611000004528" [label=Element shape=diamond]
-"0x612000012968" [label="boolean Compare(int, int, )" shape=box]
+"0x612000012de8" [label="boolean Compare(int, int, )" shape=box]
 "0x60b000015b98" [label="int : num2"]
-"0x612000012968" -> "0x60b000015b98"
+"0x612000012de8" -> "0x60b000015b98"
 "0x60b000015ae8" [label="int : num1"]
-"0x612000012968" -> "0x60b000015ae8"
+"0x612000012de8" -> "0x60b000015ae8"
 "0x60b000015cf8" [label="int : aux02"]
-"0x612000012968" -> "0x60b000015cf8"
+"0x612000012de8" -> "0x60b000015cf8"
 "0x60b000015c48" [label="boolean : retval"]
-"0x612000012968" -> "0x60b000015c48"
-"0x611000004528" -> "0x612000012968"
-"0x6120000121e8" [label="boolean Init(int, int, boolean, )" shape=box]
+"0x612000012de8" -> "0x60b000015c48"
+"0x611000004528" -> "0x612000012de8"
+"0x612000012668" [label="boolean Init(int, int, boolean, )" shape=box]
 "0x60b000015568" [label="int : v_Age"]
-"0x6120000121e8" -> "0x60b000015568"
+"0x612000012668" -> "0x60b000015568"
 "0x60b0000156c8" [label="boolean : v_Married"]
-"0x6120000121e8" -> "0x60b0000156c8"
+"0x612000012668" -> "0x60b0000156c8"
 "0x60b000015618" [label="int : v_Salary"]
-"0x6120000121e8" -> "0x60b000015618"
-"0x611000004528" -> "0x6120000121e8"
-"0x6120000127e8" [label="boolean Equal(Element, )" shape=box]
-"0x60b000015778" [label="Element : other"]
-"0x6120000127e8" -> "0x60b000015778"
-"0x60b000015a38" [label="int : nt"]
-"0x6120000127e8" -> "0x60b000015a38"
-"0x60b000015988" [label="int : aux02"]
-"0x6120000127e8" -> "0x60b000015988"
-"0x60b000015828" [label="boolean : ret_val"]
-"0x6120000127e8" -> "0x60b000015828"
-"0x60b0000158d8" [label="int : aux01"]
-"0x6120000127e8" -> "0x60b0000158d8"
-"0x611000004528" -> "0x6120000127e8"
-"0x612000012668" [label="boolean GetMarried()" shape=box]
+"0x612000012668" -> "0x60b000015618"
 "0x611000004528" -> "0x612000012668"
-"0x6120000124e8" [label="int GetSalary()" shape=box]
-"0x611000004528" -> "0x6120000124e8"
-"0x612000012368" [label="int GetAge()" shape=box]
-"0x611000004528" -> "0x612000012368"
+"0x612000012c68" [label="boolean Equal(Element, )" shape=box]
+"0x60b000015778" [label="Element : other"]
+"0x612000012c68" -> "0x60b000015778"
+"0x60b000015a38" [label="int : nt"]
+"0x612000012c68" -> "0x60b000015a38"
+"0x60b000015988" [label="int : aux02"]
+"0x612000012c68" -> "0x60b000015988"
+"0x60b000015828" [label="boolean : ret_val"]
+"0x612000012c68" -> "0x60b000015828"
+"0x60b0000158d8" [label="int : aux01"]
+"0x612000012c68" -> "0x60b0000158d8"
+"0x611000004528" -> "0x612000012c68"
+"0x612000012ae8" [label="boolean GetMarried()" shape=box]
+"0x611000004528" -> "0x612000012ae8"
+"0x612000012968" [label="int GetSalary()" shape=box]
+"0x611000004528" -> "0x612000012968"
+"0x6120000127e8" [label="int GetAge()" shape=box]
+"0x611000004528" -> "0x6120000127e8"
 "0x60b000015f08" [label="boolean : Married"]
 "0x611000004528" -> "0x60b000015f08"
 "0x60b000015da8" [label="int : Age"]

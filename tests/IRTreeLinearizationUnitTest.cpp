@@ -82,7 +82,7 @@ TEST(IRTreeLinearization, Parse) {
         ASSERT_TRUE(digraph.is_open());
         IRTreeVisitor::IRTreeVisitor printer(digraph);
         printer.print_start(path);
-        printer.visit(*translator.goal);
+        printer.visit_linear(*translator.goal);
         printer.print_end();
         digraph.close();
     }

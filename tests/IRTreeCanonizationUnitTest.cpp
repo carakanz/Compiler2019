@@ -77,13 +77,7 @@ TEST(IRTreeCanonization, Parse) {
         ASSERT_TRUE(digraph.is_open());
         IRTreeVisitor::IRTreeVisitor printer(digraph);
         printer.print_start(path);
-        for (const auto& class_info : goal.linear_wrappers) {
-            for (const auto& method_info : class_info.second) {
-                for (const auto& statement : method_info.second) {
-                    statement->accept(printer);
-                }
-            }
-        }
+		printer.visit(*translator.goal);
         printer.print_end();
         digraph.close();
     }

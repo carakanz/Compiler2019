@@ -60,6 +60,8 @@ namespace IRTreeVisitor {
 
         void visit(const SyntaxTreeVisitor::IRTreeGoal &goal);
 
+	void visit_linear(const SyntaxTreeVisitor::IRTreeGoal &goal);
+
     private:
         std::ofstream &out_;
     };
