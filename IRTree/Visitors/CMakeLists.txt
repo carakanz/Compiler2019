@@ -10,6 +10,12 @@ add_library(${PROJECT_NAME} STATIC
         include/IRTreeLinearisator.h
         include/IRTreePrinter.h
         src/IrTreeLinearisator.cpp
+        include/IRTreeCallCanonizator.h
+        src/IRTreeCallCanonizator.cpp
+        include/IRTreeESeqCanonizator.h
+        src/IRTreeESeqCanonizator.cpp
+        include/IRTreeFinalLinearisator.h
+        src/IRTreeFinalLinearisator.cpp
         src/IRTreeBlockBuilder.cpp
         include/IRTreeBlockBuilder.h
         src/IRTreeBlockPrinter.cpp

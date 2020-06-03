@@ -60,6 +60,8 @@ namespace IRTreeVisitor {
 
         void visit(const IRTree::IRTreeGoal &goal);
 
+	    void visit_linear(const IRTree::IRTreeGoal &goal);
+
     private:
         std::ofstream &out_;
     };

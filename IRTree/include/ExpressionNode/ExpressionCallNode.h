@@ -13,6 +13,12 @@ namespace IRTree {
                 method(std::move(method)) {
         }
 
+        ExpressionCallNode(
+                std::unique_ptr<IExpressionNode> &&method,
+                std::vector<std::unique_ptr<IExpressionNode>> & arguments) :
+                method(std::move(method)), arguments(std::move(arguments)) {
+        }
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }
