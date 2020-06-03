@@ -1,7 +1,14 @@
 digraph Test {
-"0x611000002228" [label=Test shape=diamond]
-"0x612000008be8" [label="void main(String[], )" shape=box]
-"0x60b000010028" [label="String[] : a"]
-"0x612000008be8" -> "0x60b000010028"
-"0x611000002228" -> "0x612000008be8"
+"0x611000005428" [label=Fac shape=diamond]
+"0x612000016b68" [label="int ComputeFac(int, )" shape=box]
+"0x60b00001b2e8" [label="int : num"]
+"0x612000016b68" -> "0x60b00001b2e8"
+"0x60b00001b398" [label="int : num_aux"]
+"0x612000016b68" -> "0x60b00001b398"
+"0x611000005428" -> "0x612000016b68"
+"0x6110000052e8" [label=Factorial shape=diamond]
+"0x6120000169e8" [label="void main(String[], )" shape=box]
+"0x60b00001b238" [label="String[] : a"]
+"0x6120000169e8" -> "0x60b00001b238"
+"0x6110000052e8" -> "0x6120000169e8"
 }

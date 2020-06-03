@@ -14,6 +14,15 @@ namespace IRTree {
             label = label_ + "@" + std::to_string(++counters);
         }
 
+	TempNode(const std::string& label_, bool forward_counter) {
+	    static uint32_t counters;
+	    if(forward_counter) {
+		label = label_ + "@" + std::to_string(++counters);
+	    } else {
+		label = label_ + "@" + std::to_string(counters);
+	    }
+	}
+
         void accept(IVisitor &visitor) const override {
             visitor.visit(*this);
         }

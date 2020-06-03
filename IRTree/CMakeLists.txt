@@ -18,7 +18,6 @@ add_library(${PROJECT_NAME} STATIC
         include/StatementNode/StatementLabelNode.h
         include/StatementNode/StatementMoveNode.h
         include/StatementNode/StatementSeqNode.h
-        include/StatementNode/StatementList.h
         include/ExpressionNode/ExpressionBinaryOperationNode.h
         include/ExpressionNode/ExpressionConstNode.h
         include/ExpressionNode/ExpressionNameNode.h
@@ -26,7 +25,6 @@ add_library(${PROJECT_NAME} STATIC
         include/ExpressionNode/ExpressionESeqNode.h
         include/ExpressionNode/ExpressionMemoryNode.h
         include/ExpressionNode/ExpressionCallNode.h
-        include/ExpressionNode/ExpressionList.h
         ../Defines/CJumpCondition.h
         include/Wrapper/IWrapper.h
         include/ExpressionNode/ExpressionLocalNode.h

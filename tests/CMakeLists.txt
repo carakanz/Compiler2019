@@ -52,7 +52,7 @@ add_test_libraries(IRTreeUnitTest SyntaxTree IRTree SymbolTable BisonBuilder Vis
 
 execut_test(IRTreeCanonizationUnitTest
         ${PROJECT_SOURCE_DIR}/tests/IRTreeCanonizationUnitTest.cpp)
-add_test_libraries(IRTreeUnitTest SyntaxTree IRTree SymbolTable BisonBuilder Visitors IrtVisitors) #SyntaxTree
+add_test_libraries(IRTreeCanonizationUnitTest SyntaxTree IRTree SymbolTable BisonBuilder Visitors IrtVisitors)
 
 execut_test(SymbolTableTypeCheck
         ${PROJECT_SOURCE_DIR}/tests/SymbolTableTypeCheck.cpp)

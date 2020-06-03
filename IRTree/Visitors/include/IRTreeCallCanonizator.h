@@ -2,19 +2,16 @@
 // Created by Admin on 02.06.2020.
 //
 
-#include <IRTree/IVisitor.h>
-#include <IRTree/Nodes.h>
-#include <IRTree/IRTreeGoal.h>
-#include <IRTreeCanonizator.h>
-//#include "../../include/ExpressionNode/IExpressionNode.h"
-#include <ExpressionNode/ExpressionList.h>
-#include <StatementNode/StatementList.h>
 
 #ifndef COMPILER2019_IRTREECALLCANONIZATOR_H
 #define COMPILER2019_IRTREECALLCANONIZATOR_H
 
+#include <IRTree/IVisitor.h>
+#include <IRTree/Nodes.h>
+#include <IRTree/IRTreeGoal.h>
+
 namespace IRTreeVisitor {
-    class IRTreeCallCanonizator : IRTreeVisitor::IRTreeCanonizator {
+    class IRTreeCallCanonizator : IRTree::IVisitor {
 
     public:
         explicit IRTreeCallCanonizator() = default;
@@ -52,6 +49,26 @@ namespace IRTreeVisitor {
         void visit(const IRTree::TempNode &node) override;
 
         void visit(const SyntaxTreeVisitor::IRTreeGoal &goal);
+
+        void updateLastExp(const IRTree::ExpressionConstNode &node);
+        void updateLastExp(const IRTree::ExpressionTempNode &node);
+        void updateLastExp(const IRTree::ExpressionNameNode & node);
+        void updateLastExp(const IRTree::ExpressionLocalNode &node);
+
+        void updateLastExp( std::unique_ptr<IRTree::IExpressionNode> newLastExp ){
+            prevExp = std::move( newLastExp );
+        }
+
+
+        void updateLastStm(const IRTree::StatementJumpNode& node);
+        void updateLastStm(const IRTree::StatementLabelNode &node);
+
+        void updateLastStm(std::unique_ptr<IRTree::IStatementNode> newLastStm) {
+            prevStm = std::move(newLastStm );
+        }
+
+        std::unique_ptr<IRTree::IExpressionNode> prevExp;
+        std::unique_ptr<IRTree::IStatementNode> prevStm;
 
 
     };

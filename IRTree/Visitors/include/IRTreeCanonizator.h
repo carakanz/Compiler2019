@@ -2,9 +2,9 @@
 // Created by Admin on 02.06.2020.
 //
 
-#include <IRTree/IVisitor.h>
-#include <IRTree/Nodes.h>
-#include <IRTree/IRTreeGoal.h>
+#include "../include/IRTree/IVisitor.h"
+#include "../include/IRTree/Nodes.h"
+#include "IRTree/IRTreeGoal.h"
 
 #ifndef COMPILER2019_IRTREECANONIZATOR_H
 #define COMPILER2019_IRTREECANONIZATOR_H
