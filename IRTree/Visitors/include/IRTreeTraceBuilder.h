@@ -6,10 +6,10 @@
 
 #pragma once
 namespace IRTreeVisitor {
-    class TraceBuilder : IRTree::IVisitor {
+    class IRTreeTraceBuilder : IRTree::IVisitor {
     public:
         static IRTree::ProgramInBlock build(IRTree::ProgramInBlock&& program) {
-            TraceBuilder builder(std::move(program));
+            IRTreeTraceBuilder builder(std::move(program));
             return builder.run();
         }
 
@@ -46,7 +46,7 @@ namespace IRTreeVisitor {
         void visit(const IRTree::TempNode &node) override;
 
     private:
-        explicit TraceBuilder(IRTree::ProgramInBlock&& program)
+        explicit IRTreeTraceBuilder(IRTree::ProgramInBlock&& program)
                 : program_(std::move(program)){};
         IRTree::ProgramInBlock run();
         IRTree::MethodInBlock build_method();

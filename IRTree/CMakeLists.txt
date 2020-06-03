@@ -36,7 +36,7 @@ add_library(${PROJECT_NAME} STATIC
         include/Wrapper/Expression/WrapperExpressionAnd.h
         include/IRTree/IRTreeGoal.h
         include/Wrapper/Expression/WrapperExpressionNot.h
-        include/IRTree/IRTree.h)
+        include/IRTree/IRTree.h include/IRTree/IRTreeTypeDef.h)
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDES} ../Defines)

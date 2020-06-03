@@ -1,139 +1,139 @@
 digraph TreeVisitor {
 "0x611000004f28" [label=Tree shape=diamond]
-"0x6120000169e8" [label="int accept(SyntaxTreeVisitor, )" shape=box]
+"0x612000016e68" [label="int accept(SyntaxTreeVisitor, )" shape=box]
 "0x60b00001a5d8" [label="SyntaxTreeVisitor : v"]
-"0x6120000169e8" -> "0x60b00001a5d8"
+"0x612000016e68" -> "0x60b00001a5d8"
 "0x60b00001a688" [label="int : nti"]
-"0x6120000169e8" -> "0x60b00001a688"
-"0x611000004f28" -> "0x6120000169e8"
-"0x612000016868" [label="boolean RecPrint(Tree, )" shape=box]
+"0x612000016e68" -> "0x60b00001a688"
+"0x611000004f28" -> "0x612000016e68"
+"0x612000016ce8" [label="boolean RecPrint(Tree, )" shape=box]
 "0x60b00001a478" [label="Tree : node"]
-"0x612000016868" -> "0x60b00001a478"
+"0x612000016ce8" -> "0x60b00001a478"
 "0x60b00001a528" [label="boolean : ntb"]
-"0x612000016868" -> "0x60b00001a528"
-"0x611000004f28" -> "0x612000016868"
-"0x612000016568" [label="int Search(int, )" shape=box]
+"0x612000016ce8" -> "0x60b00001a528"
+"0x611000004f28" -> "0x612000016ce8"
+"0x6120000169e8" [label="int Search(int, )" shape=box]
 "0x60b000019fa8" [label="int : v_key"]
-"0x612000016568" -> "0x60b000019fa8"
+"0x6120000169e8" -> "0x60b000019fa8"
 "0x60b00001a268" [label="int : key_aux"]
-"0x612000016568" -> "0x60b00001a268"
+"0x6120000169e8" -> "0x60b00001a268"
 "0x60b00001a1b8" [label="boolean : cont"]
-"0x612000016568" -> "0x60b00001a1b8"
+"0x6120000169e8" -> "0x60b00001a1b8"
 "0x60b00001a058" [label="Tree : current_node"]
-"0x612000016568" -> "0x60b00001a058"
+"0x6120000169e8" -> "0x60b00001a058"
 "0x60b00001a108" [label="int : ifound"]
-"0x612000016568" -> "0x60b00001a108"
-"0x611000004f28" -> "0x612000016568"
-"0x612000016268" [label="boolean RemoveLeft(Tree, Tree, )" shape=box]
+"0x6120000169e8" -> "0x60b00001a108"
+"0x611000004f28" -> "0x6120000169e8"
+"0x6120000166e8" [label="boolean RemoveLeft(Tree, Tree, )" shape=box]
 "0x60b000019e48" [label="Tree : c_node"]
-"0x612000016268" -> "0x60b000019e48"
+"0x6120000166e8" -> "0x60b000019e48"
 "0x60b000019d98" [label="Tree : p_node"]
-"0x612000016268" -> "0x60b000019d98"
+"0x6120000166e8" -> "0x60b000019d98"
 "0x60b000019ef8" [label="boolean : ntb"]
-"0x612000016268" -> "0x60b000019ef8"
-"0x611000004f28" -> "0x612000016268"
-"0x612000015068" [label="Tree GetLeft()" shape=box]
-"0x611000004f28" -> "0x612000015068"
-"0x6120000151e8" [label="int GetKey()" shape=box]
-"0x611000004f28" -> "0x6120000151e8"
-"0x6120000154e8" [label="boolean GetHas_Right()" shape=box]
-"0x611000004f28" -> "0x6120000154e8"
-"0x612000014ee8" [label="Tree GetRight()" shape=box]
-"0x611000004f28" -> "0x612000014ee8"
-"0x612000015c68" [label="boolean Insert(int, )" shape=box]
-"0x60b000018e78" [label="int : v_key"]
-"0x612000015c68" -> "0x60b000018e78"
-"0x60b000019138" [label="boolean : cont"]
-"0x612000015c68" -> "0x60b000019138"
-"0x60b000019088" [label="Tree : current_node"]
-"0x612000015c68" -> "0x60b000019088"
-"0x60b000018f28" [label="Tree : new_node"]
-"0x612000015c68" -> "0x60b000018f28"
-"0x60b0000191e8" [label="int : key_aux"]
-"0x612000015c68" -> "0x60b0000191e8"
-"0x60b000018fd8" [label="boolean : ntb"]
-"0x612000015c68" -> "0x60b000018fd8"
-"0x611000004f28" -> "0x612000015c68"
-"0x612000014be8" [label="boolean SetRight(Tree, )" shape=box]
-"0x60b000018848" [label="Tree : rn"]
-"0x612000014be8" -> "0x60b000018848"
-"0x611000004f28" -> "0x612000014be8"
-"0x612000015668" [label="boolean GetHas_Left()" shape=box]
-"0x611000004f28" -> "0x612000015668"
-"0x6120000160e8" [label="boolean RemoveRight(Tree, Tree, )" shape=box]
-"0x60b000019c38" [label="Tree : c_node"]
-"0x6120000160e8" -> "0x60b000019c38"
-"0x60b000019b88" [label="Tree : p_node"]
-"0x6120000160e8" -> "0x60b000019b88"
-"0x60b000019ce8" [label="boolean : ntb"]
-"0x6120000160e8" -> "0x60b000019ce8"
-"0x611000004f28" -> "0x6120000160e8"
-"0x612000014d68" [label="boolean SetLeft(Tree, )" shape=box]
-"0x60b0000188f8" [label="Tree : ln"]
-"0x612000014d68" -> "0x60b0000188f8"
-"0x611000004f28" -> "0x612000014d68"
-"0x612000014a68" [label="boolean Init(int, )" shape=box]
-"0x60b000018798" [label="int : v_key"]
-"0x612000014a68" -> "0x60b000018798"
-"0x611000004f28" -> "0x612000014a68"
-"0x612000015368" [label="boolean SetKey(int, )" shape=box]
-"0x60b0000189a8" [label="int : v_key"]
-"0x612000015368" -> "0x60b0000189a8"
-"0x611000004f28" -> "0x612000015368"
-"0x6120000166e8" [label="boolean Print()" shape=box]
-"0x60b00001a3c8" [label="Tree : current_node"]
-"0x6120000166e8" -> "0x60b00001a3c8"
-"0x60b00001a318" [label="boolean : ntb"]
-"0x6120000166e8" -> "0x60b00001a318"
+"0x6120000166e8" -> "0x60b000019ef8"
 "0x611000004f28" -> "0x6120000166e8"
-"0x612000015ae8" [label="boolean Compare(int, int, )" shape=box]
-"0x60b000018c68" [label="int : num2"]
-"0x612000015ae8" -> "0x60b000018c68"
-"0x60b000018bb8" [label="int : num1"]
-"0x612000015ae8" -> "0x60b000018bb8"
-"0x60b000018dc8" [label="int : nti"]
-"0x612000015ae8" -> "0x60b000018dc8"
-"0x60b000018d18" [label="boolean : ntb"]
-"0x612000015ae8" -> "0x60b000018d18"
-"0x611000004f28" -> "0x612000015ae8"
-"0x6120000157e8" [label="boolean SetHas_Left(boolean, )" shape=box]
-"0x60b000018a58" [label="boolean : val"]
-"0x6120000157e8" -> "0x60b000018a58"
-"0x611000004f28" -> "0x6120000157e8"
-"0x612000015968" [label="boolean SetHas_Right(boolean, )" shape=box]
-"0x60b000018b08" [label="boolean : val"]
-"0x612000015968" -> "0x60b000018b08"
+"0x6120000154e8" [label="Tree GetLeft()" shape=box]
+"0x611000004f28" -> "0x6120000154e8"
+"0x612000015668" [label="int GetKey()" shape=box]
+"0x611000004f28" -> "0x612000015668"
+"0x612000015968" [label="boolean GetHas_Right()" shape=box]
 "0x611000004f28" -> "0x612000015968"
-"0x612000015de8" [label="boolean Delete(int, )" shape=box]
-"0x60b000019298" [label="int : v_key"]
-"0x612000015de8" -> "0x60b000019298"
-"0x60b000019768" [label="int : key_aux"]
-"0x612000015de8" -> "0x60b000019768"
-"0x60b000019348" [label="Tree : current_node"]
-"0x612000015de8" -> "0x60b000019348"
-"0x60b0000193f8" [label="Tree : parent_node"]
-"0x612000015de8" -> "0x60b0000193f8"
-"0x60b0000194a8" [label="boolean : cont"]
-"0x612000015de8" -> "0x60b0000194a8"
-"0x60b000019608" [label="boolean : ntb"]
-"0x612000015de8" -> "0x60b000019608"
-"0x60b000019558" [label="boolean : found"]
-"0x612000015de8" -> "0x60b000019558"
-"0x60b0000196b8" [label="boolean : is_root"]
-"0x612000015de8" -> "0x60b0000196b8"
-"0x611000004f28" -> "0x612000015de8"
-"0x612000015f68" [label="boolean Remove(Tree, Tree, )" shape=box]
-"0x60b0000198c8" [label="Tree : c_node"]
-"0x612000015f68" -> "0x60b0000198c8"
-"0x60b000019818" [label="Tree : p_node"]
-"0x612000015f68" -> "0x60b000019818"
-"0x60b000019ad8" [label="int : auxkey2"]
-"0x612000015f68" -> "0x60b000019ad8"
-"0x60b000019978" [label="boolean : ntb"]
-"0x612000015f68" -> "0x60b000019978"
-"0x60b000019a28" [label="int : auxkey1"]
-"0x612000015f68" -> "0x60b000019a28"
+"0x612000015368" [label="Tree GetRight()" shape=box]
+"0x611000004f28" -> "0x612000015368"
+"0x6120000160e8" [label="boolean Insert(int, )" shape=box]
+"0x60b000018e78" [label="int : v_key"]
+"0x6120000160e8" -> "0x60b000018e78"
+"0x60b000019138" [label="boolean : cont"]
+"0x6120000160e8" -> "0x60b000019138"
+"0x60b000019088" [label="Tree : current_node"]
+"0x6120000160e8" -> "0x60b000019088"
+"0x60b000018f28" [label="Tree : new_node"]
+"0x6120000160e8" -> "0x60b000018f28"
+"0x60b0000191e8" [label="int : key_aux"]
+"0x6120000160e8" -> "0x60b0000191e8"
+"0x60b000018fd8" [label="boolean : ntb"]
+"0x6120000160e8" -> "0x60b000018fd8"
+"0x611000004f28" -> "0x6120000160e8"
+"0x612000015068" [label="boolean SetRight(Tree, )" shape=box]
+"0x60b000018848" [label="Tree : rn"]
+"0x612000015068" -> "0x60b000018848"
+"0x611000004f28" -> "0x612000015068"
+"0x612000015ae8" [label="boolean GetHas_Left()" shape=box]
+"0x611000004f28" -> "0x612000015ae8"
+"0x612000016568" [label="boolean RemoveRight(Tree, Tree, )" shape=box]
+"0x60b000019c38" [label="Tree : c_node"]
+"0x612000016568" -> "0x60b000019c38"
+"0x60b000019b88" [label="Tree : p_node"]
+"0x612000016568" -> "0x60b000019b88"
+"0x60b000019ce8" [label="boolean : ntb"]
+"0x612000016568" -> "0x60b000019ce8"
+"0x611000004f28" -> "0x612000016568"
+"0x6120000151e8" [label="boolean SetLeft(Tree, )" shape=box]
+"0x60b0000188f8" [label="Tree : ln"]
+"0x6120000151e8" -> "0x60b0000188f8"
+"0x611000004f28" -> "0x6120000151e8"
+"0x612000014ee8" [label="boolean Init(int, )" shape=box]
+"0x60b000018798" [label="int : v_key"]
+"0x612000014ee8" -> "0x60b000018798"
+"0x611000004f28" -> "0x612000014ee8"
+"0x6120000157e8" [label="boolean SetKey(int, )" shape=box]
+"0x60b0000189a8" [label="int : v_key"]
+"0x6120000157e8" -> "0x60b0000189a8"
+"0x611000004f28" -> "0x6120000157e8"
+"0x612000016b68" [label="boolean Print()" shape=box]
+"0x60b00001a3c8" [label="Tree : current_node"]
+"0x612000016b68" -> "0x60b00001a3c8"
+"0x60b00001a318" [label="boolean : ntb"]
+"0x612000016b68" -> "0x60b00001a318"
+"0x611000004f28" -> "0x612000016b68"
+"0x612000015f68" [label="boolean Compare(int, int, )" shape=box]
+"0x60b000018c68" [label="int : num2"]
+"0x612000015f68" -> "0x60b000018c68"
+"0x60b000018bb8" [label="int : num1"]
+"0x612000015f68" -> "0x60b000018bb8"
+"0x60b000018dc8" [label="int : nti"]
+"0x612000015f68" -> "0x60b000018dc8"
+"0x60b000018d18" [label="boolean : ntb"]
+"0x612000015f68" -> "0x60b000018d18"
 "0x611000004f28" -> "0x612000015f68"
+"0x612000015c68" [label="boolean SetHas_Left(boolean, )" shape=box]
+"0x60b000018a58" [label="boolean : val"]
+"0x612000015c68" -> "0x60b000018a58"
+"0x611000004f28" -> "0x612000015c68"
+"0x612000015de8" [label="boolean SetHas_Right(boolean, )" shape=box]
+"0x60b000018b08" [label="boolean : val"]
+"0x612000015de8" -> "0x60b000018b08"
+"0x611000004f28" -> "0x612000015de8"
+"0x612000016268" [label="boolean Delete(int, )" shape=box]
+"0x60b000019298" [label="int : v_key"]
+"0x612000016268" -> "0x60b000019298"
+"0x60b000019768" [label="int : key_aux"]
+"0x612000016268" -> "0x60b000019768"
+"0x60b000019348" [label="Tree : current_node"]
+"0x612000016268" -> "0x60b000019348"
+"0x60b0000193f8" [label="Tree : parent_node"]
+"0x612000016268" -> "0x60b0000193f8"
+"0x60b0000194a8" [label="boolean : cont"]
+"0x612000016268" -> "0x60b0000194a8"
+"0x60b000019608" [label="boolean : ntb"]
+"0x612000016268" -> "0x60b000019608"
+"0x60b000019558" [label="boolean : found"]
+"0x612000016268" -> "0x60b000019558"
+"0x60b0000196b8" [label="boolean : is_root"]
+"0x612000016268" -> "0x60b0000196b8"
+"0x611000004f28" -> "0x612000016268"
+"0x6120000163e8" [label="boolean Remove(Tree, Tree, )" shape=box]
+"0x60b0000198c8" [label="Tree : c_node"]
+"0x6120000163e8" -> "0x60b0000198c8"
+"0x60b000019818" [label="Tree : p_node"]
+"0x6120000163e8" -> "0x60b000019818"
+"0x60b000019ad8" [label="int : auxkey2"]
+"0x6120000163e8" -> "0x60b000019ad8"
+"0x60b000019978" [label="boolean : ntb"]
+"0x6120000163e8" -> "0x60b000019978"
+"0x60b000019a28" [label="int : auxkey1"]
+"0x6120000163e8" -> "0x60b000019a28"
+"0x611000004f28" -> "0x6120000163e8"
 "0x60b00001a9f8" [label="boolean : has_right"]
 "0x611000004f28" -> "0x60b00001a9f8"
 "0x60b00001a948" [label="boolean : has_left"]
@@ -147,42 +147,42 @@ digraph TreeVisitor {
 "0x60b00001a7e8" [label="Tree : right"]
 "0x611000004f28" -> "0x60b00001a7e8"
 "0x611000004ca8" [label=TreeVisitor shape=diamond]
-"0x612000014768" [label="void main(String[], )" shape=box]
+"0x612000014be8" [label="void main(String[], )" shape=box]
 "0x60b000018428" [label="String[] : a"]
-"0x612000014768" -> "0x60b000018428"
-"0x611000004ca8" -> "0x612000014768"
+"0x612000014be8" -> "0x60b000018428"
+"0x611000004ca8" -> "0x612000014be8"
 "0x6110000051a8" [label=MyVisitor shape=diamond]
 "0x6110000051a8" -> "0x611000005068"
-"0x612000016ce8" [label="int visit(Tree, )" shape=box]
+"0x612000017168" [label="int visit(Tree, )" shape=box]
 "0x60b00001b0d8" [label="Tree : n"]
-"0x612000016ce8" -> "0x60b00001b0d8"
+"0x612000017168" -> "0x60b00001b0d8"
 "0x60b00001b188" [label="int : nti"]
-"0x612000016ce8" -> "0x60b00001b188"
-"0x6110000051a8" -> "0x612000016ce8"
+"0x612000017168" -> "0x60b00001b188"
+"0x6110000051a8" -> "0x612000017168"
 "0x60b00001af78" [label="Tree : r"]
 "0x6110000051a8" -> "0x60b00001af78"
 "0x60b00001b028" [label="Tree : l"]
 "0x6110000051a8" -> "0x60b00001b028"
 "0x611000005068" [label=SyntaxTreeVisitor shape=diamond]
-"0x612000016b68" [label="int visit(Tree, )" shape=box]
+"0x612000016fe8" [label="int visit(Tree, )" shape=box]
 "0x60b00001ab58" [label="Tree : n"]
-"0x612000016b68" -> "0x60b00001ab58"
+"0x612000016fe8" -> "0x60b00001ab58"
 "0x60b00001ac08" [label="int : nti"]
-"0x612000016b68" -> "0x60b00001ac08"
-"0x611000005068" -> "0x612000016b68"
+"0x612000016fe8" -> "0x60b00001ac08"
+"0x611000005068" -> "0x612000016fe8"
 "0x60b00001ad68" [label="Tree : r"]
 "0x611000005068" -> "0x60b00001ad68"
 "0x60b00001acb8" [label="Tree : l"]
 "0x611000005068" -> "0x60b00001acb8"
 "0x611000004de8" [label=TV shape=diamond]
-"0x6120000148e8" [label="int Start()" shape=box]
+"0x612000014d68" [label="int Start()" shape=box]
 "0x60b0000186e8" [label="MyVisitor : v"]
-"0x6120000148e8" -> "0x60b0000186e8"
+"0x612000014d68" -> "0x60b0000186e8"
 "0x60b000018638" [label="int : nti"]
-"0x6120000148e8" -> "0x60b000018638"
+"0x612000014d68" -> "0x60b000018638"
 "0x60b0000184d8" [label="Tree : root"]
-"0x6120000148e8" -> "0x60b0000184d8"
+"0x612000014d68" -> "0x60b0000184d8"
 "0x60b000018588" [label="boolean : ntb"]
-"0x6120000148e8" -> "0x60b000018588"
-"0x611000004de8" -> "0x6120000148e8"
+"0x612000014d68" -> "0x60b000018588"
+"0x611000004de8" -> "0x612000014d68"
 }

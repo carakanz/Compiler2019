@@ -6,15 +6,4 @@
 
 #include "Nodes.h"
 #include "IVisitor.h"
-
-namespace IRTree {
-    using Block = std::vector<std::unique_ptr<IRTree::IStatementNode>>;
-    using MethodInBlock = std::vector<Block>;
-    using ClassInBlock = std::unordered_map<std::string, MethodInBlock>;
-    using ProgramInBlock = std::unordered_map<std::string, ClassInBlock>;
-
-    using Line = std::unique_ptr<IRTree::IStatementNode>;
-    using MethodInLine = std::vector<Line>;
-    using ClassInLine = std::unordered_map<std::string, MethodInLine>;
-    using ProgramInLine = std::unordered_map<std::string, ClassInLine>;
-}
+#include "IRTreeTypeDef.h"

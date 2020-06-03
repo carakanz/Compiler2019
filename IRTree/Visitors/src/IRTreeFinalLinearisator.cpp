@@ -4,7 +4,7 @@
 
 #include <IRTreeFinalLinearisator.h>
 #include <iostream>
-#include <assert.h>
+#include <cassert>
 
 namespace IRTreeVisitor{
 
@@ -95,7 +95,7 @@ namespace IRTreeVisitor{
         --stackDepthCounter.back();
     }
 
-    void IRTreeFinalLinearisator::visit( const IRTree::ExpressionESeqNode& n )
+    void IRTreeFinalLinearisator::visit( const IRTree::ExpressionESeqNode& /*n*/ )
     {
         assert( false );
     }

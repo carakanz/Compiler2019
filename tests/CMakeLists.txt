@@ -58,6 +58,14 @@ execut_test(IRTreeLinearizationUnitTest
         ${PROJECT_SOURCE_DIR}/tests/IRTreeLinearizationUnitTest.cpp)
 add_test_libraries(IRTreeLinearizationUnitTest SyntaxTree IRTree SymbolTable BisonBuilder Visitors IrtVisitors)
 
+execut_test(IRTreeBlockBuilderUnitTest
+        ${PROJECT_SOURCE_DIR}/tests/IRTreeBlockBuilderUnitTest.cpp)
+add_test_libraries(IRTreeBlockBuilderUnitTest SyntaxTree IRTree SymbolTable BisonBuilder Visitors IrtVisitors)
+
+execut_test(IRTreeTraceBuilderUnitTest
+        ${PROJECT_SOURCE_DIR}/tests/IRTreeTraceBuilderUnitTest.cpp)
+add_test_libraries(IRTreeTraceBuilderUnitTest SyntaxTree IRTree SymbolTable BisonBuilder Visitors IrtVisitors)
+
 execut_test(SymbolTableTypeCheck
         ${PROJECT_SOURCE_DIR}/tests/SymbolTableTypeCheck.cpp)
 add_test_libraries(SymbolTableTypeCheck Visitors SymbolTable BisonBuilder)

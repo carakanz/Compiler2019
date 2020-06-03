@@ -186,9 +186,9 @@ namespace IRTreeVisitor{
         if( !newStms.empty() ) {
             std::unique_ptr<IRTree::IStatementNode> suffStm = std::move( newStms.back() );
             newStms.pop_back();
-            for( int i = int(newStms.size()) - 1; i >= 0 ; i-- ) {
+            for( size_t i = newStms.size(); i > 0 ; --i ) {
                 suffStm = std::make_unique<IRTree::StatementSeqNode>(
-                        std::move( newStms[i] ) ,
+                        std::move( newStms[i - 1] ) ,
                         std::move( suffStm ));
             }
 

@@ -1,392 +1,391 @@
 digraph BubbleSort {
-"0x606000039020" [label="Identifier: BubbleSort" shape=box]
-"0x60300001d0b0" [label="TypeVoid" shape=box]
-"0x606000039080" [label="Identifier: main" shape=box]
-"0x60300001d0e0" [label="TypeString" shape=box]
-"0x60300001d110" [label="TypeArray" shape=box]
-"0x60300001d110" -> "0x60300001d0e0"
-"0x6060000390e0" [label="Identifier: a" shape=box]
-"0x604000018550" [label="DeclarationVar" shape=diamond]
-"0x604000018550" -> "0x60300001d110"
-"0x604000018550" -> "0x6060000390e0"
-"0x606000039140" [label="Identifier: BBS" shape=box]
-"0x60300001d1a0" [label="TypeUser" shape=box]
-"0x60300001d1a0" -> "0x606000039140"
-"0x60300001d170" [label="ExpressionNew" shape=circle]
-"0x60300001d170" -> "0x60300001d1a0"
-"0x6060000391a0" [label="Identifier: Start" shape=box]
-"0x60300001d1d0" [label="ExpressionIntegerLiteral: 10" shape=circle]
-"0x606000039200" [label="ExpressionMethodCall" shape=circle]
-"0x606000039200" -> "0x60300001d170"
-"0x606000039200" -> "0x6060000391a0"
-"0x606000039200" -> "0x60300001d1d0"
-"0x60300001d200" [label="StatementPrintln"]
-"0x60300001d200" -> "0x606000039200"
-"0x60300001d0b0" [label="TypeVoid" shape=box]
-"0x606000039080" [label="Identifier: main" shape=box]
+"0x606000039080" [label="Identifier: BubbleSort" shape=box]
+"0x60300001d3b0" [label="TypeVoid" shape=box]
+"0x6060000390e0" [label="Identifier: main" shape=box]
+"0x60300001d3e0" [label="TypeString" shape=box]
+"0x60300001d410" [label="TypeArray" shape=box]
+"0x60300001d410" -> "0x60300001d3e0"
+"0x606000039140" [label="Identifier: a" shape=box]
+"0x604000018610" [label="DeclarationVar" shape=diamond]
+"0x604000018610" -> "0x60300001d410"
+"0x604000018610" -> "0x606000039140"
+"0x6060000391a0" [label="Identifier: BBS" shape=box]
+"0x60300001d4a0" [label="TypeUser" shape=box]
+"0x60300001d4a0" -> "0x6060000391a0"
+"0x60300001d470" [label="ExpressionNew" shape=circle]
+"0x60300001d470" -> "0x60300001d4a0"
+"0x606000039200" [label="Identifier: Start" shape=box]
+"0x60300001d4d0" [label="ExpressionIntegerLiteral: 10" shape=circle]
+"0x606000039260" [label="ExpressionMethodCall" shape=circle]
+"0x606000039260" -> "0x60300001d470"
+"0x606000039260" -> "0x606000039200"
+"0x606000039260" -> "0x60300001d4d0"
+"0x60300001d500" [label="StatementPrintln"]
+"0x60300001d500" -> "0x606000039260"
+"0x60300001d3b0" [label="TypeVoid" shape=box]
+"0x6060000390e0" [label="Identifier: main" shape=box]
 "0x60c000006700" [label="DeclarationMethod
 PrivacyModifier: 0
 is_static: 1" shape=diamond]
-"0x60c000006700" -> "0x60300001d0b0"
-"0x60c000006700" -> "0x606000039080"
-"0x60c000006700" -> "0x604000018550"
-"0x60c000006700" -> "0x60300001d200"
-"0x6080000016a0" [label="DeclarationClass" shape=diamond]
-"0x6080000016a0" -> "0x606000039020"
-"0x6080000016a0" -> "0x60c000006700"
-"0x606000039320" [label="Identifier: BBS" shape=box]
-"0x60300001d260" [label="TypeInt" shape=box]
-"0x60300001d290" [label="TypeArray" shape=box]
-"0x60300001d290" -> "0x60300001d260"
-"0x606000039380" [label="Identifier: number" shape=box]
-"0x604000018610" [label="DeclarationVar" shape=diamond]
-"0x604000018610" -> "0x60300001d290"
-"0x604000018610" -> "0x606000039380"
-"0x60300001d2c0" [label="TypeInt" shape=box]
-"0x6060000393e0" [label="Identifier: size" shape=box]
-"0x604000018690" [label="DeclarationVar" shape=diamond]
-"0x604000018690" -> "0x60300001d2c0"
-"0x604000018690" -> "0x6060000393e0"
-"0x60300001d2f0" [label="TypeInt" shape=box]
-"0x606000039440" [label="Identifier: Start" shape=box]
-"0x60300001d320" [label="TypeInt" shape=box]
-"0x6060000394a0" [label="Identifier: sz" shape=box]
-"0x604000018710" [label="DeclarationVar" shape=diamond]
-"0x604000018710" -> "0x60300001d320"
-"0x604000018710" -> "0x6060000394a0"
-"0x60300001d350" [label="TypeInt" shape=box]
-"0x606000039500" [label="Identifier: aux01" shape=box]
+"0x60c000006700" -> "0x60300001d3b0"
+"0x60c000006700" -> "0x6060000390e0"
+"0x60c000006700" -> "0x604000018610"
+"0x60c000006700" -> "0x60300001d500"
+"0x608000001ba0" [label="DeclarationClass" shape=diamond]
+"0x608000001ba0" -> "0x606000039080"
+"0x608000001ba0" -> "0x60c000006700"
+"0x606000039380" [label="Identifier: BBS" shape=box]
+"0x60300001d560" [label="TypeInt" shape=box]
+"0x60300001d590" [label="TypeArray" shape=box]
+"0x60300001d590" -> "0x60300001d560"
+"0x6060000393e0" [label="Identifier: number" shape=box]
+"0x6040000186d0" [label="DeclarationVar" shape=diamond]
+"0x6040000186d0" -> "0x60300001d590"
+"0x6040000186d0" -> "0x6060000393e0"
+"0x60300001d5c0" [label="TypeInt" shape=box]
+"0x606000039440" [label="Identifier: size" shape=box]
+"0x604000018750" [label="DeclarationVar" shape=diamond]
+"0x604000018750" -> "0x60300001d5c0"
+"0x604000018750" -> "0x606000039440"
+"0x60300001d5f0" [label="TypeInt" shape=box]
+"0x606000039500" [label="Identifier: Start" shape=box]
+"0x60300001d620" [label="TypeInt" shape=box]
+"0x606000039560" [label="Identifier: sz" shape=box]
 "0x604000018790" [label="DeclarationVar" shape=diamond]
-"0x604000018790" -> "0x60300001d350"
-"0x604000018790" -> "0x606000039500"
-"0x606000039560" [label="Identifier: aux01" shape=box]
-"0x60300001d380" [label="ExpressionThis" shape=circle]
-"0x6060000395c0" [label="Identifier: Init" shape=box]
-"0x606000039680" [label="Identifier: sz" shape=box]
-"0x60300001d3b0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001d3b0"  -> "0x606000039680"
-"0x606000039620" [label="ExpressionMethodCall" shape=circle]
-"0x606000039620" -> "0x60300001d380"
-"0x606000039620" -> "0x6060000395c0"
-"0x606000039620" -> "0x60300001d3b0"
-"0x6040000187d0" [label="StatementAssign"]
-"0x6040000187d0" -> "0x606000039560"
-"0x6040000187d0" -> "0x606000039620"
-"0x6060000396e0" [label="Identifier: aux01" shape=box]
-"0x60300001d3e0" [label="ExpressionThis" shape=circle]
-"0x606000039740" [label="Identifier: Print" shape=box]
-"0x6060000397a0" [label="ExpressionMethodCall" shape=circle]
-"0x6060000397a0" -> "0x60300001d3e0"
-"0x6060000397a0" -> "0x606000039740"
-"0x604000018810" [label="StatementAssign"]
-"0x604000018810" -> "0x6060000396e0"
-"0x604000018810" -> "0x6060000397a0"
-"0x60300001d440" [label="ExpressionIntegerLiteral: 99999" shape=circle]
-"0x60300001d470" [label="StatementPrintln"]
-"0x60300001d470" -> "0x60300001d440"
-"0x606000039800" [label="Identifier: aux01" shape=box]
-"0x60300001d4d0" [label="ExpressionThis" shape=circle]
-"0x606000039860" [label="Identifier: Sort" shape=box]
-"0x6060000398c0" [label="ExpressionMethodCall" shape=circle]
-"0x6060000398c0" -> "0x60300001d4d0"
-"0x6060000398c0" -> "0x606000039860"
+"0x604000018790" -> "0x60300001d620"
+"0x604000018790" -> "0x606000039560"
+"0x60300001d650" [label="TypeInt" shape=box]
+"0x6060000395c0" [label="Identifier: aux01" shape=box]
+"0x604000018810" [label="DeclarationVar" shape=diamond]
+"0x604000018810" -> "0x60300001d650"
+"0x604000018810" -> "0x6060000395c0"
+"0x606000039620" [label="Identifier: aux01" shape=box]
+"0x60300001d680" [label="ExpressionThis" shape=circle]
+"0x606000039680" [label="Identifier: Init" shape=box]
+"0x606000039740" [label="Identifier: sz" shape=box]
+"0x60300001d6b0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001d6b0"  -> "0x606000039740"
+"0x6060000396e0" [label="ExpressionMethodCall" shape=circle]
+"0x6060000396e0" -> "0x60300001d680"
+"0x6060000396e0" -> "0x606000039680"
+"0x6060000396e0" -> "0x60300001d6b0"
 "0x604000018850" [label="StatementAssign"]
-"0x604000018850" -> "0x606000039800"
-"0x604000018850" -> "0x6060000398c0"
-"0x606000039920" [label="Identifier: aux01" shape=box]
-"0x60300001d500" [label="ExpressionThis" shape=circle]
-"0x606000039980" [label="Identifier: Print" shape=box]
-"0x6060000399e0" [label="ExpressionMethodCall" shape=circle]
-"0x6060000399e0" -> "0x60300001d500"
-"0x6060000399e0" -> "0x606000039980"
+"0x604000018850" -> "0x606000039620"
+"0x604000018850" -> "0x6060000396e0"
+"0x6060000397a0" [label="Identifier: aux01" shape=box]
+"0x60300001d6e0" [label="ExpressionThis" shape=circle]
+"0x606000039800" [label="Identifier: Print" shape=box]
+"0x606000039860" [label="ExpressionMethodCall" shape=circle]
+"0x606000039860" -> "0x60300001d6e0"
+"0x606000039860" -> "0x606000039800"
 "0x604000018890" [label="StatementAssign"]
-"0x604000018890" -> "0x606000039920"
-"0x604000018890" -> "0x6060000399e0"
-"0x60300001d530" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x60300001d560" [label="StatementReturn"]
-"0x60300001d560" -> "0x60300001d530"
-"0x60300001d2f0" [label="TypeInt" shape=box]
-"0x606000039440" [label="Identifier: Start" shape=box]
+"0x604000018890" -> "0x6060000397a0"
+"0x604000018890" -> "0x606000039860"
+"0x60300001d740" [label="ExpressionIntegerLiteral: 99999" shape=circle]
+"0x60300001d770" [label="StatementPrintln"]
+"0x60300001d770" -> "0x60300001d740"
+"0x6060000398c0" [label="Identifier: aux01" shape=box]
+"0x60300001d7d0" [label="ExpressionThis" shape=circle]
+"0x606000039920" [label="Identifier: Sort" shape=box]
+"0x606000039980" [label="ExpressionMethodCall" shape=circle]
+"0x606000039980" -> "0x60300001d7d0"
+"0x606000039980" -> "0x606000039920"
+"0x6040000188d0" [label="StatementAssign"]
+"0x6040000188d0" -> "0x6060000398c0"
+"0x6040000188d0" -> "0x606000039980"
+"0x6060000399e0" [label="Identifier: aux01" shape=box]
+"0x60300001d800" [label="ExpressionThis" shape=circle]
+"0x606000039a40" [label="Identifier: Print" shape=box]
+"0x606000039aa0" [label="ExpressionMethodCall" shape=circle]
+"0x606000039aa0" -> "0x60300001d800"
+"0x606000039aa0" -> "0x606000039a40"
+"0x604000018910" [label="StatementAssign"]
+"0x604000018910" -> "0x6060000399e0"
+"0x604000018910" -> "0x606000039aa0"
+"0x60300001d830" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x60300001d860" [label="StatementReturn"]
+"0x60300001d860" -> "0x60300001d830"
+"0x60300001d5f0" [label="TypeInt" shape=box]
+"0x606000039500" [label="Identifier: Start" shape=box]
 "0x60c0000067c0" [label="DeclarationMethod
 PrivacyModifier: 0
 is_static: 0" shape=diamond]
-"0x60c0000067c0" -> "0x60300001d2f0"
-"0x60c0000067c0" -> "0x606000039440"
-"0x60c0000067c0" -> "0x604000018710"
+"0x60c0000067c0" -> "0x60300001d5f0"
+"0x60c0000067c0" -> "0x606000039500"
 "0x60c0000067c0" -> "0x604000018790"
-"0x60c0000067c0" -> "0x6040000187d0"
 "0x60c0000067c0" -> "0x604000018810"
-"0x60c0000067c0" -> "0x60300001d470"
 "0x60c0000067c0" -> "0x604000018850"
 "0x60c0000067c0" -> "0x604000018890"
-"0x60c0000067c0" -> "0x60300001d560"
-"0x60300001d590" [label="TypeInt" shape=box]
-"0x606000039b00" [label="Identifier: Sort" shape=box]
-"0x60300001d5c0" [label="TypeInt" shape=box]
-"0x606000039b60" [label="Identifier: nt" shape=box]
-"0x604000018910" [label="DeclarationVar" shape=diamond]
-"0x604000018910" -> "0x60300001d5c0"
-"0x604000018910" -> "0x606000039b60"
-"0x60300001d5f0" [label="TypeInt" shape=box]
-"0x606000039bc0" [label="Identifier: i" shape=box]
+"0x60c0000067c0" -> "0x60300001d770"
+"0x60c0000067c0" -> "0x6040000188d0"
+"0x60c0000067c0" -> "0x604000018910"
+"0x60c0000067c0" -> "0x60300001d860"
+"0x60300001d890" [label="TypeInt" shape=box]
+"0x606000039bc0" [label="Identifier: Sort" shape=box]
+"0x60300001d8c0" [label="TypeInt" shape=box]
+"0x606000039c20" [label="Identifier: nt" shape=box]
 "0x604000018990" [label="DeclarationVar" shape=diamond]
-"0x604000018990" -> "0x60300001d5f0"
-"0x604000018990" -> "0x606000039bc0"
-"0x60300001d620" [label="TypeInt" shape=box]
-"0x606000039c20" [label="Identifier: aux02" shape=box]
+"0x604000018990" -> "0x60300001d8c0"
+"0x604000018990" -> "0x606000039c20"
+"0x60300001d8f0" [label="TypeInt" shape=box]
+"0x606000039c80" [label="Identifier: i" shape=box]
 "0x604000018a10" [label="DeclarationVar" shape=diamond]
-"0x604000018a10" -> "0x60300001d620"
-"0x604000018a10" -> "0x606000039c20"
-"0x60300001d680" [label="TypeInt" shape=box]
-"0x606000039c80" [label="Identifier: aux04" shape=box]
+"0x604000018a10" -> "0x60300001d8f0"
+"0x604000018a10" -> "0x606000039c80"
+"0x60300001d920" [label="TypeInt" shape=box]
+"0x606000039ce0" [label="Identifier: aux02" shape=box]
 "0x604000018a90" [label="DeclarationVar" shape=diamond]
-"0x604000018a90" -> "0x60300001d680"
-"0x604000018a90" -> "0x606000039c80"
-"0x60300001d6b0" [label="TypeInt" shape=box]
-"0x606000039ce0" [label="Identifier: aux05" shape=box]
+"0x604000018a90" -> "0x60300001d920"
+"0x604000018a90" -> "0x606000039ce0"
+"0x60300001d980" [label="TypeInt" shape=box]
+"0x606000039d40" [label="Identifier: aux04" shape=box]
 "0x604000018b10" [label="DeclarationVar" shape=diamond]
-"0x604000018b10" -> "0x60300001d6b0"
-"0x604000018b10" -> "0x606000039ce0"
-"0x60300001d6e0" [label="TypeInt" shape=box]
-"0x606000039da0" [label="Identifier: aux06" shape=box]
+"0x604000018b10" -> "0x60300001d980"
+"0x604000018b10" -> "0x606000039d40"
+"0x60300001d9b0" [label="TypeInt" shape=box]
+"0x606000039da0" [label="Identifier: aux05" shape=box]
 "0x604000018b90" [label="DeclarationVar" shape=diamond]
-"0x604000018b90" -> "0x60300001d6e0"
+"0x604000018b90" -> "0x60300001d9b0"
 "0x604000018b90" -> "0x606000039da0"
-"0x60300001d710" [label="TypeInt" shape=box]
-"0x606000039e00" [label="Identifier: aux07" shape=box]
+"0x60300001d9e0" [label="TypeInt" shape=box]
+"0x606000039e60" [label="Identifier: aux06" shape=box]
 "0x604000018c10" [label="DeclarationVar" shape=diamond]
-"0x604000018c10" -> "0x60300001d710"
-"0x604000018c10" -> "0x606000039e00"
-"0x60300001d740" [label="TypeInt" shape=box]
-"0x606000039e60" [label="Identifier: j" shape=box]
+"0x604000018c10" -> "0x60300001d9e0"
+"0x604000018c10" -> "0x606000039e60"
+"0x60300001da10" [label="TypeInt" shape=box]
+"0x606000039ec0" [label="Identifier: aux07" shape=box]
 "0x604000018c90" [label="DeclarationVar" shape=diamond]
-"0x604000018c90" -> "0x60300001d740"
-"0x604000018c90" -> "0x606000039e60"
-"0x60300001d770" [label="TypeInt" shape=box]
-"0x606000039ec0" [label="Identifier: t" shape=box]
+"0x604000018c90" -> "0x60300001da10"
+"0x604000018c90" -> "0x606000039ec0"
+"0x60300001da40" [label="TypeInt" shape=box]
+"0x606000039f20" [label="Identifier: j" shape=box]
 "0x604000018d10" [label="DeclarationVar" shape=diamond]
-"0x604000018d10" -> "0x60300001d770"
-"0x604000018d10" -> "0x606000039ec0"
-"0x606000039f20" [label="Identifier: i" shape=box]
-"0x606000039f80" [label="Identifier: size" shape=box]
-"0x60300001d7a0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001d7a0"  -> "0x606000039f80"
-"0x60300001d7d0" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x604000018d50" [label="ExpressionBinaryOperation
-operation_type: 1" shape=circle]
-"0x604000018d50" -> "0x60300001d7a0"
-"0x604000018d50" -> "0x60300001d7d0"
-"0x604000018d90" [label="StatementAssign"]
-"0x604000018d90" -> "0x606000039f20"
-"0x604000018d90" -> "0x604000018d50"
-"0x606000039fe0" [label="Identifier: aux02" shape=box]
-"0x60300001d800" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x60300001d830" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000018d10" -> "0x60300001da40"
+"0x604000018d10" -> "0x606000039f20"
+"0x60300001da70" [label="TypeInt" shape=box]
+"0x606000039f80" [label="Identifier: t" shape=box]
+"0x604000018d90" [label="DeclarationVar" shape=diamond]
+"0x604000018d90" -> "0x60300001da70"
+"0x604000018d90" -> "0x606000039f80"
+"0x606000039fe0" [label="Identifier: i" shape=box]
+"0x60600003a040" [label="Identifier: size" shape=box]
+"0x60300001daa0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001daa0"  -> "0x60600003a040"
+"0x60300001dad0" [label="ExpressionIntegerLiteral: 1" shape=circle]
 "0x604000018dd0" [label="ExpressionBinaryOperation
 operation_type: 1" shape=circle]
-"0x604000018dd0" -> "0x60300001d800"
-"0x604000018dd0" -> "0x60300001d830"
+"0x604000018dd0" -> "0x60300001daa0"
+"0x604000018dd0" -> "0x60300001dad0"
 "0x604000018e10" [label="StatementAssign"]
 "0x604000018e10" -> "0x606000039fe0"
 "0x604000018e10" -> "0x604000018dd0"
-"0x60600003a040" [label="Identifier: aux02" shape=box]
-"0x60300001d860" [label="ExpressionIdentifier" shape=circle]
-"0x60300001d860"  -> "0x60600003a040"
-"0x60600003a0a0" [label="Identifier: i" shape=box]
-"0x60300001d890" [label="ExpressionIdentifier" shape=circle]
-"0x60300001d890"  -> "0x60600003a0a0"
+"0x60600003a0a0" [label="Identifier: aux02" shape=box]
+"0x60300001db00" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x60300001db30" [label="ExpressionIntegerLiteral: 1" shape=circle]
 "0x604000018e50" [label="ExpressionBinaryOperation
-operation_type: 9" shape=circle]
-"0x604000018e50" -> "0x60300001d860"
-"0x604000018e50" -> "0x60300001d890"
-"0x60600003a100" [label="Identifier: j" shape=box]
-"0x60300001d8c0" [label="ExpressionIntegerLiteral: 1" shape=circle]
+operation_type: 1" shape=circle]
+"0x604000018e50" -> "0x60300001db00"
+"0x604000018e50" -> "0x60300001db30"
 "0x604000018e90" [label="StatementAssign"]
-"0x604000018e90" -> "0x60600003a100"
-"0x604000018e90" -> "0x60300001d8c0"
-"0x60600003a160" [label="Identifier: j" shape=box]
-"0x60300001d8f0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001d8f0"  -> "0x60600003a160"
-"0x60600003a1c0" [label="Identifier: i" shape=box]
-"0x60300001d920" [label="ExpressionIdentifier" shape=circle]
-"0x60300001d920"  -> "0x60600003a1c0"
-"0x60300001d950" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x604000018f10" [label="ExpressionBinaryOperation
-operation_type: 0" shape=circle]
-"0x604000018f10" -> "0x60300001d920"
-"0x604000018f10" -> "0x60300001d950"
-"0x60300001d980" [label="ExpressionRoundBrackets" shape=circle]
-"0x60300001d980" -> "0x604000018f10"
-"0x604000018f50" [label="ExpressionBinaryOperation
-operation_type: 9" shape=circle]
-"0x604000018f50" -> "0x60300001d8f0"
-"0x604000018f50" -> "0x60300001d980"
-"0x60600003a220" [label="Identifier: aux07" shape=box]
-"0x60600003a280" [label="Identifier: j" shape=box]
-"0x60300001d9b0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001d9b0"  -> "0x60600003a280"
-"0x60300001d9e0" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x604000018f90" [label="ExpressionBinaryOperation
-operation_type: 1" shape=circle]
-"0x604000018f90" -> "0x60300001d9b0"
-"0x604000018f90" -> "0x60300001d9e0"
-"0x604000018fd0" [label="StatementAssign"]
-"0x604000018fd0" -> "0x60600003a220"
-"0x604000018fd0" -> "0x604000018f90"
-"0x60600003a2e0" [label="Identifier: aux04" shape=box]
-"0x60600003a340" [label="Identifier: number" shape=box]
-"0x60300001da10" [label="ExpressionIdentifier" shape=circle]
-"0x60300001da10"  -> "0x60600003a340"
-"0x60600003a3a0" [label="Identifier: aux07" shape=box]
-"0x60300001da40" [label="ExpressionIdentifier" shape=circle]
-"0x60300001da40"  -> "0x60600003a3a0"
-"0x604000019050" [label="ExpressionIndex" shape=circle]
-"0x604000019050" -> "0x60300001da10"
-"0x604000019050" -> "0x60300001da40"
-"0x604000019090" [label="StatementAssign"]
-"0x604000019090" -> "0x60600003a2e0"
-"0x604000019090" -> "0x604000019050"
-"0x60600003a400" [label="Identifier: aux05" shape=box]
-"0x60600003a460" [label="Identifier: number" shape=box]
-"0x60300001da70" [label="ExpressionIdentifier" shape=circle]
-"0x60300001da70"  -> "0x60600003a460"
-"0x60600003a4c0" [label="Identifier: j" shape=box]
-"0x60300001daa0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001daa0"  -> "0x60600003a4c0"
-"0x6040000190d0" [label="ExpressionIndex" shape=circle]
-"0x6040000190d0" -> "0x60300001da70"
-"0x6040000190d0" -> "0x60300001daa0"
-"0x604000019110" [label="StatementAssign"]
-"0x604000019110" -> "0x60600003a400"
-"0x604000019110" -> "0x6040000190d0"
-"0x60600003a520" [label="Identifier: aux05" shape=box]
-"0x60300001db00" [label="ExpressionIdentifier" shape=circle]
-"0x60300001db00"  -> "0x60600003a520"
-"0x60600003a580" [label="Identifier: aux04" shape=box]
-"0x60300001db30" [label="ExpressionIdentifier" shape=circle]
-"0x60300001db30"  -> "0x60600003a580"
-"0x604000019150" [label="ExpressionBinaryOperation
-operation_type: 9" shape=circle]
-"0x604000019150" -> "0x60300001db00"
-"0x604000019150" -> "0x60300001db30"
-"0x60600003a5e0" [label="Identifier: aux06" shape=box]
-"0x60600003a640" [label="Identifier: j" shape=box]
+"0x604000018e90" -> "0x60600003a0a0"
+"0x604000018e90" -> "0x604000018e50"
+"0x60600003a100" [label="Identifier: aux02" shape=box]
 "0x60300001db60" [label="ExpressionIdentifier" shape=circle]
-"0x60300001db60"  -> "0x60600003a640"
-"0x60300001db90" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x604000019190" [label="ExpressionBinaryOperation
-operation_type: 1" shape=circle]
-"0x604000019190" -> "0x60300001db60"
-"0x604000019190" -> "0x60300001db90"
-"0x6040000191d0" [label="StatementAssign"]
-"0x6040000191d0" -> "0x60600003a5e0"
-"0x6040000191d0" -> "0x604000019190"
-"0x60600003a6a0" [label="Identifier: t" shape=box]
-"0x60600003a700" [label="Identifier: number" shape=box]
-"0x60300001dbc0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dbc0"  -> "0x60600003a700"
-"0x60600003a760" [label="Identifier: aux06" shape=box]
-"0x60300001dbf0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dbf0"  -> "0x60600003a760"
-"0x604000019250" [label="ExpressionIndex" shape=circle]
-"0x604000019250" -> "0x60300001dbc0"
-"0x604000019250" -> "0x60300001dbf0"
-"0x604000019290" [label="StatementAssign"]
-"0x604000019290" -> "0x60600003a6a0"
-"0x604000019290" -> "0x604000019250"
-"0x60600003a7c0" [label="Identifier: number" shape=box]
-"0x60600003a820" [label="Identifier: aux06" shape=box]
+"0x60300001db60"  -> "0x60600003a100"
+"0x60600003a160" [label="Identifier: i" shape=box]
+"0x60300001db90" [label="ExpressionIdentifier" shape=circle]
+"0x60300001db90"  -> "0x60600003a160"
+"0x604000018ed0" [label="ExpressionBinaryOperation
+operation_type: 9" shape=circle]
+"0x604000018ed0" -> "0x60300001db60"
+"0x604000018ed0" -> "0x60300001db90"
+"0x60600003a1c0" [label="Identifier: j" shape=box]
+"0x60300001dbc0" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000018f10" [label="StatementAssign"]
+"0x604000018f10" -> "0x60600003a1c0"
+"0x604000018f10" -> "0x60300001dbc0"
+"0x60600003a220" [label="Identifier: j" shape=box]
 "0x60300001dc20" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dc20"  -> "0x60600003a820"
-"0x60600003a880" [label="Identifier: number" shape=box]
+"0x60300001dc20"  -> "0x60600003a220"
+"0x60600003a280" [label="Identifier: i" shape=box]
 "0x60300001dc50" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dc50"  -> "0x60600003a880"
-"0x60600003a8e0" [label="Identifier: j" shape=box]
-"0x60300001dc80" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dc80"  -> "0x60600003a8e0"
-"0x6040000192d0" [label="ExpressionIndex" shape=circle]
-"0x6040000192d0" -> "0x60300001dc50"
-"0x6040000192d0" -> "0x60300001dc80"
-"0x604000019310" [label="StatementAssignArray"]
-"0x604000019310" -> "0x60600003a7c0"
-"0x604000019310" -> "0x60300001dc20"
-"0x604000019310" -> "0x6040000192d0"
-"0x60600003a940" [label="Identifier: number" shape=box]
-"0x60600003a9a0" [label="Identifier: j" shape=box]
-"0x60300001dce0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dce0"  -> "0x60600003a9a0"
-"0x60600003aa00" [label="Identifier: t" shape=box]
-"0x60300001dd10" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dd10"  -> "0x60600003aa00"
-"0x604000019350" [label="StatementAssignArray"]
-"0x604000019350" -> "0x60600003a940"
-"0x604000019350" -> "0x60300001dce0"
-"0x604000019350" -> "0x60300001dd10"
-"0x604000019210" [label="StatementList"]
-"0x604000019210" -> "0x6040000191d0"
-"0x604000019210" -> "0x604000019290"
-"0x604000019210" -> "0x604000019310"
-"0x604000019210" -> "0x604000019350"
-"0x60600003aa60" [label="Identifier: nt" shape=box]
-"0x60300001dd40" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x604000019390" [label="StatementAssign"]
-"0x604000019390" -> "0x60600003aa60"
-"0x604000019390" -> "0x60300001dd40"
-"0x6040000193d0" [label="StatementIf"]
-"0x6040000193d0" -> "0x604000019150"
-"0x6040000193d0" -> "0x604000019210"
-"0x6040000193d0" -> "0x604000019390"
-"0x60600003aac0" [label="Identifier: j" shape=box]
-"0x60600003ab20" [label="Identifier: j" shape=box]
-"0x60300001dd70" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dd70"  -> "0x60600003ab20"
-"0x60300001dda0" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x604000019410" [label="ExpressionBinaryOperation
+"0x60300001dc50"  -> "0x60600003a280"
+"0x60300001dc80" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000018f90" [label="ExpressionBinaryOperation
 operation_type: 0" shape=circle]
-"0x604000019410" -> "0x60300001dd70"
-"0x604000019410" -> "0x60300001dda0"
-"0x604000019450" [label="StatementAssign"]
-"0x604000019450" -> "0x60600003aac0"
-"0x604000019450" -> "0x604000019410"
-"0x604000019010" [label="StatementList"]
-"0x604000019010" -> "0x604000018fd0"
-"0x604000019010" -> "0x604000019090"
-"0x604000019010" -> "0x604000019110"
-"0x604000019010" -> "0x6040000193d0"
-"0x604000019010" -> "0x604000019450"
-"0x604000019490" [label="StatementWhile"]
-"0x604000019490" -> "0x604000018f50"
-"0x604000019490" -> "0x604000019010"
-"0x60600003abe0" [label="Identifier: i" shape=box]
-"0x60600003ac40" [label="Identifier: i" shape=box]
-"0x60300001ddd0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001ddd0"  -> "0x60600003ac40"
-"0x60300001de00" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x6040000194d0" [label="ExpressionBinaryOperation
+"0x604000018f90" -> "0x60300001dc50"
+"0x604000018f90" -> "0x60300001dc80"
+"0x60300001dcb0" [label="ExpressionRoundBrackets" shape=circle]
+"0x60300001dcb0" -> "0x604000018f90"
+"0x604000018fd0" [label="ExpressionBinaryOperation
+operation_type: 9" shape=circle]
+"0x604000018fd0" -> "0x60300001dc20"
+"0x604000018fd0" -> "0x60300001dcb0"
+"0x60600003a2e0" [label="Identifier: aux07" shape=box]
+"0x60600003a340" [label="Identifier: j" shape=box]
+"0x60300001dce0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001dce0"  -> "0x60600003a340"
+"0x60300001dd10" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000019010" [label="ExpressionBinaryOperation
 operation_type: 1" shape=circle]
-"0x6040000194d0" -> "0x60300001ddd0"
-"0x6040000194d0" -> "0x60300001de00"
-"0x604000019510" [label="StatementAssign"]
-"0x604000019510" -> "0x60600003abe0"
-"0x604000019510" -> "0x6040000194d0"
-"0x604000018ed0" [label="StatementList"]
-"0x604000018ed0" -> "0x604000018e90"
-"0x604000018ed0" -> "0x604000019490"
-"0x604000018ed0" -> "0x604000019510"
-"0x604000019550" [label="StatementWhile"]
-"0x604000019550" -> "0x604000018e50"
-"0x604000019550" -> "0x604000018ed0"
-"0x60300001de90" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x60300001dec0" [label="StatementReturn"]
-"0x60300001dec0" -> "0x60300001de90"
-"0x60300001d590" [label="TypeInt" shape=box]
-"0x606000039b00" [label="Identifier: Sort" shape=box]
+"0x604000019010" -> "0x60300001dce0"
+"0x604000019010" -> "0x60300001dd10"
+"0x604000019050" [label="StatementAssign"]
+"0x604000019050" -> "0x60600003a2e0"
+"0x604000019050" -> "0x604000019010"
+"0x60600003a3a0" [label="Identifier: aux04" shape=box]
+"0x60600003a400" [label="Identifier: number" shape=box]
+"0x60300001dd40" [label="ExpressionIdentifier" shape=circle]
+"0x60300001dd40"  -> "0x60600003a400"
+"0x60600003a460" [label="Identifier: aux07" shape=box]
+"0x60300001dd70" [label="ExpressionIdentifier" shape=circle]
+"0x60300001dd70"  -> "0x60600003a460"
+"0x6040000190d0" [label="ExpressionIndex" shape=circle]
+"0x6040000190d0" -> "0x60300001dd40"
+"0x6040000190d0" -> "0x60300001dd70"
+"0x604000019110" [label="StatementAssign"]
+"0x604000019110" -> "0x60600003a3a0"
+"0x604000019110" -> "0x6040000190d0"
+"0x60600003a4c0" [label="Identifier: aux05" shape=box]
+"0x60600003a520" [label="Identifier: number" shape=box]
+"0x60300001dda0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001dda0"  -> "0x60600003a520"
+"0x60600003a580" [label="Identifier: j" shape=box]
+"0x60300001ddd0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001ddd0"  -> "0x60600003a580"
+"0x604000019150" [label="ExpressionIndex" shape=circle]
+"0x604000019150" -> "0x60300001dda0"
+"0x604000019150" -> "0x60300001ddd0"
+"0x604000019190" [label="StatementAssign"]
+"0x604000019190" -> "0x60600003a4c0"
+"0x604000019190" -> "0x604000019150"
+"0x60600003a5e0" [label="Identifier: aux05" shape=box]
+"0x60300001de30" [label="ExpressionIdentifier" shape=circle]
+"0x60300001de30"  -> "0x60600003a5e0"
+"0x60600003a640" [label="Identifier: aux04" shape=box]
+"0x60300001de60" [label="ExpressionIdentifier" shape=circle]
+"0x60300001de60"  -> "0x60600003a640"
+"0x6040000191d0" [label="ExpressionBinaryOperation
+operation_type: 9" shape=circle]
+"0x6040000191d0" -> "0x60300001de30"
+"0x6040000191d0" -> "0x60300001de60"
+"0x60600003a6a0" [label="Identifier: aux06" shape=box]
+"0x60600003a700" [label="Identifier: j" shape=box]
+"0x60300001de90" [label="ExpressionIdentifier" shape=circle]
+"0x60300001de90"  -> "0x60600003a700"
+"0x60300001dec0" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000019210" [label="ExpressionBinaryOperation
+operation_type: 1" shape=circle]
+"0x604000019210" -> "0x60300001de90"
+"0x604000019210" -> "0x60300001dec0"
+"0x604000019250" [label="StatementAssign"]
+"0x604000019250" -> "0x60600003a6a0"
+"0x604000019250" -> "0x604000019210"
+"0x60600003a760" [label="Identifier: t" shape=box]
+"0x60600003a7c0" [label="Identifier: number" shape=box]
+"0x60300001def0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001def0"  -> "0x60600003a7c0"
+"0x60600003a820" [label="Identifier: aux06" shape=box]
+"0x60300001df20" [label="ExpressionIdentifier" shape=circle]
+"0x60300001df20"  -> "0x60600003a820"
+"0x6040000192d0" [label="ExpressionIndex" shape=circle]
+"0x6040000192d0" -> "0x60300001def0"
+"0x6040000192d0" -> "0x60300001df20"
+"0x604000019310" [label="StatementAssign"]
+"0x604000019310" -> "0x60600003a760"
+"0x604000019310" -> "0x6040000192d0"
+"0x60600003a880" [label="Identifier: number" shape=box]
+"0x60600003a8e0" [label="Identifier: aux06" shape=box]
+"0x60300001df50" [label="ExpressionIdentifier" shape=circle]
+"0x60300001df50"  -> "0x60600003a8e0"
+"0x60600003a940" [label="Identifier: number" shape=box]
+"0x60300001df80" [label="ExpressionIdentifier" shape=circle]
+"0x60300001df80"  -> "0x60600003a940"
+"0x60600003a9a0" [label="Identifier: j" shape=box]
+"0x60300001dfb0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001dfb0"  -> "0x60600003a9a0"
+"0x604000019350" [label="ExpressionIndex" shape=circle]
+"0x604000019350" -> "0x60300001df80"
+"0x604000019350" -> "0x60300001dfb0"
+"0x604000019390" [label="StatementAssignArray"]
+"0x604000019390" -> "0x60600003a880"
+"0x604000019390" -> "0x60300001df50"
+"0x604000019390" -> "0x604000019350"
+"0x60600003aa00" [label="Identifier: number" shape=box]
+"0x60600003aa60" [label="Identifier: j" shape=box]
+"0x60300001e010" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e010"  -> "0x60600003aa60"
+"0x60600003aac0" [label="Identifier: t" shape=box]
+"0x60300001e040" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e040"  -> "0x60600003aac0"
+"0x6040000193d0" [label="StatementAssignArray"]
+"0x6040000193d0" -> "0x60600003aa00"
+"0x6040000193d0" -> "0x60300001e010"
+"0x6040000193d0" -> "0x60300001e040"
+"0x604000019290" [label="StatementList"]
+"0x604000019290" -> "0x604000019250"
+"0x604000019290" -> "0x604000019310"
+"0x604000019290" -> "0x604000019390"
+"0x604000019290" -> "0x6040000193d0"
+"0x60600003ab20" [label="Identifier: nt" shape=box]
+"0x60300001e070" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x604000019410" [label="StatementAssign"]
+"0x604000019410" -> "0x60600003ab20"
+"0x604000019410" -> "0x60300001e070"
+"0x604000019450" [label="StatementIf"]
+"0x604000019450" -> "0x6040000191d0"
+"0x604000019450" -> "0x604000019290"
+"0x604000019450" -> "0x604000019410"
+"0x60600003ab80" [label="Identifier: j" shape=box]
+"0x60600003abe0" [label="Identifier: j" shape=box]
+"0x60300001e0a0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e0a0"  -> "0x60600003abe0"
+"0x60300001e0d0" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000019490" [label="ExpressionBinaryOperation
+operation_type: 0" shape=circle]
+"0x604000019490" -> "0x60300001e0a0"
+"0x604000019490" -> "0x60300001e0d0"
+"0x6040000194d0" [label="StatementAssign"]
+"0x6040000194d0" -> "0x60600003ab80"
+"0x6040000194d0" -> "0x604000019490"
+"0x604000019090" [label="StatementList"]
+"0x604000019090" -> "0x604000019050"
+"0x604000019090" -> "0x604000019110"
+"0x604000019090" -> "0x604000019190"
+"0x604000019090" -> "0x604000019450"
+"0x604000019090" -> "0x6040000194d0"
+"0x604000019510" [label="StatementWhile"]
+"0x604000019510" -> "0x604000018fd0"
+"0x604000019510" -> "0x604000019090"
+"0x60600003aca0" [label="Identifier: i" shape=box]
+"0x60600003ad00" [label="Identifier: i" shape=box]
+"0x60300001e100" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e100"  -> "0x60600003ad00"
+"0x60300001e130" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000019550" [label="ExpressionBinaryOperation
+operation_type: 1" shape=circle]
+"0x604000019550" -> "0x60300001e100"
+"0x604000019550" -> "0x60300001e130"
+"0x604000019590" [label="StatementAssign"]
+"0x604000019590" -> "0x60600003aca0"
+"0x604000019590" -> "0x604000019550"
+"0x604000018f50" [label="StatementList"]
+"0x604000018f50" -> "0x604000018f10"
+"0x604000018f50" -> "0x604000019510"
+"0x604000018f50" -> "0x604000019590"
+"0x6040000195d0" [label="StatementWhile"]
+"0x6040000195d0" -> "0x604000018ed0"
+"0x6040000195d0" -> "0x604000018f50"
+"0x60300001e1c0" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x60300001e1f0" [label="StatementReturn"]
+"0x60300001e1f0" -> "0x60300001e1c0"
+"0x60300001d890" [label="TypeInt" shape=box]
+"0x606000039bc0" [label="Identifier: Sort" shape=box]
 "0x60c000006880" [label="DeclarationMethod
 PrivacyModifier: 0
 is_static: 0" shape=diamond]
-"0x60c000006880" -> "0x60300001d590"
-"0x60c000006880" -> "0x606000039b00"
-"0x60c000006880" -> "0x604000018910"
+"0x60c000006880" -> "0x60300001d890"
+"0x60c000006880" -> "0x606000039bc0"
 "0x60c000006880" -> "0x604000018990"
 "0x60c000006880" -> "0x604000018a10"
 "0x60c000006880" -> "0x604000018a90"
@@ -397,185 +396,183 @@ is_static: 0" shape=diamond]
 "0x60c000006880" -> "0x604000018d10"
 "0x60c000006880" -> "0x604000018d90"
 "0x60c000006880" -> "0x604000018e10"
-"0x60c000006880" -> "0x604000019550"
-"0x60c000006880" -> "0x60300001dec0"
-"0x60300001df20" [label="TypeInt" shape=box]
-"0x60600003aca0" [label="Identifier: Print" shape=box]
-"0x60300001df50" [label="TypeInt" shape=box]
-"0x60600003ad00" [label="Identifier: j" shape=box]
-"0x6040000195d0" [label="DeclarationVar" shape=diamond]
-"0x6040000195d0" -> "0x60300001df50"
-"0x6040000195d0" -> "0x60600003ad00"
-"0x60600003ad60" [label="Identifier: j" shape=box]
-"0x60300001df80" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x604000019610" [label="StatementAssign"]
-"0x604000019610" -> "0x60600003ad60"
-"0x604000019610" -> "0x60300001df80"
+"0x60c000006880" -> "0x604000018e90"
+"0x60c000006880" -> "0x6040000195d0"
+"0x60c000006880" -> "0x60300001e1f0"
+"0x60300001e250" [label="TypeInt" shape=box]
+"0x60600003ad60" [label="Identifier: Print" shape=box]
+"0x60300001e280" [label="TypeInt" shape=box]
 "0x60600003adc0" [label="Identifier: j" shape=box]
-"0x60300001dfb0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dfb0"  -> "0x60600003adc0"
-"0x60600003ae20" [label="Identifier: size" shape=box]
-"0x60300001dfe0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001dfe0"  -> "0x60600003ae20"
-"0x60300001e010" [label="ExpressionRoundBrackets" shape=circle]
-"0x60300001e010" -> "0x60300001dfe0"
-"0x604000019650" [label="ExpressionBinaryOperation
+"0x604000019650" [label="DeclarationVar" shape=diamond]
+"0x604000019650" -> "0x60300001e280"
+"0x604000019650" -> "0x60600003adc0"
+"0x60600003ae20" [label="Identifier: j" shape=box]
+"0x60300001e2b0" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x604000019690" [label="StatementAssign"]
+"0x604000019690" -> "0x60600003ae20"
+"0x604000019690" -> "0x60300001e2b0"
+"0x60600003ae80" [label="Identifier: j" shape=box]
+"0x60300001e2e0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e2e0"  -> "0x60600003ae80"
+"0x60600003aee0" [label="Identifier: size" shape=box]
+"0x60300001e310" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e310"  -> "0x60600003aee0"
+"0x60300001e340" [label="ExpressionRoundBrackets" shape=circle]
+"0x60300001e340" -> "0x60300001e310"
+"0x6040000196d0" [label="ExpressionBinaryOperation
 operation_type: 9" shape=circle]
-"0x604000019650" -> "0x60300001dfb0"
-"0x604000019650" -> "0x60300001e010"
-"0x60600003ae80" [label="Identifier: number" shape=box]
-"0x60300001e070" [label="ExpressionIdentifier" shape=circle]
-"0x60300001e070"  -> "0x60600003ae80"
-"0x60600003aee0" [label="Identifier: j" shape=box]
-"0x60300001e0a0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001e0a0"  -> "0x60600003aee0"
-"0x604000019690" [label="ExpressionIndex" shape=circle]
-"0x604000019690" -> "0x60300001e070"
-"0x604000019690" -> "0x60300001e0a0"
-"0x60300001e0d0" [label="StatementPrintln"]
-"0x60300001e0d0" -> "0x604000019690"
-"0x60600003af40" [label="Identifier: j" shape=box]
+"0x6040000196d0" -> "0x60300001e2e0"
+"0x6040000196d0" -> "0x60300001e340"
+"0x60600003af40" [label="Identifier: number" shape=box]
+"0x60300001e3a0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e3a0"  -> "0x60600003af40"
 "0x60600003afa0" [label="Identifier: j" shape=box]
-"0x60300001e100" [label="ExpressionIdentifier" shape=circle]
-"0x60300001e100"  -> "0x60600003afa0"
-"0x60300001e130" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x604000019710" [label="ExpressionBinaryOperation
+"0x60300001e3d0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e3d0"  -> "0x60600003afa0"
+"0x604000019710" [label="ExpressionIndex" shape=circle]
+"0x604000019710" -> "0x60300001e3a0"
+"0x604000019710" -> "0x60300001e3d0"
+"0x60300001e400" [label="StatementPrintln"]
+"0x60300001e400" -> "0x604000019710"
+"0x60600003b000" [label="Identifier: j" shape=box]
+"0x60600003b060" [label="Identifier: j" shape=box]
+"0x60300001e430" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e430"  -> "0x60600003b060"
+"0x60300001e460" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x604000019790" [label="ExpressionBinaryOperation
 operation_type: 0" shape=circle]
-"0x604000019710" -> "0x60300001e100"
-"0x604000019710" -> "0x60300001e130"
-"0x604000019750" [label="StatementAssign"]
-"0x604000019750" -> "0x60600003af40"
-"0x604000019750" -> "0x604000019710"
-"0x6040000196d0" [label="StatementList"]
-"0x6040000196d0" -> "0x60300001e0d0"
-"0x6040000196d0" -> "0x604000019750"
-"0x604000019790" [label="StatementWhile"]
-"0x604000019790" -> "0x604000019650"
-"0x604000019790" -> "0x6040000196d0"
-"0x60300001e160" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x60300001e190" [label="StatementReturn"]
-"0x60300001e190" -> "0x60300001e160"
-"0x60300001df20" [label="TypeInt" shape=box]
-"0x60600003aca0" [label="Identifier: Print" shape=box]
+"0x604000019790" -> "0x60300001e430"
+"0x604000019790" -> "0x60300001e460"
+"0x6040000197d0" [label="StatementAssign"]
+"0x6040000197d0" -> "0x60600003b000"
+"0x6040000197d0" -> "0x604000019790"
+"0x604000019750" [label="StatementList"]
+"0x604000019750" -> "0x60300001e400"
+"0x604000019750" -> "0x6040000197d0"
+"0x604000019810" [label="StatementWhile"]
+"0x604000019810" -> "0x6040000196d0"
+"0x604000019810" -> "0x604000019750"
+"0x60300001e490" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x60300001e4c0" [label="StatementReturn"]
+"0x60300001e4c0" -> "0x60300001e490"
+"0x60300001e250" [label="TypeInt" shape=box]
+"0x60600003ad60" [label="Identifier: Print" shape=box]
 "0x60c000006a00" [label="DeclarationMethod
 PrivacyModifier: 0
 is_static: 0" shape=diamond]
-"0x60c000006a00" -> "0x60300001df20"
-"0x60c000006a00" -> "0x60600003aca0"
-"0x60c000006a00" -> "0x6040000195d0"
-"0x60c000006a00" -> "0x604000019610"
-"0x60c000006a00" -> "0x604000019790"
-"0x60c000006a00" -> "0x60300001e190"
-"0x60300001e250" [label="TypeInt" shape=box]
-"0x60600003b000" [label="Identifier: Init" shape=box]
-"0x60300001e280" [label="TypeInt" shape=box]
-"0x60600003b060" [label="Identifier: sz" shape=box]
-"0x6040000197d0" [label="DeclarationVar" shape=diamond]
-"0x6040000197d0" -> "0x60300001e280"
-"0x6040000197d0" -> "0x60600003b060"
-"0x60600003b0c0" [label="Identifier: size" shape=box]
+"0x60c000006a00" -> "0x60300001e250"
+"0x60c000006a00" -> "0x60600003ad60"
+"0x60c000006a00" -> "0x604000019650"
+"0x60c000006a00" -> "0x604000019690"
+"0x60c000006a00" -> "0x604000019810"
+"0x60c000006a00" -> "0x60300001e4c0"
+"0x60300001e550" [label="TypeInt" shape=box]
+"0x60600003b0c0" [label="Identifier: Init" shape=box]
+"0x60300001e580" [label="TypeInt" shape=box]
 "0x60600003b120" [label="Identifier: sz" shape=box]
-"0x60300001e2b0" [label="ExpressionIdentifier" shape=circle]
-"0x60300001e2b0"  -> "0x60600003b120"
-"0x604000019810" [label="StatementAssign"]
-"0x604000019810" -> "0x60600003b0c0"
-"0x604000019810" -> "0x60300001e2b0"
-"0x60600003b180" [label="Identifier: number" shape=box]
-"0x60300001e2e0" [label="TypeInt" shape=box]
+"0x604000019890" [label="DeclarationVar" shape=diamond]
+"0x604000019890" -> "0x60300001e580"
+"0x604000019890" -> "0x60600003b120"
+"0x60600003b180" [label="Identifier: size" shape=box]
 "0x60600003b1e0" [label="Identifier: sz" shape=box]
-"0x60300001e310" [label="ExpressionIdentifier" shape=circle]
-"0x60300001e310"  -> "0x60600003b1e0"
-"0x604000019850" [label="ExpressionNewArray" shape=circle]
-"0x604000019850" -> "0x60300001e2e0"
-"0x604000019850" -> "0x60300001e310"
-"0x604000019890" [label="StatementAssign"]
-"0x604000019890" -> "0x60600003b180"
-"0x604000019890" -> "0x604000019850"
+"0x60300001e5b0" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e5b0"  -> "0x60600003b1e0"
+"0x6040000198d0" [label="StatementAssign"]
+"0x6040000198d0" -> "0x60600003b180"
+"0x6040000198d0" -> "0x60300001e5b0"
 "0x60600003b240" [label="Identifier: number" shape=box]
-"0x60300001e340" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x60300001e370" [label="ExpressionIntegerLiteral: 20" shape=circle]
-"0x6040000198d0" [label="StatementAssignArray"]
-"0x6040000198d0" -> "0x60600003b240"
-"0x6040000198d0" -> "0x60300001e340"
-"0x6040000198d0" -> "0x60300001e370"
-"0x60600003b2a0" [label="Identifier: number" shape=box]
-"0x60300001e3d0" [label="ExpressionIntegerLiteral: 1" shape=circle]
-"0x60300001e400" [label="ExpressionIntegerLiteral: 7" shape=circle]
-"0x604000019910" [label="StatementAssignArray"]
-"0x604000019910" -> "0x60600003b2a0"
-"0x604000019910" -> "0x60300001e3d0"
-"0x604000019910" -> "0x60300001e400"
+"0x60300001e5e0" [label="TypeInt" shape=box]
+"0x60600003b2a0" [label="Identifier: sz" shape=box]
+"0x60300001e610" [label="ExpressionIdentifier" shape=circle]
+"0x60300001e610"  -> "0x60600003b2a0"
+"0x604000019910" [label="ExpressionNewArray" shape=circle]
+"0x604000019910" -> "0x60300001e5e0"
+"0x604000019910" -> "0x60300001e610"
+"0x604000019950" [label="StatementAssign"]
+"0x604000019950" -> "0x60600003b240"
+"0x604000019950" -> "0x604000019910"
 "0x60600003b300" [label="Identifier: number" shape=box]
-"0x60300001e430" [label="ExpressionIntegerLiteral: 2" shape=circle]
-"0x60300001e460" [label="ExpressionIntegerLiteral: 12" shape=circle]
-"0x604000019950" [label="StatementAssignArray"]
-"0x604000019950" -> "0x60600003b300"
-"0x604000019950" -> "0x60300001e430"
-"0x604000019950" -> "0x60300001e460"
-"0x60600003b3c0" [label="Identifier: number" shape=box]
-"0x60300001e490" [label="ExpressionIntegerLiteral: 3" shape=circle]
-"0x60300001e4c0" [label="ExpressionIntegerLiteral: 18" shape=circle]
+"0x60300001e640" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x60300001e670" [label="ExpressionIntegerLiteral: 20" shape=circle]
 "0x604000019990" [label="StatementAssignArray"]
-"0x604000019990" -> "0x60600003b3c0"
-"0x604000019990" -> "0x60300001e490"
-"0x604000019990" -> "0x60300001e4c0"
-"0x60600003b420" [label="Identifier: number" shape=box]
-"0x60300001e4f0" [label="ExpressionIntegerLiteral: 4" shape=circle]
-"0x60300001e520" [label="ExpressionIntegerLiteral: 2" shape=circle]
+"0x604000019990" -> "0x60600003b300"
+"0x604000019990" -> "0x60300001e640"
+"0x604000019990" -> "0x60300001e670"
+"0x60600003b360" [label="Identifier: number" shape=box]
+"0x60300001e6d0" [label="ExpressionIntegerLiteral: 1" shape=circle]
+"0x60300001e700" [label="ExpressionIntegerLiteral: 7" shape=circle]
 "0x6040000199d0" [label="StatementAssignArray"]
-"0x6040000199d0" -> "0x60600003b420"
-"0x6040000199d0" -> "0x60300001e4f0"
-"0x6040000199d0" -> "0x60300001e520"
-"0x60600003b480" [label="Identifier: number" shape=box]
-"0x60300001e550" [label="ExpressionIntegerLiteral: 5" shape=circle]
-"0x60300001e580" [label="ExpressionIntegerLiteral: 11" shape=circle]
+"0x6040000199d0" -> "0x60600003b360"
+"0x6040000199d0" -> "0x60300001e6d0"
+"0x6040000199d0" -> "0x60300001e700"
+"0x60600003b3c0" [label="Identifier: number" shape=box]
+"0x60300001e730" [label="ExpressionIntegerLiteral: 2" shape=circle]
+"0x60300001e760" [label="ExpressionIntegerLiteral: 12" shape=circle]
 "0x604000019a10" [label="StatementAssignArray"]
-"0x604000019a10" -> "0x60600003b480"
-"0x604000019a10" -> "0x60300001e550"
-"0x604000019a10" -> "0x60300001e580"
-"0x60600003b4e0" [label="Identifier: number" shape=box]
-"0x60300001e5b0" [label="ExpressionIntegerLiteral: 6" shape=circle]
-"0x60300001e5e0" [label="ExpressionIntegerLiteral: 6" shape=circle]
+"0x604000019a10" -> "0x60600003b3c0"
+"0x604000019a10" -> "0x60300001e730"
+"0x604000019a10" -> "0x60300001e760"
+"0x60600003b480" [label="Identifier: number" shape=box]
+"0x60300001e790" [label="ExpressionIntegerLiteral: 3" shape=circle]
+"0x60300001e7c0" [label="ExpressionIntegerLiteral: 18" shape=circle]
 "0x604000019a50" [label="StatementAssignArray"]
-"0x604000019a50" -> "0x60600003b4e0"
-"0x604000019a50" -> "0x60300001e5b0"
-"0x604000019a50" -> "0x60300001e5e0"
-"0x60600003b540" [label="Identifier: number" shape=box]
-"0x60300001e610" [label="ExpressionIntegerLiteral: 7" shape=circle]
-"0x60300001e640" [label="ExpressionIntegerLiteral: 9" shape=circle]
+"0x604000019a50" -> "0x60600003b480"
+"0x604000019a50" -> "0x60300001e790"
+"0x604000019a50" -> "0x60300001e7c0"
+"0x60600003b4e0" [label="Identifier: number" shape=box]
+"0x60300001e7f0" [label="ExpressionIntegerLiteral: 4" shape=circle]
+"0x60300001e820" [label="ExpressionIntegerLiteral: 2" shape=circle]
 "0x604000019a90" [label="StatementAssignArray"]
-"0x604000019a90" -> "0x60600003b540"
-"0x604000019a90" -> "0x60300001e610"
-"0x604000019a90" -> "0x60300001e640"
-"0x60600003b5a0" [label="Identifier: number" shape=box]
-"0x60300001e670" [label="ExpressionIntegerLiteral: 8" shape=circle]
-"0x60300001e6a0" [label="ExpressionIntegerLiteral: 19" shape=circle]
+"0x604000019a90" -> "0x60600003b4e0"
+"0x604000019a90" -> "0x60300001e7f0"
+"0x604000019a90" -> "0x60300001e820"
+"0x60600003b540" [label="Identifier: number" shape=box]
+"0x60300001e850" [label="ExpressionIntegerLiteral: 5" shape=circle]
+"0x60300001e880" [label="ExpressionIntegerLiteral: 11" shape=circle]
 "0x604000019ad0" [label="StatementAssignArray"]
-"0x604000019ad0" -> "0x60600003b5a0"
-"0x604000019ad0" -> "0x60300001e670"
-"0x604000019ad0" -> "0x60300001e6a0"
-"0x60600003b600" [label="Identifier: number" shape=box]
-"0x60300001e6d0" [label="ExpressionIntegerLiteral: 9" shape=circle]
-"0x60300001e700" [label="ExpressionIntegerLiteral: 5" shape=circle]
+"0x604000019ad0" -> "0x60600003b540"
+"0x604000019ad0" -> "0x60300001e850"
+"0x604000019ad0" -> "0x60300001e880"
+"0x60600003b5a0" [label="Identifier: number" shape=box]
+"0x60300001e8b0" [label="ExpressionIntegerLiteral: 6" shape=circle]
+"0x60300001e8e0" [label="ExpressionIntegerLiteral: 6" shape=circle]
 "0x604000019b10" [label="StatementAssignArray"]
-"0x604000019b10" -> "0x60600003b600"
-"0x604000019b10" -> "0x60300001e6d0"
-"0x604000019b10" -> "0x60300001e700"
-"0x60300001e730" [label="ExpressionIntegerLiteral: 0" shape=circle]
-"0x60300001e760" [label="StatementReturn"]
-"0x60300001e760" -> "0x60300001e730"
-"0x60300001e250" [label="TypeInt" shape=box]
-"0x60600003b000" [label="Identifier: Init" shape=box]
+"0x604000019b10" -> "0x60600003b5a0"
+"0x604000019b10" -> "0x60300001e8b0"
+"0x604000019b10" -> "0x60300001e8e0"
+"0x60600003b600" [label="Identifier: number" shape=box]
+"0x60300001e910" [label="ExpressionIntegerLiteral: 7" shape=circle]
+"0x60300001e940" [label="ExpressionIntegerLiteral: 9" shape=circle]
+"0x604000019b50" [label="StatementAssignArray"]
+"0x604000019b50" -> "0x60600003b600"
+"0x604000019b50" -> "0x60300001e910"
+"0x604000019b50" -> "0x60300001e940"
+"0x60600003b660" [label="Identifier: number" shape=box]
+"0x60300001e970" [label="ExpressionIntegerLiteral: 8" shape=circle]
+"0x60300001e9a0" [label="ExpressionIntegerLiteral: 19" shape=circle]
+"0x604000019b90" [label="StatementAssignArray"]
+"0x604000019b90" -> "0x60600003b660"
+"0x604000019b90" -> "0x60300001e970"
+"0x604000019b90" -> "0x60300001e9a0"
+"0x60600003b6c0" [label="Identifier: number" shape=box]
+"0x60300001e9d0" [label="ExpressionIntegerLiteral: 9" shape=circle]
+"0x60300001ea00" [label="ExpressionIntegerLiteral: 5" shape=circle]
+"0x604000019bd0" [label="StatementAssignArray"]
+"0x604000019bd0" -> "0x60600003b6c0"
+"0x604000019bd0" -> "0x60300001e9d0"
+"0x604000019bd0" -> "0x60300001ea00"
+"0x60300001ea30" [label="ExpressionIntegerLiteral: 0" shape=circle]
+"0x60300001ea60" [label="StatementReturn"]
+"0x60300001ea60" -> "0x60300001ea30"
+"0x60300001e550" [label="TypeInt" shape=box]
+"0x60600003b0c0" [label="Identifier: Init" shape=box]
 "0x60c000006ac0" [label="DeclarationMethod
 PrivacyModifier: 0
 is_static: 0" shape=diamond]
-"0x60c000006ac0" -> "0x60300001e250"
-"0x60c000006ac0" -> "0x60600003b000"
-"0x60c000006ac0" -> "0x6040000197d0"
-"0x60c000006ac0" -> "0x604000019810"
+"0x60c000006ac0" -> "0x60300001e550"
+"0x60c000006ac0" -> "0x60600003b0c0"
 "0x60c000006ac0" -> "0x604000019890"
 "0x60c000006ac0" -> "0x6040000198d0"
-"0x60c000006ac0" -> "0x604000019910"
 "0x60c000006ac0" -> "0x604000019950"
 "0x60c000006ac0" -> "0x604000019990"
 "0x60c000006ac0" -> "0x6040000199d0"
@@ -584,16 +581,19 @@ is_static: 0" shape=diamond]
 "0x60c000006ac0" -> "0x604000019a90"
 "0x60c000006ac0" -> "0x604000019ad0"
 "0x60c000006ac0" -> "0x604000019b10"
-"0x60c000006ac0" -> "0x60300001e760"
-"0x608000001720" [label="DeclarationClass" shape=diamond]
-"0x608000001720" -> "0x606000039320"
-"0x608000001720" -> "0x604000018610"
-"0x608000001720" -> "0x604000018690"
-"0x608000001720" -> "0x60c0000067c0"
-"0x608000001720" -> "0x60c000006880"
-"0x608000001720" -> "0x60c000006a00"
-"0x608000001720" -> "0x60c000006ac0"
-"0x604000018590" [label="Goal" shape=diamond]
-"0x604000018590" -> "0x6080000016a0"
-"0x604000018590" -> "0x608000001720"
+"0x60c000006ac0" -> "0x604000019b50"
+"0x60c000006ac0" -> "0x604000019b90"
+"0x60c000006ac0" -> "0x604000019bd0"
+"0x60c000006ac0" -> "0x60300001ea60"
+"0x608000001c20" [label="DeclarationClass" shape=diamond]
+"0x608000001c20" -> "0x606000039380"
+"0x608000001c20" -> "0x6040000186d0"
+"0x608000001c20" -> "0x604000018750"
+"0x608000001c20" -> "0x60c0000067c0"
+"0x608000001c20" -> "0x60c000006880"
+"0x608000001c20" -> "0x60c000006a00"
+"0x608000001c20" -> "0x60c000006ac0"
+"0x604000018650" [label="Goal" shape=diamond]
+"0x604000018650" -> "0x608000001ba0"
+"0x604000018650" -> "0x608000001c20"
 }

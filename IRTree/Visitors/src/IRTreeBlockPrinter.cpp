@@ -43,32 +43,35 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeBlockPrinter::visit(const IRTree::StatementCJumpNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"StatementCJumpNode: " << static_cast<int>(node.condition)
-             << "\" shape=box]\n";
+        out_ << "[label=\"StatementCJumpNode: "
+             << static_cast<int>(node.condition)
+             << " ? " << node.positive_label->label
+             << " : " << node.negative_label->label
+             << "\" shape=box]";
     }
 
-    void IRTreeBlockPrinter::visit(const IRTree::StatementExpressionNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"StatementExpressionNode\" shape=box]\n";
+    void IRTreeBlockPrinter::visit(const IRTree::StatementExpressionNode &/*node*/) {
+        out_ << "[label=\"StatementExpressionNode\" shape=box]";
     }
 
     void IRTreeBlockPrinter::visit(const IRTree::StatementJumpNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"StatementJumpNode\" shape=box]\n";
+        out_ << "[label=\"StatementJumpNode: " << node.label->label << "\" shape=box]";
     }
 
     void IRTreeBlockPrinter::visit(const IRTree::StatementLabelNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"StatementLabelNode\" shape=box]\n";
+        out_ << "[label=\"StatementLabelNode: " << node.label->label << "\" shape=box]";
     }
 
-    void IRTreeBlockPrinter::visit(const IRTree::StatementMoveNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"StatementMoveNode\" shape=box]\n";
+    void IRTreeBlockPrinter::visit(const IRTree::StatementMoveNode &/*node*/) {
+        out_ << "[label=\"StatementMoveNode\" shape=box]";
     }
 
-    void IRTreeBlockPrinter::visit(const IRTree::StatementSeqNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"StatementSeqNode\" shape=box]\n";
+    void IRTreeBlockPrinter::visit(const IRTree::StatementSeqNode &/*node*/) {
+        out_ << "[label=\"StatementSeqNode\" shape=box]";
     }
 
-    void IRTreeBlockPrinter::visit(const IRTree::TempNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"TempNode\" shape=box]\n";
+    void IRTreeBlockPrinter::visit(const IRTree::TempNode &/*node*/) {
+        out_ << "[label=\"TempNode\" shape=box]";
     }
 
     void IRTreeBlockPrinter::visit(const IRTree::ProgramInBlock &goal) {
@@ -86,14 +89,18 @@ namespace IRTreeVisitor {
                 for (auto &block : block_method.second) {
                     out_ << "subgraph cluster_" << &block << "{\n";
                     out_ << "node [shape=\"box\", style=\"filled\", fillcolor=\"green\", fontcolor=\"black\", fontsize=\"9\"]\n";
-                    out_ << "\"" << &block << "\"" << " [label=" << "block" << "shape=box]\n";
-                    out_ << "\"" << last_link << "\"" << " -> " << "\"" << &block << "\"" << "\n";
-                    last_link = &block;
-                    for (auto &statement : block) {
+                    out_ << "\"" << &block << "\"" << " [label=" << "\"block start\"" << "shape=box]\n";
+                    const void* last_statement = &block;
+                    for (const auto &statement : block) {
+                        out_ << "\"" << &statement << "\" ";
                         statement->accept(*this);
-                        out_ << "\"" << &block << "\"" << " -> " << "\"" << &statement << "\"" << "\n";
+                        out_ << "\n";
+                        out_ << "\"" << last_statement << "\"" << " -> " << "\"" << &statement << "\"" << "\n";
+                        last_statement = &statement;
                     }
                     out_ <<  "}\n";
+                    out_ << "\"" << last_link << "\"" << " -> " << "\"" << &block << "\"" << "\n";
+                    last_link = &block;
                 }
             }
         }
