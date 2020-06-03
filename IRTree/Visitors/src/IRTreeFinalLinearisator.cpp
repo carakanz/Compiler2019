@@ -197,9 +197,9 @@ namespace IRTreeVisitor{
         }
     }
 
-    void IRTreeFinalLinearisator::visit(const SyntaxTreeVisitor::IRTreeGoal &goal) {
+    void IRTreeFinalLinearisator::visit(const IRTree::IRTreeGoal &goal) {
 
-        auto& nc_goal = const_cast<SyntaxTreeVisitor::IRTreeGoal &>(goal);
+        auto& nc_goal = const_cast<IRTree::IRTreeGoal &>(goal);
         nc_goal.reset_linear_wrappers();
 
         for (const auto &class_info : goal.wrappers) {

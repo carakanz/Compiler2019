@@ -47,7 +47,7 @@ namespace IRTreeVisitor {
 
         void visit(const IRTree::TempNode &node) override;
 
-        void visit(const SyntaxTreeVisitor::IRTreeGoal &goal);
+        void visit(const IRTree::IRTreeGoal &goal);
 
         void updateLastExp(const IRTree::ExpressionConstNode &node);
         void updateLastExp(const IRTree::ExpressionTempNode &node);

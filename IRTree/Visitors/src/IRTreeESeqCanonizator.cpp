@@ -397,7 +397,7 @@ namespace IRTreeVisitor{
         );
     }
 
-    void IRTreeESeqCanonizator::visit(const SyntaxTreeVisitor::IRTreeGoal &goal) {
+    void IRTreeESeqCanonizator::visit(const IRTree::IRTreeGoal &goal) {
         for (const auto &class_info : goal.wrappers) {
             for (const auto &method_info : class_info.second) {
                 method_info.second->accept(*this);
