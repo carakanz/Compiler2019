@@ -1,5 +1,5 @@
 //
-// Created by Admin on 02.06.2020.
+// Created by Admin on 03.06.2020.
 //
 
 #include "gtest/gtest.h"
@@ -14,6 +14,7 @@
 #include "../IRTree/Visitors/include/IRTreePrinter.h"
 #include "../IRTree/Visitors/include/IRTreeCallCanonizator.h"
 #include "../IRTree/Visitors/include/IRTreeESeqCanonizator.h"
+#include "../IRTree/Visitors/include/IRTreeFinalLinearisator.h"
 
 
 const std::array<std::string, 9> Paths = {
@@ -30,9 +31,9 @@ const std::array<std::string, 9> Paths = {
 
 
 const std::string PathPrefix("../../tests/Samples/");
-const std::string ResultPrefix("../../tests/Samples/Digraph/IRTreeCanonization/");
+const std::string ResultPrefix("../../tests/Samples/Digraph/IRTreeLinearization/");
 
-TEST(IRTreeCanonization, Test) {
+TEST(IRTreeLinearization, Test) {
     BisonBuilder::Builder builder;
     for (const auto &path : Paths) {
         std::ifstream sample(PathPrefix + path);
@@ -45,16 +46,18 @@ TEST(IRTreeCanonization, Test) {
         SymbolTree::SymbolTree symbol_tree = SymbolTree::SymbolTableBuilder::build(tree);
         SyntaxTreeVisitor::IRTreeTranslator translator(symbol_tree);
         tree.accept(translator);
+        IRTreeVisitor::IRTreeCallCanonizator call_canonizator;
+        call_canonizator.visit(*translator.goal);
+        IRTreeVisitor::IRTreeESeqCanonizator eseq_canonizator;
+        eseq_canonizator.visit(*translator.goal);
         ASSERT_NO_THROW(
-                IRTreeVisitor::IRTreeCallCanonizator call_canonizator;
-                call_canonizator.visit(*translator.goal);
-                IRTreeVisitor::IRTreeESeqCanonizator eseq_canonizator;
-                eseq_canonizator.visit(*translator.goal);
+                IRTreeVisitor::IRTreeFinalLinearisator linearizator;
+                linearizator.visit(*translator.goal);
         );
     }
 }
 
-TEST(IRTreeCanonization, Parse) {
+TEST(IRTreeLinearization, Parse) {
     BisonBuilder::Builder builder;
     for (const auto &path : Paths) {
         std::ifstream sample(PathPrefix + path);
@@ -72,21 +75,16 @@ TEST(IRTreeCanonization, Parse) {
         call_canonizator.visit(*translator.goal);
         IRTreeVisitor::IRTreeESeqCanonizator eseq_canonizator;
         eseq_canonizator.visit(*translator.goal);
+        IRTreeVisitor::IRTreeFinalLinearisator linearizator;
+        linearizator.visit(*translator.goal);
 
         std::ofstream digraph(ResultPrefix + path + ".dot");
         ASSERT_TRUE(digraph.is_open());
         IRTreeVisitor::IRTreeVisitor printer(digraph);
         printer.print_start(path);
-        for (const auto& class_info : goal.linear_wrappers) {
-            for (const auto& method_info : class_info.second) {
-                for (const auto& statement : method_info.second) {
-                    statement->accept(printer);
-                }
-            }
-        }
+        printer.visit(*translator.goal);
         printer.print_end();
         digraph.close();
     }
 }
-
 

@@ -110,7 +110,7 @@ namespace IRTreeVisitor {
     }
 
     void IRTreeVisitor::visit(const IRTree::TempNode &node) {
-        out_ << "\"" << &node << "\"" << " [label=\"TempNode\" shape=box]\n";
+        out_ << "\"" << &node << "\"" << " [label=\"TempNode: " << node.label << "\" shape=box]\n";
     }
 
     void IRTreeVisitor::visit(const SyntaxTreeVisitor::IRTreeGoal &goal) {
