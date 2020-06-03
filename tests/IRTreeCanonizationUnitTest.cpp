@@ -47,6 +47,8 @@ TEST(IRTreeCanonization, Test) {
         ASSERT_NO_THROW(
                 IRTreeVisitor::IRTreeCallCanonizator call_canonizator;
                 call_canonizator.visit(*translator.goal);
+                IRTreeVisitor::IRTreeESeqCanonizator eseq_canonizator;
+                eseq_canonizator.visit(*translator.goal);
         );
     }
 }
@@ -67,6 +69,8 @@ TEST(IRTreeCanonization, Parse) {
 
         IRTreeVisitor::IRTreeCallCanonizator call_canonizator;
         call_canonizator.visit(*translator.goal);
+        IRTreeVisitor::IRTreeESeqCanonizator eseq_canonizator;
+        eseq_canonizator.visit(*translator.goal);
 
         std::ofstream digraph(ResultPrefix + path + ".dot");
         ASSERT_TRUE(digraph.is_open());

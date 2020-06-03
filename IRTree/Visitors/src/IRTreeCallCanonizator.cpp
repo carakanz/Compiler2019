@@ -87,12 +87,11 @@ namespace IRTreeVisitor{
         updateLastExp(
                 std::make_unique<IRTree::ExpressionESeqNode>(
                         std::make_unique<IRTree::StatementMoveNode>(
-                                std::make_unique<IRTree::ExpressionTempNode>(
-                                        std::move(std::make_unique<IRTree::TempNode>("auxiliary", true) )),
                                 std::make_unique<IRTree::ExpressionCallNode>(
                                         std::move( functionExp ),
-                                        argumentList
-                                )
+                                        argumentList),
+                                std::make_unique<IRTree::ExpressionTempNode>(
+                                        std::move(std::make_unique<IRTree::TempNode>("auxiliary", true) ))
                         ),
                         std::make_unique<IRTree::ExpressionTempNode>(
                                 std::move(std::make_unique<IRTree::TempNode>("auxiliary", false)))
@@ -126,8 +125,8 @@ namespace IRTreeVisitor{
 
     void IRTreeCallCanonizator::visit( const IRTree::StatementCJumpNode& n )
     {
-	//std::cout << "StCJump\n";
-	auto& nc_n = const_cast<IRTree::StatementCJumpNode &>(n);
+	    //std::cout << "StCJump\n";
+	    auto& nc_n = const_cast<IRTree::StatementCJumpNode &>(n);
         n.left_expression->accept( *this );
         std::unique_ptr<IRTree::IExpressionNode> nLeft = std::move( prevExp );
 

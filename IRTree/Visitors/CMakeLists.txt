@@ -11,7 +11,9 @@ add_library(${PROJECT_NAME} STATIC
         include/IRTreePrinter.h
         src/IrTreeLinearisator.cpp
         include/IRTreeCallCanonizator.h
-        src/IRTreeCallCanonizator.cpp)
+        src/IRTreeCallCanonizator.cpp
+        include/IRTreeESeqCanonizator.h
+        src/IRTreeESeqCanonizator.cpp)
 
 target_link_libraries(${PROJECT_NAME} IRTree Visitors)
 
