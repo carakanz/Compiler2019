@@ -1,17 +1,21 @@
 //
-// Created by carak on 21.05.2020.
+// Created by carak on 02.06.2020.
 //
 
 #pragma once
 
-#include "../include/IRTree/IVisitor.h"
-#include "../include/IRTree/Nodes.h"
+#include "../include/IRTree/IRTree.h"
 #include "IRTree/IRTreeGoal.h"
 
 namespace IRTreeVisitor {
-    class IRTreeLinearisator : IRTree::IVisitor {
+    class IRTreeBlockBuilder : IRTree::IVisitor {
     public:
-        explicit IRTreeLinearisator() {}
+        enum class NodeType
+        {
+            LABEL, JUMP, OTHER
+        };
+
+        static IRTree::ProgramInBlock build(IRTree::ProgramInLine&& tree);
 
         void visit(const IRTree::ExpressionBinaryOperationNode &node) override;
 
@@ -44,13 +48,15 @@ namespace IRTreeVisitor {
         void visit(const IRTree::StatementSeqNode &node) override;
 
         void visit(const IRTree::TempNode &node) override;
-
-        void visit(const IRTree::IRTreeGoal &goal);
-
-        [[nodiscard]] std::vector<std::vector<const IRTree::INodeBase*>> GetLineTrees() const {
-            return lineTrees;
-        };
     private:
-        std::vector<std::vector<const IRTree::INodeBase*>> lineTrees;
+        NodeType current_ = NodeType::LABEL;
+        NodeType previous_ = NodeType::LABEL;
+        IRTree::Block current_block_;
+        const IRTree::LabelNode *label_{};
+        explicit IRTreeBlockBuilder(IRTree::ProgramInLine &&tree)
+                : tree_(std::move(tree)) {}
+        IRTree::ProgramInLine tree_;
+        IRTree::ProgramInBlock run();
     };
 }
+

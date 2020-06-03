@@ -85,7 +85,7 @@ namespace IRTreeVisitor {
         lineTrees.back().push_back(&node);
     }
 
-    void IRTreeLinearisator::visit(const SyntaxTreeVisitor::IRTreeGoal &goal) {
+    void IRTreeLinearisator::visit(const IRTree::IRTreeGoal &goal) {
         for (const auto &class_info : goal.wrappers) {
             for (const auto &method_info : class_info.second) {
                 lineTrees.emplace_back();

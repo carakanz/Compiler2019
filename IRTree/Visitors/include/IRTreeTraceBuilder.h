@@ -1,17 +1,17 @@
 //
-// Created by carak on 21.05.2020.
+// Created by carak on 02.06.2020.
 //
 
+#include <IRTree/IRTree.h>
+
 #pragma once
-
-#include "../include/IRTree/IVisitor.h"
-#include "../include/IRTree/Nodes.h"
-#include "IRTree/IRTreeGoal.h"
-
 namespace IRTreeVisitor {
-    class IRTreeLinearisator : IRTree::IVisitor {
+    class TraceBuilder : IRTree::IVisitor {
     public:
-        explicit IRTreeLinearisator() {}
+        static IRTree::ProgramInBlock build(IRTree::ProgramInBlock&& program) {
+            TraceBuilder builder(std::move(program));
+            return builder.run();
+        }
 
         void visit(const IRTree::ExpressionBinaryOperationNode &node) override;
 
@@ -45,12 +45,20 @@ namespace IRTreeVisitor {
 
         void visit(const IRTree::TempNode &node) override;
 
-        void visit(const IRTree::IRTreeGoal &goal);
-
-        [[nodiscard]] std::vector<std::vector<const IRTree::INodeBase*>> GetLineTrees() const {
-            return lineTrees;
-        };
     private:
-        std::vector<std::vector<const IRTree::INodeBase*>> lineTrees;
+        explicit TraceBuilder(IRTree::ProgramInBlock&& program)
+                : program_(std::move(program)){};
+        IRTree::ProgramInBlock run();
+        IRTree::MethodInBlock build_method();
+
+        IRTree::Block* current_block_{};
+
+        IRTree::MethodInBlock * current_method_{};
+
+        std::string label;
+        std::string positive_label;
+        std::string negative_label;
+
+        IRTree::ProgramInBlock program_;
     };
 }
