@@ -121,7 +121,7 @@ namespace IRTreeVisitor {
         }
     }
     
-    void IRTreeVisitor::visit_linear(const SyntaxTreeVisitor::IRTreeGoal &goal) {
+    void IRTreeVisitor::visit_linear(const IRTree::IRTreeGoal &goal) {
     	for (const auto& class_info : goal.linear_wrappers) {
             for (const auto& method_info : class_info.second) {
                 for (const auto& statement : method_info.second) {
